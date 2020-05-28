@@ -1,1 +1,2 @@
-Synthetics is the last lesson in the Introduction to Datadog course. Congratulations! Click the **Next** button to give us your feedback and download your certificate!
+That's an introduction to how to use synthetics and brings us to the end of the session.
+post-data
