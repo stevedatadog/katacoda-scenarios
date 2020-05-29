@@ -7,7 +7,7 @@ Notice that the logs aren't showing up in the application. This is because the a
 
 Since we are working in a containerized environment, the Datadog Agent should run as a container alongside the other containers. All configuration should then happen only through environment variables, volumes, and Docker labels. Learn more about setting up the Datadog Docker Agent in the <a href="https://docs.datadoghq.com/agent/docker" target="_datadog">documentation</a>.
 
-To start gathering the application logs, we need to add a couple environment variables and a new volume to the `datadog` container. Open `docker-compose.yaml`{{open}} in the editor on the right. Add these two environment variables to the `environment` list in the `datadog` section:
+To start gathering the application logs, we need to add a couple environment variables and a new volume to the `datadog` container. Open `docker-compose.yml`{{open}} in the editor on the right. Add these two environment variables to the `environment` list in the `datadog` section:
   
 <pre class="file" data-target="clipboard">
   - DD_LOGS_ENABLED=true
@@ -20,28 +20,21 @@ And then add this line to the `volumes` list in the `datadog` section:
   - /opt/datadog-agent/run:/opt/datadog-agent/run:rw
 </pre>
 
-
-<table>
-  <tr>
-    <td>
+<table style="max-width:350px">
+<tr><td>
 `DD_LOGS_ENABLED=true` enables log collection. 
-    </td>
-  </tr>
-  <tr>
-    <td>
-`DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true` enables log collection for all containers. 
-    </td>
-  </tr>
-  <tr>
-    <td>
+</td></tr>
+<tr><td>
+`DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true` enables log collection for all containers.
+</td></tr>
+<tr><td>
 `/opt/datadog-agent/run:/opt/datadog-agent/run:rw` mounts a persistent host volume to store the Agent's logging registry. The registry stores a reference to the last log line collected for each container.  Persisting the registry on the host prevents loss of container logs during restarts or network issues.
-    </td>
-  </tr>
+</td></tr>
 </table>
 
 Restart your docker-compose environment by pressing **CTRL-C** in the first terminal then enter the following commands:
 
-`docker-compose rm -f && docker-compose up --build`{{execute}}
+`docker-compose stop && docker-compose rm -f && docker-compose up --build`{{execute}}
 
 Navigate to Logs Explorer in Datadog and wait for the logs to start showing up. It can take a few minutes for the first logs to appear, but then they should update faster. Try running some of the curl commands from the previous page as well.
 
