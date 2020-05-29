@@ -20,16 +20,29 @@ And then add this line to the `volumes` list in the `datadog` section:
   - /opt/datadog-agent/run:/opt/datadog-agent/run:rw
 </pre>
 
+
+<table>
+  <tr>
+    <td>
 `DD_LOGS_ENABLED=true` enables log collection. 
-
-`DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true` enables log collection for all containers.
-
+    </td>
+  </tr>
+  <tr>
+    <td>
+`DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true` enables log collection for all containers. 
+    </td>
+  </tr>
+  <tr>
+    <td>
 `/opt/datadog-agent/run:/opt/datadog-agent/run:rw` mounts a persistent host volume to store the Agent's logging registry. The registry stores a reference to the last log line collected for each container.  Persisting the registry on the host prevents loss of container logs during restarts or network issues.
+    </td>
+  </tr>
+</table>
 
 Restart your docker-compose environment by pressing **CTRL-C** in the first terminal then enter the following commands:
 
 `docker-compose rm -f && docker-compose up --build`{{execute}}
 
-Navigate to <a href="https://app.datadoghq.com/logs" target="_datadog">Logs Explorer</a> in Datadog and wait for the logs to start showing up. It can take a few minutes for the first logs to appear, but then they should update faster. Try running some of the curl commands from the previous page as well.
+Navigate to Logs Explorer in Datadog and wait for the logs to start showing up. It can take a few minutes for the first logs to appear, but then they should update faster. Try running some of the curl commands from the previous page as well.
 
 ![Log flow](exampleapp/assets/log_flow.png)
