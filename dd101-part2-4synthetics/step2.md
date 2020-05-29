@@ -7,6 +7,6 @@ Let's try to break our page to make the test fail.
 5. Return to the Synthetics test page in Datadog. Click the gear icon at the top and choose **Edit test details**. 
 6. Click **New Assertion** and ensure that `body` contains the text `Datadog APM Water Management Example`. Click **Save Test**. Then **Run Test Now**.
 7. Within a few seconds we should see some alerts on the page. Click on one of them and look at what the problem is.
-8. In the lab terminal, restart the front end by running `kubectl apply -f frontend-service.yaml`{{execute}}. And back in the test results page, click **Run Test Now**. The errors should go away. 
+8. In the lab terminal, restart the front end by running `kubectl apply -f frontend-service.yaml`{{execute}}. And back in the test results page, click **Run Test Now**. The errors should go away.
 
-    _If the Test Results don't update immediately, you can click the **Refresh** button to update them._
+  _If the Test Results don't update immediately, you can click the **Refresh** button to update them._
