@@ -22,7 +22,7 @@ And then add this line to the `volumes` list in the `datadog` section:
 - /opt/datadog-agent/run:/opt/datadog-agent/run:rw
 </pre>
 
-<table style="max-width:350px">
+<table>
 <tr><td>
 `DD_LOGS_ENABLED=true` enables log collection. 
 </td></tr>
