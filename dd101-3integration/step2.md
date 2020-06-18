@@ -11,8 +11,7 @@ Note: We have an agent running on the host and now another agent in a container.
    labels:
          com.datadoghq.ad.check_names: '["nginx"]'
          com.datadoghq.ad.init_configs: '[{}]'
-         com.datadoghq.ad.instances: '[{"nginx_status_url": "http://%%host%%:%%port%%/nginx_status"}]'
-         </pre>
+         com.datadoghq.ad.instances: '[{"nginx_status_url": "http://%%host%%:%%port%%/nginx_status"}]'</pre>
 6. You may be thinking those labels are a bit strange, but you can see where they come from when you look at <a href="https://github.com/DataDog/integrations-core/blob/master/nginx/datadog_checks/nginx/data/conf.yaml.example" target="_datadog">the example yaml file for nginx</a>.
 7. To learn more about the formatting for these labels, see <a href="https://docs.datadoghq.com/agent/docker/integrations/?tab=docker" target="_datadog">the Auto Discovery documentation</a>.
 8. Notice that with both Redis and Nginx, we aren't collecting logs. But that's easy to do by adding another label to each service. Take a look at the <a href="https://docs.datadoghq.com/agent/docker/log/?tab=dockercompose" target="_datadog">Docker Log collection documentation</a> and see if you can figure out what to add to get logs enabled in both integrations.
