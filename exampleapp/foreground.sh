@@ -17,5 +17,8 @@ sed -i 's|datadog/agent:latest|datadog/agent:6.11.1|' docker-compose.yml
 sed -i 's|redis:latest|redis:5.0.5|' docker-compose.yml
 sed -i 's|nginx:latest|nginx:1.16.0|' docker-compose.yml
 
+# Insert placeholders for Katacoda IDE
+sed -i '/DD_PROCESS_AGENT_ENABLED.*/a \ \ \ \ \ \ \# insert environment variables here' docker-compose.yml
+sed -i '/\/etc\/passwd:ro.*/a \ \ \ \ \ \ \# insert volume here' docker-compose.yml
 
 docker-compose up

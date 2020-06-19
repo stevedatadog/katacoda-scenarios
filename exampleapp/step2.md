@@ -9,18 +9,16 @@ Since we are working in a containerized environment, the Datadog Agent should ru
 
 To start gathering the application logs, we need to add a couple environment variables and a new volume to the `datadog` container. Open `docker-compose.yml`{{open}} in the editor on the right. Add these two environment variables to the `environment` list in the `datadog` section:
   
-<pre class="file" data-target="clipboard">
+<pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert environment variables here">
 - DD_LOGS_ENABLED=true
-- DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
-</pre>
+- DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true</pre>
 
   _Make sure these environmment variables are intended at the same level as the others in the `environment` list._
 
 And then add this line to the `volumes` list in the `datadog` section:
 
-<pre class="file" data-target="clipboard">
-- /opt/datadog-agent/run:/opt/datadog-agent/run:rw
-</pre>
+<pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert volume here">
+- /opt/datadog-agent/run:/opt/datadog-agent/run:rw</pre>
 
 <table>
 <tr><td>
