@@ -17,4 +17,10 @@ sed -i 's|datadog/agent:latest|datadog/agent:6.11.1|' docker-compose.yml
 sed -i 's|redis:latest|redis:5.0.5|' docker-compose.yml
 sed -i 's|nginx:latest|nginx:1.16.0|' docker-compose.yml
 
+# Insert placeholders for Katacoda IDE
+sed -i '\|\./conf\.d/redis/redis\.conf:/usr/local/etc/redis/redis\.conf.*|a #\ \ \ insert redis labels here' docker-compose.yml
+sed -i '\|com\.datadoghq\.ad\.instances.*|a #\ \ \ \ \ insert nginx labels here' docker-compose.yml
+sed -i '/- thinker.*/a #\ \ \ insert api labels here' docker-compose.yml
+sed -i '/- "5001:8000".*/a #\ \ \ insert thinker labels here' docker-compose.yml
+
 docker-compose up
