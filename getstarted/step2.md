@@ -13,19 +13,15 @@ Datadog has a range of <a href="https://docs.datadoghq.com/integrations/#cat-log
 
 1. Press CTRL-C in the terminal to stop docker-compose. Then add the following label to the redis block in your docker-compose.yml file:
 
-  <pre><code>redis:
-    (...)
+<pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert reids labels here">
     labels:
-      com.datadoghq.ad.logs: '[{"source": "redis", "service": "redis"}]'
-   </code></pre>
+      com.datadoghq.ad.logs: '[{"source": "redis", "service": "redis"}]'</pre>
 
 1. Add the following label to the nginx block in the same file:
 
-  <pre><code>nginx:
-    (...)
+<pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert nginx labels here">
     labels:
-      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'
-   </code></pre>
+      com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'</pre>
 
 2. Restart your Docker containers using the following commands:
    `docker-compose stop && docker-compose rm -f && docker-compose up --build -d`{{execute}}
@@ -47,17 +43,15 @@ Datadog has a range of <a href="https://docs.datadoghq.com/integrations/#cat-log
 
 Our application is already instrumented for APM. Let's add log tags to the containers thinker-api and thinker-microservice in order to be able to bind the traces and the log together.
 
-1. Add the following labels to the docker-compose.yml file:
+1. Add the following labels to the docker-compose.yml file for the api and thinker containers:
 
-  <pre><code>api:
-    (...)
+  <pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert api labels here">
     labels:
-      com.datadoghq.ad.logs: '[{"source": "webapp", "service": "thinker-api"}]'
-  thinker:
-    (...)
+      com.datadoghq.ad.logs: '[{"source": "webapp", "service": "thinker-api"}]'</pre>
+
+  <pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert thinker labels here">
     labels:
-      com.datadoghq.ad.logs: '[{"source": "webapp", "service": "thinker-microservice"}]'
-  </code></pre>
+      com.datadoghq.ad.logs: '[{"source": "webapp", "service": "thinker-microservice"}]'</pre>
 
 1. Restart the Docker containers as you did before. Then send a few more of the curl commands and look at the new logs showing up in the Logs view.
 
