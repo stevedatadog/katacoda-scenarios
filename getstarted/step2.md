@@ -13,14 +13,13 @@ Datadog has a range of <a href="https://docs.datadoghq.com/integrations/#cat-log
 
 1. Press CTRL-C in the terminal to stop docker-compose. Then add the following label to the redis block in your docker-compose.yml file:
 
-<pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert reids labels here">
+<pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert redis labels here">
     labels:
       com.datadoghq.ad.logs: '[{"source": "redis", "service": "redis"}]'</pre>
 
 1. Add the following label to the nginx block in the same file:
 
 <pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert nginx labels here">
-    labels:
       com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'</pre>
 
 2. Restart your Docker containers using the following commands:
