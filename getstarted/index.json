@@ -1,6 +1,7 @@
 {
   "difficulty": "Intermediate",
   "time": "25 minutes",
+  "title": "Intro to Logs: Getting Started",
   "details": {
     "intro": {
       "courseData": "background.sh",
