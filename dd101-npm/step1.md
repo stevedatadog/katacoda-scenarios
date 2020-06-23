@@ -1,0 +1,1 @@
+This is the first step, where we configure NPM in our environment.

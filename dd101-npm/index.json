@@ -1,0 +1,80 @@
+{
+  "time": "XX minutes",
+  "title": "Network Performance Monitoring",
+  "details": {
+    "intro": {
+      "courseData": "background.sh",
+      "code": "foreground.sh",
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Enable NPM",
+        "text": "step1.md"
+      }, 
+      {
+        "title": "Analyze network traffic",
+        "text": "step2.md"
+      },
+      {
+        "title": "Create a dashboard",
+        "text": "step3.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "prepenvironment",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        },
+        {
+          "file": "finish",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        },
+        {
+          "file": "light",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        },
+        {
+          "file": "heavy",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        },
+        {
+          "file": "status.txt",
+          "target": "/root"
+        },
+        {
+          "file": "kcsetapi.sh",
+          "target": "/root",
+          "chmod": "+x"
+        }, 
+        {
+          "file": "grademe",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "uimessage1": "",
+    "showdashboard": true, 
+    "terminals": [
+      {
+        "name": "web2",
+        "command": "ssh -o StrictHostKeyChecking=no web2"
+      }
+    ]
+  },
+  "backend": {
+    "imageid": "datadog-intro"
+  }
+}

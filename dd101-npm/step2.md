@@ -1,0 +1,1 @@
+This is step two, where we look at the NPM data in the Datadog app. We'll also create a couple custom tags to help us understand the information.
