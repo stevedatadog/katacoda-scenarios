@@ -4,13 +4,20 @@ if [ ! -f "/root/provisioned" ]; then
     echo "Not provisioning"
   else
 
+cat > ddupdate.sh <<END
+export DD_API_KEY=${DD_API_KEY}
+export DD_AGENT_MAJOR_VERSION=7
+curl -LO https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
+END
+
 cat > ddapikey.sh <<EOL
 #!/bin/bash
-DD_AGENT_MAJOR_VERSION=7 DD_API_KEY="${DD_API_KEY}" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
 sudo sed -i "s/bogusapikey/${DD_API_KEY}/" /etc/datadog-agent/datadog.yaml
 sudo service datadog-agent restart
 EOL
-./ddapikey.sh
+
+./ddupdate.sh && ./ddapikey.sh
+
 scp -o StrictHostKeyChecking=no ddapikey.sh web3:/root/ddapikey.sh
 scp -o StrictHostKeyChecking=no ddapikey.sh web2:/root/ddapikey.sh
 scp -o StrictHostKeyChecking=no ddapikey.sh web1:/root/ddapikey.sh
