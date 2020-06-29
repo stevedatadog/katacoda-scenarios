@@ -1,1 +1,3 @@
-This is the first step, where we configure NPM in our environment.
+This Lab environment is running three web servers behind a load balancer. The Datadog Agent is already installed on these instances.
+
+Log in the the Datadog app and select **Infrastructure > Network** from the global navigation. If you have not already enabled this feature, you will see the Discover Network Performance Monitoring introductory screen. Click the **Get Started** button in the upper-right corner to...
