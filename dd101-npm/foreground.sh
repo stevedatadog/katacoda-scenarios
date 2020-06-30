@@ -18,9 +18,9 @@ EOL
 
     bash ddupdate.sh && bash ddapikey.sh
 
-    scp -o StrictHostKeyChecking=no update.sh ddapikey.sh web3:/root
-    scp -o StrictHostKeyChecking=no update.sh ddapikey.sh web2:/root
-    scp -o StrictHostKeyChecking=no update.sh ddapikey.sh web1:/root
+    scp -o StrictHostKeyChecking=no ddupdate.sh ddapikey.sh web3:/root
+    scp -o StrictHostKeyChecking=no ddupdate.sh ddapikey.sh web2:/root
+    scp -o StrictHostKeyChecking=no ddupdate.sh ddapikey.sh web1:/root
     export WEB1=$(getent hosts web1 | awk '{ print $1 }')
     export WEB2=$(getent hosts web2 | awk '{ print $1 }')
     export WEB3=$(getent hosts web3 | awk '{ print $1 }')
@@ -31,11 +31,11 @@ EOL
     echo "echo '$WEB1 web1' >> /etc/hosts" >> ddapikey.sh
     echo "echo '$WEB2 web2' >> /etc/hosts" >> ddapikey.sh
     echo "echo '$WEB3 web3' >> /etc/hosts" >> ddapikey.sh
-    scp -o StrictHostKeyChecking=no update.sh ddapikey.sh lb:/root
-    ssh web3 'chmod +x /root/dd*.sh;hostname web3;/root/update.sh;/root/ddapikey.sh'&
-    ssh web2 'chmod +x /root/dd*.sh;hostname web2;/root/update.sh;/root/ddapikey.sh'&
-    ssh web1 'chmod +x /root/dd*.sh;hostname web1;/root/update.sh;/root/ddapikey.sh'&
-    ssh lb 'chmod +x /root/dd*.sh;hostname lb;/root/update.sh;/root/ddapikey.sh;sudo service haproxy restart'&
+    scp -o StrictHostKeyChecking=no ddupdate.sh ddapikey.sh lb:/root
+    ssh web3 'chmod +x /root/dd*.sh;hostname web3;/root/ddupdate.sh;/root/ddapikey.sh'&
+    ssh web2 'chmod +x /root/dd*.sh;hostname web2;/root/ddupdate.sh;/root/ddapikey.sh'&
+    ssh web1 'chmod +x /root/dd*.sh;hostname web1;/root/ddupdate.sh;/root/ddapikey.sh'&
+    ssh lb 'chmod +x /root/dd*.sh;hostname lb;/root/ddupdate.sh;/root/ddapikey.sh;sudo service haproxy restart'&
   fi
 fi
 sleep 1
