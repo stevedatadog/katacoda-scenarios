@@ -33,14 +33,10 @@ EOL
     echo "echo '$WEB2 web2' >> /etc/hosts" >> ddapikey.sh
     echo "echo '$WEB3 web3' >> /etc/hosts" >> ddapikey.sh
     scp -o StrictHostKeyChecking=no ddupdate.sh ddapikey.sh lb:/root
-    echo "Configuring web3..."
-    ssh -f web3 'chmod +x /root/dd*.sh;hostname web3;/root/ddupdate.sh;/root/ddapikey.sh'
-    echo "Configuring web2..."
-    ssh -f web2 'chmod +x /root/dd*.sh;hostname web2;/root/ddupdate.sh;/root/ddapikey.sh'
-    echo "Configuring web1..."
-    ssh -f web1 'chmod +x /root/dd*.sh;hostname web1;/root/ddupdate.sh;/root/ddapikey.sh'
-    echo "Configuring lb..."
-    ssh -f lb 'chmod +x /root/dd*.sh;hostname lb;/root/ddupdate.sh;/root/ddapikey.sh;service haproxy restart'
+    ssh -f web3 'chmod +x /root/dd*.sh;hostname web3;/root/ddupdate.sh;/root/ddapikey.sh' > /dev/null 2>&1
+    ssh -f web2 'chmod +x /root/dd*.sh;hostname web2;/root/ddupdate.sh;/root/ddapikey.sh' > /dev/null 2>&1
+    ssh -f web1 'chmod +x /root/dd*.sh;hostname web1;/root/ddupdate.sh;/root/ddapikey.sh' > /dev/null 2>&1
+    ssh -f lb 'chmod +x /root/dd*.sh;hostname lb;/root/ddupdate.sh;/root/ddapikey.sh;service haproxy restart' > /dev/null 2>&1
   fi
 fi
 sleep 1
