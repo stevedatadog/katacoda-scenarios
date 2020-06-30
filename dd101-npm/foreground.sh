@@ -16,6 +16,8 @@ sed -i "s/bogusapikey/${DD_API_KEY}/" /etc/datadog-agent/datadog.yaml
 service datadog-agent restart
 EOL
 
+    export DD_AGENT_MAJOR_VERSION=7
+    bash -c "\$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
     sudo sed -i "s/bogusapikey/$DD_API_KEY/" /etc/datadog-agent/datadog.yaml
     sudo service datadog-agent restart
 
