@@ -32,15 +32,18 @@ EOL
     echo "echo '$WEB2 web2' >> /etc/hosts" >> ddapikey.sh
     echo "echo '$WEB3 web3' >> /etc/hosts" >> ddapikey.sh
     scp -o StrictHostKeyChecking=no ddupdate.sh ddapikey.sh lb:/root
-    ssh web3 'chmod +x /root/dd*.sh;hostname web3;/root/ddupdate.sh;/root/ddapikey.sh'&
-    ssh web2 'chmod +x /root/dd*.sh;hostname web2;/root/ddupdate.sh;/root/ddapikey.sh'&
-    ssh web1 'chmod +x /root/dd*.sh;hostname web1;/root/ddupdate.sh;/root/ddapikey.sh'&
-    ssh lb 'chmod +x /root/dd*.sh;hostname lb;/root/ddupdate.sh;/root/ddapikey.sh;service haproxy restart'&
+    echo "Configuring web3..."
+    ssh web3 'chmod +x /root/dd*.sh;hostname web3;/root/ddupdate.sh;/root/ddapikey.sh'
+    echo "Configuring web2..."
+    ssh web2 'chmod +x /root/dd*.sh;hostname web2;/root/ddupdate.sh;/root/ddapikey.sh'
+    echo "Configuring web1..."
+    ssh web1 'chmod +x /root/dd*.sh;hostname web1;/root/ddupdate.sh;/root/ddapikey.sh'
+    echo "Configuring lb..."
+    ssh lb 'chmod +x /root/dd*.sh;hostname lb;/root/ddupdate.sh;/root/ddapikey.sh;service haproxy restart'
   fi
 fi
 sleep 1
 
-source /root/.nvm/nvm.sh
 clear
 
 prepenvironment
