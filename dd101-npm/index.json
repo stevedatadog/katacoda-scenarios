@@ -66,21 +66,7 @@
   "environment": {
     "uilayout": "editor-terminal",
     "uimessage1": "",
-    "showdashboard": true, 
-    "terminals": [
-      {
-        "name": "Terminal 2",
-        "target" : "host02"
-      },
-      {
-        "name": "Terminal 3",
-        "target" : "host03"
-      },
-      {
-        "name": "Terminal 4",
-        "target" : "host04"
-      }
-    ]
+    "showdashboard": true
   },
   "backend": {
     "imageid": "datadog-intro"
