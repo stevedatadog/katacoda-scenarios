@@ -16,7 +16,8 @@ sed -i "s/bogusapikey/${DD_API_KEY}/" /etc/datadog-agent/datadog.yaml
 service datadog-agent restart
 EOL
 
-    bash ddupdate.sh && bash ddapikey.sh
+    sudo sed -i "s/bogusapikey/$DD_API_KEY/" /etc/datadog-agent/datadog.yaml
+    sudo service datadog-agent restart
 
     scp -o StrictHostKeyChecking=no ddupdate.sh ddapikey.sh web3:/root
     scp -o StrictHostKeyChecking=no ddupdate.sh ddapikey.sh web2:/root
@@ -33,13 +34,13 @@ EOL
     echo "echo '$WEB3 web3' >> /etc/hosts" >> ddapikey.sh
     scp -o StrictHostKeyChecking=no ddupdate.sh ddapikey.sh lb:/root
     echo "Configuring web3..."
-    ssh web3 'chmod +x /root/dd*.sh;hostname web3;/root/ddupdate.sh;/root/ddapikey.sh'
+    ssh -f web3 'chmod +x /root/dd*.sh;hostname web3;/root/ddupdate.sh;/root/ddapikey.sh'
     echo "Configuring web2..."
-    ssh web2 'chmod +x /root/dd*.sh;hostname web2;/root/ddupdate.sh;/root/ddapikey.sh'
+    ssh -f web2 'chmod +x /root/dd*.sh;hostname web2;/root/ddupdate.sh;/root/ddapikey.sh'
     echo "Configuring web1..."
-    ssh web1 'chmod +x /root/dd*.sh;hostname web1;/root/ddupdate.sh;/root/ddapikey.sh'
+    ssh -f web1 'chmod +x /root/dd*.sh;hostname web1;/root/ddupdate.sh;/root/ddapikey.sh'
     echo "Configuring lb..."
-    ssh lb 'chmod +x /root/dd*.sh;hostname lb;/root/ddupdate.sh;/root/ddapikey.sh;service haproxy restart'
+    ssh -f lb 'chmod +x /root/dd*.sh;hostname lb;/root/ddupdate.sh;/root/ddapikey.sh;service haproxy restart'
   fi
 fi
 sleep 1
