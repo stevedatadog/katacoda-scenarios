@@ -1,0 +1,31 @@
+{
+  "time": "XX minutes",
+  "title": "Test Scenario",
+  "details": {
+    "intro": {
+      "courseData": "background.sh",
+      "code": "foreground.sh",
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "First Step",
+        "text": "step1.md"
+      } 
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": []
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal",
+    "uimessage1": "",
+    "showdashboard": true
+  },
+  "backend": {
+    "imageid": "datadog-ecommerce-observability"
+  }
+}
