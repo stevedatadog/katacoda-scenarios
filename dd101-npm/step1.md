@@ -8,7 +8,7 @@ In this lab the system path `/etc/datadog-agent/` has been linked to the current
 
 Open `datadog-agent/system-probe.yml`{{open}} in the editor and uncomment the `system_probe_config:` line, and the `enabled: false` line. Change that line to `enabled: true`. Your changes will save automatically.
 
-Restart the Datadog Agent with the command `datadog-agent restart`{{execute}}.
+Restart the Datadog Agent with the command `systemctl restart datadog-agent`{{execute}}.
 
 Log in the the Datadog app and select **Infrastructure > Network** from the global navigation. If you have not already enabled this feature, you will see the Discover Network Performance Monitoring introductory screen. Click the **Get Started** button in the upper-right corner to...
 
