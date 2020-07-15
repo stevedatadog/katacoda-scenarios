@@ -4,9 +4,13 @@ Let's start by enabling the Network Performance Monitoring system probe on maste
 
 `cp /etc/datadog-agent/system-probe.yaml.example /etc/datadog-agent/system-probe.yaml`{{execute}}
 
-In this lab the system path `/etc/datadog-agent/` has been linked to the current directory for your convenience. 
+Let's also ensure that the file must be readable by the `dd-agent` user:
 
-Open `datadog-agent/system-probe.yml`{{open}} in the editor and uncomment the `system_probe_config:` line, and the `enabled: false` line. Change that line to `enabled: true`. Your changes will save automatically.
+`chown dd-agent /etc/datadog-agent/system-probe.yaml`
+
+*Note: In this lab, the system path `/etc/datadog-agent/` has been linked to the current directory so you can open its files in the editor.*
+
+Open `datadog-agent/system-probe.yaml`{{open}} in the editor and uncomment the `system_probe_config:` line, and the `enabled: false` line. Change that line to `enabled: true`. Your changes will save automatically.
 
 Restart the Datadog Agent with the command `systemctl restart datadog-agent`{{execute}}.
 
