@@ -51,6 +51,6 @@
       ]
     },
     "backend": {
-      "imageid": "datadog-base-v1"
+      "imageid": "ecommerce-observability"
     }
   }
