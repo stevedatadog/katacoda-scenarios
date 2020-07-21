@@ -51,6 +51,6 @@
       ]
     },
     "backend": {
-      "imageid": "ubuntu"
+      "imageid": "datadog-ecommerce-observability"
     }
   }
