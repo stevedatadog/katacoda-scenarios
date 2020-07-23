@@ -51,6 +51,6 @@
       ]
     },
     "backend": {
-      "imageid": "ubuntu:1804"
+      "imageid": "datadog-base-v1"
     }
   }
