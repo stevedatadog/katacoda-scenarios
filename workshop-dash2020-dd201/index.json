@@ -1,6 +1,6 @@
 {
     "time": "X minutes",
-    "title": "DD 201 Workshop",
+    "title": "Datadog 201 Workshop",
     "details": {
       "intro": {
         "courseData": "background.sh",
@@ -42,11 +42,18 @@
     },
     "environment": {
       "uilayout": "editor-terminal",
-      "uieditorpath": "/root/lab", 
+      "uieditorpath": "/root/lab/", 
       "terminals": [
         {
           "name": "Terminal 2", 
-          "command": "cd /root/lab"
+          "command": "cd /root/lab/ecommworkshop"
+        }
+      ],
+      "showdashboard": true,
+      "dashboards": [
+        {
+          "name": "Storedog",
+          "port": 3000
         }
       ]
     },
