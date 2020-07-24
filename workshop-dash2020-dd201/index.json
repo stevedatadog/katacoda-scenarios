@@ -4,7 +4,6 @@
     "details": {
       "intro": {
         "courseData": "background.sh",
-        "code": "foreground.sh",
         "text": "intro.md"
       },
       "steps": [
@@ -16,37 +15,14 @@
           "text": "step2.md",
           "title": "Step 2"
         }
-      ],
-      "finish": {
-        "text": "finish.md"
-      },
-      "assets": {
-        "host01": [
-          {
-            "file": "start",
-            "target": "/usr/local/bin/",
-            "chmod": "+x"
-          },
-          {
-            "file": "finish",
-            "target": "/usr/local/bin/",
-            "chmod": "+x"
-          },
-          {
-            "file": "grademe",
-            "target": "/usr/local/bin/",
-            "chmod": "+x"
-          }
-        ]
-      }
+      ]
     },
     "environment": {
       "uilayout": "editor-terminal",
       "uieditorpath": "/root/lab/", 
       "terminals": [
         {
-          "name": "Terminal 2", 
-          "command": "cd /root/lab/ecommworkshop"
+          "name": "Terminal 2"
         }
       ],
       "showdashboard": true,

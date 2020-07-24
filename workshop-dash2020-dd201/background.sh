@@ -14,3 +14,6 @@ sed -i "/- DD_TAGS='env:ruby-shop'/r"<(
     echo "      - apparmor:unconfined"
 ) /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
 sed -i "/volumes:/a \ \ \ \ \ \ - /sys/kernel/debug:/sys/kernel/debug" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
+
+# Get the latest lab tools
+curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
