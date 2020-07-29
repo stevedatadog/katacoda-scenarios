@@ -1,0 +1,61 @@
+{
+    "time": "X minutes",
+    "title": "Datadog 201 Workshop",
+    "details": {
+      "intro": {
+        "courseData": "background.sh",
+        "text": "intro.md"
+      },
+      "steps": [
+        {
+          "text": "step1.md",
+          "title": "Getting Started"
+        },
+        {
+          "text": "executive_step1.md",
+          "title": "Building Executive Dashboards"
+        },
+        {
+          "text": "executive_step2.md",
+          "title": "Building Executive Dashboards"
+        },
+        {
+          "text": "runbook1.md",
+          "title": "Building Reusable Resources: Runbooks"
+        },
+        {
+          "text": "runbook2.md",
+          "title": "Runbooks Part 2"
+        }
+      ],
+      "assets": {
+        "host01": [
+          {
+            "file": "postlogs.py",
+            "target": "/root/lab/",
+            "chmod": "+x"
+          }
+	]
+      }
+    },
+    "environment": {
+      "uilayout": "terminal",
+      "showide": "true",
+      "uieditorpath": "/root/lab/", 
+      "terminals": [
+        {
+          "name": "Terminal 2"
+        }
+      ],
+      "showdashboard": true,
+      "dashboards": [
+        {
+          "name": "Storedog",
+          "port": 3000
+        }
+      ]
+    },
+    "backend": {
+      "imageid": "datadog-base-v1"
+    }
+  }
