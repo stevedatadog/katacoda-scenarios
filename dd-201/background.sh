@@ -19,4 +19,4 @@ sed -i "/volumes:/a \ \ \ \ \ \ - /sys/kernel/debug:/sys/kernel/debug" /ecommwor
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
 # Generate some logs for cost/price
-python /root/lab/postlogs.py 100 
+python /root/lab/postlogs.py 5
