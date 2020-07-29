@@ -18,7 +18,8 @@
       ]
     },
     "environment": {
-      "uilayout": "editor-terminal",
+      "uilayout": "terminal",
+      "showide": "true",
       "uieditorpath": "/root/lab/", 
       "terminals": [
         {
