@@ -16,7 +16,7 @@ sed -i "/- DD_TAGS='env:ruby-shop'/r"<(
 sed -i "/volumes:/a \ \ \ \ \ \ - /sys/kernel/debug:/sys/kernel/debug" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
 
 # workshop-specific environment
-sed -i "/env:ruby-shop/env:dd201/" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
+sed -i "s/env:ruby-shop/env:dd201/" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
 
 
 # Get the latest lab tools
