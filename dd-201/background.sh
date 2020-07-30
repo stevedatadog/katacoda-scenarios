@@ -2,7 +2,7 @@
 ln -s /ecommworkshop /root/lab
 
 # Enable system probe for NPM
-sed -i "/- DD_TAGS='env:dd201'/r"<(
+sed -i "/- DD_TAGS='env:ruby-shop'/r"<(
     echo "      - DD_SYSTEM_PROBE_ENABLED=true"
     echo "    cap_add:"
     echo "      - SYS_ADMIN"
@@ -15,8 +15,9 @@ sed -i "/- DD_TAGS='env:dd201'/r"<(
 ) /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
 sed -i "/volumes:/a \ \ \ \ \ \ - /sys/kernel/debug:/sys/kernel/debug" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
 
+# workshop-specific environment
+sed -i "/env:ruby-shop/env:dd201/" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
+
+
 # Get the latest lab tools
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
-
-# Generate some logs for cost/price
-python /root/lab/postlogs.py 5
