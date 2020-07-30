@@ -1,5 +1,6 @@
 # Make the appp code available in the IDE
-ln -s /ecommworkshop /root/lab
+ln -s /ecommworkshop /root/ecommworkshop
+mv /root/postlogs.py /root/ecommworkshop/
 
 # Enable system probe for NPM
 sed -i "/- DD_TAGS='env:ruby-shop'/r"<(
@@ -18,6 +19,8 @@ sed -i "/volumes:/a \ \ \ \ \ \ - /sys/kernel/debug:/sys/kernel/debug" /ecommwor
 # workshop-specific environment
 sed -i "s/env:ruby-shop/env:dd201/" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
 
-
 # Get the latest lab tools
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
+
+cp /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml /ecommworkshop/docker-compose.yml
+

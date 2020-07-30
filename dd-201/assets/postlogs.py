@@ -32,7 +32,7 @@ def post_log():
     url = 'https://http-intake.logs.datadoghq.com/v1/input'
     payload = {
       'ddsource': 'python',
-      'ddtags': 'env:ruby-shop, team:frontend',
+      'ddtags': 'env:dd201, team:frontend',
       'hostname': 'host01',
       'message': '{"event":"add_to_cart","item":' + json.dumps(random.choice(items)) + '}',
       'service': 'store-cartlogger'

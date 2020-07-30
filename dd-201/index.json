@@ -32,7 +32,7 @@
         "host01": [
           {
             "file": "postlogs.py",
-            "target": "/root/lab/",
+            "target": "/root",
             "chmod": "+x"
           }
 	]
@@ -41,7 +41,7 @@
     "environment": {
       "uilayout": "terminal",
       "showide": "true",
-      "uieditorpath": "/root/lab/", 
+      "uieditorpath": "/root", 
       "terminals": [
         {
           "name": "Terminal 2"
