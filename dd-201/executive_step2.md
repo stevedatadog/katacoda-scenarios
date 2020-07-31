@@ -7,7 +7,7 @@ Rather than focusing on the number of successful times people were able to check
 
 We’re going to do this by creating a synthetics test 
 
-- Navigate to **Synthetics Tests** under UX Monitoring or go to `https://app.datadoghq.com/synthetics/list`{{copy}}
+- Navigate to **Synthetics Tests** under UX Monitoring or click [this link](https://app.datadoghq.com/synthetics/list)
 - Click **Get Started**
 - Choose **New Browser Test**
 - Fill out url, name, and locations

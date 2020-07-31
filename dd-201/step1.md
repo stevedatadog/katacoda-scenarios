@@ -21,7 +21,7 @@ Now run this command to start up the Storedog application:
 
 Once docker-compose has started the Storedog app, you will see a stream of log output in Terminal 1.
 
-You can interact with the Storedog app by clicking on the Storedog tab. It may take a minute or two to display.
+You can interact with the Storedog app by clicking on the Storedog tab. It may take a minute or two to display. If you see a page displaying "Connecting to Port 3000," wait a little while and then refresh your browser.
 
 ### Open Terminal 2 
 
@@ -29,7 +29,7 @@ Change the working directory with the command `cd ecommworkshop`{{execute}}
 
 Then run the command `./postlogs.py 50 &`{{execute}}
 
-You will now be able to see logs being sent to the Datadog app.
+This will send logs to Datadog simulating shopping cart activity.
 
 Let's generate traffic to the Storedog app using the [GoReplay](https://github.com/buger/goreplay) utility by running the command `./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"`{{execute}}
 

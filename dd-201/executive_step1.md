@@ -9,7 +9,7 @@ This could be anything, but for the sake of argument, let’s say it’s
 To create a revenue metric we will first need to find that data. 
 
 #### Create your revenue metric 
-Start by navigating to `https://app.datadoghq.com/logs`{{copy}} and searching for `add search term here`{{copy}}
+Start by navigating to [Logs Explorer](https://app.datadoghq.com/logs) and searching for `add search term here`{{copy}}
 
 Once you’re confident this is the data that will allow you to track revenue, you’re going to want to store that metric over time. 
 
