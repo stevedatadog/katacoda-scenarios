@@ -13,7 +13,7 @@ Let’s start by adding an overview of your services. You can paste this overvie
 </pre>
  
 ## Custom Troubleshooting
-Next, let's add a link to the dashboard you used to debug your service. Since we worked on `store-frontend`, we can link to the [RUM Performance Overview](https://app.datadoghq.com/screen/integration/30292/rum---performance-overview?from_ts=1595949761945&to_ts=1595953361945&live=true) dashboard.
+Next, let's add a link to the dashboard you used to debug your service. Since we worked on `store-frontend`, we can link to the [RUM Performance Overview](https://app.datadoghq.com/screen/integration/30292/rum---performance-overview?live=true) dashboard.
  
 This is an out-of-the-box dashboard for real-user-monitoring (RUM) that monitors metrics like page views and frontend errors. We can clone it to make changes.  
  
@@ -21,4 +21,6 @@ For our spree services, we know that problems often happen in the production env
  
 We can link to this dashboard in our runbook and add some context around it. Paste this into your runbook or add your own context:  
  
-`[RUM Performance Overview for Prod](https://app.datadoghq.com/screen/integration/30292/rum---performance-overview?from_ts=1595968236673&live=true&to_ts=1595971836673&tpl_var_env=prod)`{{copy}}
+<pre class="file" data-target="clipboard">
+[RUM Performance Overview for Prod](https://app.datadoghq.com/screen/integration/30292/rum---performance-overview?live=true&tpl_var_env=prod)
+</pre>
