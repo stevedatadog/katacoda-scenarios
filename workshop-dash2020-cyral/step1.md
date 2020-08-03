@@ -1,4 +1,7 @@
-In the terminal, please enter the password shown on the workshop slides to configure environment variables we'll use throughout the workshop.
+Please run the following script to configure environment variables we'll use throughout the workshop. You'll be prompted for a password, which will be provided by the workshop instructor.
+```
+source .get_envvars.sh
+```{{execute}}
 
 # Database
 The following environment variables provide information required to connect to the PostgreSQL database we'll be working with.
