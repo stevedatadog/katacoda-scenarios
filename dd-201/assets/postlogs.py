@@ -41,4 +41,4 @@ def post_log():
 
 for i in range(posts):
     post_log()
-    time.sleep(1)
+    time.sleep(3)

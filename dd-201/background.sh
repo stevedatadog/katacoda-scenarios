@@ -1,5 +1,5 @@
 # Idempotentiation
-if test -f ".provisioned"; then
+if test -f ".provisionedDatadog-201"; then
   exit 0;
 fi
 
@@ -27,6 +27,6 @@ cp /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml /ec
 statusupdate configuration
 
 statuscheck apikey
-DD_API_KEY=`cat .dd_api_key` postlogs.py && statusupdate logging
+DD_API_KEY=`cat /root/.dd_api_key` /root/postlogs.py 3600 && statusupdate logging
 
-touch ".provisioned"
+statusupdate complete
