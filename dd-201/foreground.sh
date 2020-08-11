@@ -2,7 +2,7 @@
 statuscheck configuration
 
 # Write API key for background.sh
-echo DD_API_KEY > .dd_api_key && statusupdate apikey
+echo $DD_API_KEY > .dd_api_key && statusupdate apikey
 
 statuscheck logging
 
