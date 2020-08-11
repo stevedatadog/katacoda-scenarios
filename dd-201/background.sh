@@ -1,5 +1,5 @@
 # Idempotentiation
-if test -f ".provisioned"; then
+if test -f "provisionedDatadog-201"; then
   exit 0;
 fi
 

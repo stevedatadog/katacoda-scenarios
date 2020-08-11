@@ -27,10 +27,6 @@ You can interact with the Storedog app by clicking on the Storedog tab. It may t
 
 Change the working directory with the command `cd ecommworkshop`{{execute}}
 
-Then run the command `./postlogs.py 50 &`{{execute}}
-
-This will send logs to Datadog simulating shopping cart activity.
-
 Let's generate traffic to the Storedog app using the [GoReplay](https://github.com/buger/goreplay) utility by running the command `./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"`{{execute}}
 
 In a few minutes you will see metrics in the Datadog app.
