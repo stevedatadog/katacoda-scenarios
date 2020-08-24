@@ -1,4 +1,3 @@
 #!/bin/bash
-ln -s /etc/datadog-agent /root/datadog-agent
-echo "Installing Services"> status.txt
-echo "done" > status.txt
+curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
+statusupdate complete

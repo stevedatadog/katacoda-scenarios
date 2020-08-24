@@ -1,5 +1,5 @@
 {
-  "time": "XX minutes",
+  "time": "X minutes",
   "title": "Network Performance Monitoring",
   "details": {
     "intro": {
@@ -9,66 +9,37 @@
     },
     "steps": [
       {
-        "title": "Enable NPM",
-        "text": "step1.md"
-      }, 
-      {
-        "title": "Analyze network traffic",
-        "text": "step2.md"
+        "text": "step1.md",
+        "title": "Getting Started"
       },
       {
-        "title": "Create a dashboard",
-        "text": "step3.md"
+        "text": "step2.md",
+        "title": "Getting Started"
       }
     ],
-    "finish": {
-      "text": "finish.md"
-    },
     "assets": {
       "host01": [
         {
-          "file": "prepenvironment",
-          "target": "/usr/local/bin/",
-          "chmod": "+x"
-        },
-        {
-          "file": "finish",
-          "target": "/usr/local/bin/",
-          "chmod": "+x"
-        },
-        {
-          "file": "light",
-          "target": "/usr/local/bin/",
-          "chmod": "+x"
-        },
-        {
-          "file": "heavy",
-          "target": "/usr/local/bin/",
-          "chmod": "+x"
-        },
-        {
-          "file": "status.txt",
+          "file": "docker-compose.yml",
           "target": "/root"
-        },
-        {
-          "file": "kcsetapi.sh",
-          "target": "/root",
-          "chmod": "+x"
-        }, 
-        {
-          "file": "grademe",
-          "target": "/usr/local/bin/",
-          "chmod": "+x"
         }
       ]
     }
   },
   "environment": {
-    "uilayout": "editor-terminal",
-    "uimessage1": "",
-    "showdashboard": true
+    "uilayout": "terminal",
+    "showide": "true",
+    "uieditorpath": "/root/lab", 
+    "terminals": [],
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Storedog",
+        "port": 3000
+      }
+    ]
   },
   "backend": {
-    "imageid": "datadog-intro"
+    "imageid": "datadog-base-v1"
   }
 }
