@@ -1,5 +1,5 @@
 # Gathering logs
-Log in to your account on Datadog and navigate to <a href="https://app.datadoghq.com/logs" target="_datadog">Logs Explorer</a>. If you haven't enabled logging in a previous course, you will see an introduction screen. Click the **Get Started** button and then click **Start Trial** to enable the Log Management feature. If you don't see a Start Trial dialog, just move on to the next step.
+Log in to your account on Datadog and navigate to <a href="https://app.datadoghq.com/logs" target="_datadog">Logs Explorer</a>. If you haven't enabled logging in a previous course, you will see an introduction screen. To enable the Log Management feature, click the **Get Started** button and then click the next **Get Started** button in the confirmation dialog.  If you don't see a Start Trial dialog, just move on to the next step.
 
 You should see instructions on getting started with logs. Try refreshing the screen. 
 

@@ -11,29 +11,31 @@ In order to solve this issue, we are going to use two reserved attributes:
 
 Datadog has a range of <a href="https://docs.datadoghq.com/integrations/#cat-log-collection" target="_datadog">Log supported integrations</a>. In order to enable the Log integrations pipeline in Datadog, pass the source name as a value for the source attribute with a docker label.
 
-1. Press CTRL-C in the terminal to stop docker-compose. Then add the following label to the redis block in your docker-compose.yml file:
+1. Press CTRL-C in the first terminal to stop docker-compose. Then add the following label to the redis block in your docker-compose.yml file:
 
 <pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert redis labels here">
     labels:
       com.datadoghq.ad.logs: '[{"source": "redis", "service": "redis"}]'</pre>
 
-1. Add the following label to the nginx block in the same file:
+2. Add the following label to the nginx block in the same file:
 
 <pre class="file" data-filename="docker-compose.yml" data-target="insert" data-marker="# insert nginx labels here">
       com.datadoghq.ad.logs: '[{"source": "nginx", "service": "nginx"}]'</pre>
 
-2. Restart your Docker containers using the following commands:
+3. Restart your Docker containers using the following commands:
    `docker-compose stop && docker-compose rm -f && docker-compose up --build -d`{{execute}}
 
-3. Send the curl commands you used before to the application. Now open the Logs view in Datadog. You should see Redis and NGINX logs. You might need to wait a few seconds before they register in the system.
+4. Send the curl commands you used before to send new requests to the application. 
    
-   `curl -X GET 'http://localhost:8080/think/?subject=technology'`{{execute}}
-   `curl -X GET 'http://localhost:8080/think/?subject=religion'`{{execute}}
-   `curl -X GET 'http://localhost:8080/think/?subject=war'`{{execute}}
-   `curl -X GET 'http://localhost:8080/think/?subject=work'`{{execute}}
-   `curl -X GET 'http://localhost:8080/think/?subject=music'`{{execute}}
+    `curl -X GET 'http://localhost:8080/think/?subject=technology'`{{execute}}
+    `curl -X GET 'http://localhost:8080/think/?subject=religion'`{{execute}}
+    `curl -X GET 'http://localhost:8080/think/?subject=war'`{{execute}}
+    `curl -X GET 'http://localhost:8080/think/?subject=work'`{{execute}}
+    `curl -X GET 'http://localhost:8080/think/?subject=music'`{{execute}}
 
-4. Click on one of the NGINX log lines. Notice the line is shown as-is near the top, but then parsed into attributes below. We will learn how to do that later in the course.
+5. Now open the Logs view in Datadog. You should see Redis and NGINX logs. You might need to wait a few seconds before they register in the system.
+
+6. Click on one of the NGINX log lines. Notice the line is shown as-is near the top, but then parsed into attributes below. We will learn how to do that later in the course.
 
 
 ## Binding Application logs to the corresponding metrics and traces
@@ -52,7 +54,7 @@ Our application is already instrumented for APM. Let's add log tags to the conta
     labels:
       com.datadoghq.ad.logs: '[{"source": "webapp", "service": "thinker-microservice"}]'</pre>
 
-1. Restart the Docker containers as you did before. Then send a few more of the curl commands and look at the new logs showing up in the Logs view.
+2. Restart the Docker containers as you did before. Then send a few more of the curl commands and look at the new logs showing up in the Logs view.
 
 The service attribute values are based on what has been set up in our application's code:
 
