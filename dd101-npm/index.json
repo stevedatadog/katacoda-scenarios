@@ -29,7 +29,7 @@
   "environment": {
     "uilayout": "terminal",
     "showide": "true",
-    "uieditorpath": "/root/lab", 
+    "uieditorpath": "/root", 
     "terminals": [],
     "showdashboard": true,
     "dashboards": [

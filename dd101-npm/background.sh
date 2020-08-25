@@ -1,7 +1,8 @@
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
+statusupdate tools
 cd /ecommworkshop
 git pull master
-ln -s /ecommworkshop/ /root/lab
-mv /root/docker-compose.yml /root/lab/
+mv /root/docker-compose.yml /ecommworkshop/
 statusupdate setup
+statusupdate complete
