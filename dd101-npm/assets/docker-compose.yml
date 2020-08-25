@@ -18,13 +18,13 @@ services:
       - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
       - /sys/kernel/debug:/sys/kernel/debug # npm (necessary?)
     cap_add:
-      - SYS_ADMIN
-      - SYS_RESOURCE
-      - SYS_PTRACE
-      - NET_ADMIN
-      - IPC_LOCK
+      - SYS_ADMIN # npm
+      - SYS_RESOURCE # npm
+      - SYS_PTRACE # npm
+      - NET_ADMIN # npm
+      - IPC_LOCK # npm
     security_opt:
-      - apparmor:unconfigured
+      - apparmor:unconfined  # npm
     labels:
       com.datadoghq.ad.logs: '[{"source": "agent", "service": "agent"}]'
   discounts:
@@ -43,7 +43,7 @@ services:
     ports:
       - "5001:5001"
     volumes:
-      - "../discounts-service:/app"
+      - "./discounts-service:/app"
     depends_on:
       - agent
       - db

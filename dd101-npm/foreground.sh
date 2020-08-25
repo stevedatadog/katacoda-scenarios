@@ -1,7 +1,5 @@
 #!/bin/bash
-ln -s /ecommworkshop /root/lab
-mv /root/docker-compose.yml /root/lab/
+statuscheck setup
 cd /root/lab
-
 clear
 prepenvironment
