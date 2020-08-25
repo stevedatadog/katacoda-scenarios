@@ -8,14 +8,15 @@ In this Lab, we'll enable Network Performance Monitoring in a basic e-commerce a
 | advertisements | Python Flask API that serves advertisements |
 | db             | PostgreSLQ database used by all services |
 
-Let's get Storedog up and running now so Datadog can start collecting network data. In the Terminal tab, enter the following:
+Let's take a look at the docker-compose configuration file to see how we enabled Network Monitoring for Storedog. Click on the IDE tab and give it a few seconds to load. Then expand the `lab` directory and open the file `docker-compose.yml`{{open}}.
 
-`POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres docker-compose up -d`{{execute}}
+NPM is enabled by configuring the Datadog Agent service, `agent`. This docker-compose file has already been configured according to the instructions in the [NPM Installation documentation](https://docs.datadoghq.com/network_performance_monitoring/installation/?tab=docker): 
 
-Let's take a look at the docker-compose configuration file to see how we enabled Network Monitoring for Storedog. Click on the IDE tab and give it a few seconds to load. Then open the file `docker-compose.yml`{{open}}.
+  - Under `environment`, we added `DD_SYSTEM_PROBE_ENABLED=true`
+  - Under `volumes`, we added `/sys/kernel/debug:/sys/kernel/debug`
+  - We added the `cap_add` section to allow the container to access host resources
+  - We added the `security_opt` section to avoid AppArmor restrictions
 
-Let's start by enabling the Network Performance Monitoring system probe on master. Make a copy of the example configuration file:
+Configuring NPM on a host, Kubernetes, and ECS is similar, and covered in the NPM Installation documentation.
 
-Log in the the Datadog app and select **Infrastructure > Network** from the global navigation. If you have not already enabled this feature, you will see the Discover Network Performance Monitoring introductory screen. Click the **Get Started** button in the upper-right corner to...
-
-Let's see how opening terminals with a click works.
+In the next step, we'll start up the application and generate some network traffic to observe in the Datadog App.
