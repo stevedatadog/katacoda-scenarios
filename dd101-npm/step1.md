@@ -10,7 +10,7 @@ In this Lab, we'll enable Network Performance Monitoring in a basic e-commerce a
 
 Let's get Storedog up and running now so Datadog can start collecting network data. In the Terminal tab, enter the following:
 
-`docker-compose up -d`{{execute}}
+`POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres docker-compose up -d`{{execute}}
 
 Let's take a look at the docker-compose configuration file to see how we enabled Network Monitoring for Storedog. Click on the IDE tab and give it a few seconds to load. Then open the file `docker-compose.yml`{{open}}.
 

@@ -1,7 +1,8 @@
 version: '3'
+# from ecommerce-workshop/docker-compose-files/docker-compose-broken-instrumented.yml
 services:
   agent:
-    image: "datadog/agent:latest"
+    image: "datadog/agent:7"
     environment:
       - DD_API_KEY
       - DD_APM_ENABLED=true
@@ -87,7 +88,7 @@ services:
     ports:
       - "5002:5002"
     volumes:
-      - "../ads-service:/app"
+      - "./ads-service:/app"
     depends_on:
       - agent
       - db
