@@ -1,5 +1,4 @@
 version: '3'
-# from ecommerce-workshop/docker-compose-files/docker-compose-broken-instrumented.yml
 services:
   agent:
     image: "datadog/agent:7"
@@ -10,22 +9,22 @@ services:
       - DD_PROCESS_AGENT_ENABLED=true
       - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
       - DD_TAGS='env:dd101-npm'
-      - DD_SYSTEM_PROBE_ENABLED=true # npm
+      - DD_SYSTEM_PROBE_ENABLED=true 
     ports:
       - "8126:8126"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /proc/:/host/proc/:ro
       - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
-      - /sys/kernel/debug:/sys/kernel/debug # npm (necessary?)
+      - /sys/kernel/debug:/sys/kernel/debug 
     cap_add:
-      - SYS_ADMIN # npm
-      - SYS_RESOURCE # npm
-      - SYS_PTRACE # npm
-      - NET_ADMIN # npm
-      - IPC_LOCK # npm
+      - SYS_ADMIN 
+      - SYS_RESOURCE 
+      - SYS_PTRACE 
+      - NET_ADMIN 
+      - IPC_LOCK 
     security_opt:
-      - apparmor:unconfined  # npm
+      - apparmor:unconfined  
     labels:
       com.datadoghq.ad.logs: '[{"source": "agent", "service": "agent"}]'
   discounts:
@@ -40,12 +39,10 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_VERSION=1.0
       - DD_TAGS='env:dd101-npm'
-    image: "ddtraining/discounts-service:latest"
+    image: "ddtraining/discounts-service-fixed:latest"
     command: ddtrace-run flask run --port=5001 --host=0.0.0.0
     ports:
       - "5001:5001"
-    volumes:
-      - "./discounts-service:/app"
     depends_on:
       - agent
       - db

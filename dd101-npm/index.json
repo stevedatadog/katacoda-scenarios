@@ -30,7 +30,11 @@
     "uilayout": "terminal",
     "showide": "true",
     "uieditorpath": "/root", 
-    "terminals": [],
+    "terminals": [
+      {
+        "name": "Terminal 2"
+      }
+    ],
     "showdashboard": true,
     "dashboards": [
       {
