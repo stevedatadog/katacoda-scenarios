@@ -12,4 +12,9 @@ Let's have Pumba lose 85% of the packets sent to `discounts-service` and see wha
 2. Run this command to start a Pumba container that will disturb the container running `discounts-service` for 7 minutes:
     `docker run -it --rm  -v /var/run/docker.sock:/var/run/docker.sock gaiaadm/pumba --log-level=info netem --tc-image=gaiadocker/iproute2 --duration 7m loss ecommworkshop_discounts_1 --percent 85`{{execute}}
 
-Now look at the Network view in the Datadog App. Data in this view updates every 5 minutes, so it may take a little while to see the results.
+Now look at the Network view in the Datadog App. Because the data in this page updates every 5 minutes, it may take a little while to see the results. This would be a good time to read this Datadog [blog post about NPM](https://www.datadoghq.com/blog/network-performance-monitoring/).
+
+You should see bars the Retransmits graph corresponding to the time at which you ran Pumba. You can also see retransmits for each flow in the the table. Click the **Customize** button above the flows table, and enable Retransmits. This will add a RTT column to the flows table.
+
+![Screenshot of Customize panel for the Network flows table](./assets/network_customize_columns.png)
+

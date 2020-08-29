@@ -15,6 +15,10 @@
       {
         "text": "step2.md",
         "title": "Run the App and Observe the Network"
+      },
+      {
+        "text": "step3.md",
+        "title": "Create Packet Loss and Observe the Metrics"
       }
     ],
     "assets": {
