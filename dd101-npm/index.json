@@ -21,6 +21,11 @@
         "title": "Create Packet Loss and Observe the Metrics"
       }
     ],
+    "finish" :
+    {
+      "finish": {
+      "text": "finish.md"
+    },
     "assets": {
       "host01": [
         {

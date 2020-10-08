@@ -14,15 +14,19 @@ You may see errors in the terminal periodically, but that's OK.
 
 # Observe the Network Metrics
 
-Log in the the [Datadog App](https://app.datadoghq.com/) and select **Infrastructure > Network** from the global navigation. If you have not already enabled this feature, you will see the Discover Network Performance Monitoring introductory screen. Click the **Get Started** button in the upper-right corner to enable NPM.
+Log in the the [Datadog App](https://app.datadoghq.com/) and select **Infrastructure > Network** from the global navigation. You will probably see the Discover Network Performance Monitoring introductory screen. This page is displayed until the first NPM data is process by Datadog, which can take up to 15 minutes. Note that you should not refresh this page to see if NPM data is available; click on the **Infrastructure > Network** menu item to check for updates.
 
 Here you'll see network *flows* that Datadog has detected between the application services. A flow is a network connection between any two tagged objects--from services to availability zones, or from Kubernetes pods to security groups. 
+
+@todo screenshot
 
 The data represented in this page are updated every 5 minutes. *If you don't see anything yet, you may need to wait until the next update.* This would be a good time to read the Datadog [documentation about the Network Page](https://docs.datadoghq.com/network_performance_monitoring/network_page/).
 
 For our Storedog application, you should see four flows between `advertisements-service`, `store-frontend`, and `discounts-service`. Each flow represents the network communication among these services where one is the Source, and another is the Destination. 
 
-You may see flows where the source and destination are **N/A**. This represents traffic to or from an "untagged" resource, which is a client or server that is not running the Datadog Agent. In our case, this includes the GoReplay script running on the Docker host and your Storedog browser activity routed through the lab network. 
+You may see flows where the source and destination are **N/A**. This represents traffic to or from an "untagged" resource, which is a client or server that is not running the Datadog Agent. In our case, this includes the GoReplay script running on the Docker host and your Storedog browser activity routed through the lab network. You can hide or display untagged traffic using the **Show N/A (Untagged traffic)** toggle in the **Filter Traffic** settings menu.
+
+![Screenshot of the Filter Traffic settings menu with Show N/A toggled off](./assets/show_na_traffic_settings.png)
 
 NPM can provide details of network traffic that is untagged. Expand the **Domain** facet to the left of the flow table and you'll see all the domains that NPM was able to resolve during the current time period. If you click on one of the domains, the flow table will filter the related flows. You can then click on the flow to see details about that flow.
 

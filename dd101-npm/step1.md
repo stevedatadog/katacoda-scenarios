@@ -17,6 +17,8 @@ NPM is enabled by configuring the Datadog Agent service, `agent`. This docker-co
   - We added the `cap_add` section to allow the container to access host resources
   - We added the `security_opt` section to avoid AppArmor restrictions
 
+These elevated privileges are required because NPM relies on [eBPF](https://en.wikipedia.org/wiki/Berkeley_Packet_Filter#Extensions_and_optimizations), a kernel-level interface to a Linux system's data link layer.
+
 Configuring NPM on a host, Kubernetes, or ECS is similar, and covered in the NPM Installation documentation.
 
 In the next step, we'll start up the application and generate some network traffic to observe in the Datadog App.
