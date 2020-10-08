@@ -26,3 +26,16 @@ Now that you’ve created your metric,
 - Get started with our Executive Dashboard by choosing **Export to new Dashboard** → *Add Details* → **View Dashboard**
 
 Up next...Create your checkout uptime metrics
+
+`postlogs.py`{{open}}
+
+
+<pre class="file" data-filename="postlogs.py" data-target="replace">var http = require('http');
+var requestListener = function (req, res) {
+  res.writeHead(200);
+  res.end('Hello, World!');
+}
+
+var server = http.createServer(requestListener);
+server.listen(3000, function() { console.log("Listening on port 3000")});
+</pre>
