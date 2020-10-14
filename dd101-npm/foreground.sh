@@ -8,7 +8,7 @@ printf "DD_API_KEY=$DD_API_KEY\n\
 DD_APP_KEY=$DD_APP_KEY\n\
 POSTGRES_USER=postgres\n\
 POSTGRES_PASSWORD=postgres" > docker.env 
-statusupdate "environment variables"
+statusupdate "environment-variables"
 statuscheck running
 clear
 prepenvironment

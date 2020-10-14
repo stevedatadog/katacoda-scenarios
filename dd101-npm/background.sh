@@ -5,7 +5,7 @@ cd /ecommworkshop
 git pull master
 mv /root/docker-compose.yml /ecommworkshop/
 statusupdate setup
-statuscheck "environment variables"
+statuscheck "environment-variables"
 # Start storedog
 docker-compose --env-file ./docker.env up -d
 # Generate traffic
