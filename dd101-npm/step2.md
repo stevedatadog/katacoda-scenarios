@@ -1,10 +1,8 @@
-# Run the Storedog Application
+# Explore the Application
 
-Let's get Storedog up and running now so Datadog can start collecting network data. In the Terminal tab, click the following block of code to run it in the terminal:
+Click the **Storedog** tab to the right of the IDE tab to open the application in a new window. It will take a little while for the first page to load. When it does, click around to get familiar with this e-commerce shop. Feel free to add items to your shopping cart and treat it like a real online store.
 
-`POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres docker-compose up -d`{{execute}}
-
-Once docker-compose finishes starting up, click the **Storedog** tab to the right of the IDE tab to open the application in a new window. It will take a little while for the first page to load. When it does, click around to get familiar with this e-commerce shop. Feel free to add items to your shopping cart and treat it like a real online store.
+You may run into errors, such as `Net::OpenTimeout in Spree::HomeController#index`. This is a problem we're going to troubleshoot later!
 
 Now that you're familiar with the application, you can run a pre-recorded loop of requests to it to simulate real traffic.  Click the **Terminal** tab and run GoReplay with the following command:
 

@@ -1,4 +1,4 @@
-In this Lab, we'll enable Network Performance Monitoring in a basic e-commerce application running in Docker. Storedog consists of the following services:
+In this Lab, we'll enable Network Performance Monitoring in Storedog, a basic e-commerce application running in Docker. Storedog consists of the following services:
 
 | Service        | Purpose |
 | ---            |         |
@@ -8,7 +8,7 @@ In this Lab, we'll enable Network Performance Monitoring in a basic e-commerce a
 | advertisements | Python Flask API that serves advertisements |
 | db             | PostgreSLQ database used by all services |
 
-Let's take a look at the docker-compose configuration file to see how we enabled Network Monitoring for Storedog. Click on the IDE tab and give it a few seconds to load. Then expand the `lab` directory and open the file `docker-compose.yml`.
+Let's take a look at the docker-compose configuration file to see how we enabled Network Monitoring for Storedog. Click on the IDE tab and give it several seconds to load. Then expand the `lab` directory and open the file `docker-compose.yml`.
 
 NPM is enabled by configuring the Datadog Agent service, `agent`. This docker-compose file has already been configured according to the instructions in the [NPM Installation documentation](https://docs.datadoghq.com/network_performance_monitoring/installation/?tab=docker): 
 
@@ -21,4 +21,4 @@ These elevated privileges are required because NPM relies on [eBPF](https://en.w
 
 Configuring NPM on a host, Kubernetes, or ECS is similar, and covered in the NPM Installation documentation.
 
-In the next step, we'll start up the application and generate some network traffic to observe in the Datadog App.
+In the next step, we'll get familiar with the Storedog application and look at its network data in the Datadog App.
