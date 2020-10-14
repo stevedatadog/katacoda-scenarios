@@ -22,3 +22,5 @@ These elevated privileges are required because NPM relies on [eBPF](https://en.w
 Configuring NPM on a host, Kubernetes, or ECS is similar, and covered in the NPM Installation documentation.
 
 In the next step, we'll get familiar with the Storedog application and look at its network data in the Datadog App.
+
+When you see, click the **Continue** button below to proceed to the next step.
