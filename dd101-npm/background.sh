@@ -11,12 +11,7 @@ docker-compose --env-file ./docker.env up -d
 # Generate traffic
 ./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"
 # Wait for the discounts container to fire up
-while [[ -z $(docker ps --filter "name=ecommworkshop_discounts_1" --format '{{.Names}}') ]]
-do
-  echo "waiting for discounts container..."
-  sleep 5
-done
-statusupdate running
+statuscheck running
 # Break networking on discounts service.
 docker run -it --rm --name pumba -v /var/run/docker.sock:/var/run/docker.sock gaiaadm/pumba --log-level=info netem --tc-image=gaiadocker/iproute2 --duration 90m loss ecommworkshop_discounts_1 --percent 85
 
