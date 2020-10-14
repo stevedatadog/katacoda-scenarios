@@ -14,7 +14,7 @@ do sleep 5
 done
 sleep 5
 # Break networking on discounts service.
-docker run -it -d --rm --name pumba -v /var/run/docker.sock:/var/run/docker.sock gaiaadm/pumba --log-level=info netem --tc-image=gaiadocker/iproute2 --duration 90m loss ecommworkshop_discounts_1 --percent 75 
+docker run -it -d --rm --name pumba -v /var/run/docker.sock:/var/run/docker.sock gaiaadm/pumba --log-level=info netem --tc-image=gaiadocker/iproute2 --duration 90m loss ecommworkshop_discounts_1 --percent 65 
 # Generate traffic
 ./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"
 statusupdate running
