@@ -2,13 +2,13 @@
 
 Once you see "Provisioning Complete" in the terminal, click the **Storedog** tab to the right of the IDE tab. This will open the application in a new browser window. It will take a little while for the first page to load. When it does, click around to get familiar with this e-commerce shop. Feel free to add items to your shopping cart and treat it like a real online store.
 
-You may run into errors, such as `Net::OpenTimeout in Spree::HomeController#index`. This is a problem we're going to troubleshoot later!
+You may notice that Storedog is often slow to respond. You may also into errors, such as `Net::OpenTimeout in Spree::HomeController#index`. These are symptoms of a problem that NPM will help you troubleshoot later.
 
-Since you started this lab a background process has been automatically making requests to the Storedog app. Between this traffic and the traffic you created while clicking around Storedog, we should have a good amount of network traffic to look at in the Datadog App.
+Since you started this lab, a background process has been automatically making requests to the Storedog app. Between this traffic and the traffic you created while clicking around Storedog, you should have a good amount of network traffic to look at in the Datadog App.
 
 # Observe the Network Metrics
 
-Log in the the [Datadog App](https://app.datadoghq.com/) and select **Infrastructure > Network** from the global navigation. You will probably see the Discover Network Performance Monitoring introductory screen. This page is displayed until the first NPM data is process by Datadog, which can take up to 15 minutes. Note that you should not refresh this page to see if NPM data is available; click on the **Infrastructure > Network** menu item to check for updates.
+Log in the the [Datadog App](https://app.datadoghq.com/) and select **Infrastructure > Network** from the global navigation. You will probably see the Discover Network Performance Monitoring introductory screen. This page is displayed until the first NPM data is processed by Datadog, which can take up to 15 minutes. Note that you should not refresh this page to see if NPM data is available; click on the **Infrastructure > Network** menu item to check for updates.
 
 Here you'll see network *flows* that Datadog has detected between the application services. A flow is a network connection between any two tagged objects--from services to availability zones, or from Kubernetes pods to security groups. 
 
@@ -38,7 +38,7 @@ You can filter traffic on the Netowrk Map page by clicking the filter button in 
 
 ![Screenshot of Filter traffic panel with metric range selector](./assets/map_filters.png)
 
-In the next step, we'll create some network problems and see how they appear on the Network page.
+In the next step, you'll create some network problems and see how they appear on the Network page.
 
 
 

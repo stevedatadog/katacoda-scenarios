@@ -2,7 +2,7 @@ In this Lab, we'll enable Network Performance Monitoring in Storedog, a basic e-
 
 | Service        | Purpose |
 | ---            |         |
-| agent          | The Datadog Agent, which will collect metrics from all of the services and send them to the Datdog platform |
+| agent          | The Datadog Agent, which will collect metrics from all of the services and send them to the Datadog platform. This is where NPM is enabled |
 | discounts      | Python Flask API that serves store item discounts |
 | frontend       | Spree, an open source e-commerce framework written in Ruby |
 | advertisements | Python Flask API that serves advertisements |
@@ -23,4 +23,4 @@ Configuring NPM on a host, Kubernetes, or ECS is similar, and covered in the NPM
 
 In the next step, we'll get familiar with the Storedog application and look at its network data in the Datadog App.
 
-When you see, click the **Continue** button below to proceed to the next step.
+When you see "Provisioning Complete" appear in Terminal, click the **Continue** button below to proceed to the next step.

@@ -60,7 +60,7 @@ services:
       - DD_CLIENT_TOKEN
       - DD_APPLICATION_ID
       - DD_TAGS='env:dd101-npm'
-    image: "ddtraining/ecommerce-frontend:latest"
+    image: "local/store-frontend"
     command: sh docker-entrypoint.sh
     ports:
       - "3000:3000"
@@ -83,7 +83,7 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_VERSION=1.0
       - DD_TAGS='env:dd101-npm'
-    image: "ddtraining/advertisements-service:latest"
+    image: "local/ads-service"
     command: ddtrace-run flask run --port=5002 --host=0.0.0.0
     ports:
       - "5002:5002"
