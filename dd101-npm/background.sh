@@ -4,23 +4,19 @@ statusupdate tools
 cd /ecommworkshop
 git pull origin master
 
-# build fixed ad service image
-docker build -t local/ads-service -f ./ads-service-fixed/Dockerfile 
-
-# Replace ruby-shop env var
+# Replace ruby-shop env vars
 files=(
 store-frontend-instrumented-fixed/frontend/config/initializers/datadog.rb
 store-frontend-instrumented-fixed/config/initializers/datadog.rb
 store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
 )
 for file in ${files[@]}; do sed -i 's/ruby-shop/dd101-npm/g' ${file}; done;
-docker build -t local/store-frontend -f ./store-frontend-instrumented-fixed/Dockerfile 
 
 mv /root/docker-compose.yml /ecommworkshop/
 statusupdate setup
-statuscheck "environment-variables"
 
 # Start storedog
+statuscheck "environment-variables"
 docker-compose --env-file ./docker.env up -d
 
 # Wait for the discounts container to fire up

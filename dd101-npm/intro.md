@@ -8,4 +8,4 @@ In this lesson, you're going to learn:
 - How to view the Network Map in the Datadog App
 - How to use NPM to detect networking problems with a service
 
-For this lab, you'll use NPM with the Storedog e-commerce app, running in a docker-compose environment. The priciples will apply to any environment running on a Linux kernel.
+For this lab, you'll use NPM with the Storedog e-commerce app, running in a docker-compose environment. The principles will apply to any environment running on a Linux kernel.
