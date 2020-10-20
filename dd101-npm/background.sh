@@ -2,16 +2,6 @@
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 statusupdate tools
 cd /ecommworkshop
-git pull origin master
-
-# Replace ruby-shop env vars
-files=(
-store-frontend-instrumented-fixed/frontend/config/initializers/datadog.rb
-store-frontend-instrumented-fixed/config/initializers/datadog.rb
-store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
-)
-for file in ${files[@]}; do sed -i 's/ruby-shop/dd101-npm/g' ${file}; done;
-
 mv /root/docker-compose.yml /ecommworkshop/
 statusupdate setup
 
