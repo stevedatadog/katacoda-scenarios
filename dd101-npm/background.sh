@@ -13,7 +13,7 @@ docker-compose --env-file ./docker.env up -d
 while [[ -z $(docker ps --filter "name=ecommworkshop_discounts_1" --format '{{.Names}}') ]]
 do sleep 5
 done
-sleep 5
+sleep 10
 
 # Generate traffic
 /ecommworkshop/gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000" >> /dev/null 2>&1
