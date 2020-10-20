@@ -2,6 +2,7 @@
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 statusupdate tools
 cd /ecommworkshop
+git pull origin master
 mv /root/docker-compose.yml /ecommworkshop/
 statusupdate setup
 
@@ -15,7 +16,7 @@ do sleep 5
 done
 
 # Break networking on discounts service.
-docker run -it -d --rm --name pumba -v /var/run/docker.sock:/var/run/docker.sock gaiaadm/pumba --log-level=info --skip-error netem --tc-image=gaiadocker/iproute2 --duration 90m loss ecommworkshop_discounts_1 --percent 75 
+docker run -it -d --rm --name pumba -v /var/run/docker.sock:/var/run/docker.sock gaiaadm/pumba --log-level=info --skip-error netem --tc-image=gaiadocker/iproute2 --duration 90m loss ecommworkshop_discounts_1 --percent 65 
 
 statusupdate complete
 
