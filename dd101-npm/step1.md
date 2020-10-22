@@ -6,7 +6,7 @@ In this Lab, we'll enable Network Performance Monitoring in Storedog, a basic e-
 | discounts      | Python Flask API that serves store item discounts |
 | frontend       | Spree, an open source e-commerce framework written in Ruby |
 | advertisements | Python Flask API that serves advertisements |
-| db             | PostgreSLQ database used by all services |
+| db             | PostgreSQL database used by all services |
 
 Let's take a look at the docker-compose configuration file to see how we enabled Network Monitoring for Storedog. Click on the IDE tab and give it several seconds to load. Then expand the `lab` directory and open the file `docker-compose.yml`.
 
