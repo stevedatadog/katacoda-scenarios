@@ -4,7 +4,7 @@ Once you see "Provisioning Complete" in the terminal, click the **Storedog** tab
 
 The Home page will take a long time to load. It may even cause error messages, such as `Net::OpenTimeout in Spree::HomeController#index`. These are symptoms of a problem that NPM will help you troubleshoot later.
 
-If you get impatient, you can bypass the Home page by opening the shop's [Categories page](https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/t/bags), and then navigate from there.
+If you get impatient, you can bypass the Home page by opening the shop's [Categories page](https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/t/categories), and then navigate from there.
 
 Click around to get familiar with this e-commerce shop. Feel free to add items to your shopping cart and treat it like a real online store.
 

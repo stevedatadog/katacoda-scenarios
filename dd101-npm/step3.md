@@ -6,7 +6,7 @@ Yours should look similar to this:
 
 A couple of issues are readily apparent in the two graphs on the right: A number Retransmits, and some unusually long Round-trip Times.
 
-Retransmits represent detected failures that are retransmitted to ensure delivery, measured in the count of retransmits from the source. You can hover over the bars of this graph to see the number of retransmits and the flows in which they occurred.
+Retransmits represent detected failed packets that are retransmitted to ensure delivery, measured in the count of retransmits from the source. You can hover over the bars of this graph to see the number of retransmits and the flows in which they occurred.
 
 Round-trip time is a proxy for latency, measured as the time between a TCP frame being sent and acknowledged. Here too, you can hover over the points of the graph to see the round-trip time values and the flows in which they occurred.
 
@@ -22,13 +22,17 @@ To look at application traces associated with retransmits, click on one of the f
 
 ![Screenshot of the View related traces option on a retransmit detail](apm_related_traces.png)
 
-Scroll through the traces and look for errors or unusually long **Duration** values. You are likely to home in on `Spree::HomeController#index` as a common problem. Click on a slow trace to look at the spans. Here's an example:
+Scroll through the traces and look for errors or unusually long **Duration** values. You are likely to home in on `Spree::HomeController#index` as a frequent problem. Click on a slow trace to look at the spans. Here's an example:
 
 ![Screenshot of a flame graph for a very slow trace Home controller trace](./assets/apm_discounts_span.png)
 
 Looking at these spans, it's clear that the Storedog `Spree:HomeController#index` spent a shocking amount of time making  a `GET` request to the `discounts` service. Because there are no other spans during this period, it's fair to conclude that the request was delayed by network problems.
 
-With this information, you can proceed to investigate, diagnose, and fix the network connection between the `store-frontend` and `discounts` services. In this lab, that's very easy to. In the Terminal, run the following command: `fixnetwork`{{execute}}
+Spend some time inspecting flows on the network page and drilling down into APM traces to find other slow traces.
+
+With this information, you can proceed to investigate, diagnose, and fix the network connection between the `store-frontend` and `discounts` services. In this lab, that's very easy to do. In the Terminal, run the following command: `fixnetwork`{{execute}}
 
 Now look at the Datadog network page and watch the number of retransmits and the average round-trip times taper downward. This may take 5 minutes or more.
+
+
 
