@@ -1,6 +1,5 @@
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
-statusupdate tools
 git clone https://github.com/DataDog/ecommerce-workshop /root/lab && cd $_
 git checkout 9ce345 && git reset --hard
 mv /root/docker-compose.yml .

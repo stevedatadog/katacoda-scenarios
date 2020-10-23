@@ -1,4 +1,7 @@
 #!/bin/bash
+# Wait for status tools 
+echo "waiting for tools..."
+while [[ -z $(which statuscheck) ]]; do sleep 5; done;
 statuscheck setup
 alias fixnetwork='docker stop pumba >> /dev/null 2>&1'
 printf "DD_API_KEY=$DD_API_KEY\n\
