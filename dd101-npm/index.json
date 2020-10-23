@@ -34,7 +34,7 @@
     }
   },
   "environment": {
-    "uilayout": "terminal",
+    "uilayout": "editor-terminal",
     "uieditorpath": "/root", 
     "showdashboard": true,
     "hideHiddenFiles": true,

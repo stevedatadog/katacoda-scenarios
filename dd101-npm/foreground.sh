@@ -10,4 +10,3 @@ POSTGRES_USER=postgres\n\
 POSTGRES_PASSWORD=postgres" > docker.env 
 statusupdate "environment-variables"
 clear
-prepenvironment
