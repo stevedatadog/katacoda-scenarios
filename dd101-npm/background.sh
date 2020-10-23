@@ -1,9 +1,10 @@
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 statusupdate tools
-cd /ecommworkshop
-git pull origin master
-mv /root/docker-compose.yml /ecommworkshop/
+git clone https://github.com/DataDog/ecommerce-workshop /root/lab && cd $_
+git checkout 9ce345 && git reset --hard
+mv /root/docker-compose.yml .
+docker-compose pull
 statusupdate setup
 
 # Start storedog
