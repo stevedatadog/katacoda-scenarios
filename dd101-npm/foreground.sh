@@ -6,4 +6,3 @@ DD_APP_KEY=$DD_APP_KEY\n\
 POSTGRES_USER=postgres\n\
 POSTGRES_PASSWORD=postgres" > /root/lab/docker.env 
 statusupdate "environment-variables"
-clear
