@@ -35,14 +35,10 @@
   },
   "environment": {
     "uilayout": "terminal",
-    "showide": "true",
     "uieditorpath": "/root", 
-    "terminals": [
-      {
-        "name": "Terminal 2"
-      }
-    ],
     "showdashboard": true,
+    "hideHiddenFiles": true,
+    "exclusionPatterns": ["**/store-frontend/tmp/*", "**/store-frontend/log/*"],
     "dashboards": [
       {
         "name": "Storedog",
@@ -51,6 +47,6 @@
     ]
   },
   "backend": {
-    "imageid": "datadog-base-v1"
+    "imageid": "datadog-ecommerce-observability"
   }
 }

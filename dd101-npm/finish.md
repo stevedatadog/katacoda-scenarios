@@ -6,9 +6,4 @@ Congratulations! You have completed the Network Performance Monitoring Lab. You 
 - Use NPM to detect networking problems between services
 - Diagnose network problems by looking at APM traces
 
-This also concludes the Introduction to Datadog Course. You now have a strong foundation to explore other courses in the Learning Center.
-
-Click [here](https://learn.datadog.com/) to return to the Learning Center.
-
-
-
+This also concludes the Introduction to Datadog Course. You now have a strong foundation to explore other courses in the Learning Center. Click the **Next** button to give us your feedback and download your certificate!
