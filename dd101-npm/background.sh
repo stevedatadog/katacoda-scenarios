@@ -21,4 +21,4 @@ docker run -it -d --rm --name pumba -v /var/run/docker.sock:/var/run/docker.sock
 statusupdate complete
 
 # Generate traffic
-/ecommworkshop/gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000" >> /dev/null 2>&1
+/root/lab/gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000" >> /dev/null 2>&1
