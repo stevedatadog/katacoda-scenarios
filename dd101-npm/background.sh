@@ -8,7 +8,7 @@ statusupdate setup
 
 # Start storedog
 statuscheck "environment-variables"
-docker-compose --env-file ./docker.env up -d
+docker-compose up -d
 
 # Wait for the discounts container to fire up
 while [[ -z $(docker ps --filter "name=ecommworkshop_discounts_1" --format '{{.Names}}') ]]
