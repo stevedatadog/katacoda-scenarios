@@ -1,24 +1,29 @@
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
-git clone https://github.com/DataDog/ecommerce-workshop /root/lab && cd $_
-# git checkout 9ce345 && git reset --hard
-mv /root/docker-compose.yml .
-docker-compose pull
+statusupdate tools
+cd /ecommworkshop
+mv /root/docker-compose.yml /ecommworkshop/
+mv /root/ads-fixed.py /ecommworkshop/
+
+sed -i "/'ruby-shop'/ENV[\"DD_ENV\"]/" ./api/config/initializers/datadog.rb
+sed -i "/'ruby-shop'/ENV[\"DD_ENV\"]/" ./config/initializers/datadog.rb
+sed -i "/'ruby-shop'/ENV[\"DD_ENV\"]/" ./frontend/config/initializers/datadog.rb
+
 statusupdate setup
 
 # Start storedog
 statuscheck "environment-variables"
-docker-compose up -d
+docker-compose --env-file ./docker.env up -d
 
 # Wait for the discounts container to fire up
-while [[ -z $(docker ps --filter "name=lab_discounts_1" --format '{{.Names}}') ]]
+while [[ -z $(docker ps --filter "name=ecommworkshop_discounts_1" --format '{{.Names}}') ]]
 do sleep 5
 done
 
 # Break networking on discounts service.
-docker run -it -d --rm --name pumba -v /var/run/docker.sock:/var/run/docker.sock gaiaadm/pumba --log-level=info --skip-error netem --tc-image=gaiadocker/iproute2 --duration 90m loss lab_discounts_1 --percent 55 
+docker run -it -d --rm --name pumba -v /var/run/docker.sock:/var/run/docker.sock gaiaadm/pumba --log-level=info --skip-error netem --tc-image=gaiadocker/iproute2 --duration 90m loss ecommworkshop_discounts_1 --percent 55 
 
 statusupdate complete
 
 # Generate traffic
-/root/lab/gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000" >> /dev/null 2>&1
+/ecommworkshop/gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000" >> /dev/null 2>&1

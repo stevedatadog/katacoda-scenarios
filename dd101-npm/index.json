@@ -29,16 +29,24 @@
         {
           "file": "docker-compose.yml",
           "target": "/root"
+        },
+        {
+          "file": "ads-fixed.py",
+          "target": "/root"
         }
       ]
     }
   },
   "environment": {
-    "uilayout": "editor-terminal",
+    "uilayout": "terminal",
+    "showide": "true",
     "uieditorpath": "/root", 
+    "terminals": [
+      {
+        "name": "Terminal 2"
+      }
+    ],
     "showdashboard": true,
-    "hideHiddenFiles": true,
-    "exclusionPatterns": ["**/store-frontend/tmp/*", "**/store-frontend/log/*"],
     "dashboards": [
       {
         "name": "Storedog",
@@ -47,6 +55,6 @@
     ]
   },
   "backend": {
-    "imageid": "datadog-ecommerce-observability"
+    "imageid": "datadog-base-v1"
   }
 }
