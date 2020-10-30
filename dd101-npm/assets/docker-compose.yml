@@ -94,7 +94,7 @@ services:
     ports:
       - "5002:5002"
     volumes:
-      - /root/ads-fixed.py:/app/ads.py
+      - /ecommworkshop/ads-service:/app
     depends_on:
       - agent
       - db
