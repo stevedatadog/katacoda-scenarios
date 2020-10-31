@@ -3,11 +3,16 @@ curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 statusupdate tools
 cd /ecommworkshop
 mv /root/docker-compose.yml /ecommworkshop/
-mv /root/ads-fixed.py /ecommworkshop/
+mv /root/ads-fixed.py /ecommworkshop/ads-service/ads.py
 
+# fix tagging
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/config/initializers/datadog.rb
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/frontend/config/initializers/datadog.rb
+
+sed -i 's/ddtrace (0.26.0)/ddtrace (0.41.0)/g' ./store-frontend-instrumented-fixed/store-frontend/Gemfile.lock
+sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./ads-service/requirements.txt
+sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./discounts-service-fixed/requirements.txt
 
 statusupdate setup
 
