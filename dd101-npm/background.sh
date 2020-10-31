@@ -5,9 +5,9 @@ cd /ecommworkshop
 mv /root/docker-compose.yml /ecommworkshop/
 mv /root/ads-fixed.py /ecommworkshop/
 
-sed -i '/\'ruby-shop\'/ENV["DD_ENV"]/' ./api/config/initializers/datadog.rb
-sed -i '/\'ruby-shop\'/ENV["DD_ENV"]/' ./config/initializers/datadog.rb
-sed -i '/\'ruby-shop\'/ENV["DD_ENV"]/' ./frontend/config/initializers/datadog.rb
+sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
+sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/config/initializers/datadog.rb
+sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/frontend/config/initializers/datadog.rb
 
 statusupdate setup
 
