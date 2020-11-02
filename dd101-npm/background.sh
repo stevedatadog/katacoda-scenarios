@@ -13,11 +13,11 @@ sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/api/co
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/config/initializers/datadog.rb
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/frontend/config/initializers/datadog.rb
 
-# fix service tagging
+# update ddtrace
 sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./ads-service/requirements.txt
 sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./discounts-service-fixed/requirements.txt
-git checkout 1e3ebae7 /ecommworkshop/store-frontend/Gemfile
-git checkout 1e3ebae7 /ecommworkshop/store-frontend/Gemfile.lock
+git checkout 1e3ebae7 ./store-frontend-instrumented-fixed/store-frontend/Gemfile
+git checkout 1e3ebae7 ./store-frontend-instrumented-fixed/store-frontend/Gemfile.lock
 
 statusupdate setup
 
