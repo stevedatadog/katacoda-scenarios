@@ -1,12 +1,12 @@
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 statusupdate tools
-cd /ecommworkshop
 mv /root/docker-compose.yml /ecommworkshop/
+cd /ecommworkshop
 
 # fix 2.5 second delay in ads service
-git checkout e400e3fc /ecommworkshop/ads-service-fixed/ads.py
-mv /ecommworkshop/ads-service-fixed/ads.py /ecommworkshop/ads-service/ads.py
+git checkout e400e3fc ./ads-service-fixed/ads.py
+mv ./ads-service-fixed/ads.py ./ads-service/ads.py
 
 # fix env tagging
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
