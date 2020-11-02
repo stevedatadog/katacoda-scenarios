@@ -3,6 +3,7 @@ curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 statusupdate tools
 mv /root/docker-compose.yml /ecommworkshop/
 cd /ecommworkshop
+git fetch
 
 # fix 2.5 second delay in ads service
 git checkout e400e3fc ./ads-service-fixed/ads.py
