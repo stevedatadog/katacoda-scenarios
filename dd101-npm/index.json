@@ -31,10 +31,6 @@
           "target": "/root"
         },
         {
-          "file": "ads-fixed.py",
-          "target": "/root"
-        },
-        {
           "file": "frontend-docker-entrypoint.sh",
           "target": "/root"
         }
