@@ -1,5 +1,6 @@
 #!/bin/bash
 # This is entrypoint for docker image of spree sandbox on docker cloud
+echo "xxxxxxxxxxxxxxx This is the store frontend entrypoint"
 cd store-frontend
 bundle update ddtrace
 bundle update msgpack
