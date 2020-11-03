@@ -18,8 +18,8 @@ sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/fronte
 sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./ads-service/requirements.txt
 sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./discounts-service-fixed/requirements.txt
 git checkout 1e3ebae7 ./store-frontend-instrumented-fixed/store-frontend/Gemfile
-sed -i 's/ddtrace (0.26.0)/ddtrace (0.41.0)' ./store-frontend-instrumented-fixed/Gemfile.lock
-sed -i 's/^  ddtrace$/ddtrace (>= 0.4.1)' ./store-frontend-instrumented-fixed/Gemfile.lock
+sed -i 's/ddtrace (0.26.0)/ddtrace (0.41.0)/' ./store-frontend-instrumented-fixed/store-frontend/Gemfile.lock
+sed -i 's/^  ddtrace$/ddtrace (>= 0.4.1)/' ./store-frontend-instrumented-fixed/store-frontend/Gemfile.lock
 
 statusupdate setup
 
