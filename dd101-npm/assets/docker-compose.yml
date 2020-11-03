@@ -40,7 +40,7 @@ services:
       - DD_VERSION=1.0
       - DD_ENV='dd101-npm'
     image: "ddtraining/discounts-service-fixed:latest"
-    command: pip install ddtrace -U && ddtrace-run flask run --port=5001 --host=0.0.0.0
+    command: bash -c "pip install ddtrace -U && ddtrace-run flask run --port=5001 --host=0.0.0.0"
     ports:
       - "5001:5001"
     volumes:
@@ -92,7 +92,7 @@ services:
       - DD_VERSION=1.0
       - DD_ENV='dd101-npm'
     image: "ddtraining/advertisements-service:latest"
-    command: pip install ddtrace -U && ddtrace-run flask run --port=5002 --host=0.0.0.0
+    command: bash -c "pip install ddtrace -U && ddtrace-run flask run --port=5002 --host=0.0.0.0"
     ports:
       - "5002:5002"
     volumes:
