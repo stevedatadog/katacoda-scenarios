@@ -14,7 +14,7 @@ The numbers of **Retransmits** by service are displayed in the flow table, along
 
 ![Screenshot of Customize panel for the Network flows table](./assets/network_customize_columns.png)
 
-Click the **RTT** column heading of the flow table to sort by round-trip time in descending order. Now do the same with the **Retransmits** column. You should see that the largest numbers occur between the `store-frontend` and `discounts-service` services.
+Click the **RTT** column heading of the flow table to sort by round-trip time in descending order. Now do the same with the **Retransmits** column. You should see that most of the largest numbers involve the `discounts-service`.
 
 NPM links to Application Performance Monitoring (APM) so you can look at the code traces associated with network flows. This is useful to dig deeper into applications when you're investigating interesting network metrics.  
 
@@ -26,7 +26,7 @@ Scroll through the traces and look for errors or unusually long **Duration** val
 
 ![Screenshot of a flame graph for a very slow trace Home controller trace](./assets/apm_discounts_span.png)
 
-Looking at these spans, it's clear that the Storedog `Spree:HomeController#index` spent a shocking amount of time making  a `GET` request to the `discounts` service. Because there are no other spans during this period, it's fair to conclude that the request was delayed by network problems.
+Looking at these spans, it's clear that the Storedog `Spree:HomeController#index` spent a shocking amount of time making  a `GET` request to the `discounts` service. Because there are no application errors or other spans during this period, it's fair to conclude that the request was delayed by something external to the application, like the network. 
 
 Spend some time inspecting flows on the network page and drilling down into APM traces to find other slow traces.
 
