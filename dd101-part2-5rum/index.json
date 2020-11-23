@@ -29,7 +29,7 @@
   "environment": {
     "uilayout": "terminal",
     "showide": "true",
-    "uieditorpath": "/root", 
+    "uieditorpath": "/root",
     "terminals": [
       {
         "name": "Terminal 2"
@@ -42,4 +42,5 @@
         "port": 3000
       }
     ]
-  }}
+  }
+}
