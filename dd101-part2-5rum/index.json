@@ -15,15 +15,6 @@
     ],
     "finish": {
       "text": "finish.md"
-    },
-    "assets": {
-      "host01": [
-        {
-          "file": "docker-compose.yaml",
-          "target": "/root",
-          "chmod": "+x"
-        }
-      ]
     }
   },
   "environment": {
