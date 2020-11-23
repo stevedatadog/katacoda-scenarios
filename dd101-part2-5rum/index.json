@@ -32,7 +32,7 @@
     "uilayout": "terminal",
     "showide": true,
     "uieditorpath": "/root",
-    "showdashboard": true,
+    "showdashboard": "true",
     "dashboards": [{ "name": "StoreDog", "port": 3000 }]
   },
   "backend": {
