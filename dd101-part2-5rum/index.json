@@ -28,12 +28,18 @@
   },
   "environment": {
     "uilayout": "terminal",
-    "showide": true,
-    "uieditorpath": "/root",
-    "showdashboard": "true",
-    "dashboards": [{ "name": "StoreDog", "port": 3000 }]
-  },
-  "backend": {
-    "imageid": "datadog-base-v1"
-  }
-}
+    "showide": "true",
+    "uieditorpath": "/root", 
+    "terminals": [
+      {
+        "name": "Terminal 2"
+      }
+    ],
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Storedog",
+        "port": 3000
+      }
+    ]
+  }}
