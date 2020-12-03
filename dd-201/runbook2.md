@@ -5,7 +5,7 @@ Each graph can easily be unlinked from global time and set to a new time, manual
 
 You can also adjust the size of your graph.  
 
-We can add some context to this graph for our teammates, or even add code snippets for applying a fix. Paste the below into your runbook, or add your own context.
+We can add some context to this graph for our teammates, or even add code snippets for applying a fix. Paste the below into your runbook, or add your own context. Code snippets in notebooks support syntax highlighting, which can be specified by language.
 
 
 <pre class="file" data-target="clipboard">
@@ -13,11 +13,11 @@ Typical behavior is to have most errors from `error.origin:network`- if other ca
 
 ## Solving Bottlenecks
 By changing the line:
-```
+```sql
 discounts = Discount.query.all()
 ```
 To the following:
-```
+```sql
 discounts = Discount.query.options(joinedload('*')).all()
 ```
 We eager load the `discount_type` relation on the `discount`, and can grab all information without multiple trips to the database.
@@ -28,7 +28,7 @@ Going back to our cloned performance overview dashboard, we can link to our runb
 
 Edit the **Frontend Errors** graph and click the **Custom Links** tab.
 
-Copy in the URL of our notebook and give it a name, like `Sprees Runbook for {{$env.value}}`{{copy}}. This will populate the link name with our `env` template variable. Click **Done** and **Save**.  
+Like we did earlier, copy in the URL of our notebook and give it a name, like `Sprees Runbook for {{$env.value}}`{{copy}}. This will populate the link name with our `env` template variable. Click **Done** and **Save**.  
 
 Now, when we set `env` to `prod`, we can click on the **Frontend Errors** graph and see that our custom link has updated.  
 

@@ -1,9 +1,10 @@
-You just discovered the root cause of an issue in your spree services using advanced dashboarding tools. To capture and share your knowledge, let's create a runbook that you can share with your team.
+Now that we have drill-down graphs set up, let’s create a shared runbook to help your team investigate issues. 
  
 ## Adding a Notebook
-In your navigation bar, find the Notebook icon and click “New Notebook”, or click [this link](https://app.datadoghq.com/notebook). Give it a name like `Debugging Spree Services`{{copy}}.
+In your navigation bar, find the Notebook icon and click “New Notebook”, or click [this link](https://app.datadoghq.com/notebook). Give it a name like `Debugging Spree Services`{{copy}}.  
+Notebooks support Datadog graphs from all data sources along with markdown cells to provide context. Add a cell by hovering over the `+` button. 
  
-Let’s start by adding an overview of your services. You can paste this overview that a teammate has already written.
+Let’s start by adding an overview of your services in a new markdown cell. You can paste this overview that a teammate has already written.
  
 <pre class="file" data-target="clipboard">
 ## Service Overview
@@ -13,7 +14,7 @@ Let’s start by adding an overview of your services. You can paste this overvie
 </pre>
  
 ## Custom Troubleshooting
-Next, let's add a link to the dashboard you used to debug your service. Since we worked on `store-frontend`, we can link to the [RUM Performance Overview](https://app.datadoghq.com/screen/integration/30292/rum---performance-overview?live=true) dashboard.
+Next, let's link to a dashboard that will help debug your service. Since we just added graphs from RUM performance, we can link to the [RUM Performance Overview](https://app.datadoghq.com/screen/integration/30292/rum---performance-overview?live=true) dashboard.
  
 This is an out-of-the-box dashboard for real-user-monitoring (RUM) that monitors metrics like page views and frontend errors. We can clone it to make changes.  
  
