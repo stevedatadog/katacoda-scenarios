@@ -1,0 +1,1 @@
+Title: Synthetic Tests in a CI/CD Pipeline

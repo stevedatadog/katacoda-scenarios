@@ -1,0 +1,18 @@
+{
+    "title": "Running Synthetic Tests in a CI/CD Pipeline",
+    "description": "This is an intermediate-level course based largely on the Move Fast Without Breaking Things Dash 2020 Workshop. It will introduce robust, end-to-end Synthetics tests to catch deployment regressions, and then integrate these tests into a CI/CD workflow with Synthetics CI/CD.",
+    "icon": "fa-vial",
+    "courses": 
+    [
+      {
+        "course_id": "1-catch-regressions",
+        "title": "Using Synthetic Tests to Catch Regressions",
+        "description": "An introduction to creating the three types of Datadog Synthetic tests to catch regressions."
+      },
+      {
+        "course_id": "2-cicd",
+        "title": "Running Synthetic Tests in a CI/CD Pipeline",
+        "description": "Using Datadog Synthetic tests in a series of deployment strategies to automate end-to-end browser tests as part of a CI/CD pipeline."
+      }
+    ]
+  }
