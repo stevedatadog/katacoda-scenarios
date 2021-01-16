@@ -1,0 +1,17 @@
+{
+  "title": "Testing Multiple Scenarios",
+  "description": "Trying to see how to add multiple scenarios to a single course",
+  "icon": "fa-vial",
+  "courses": [
+    {
+      "course_id": "part-one",
+      "title": "First Scenario",
+      "description": "The first of two scenarios in this test."
+    },
+    {
+      "course_id": "part-two",
+      "title": "Second Scenario",
+      "description": "The second of two scenarios in this test."
+    }
+  ]
+}
