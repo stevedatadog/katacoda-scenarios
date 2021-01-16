@@ -25,7 +25,10 @@
       "text": "finish.md"
     }
   },
-  "environment": {},
+  "environment": {
+    "showide": true
+
+  },
   "backend": {
     "imageid": "ubuntu:2004"
   }
