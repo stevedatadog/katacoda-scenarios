@@ -1,6 +1,6 @@
 {
   "time": "45 minutes",
-  "title": "Introduction to Synthetics Tests",
+  "title": "Synthetics Tests in a CI/CD Pipeline",
   "details": {
     "intro": {
       "courseData": "background.sh",
@@ -9,10 +9,10 @@
     },
     "steps": [
       {
-        "text": "intro.md"
+        "text": "cicd-this-lab.md"
       },
       {
-        "text": "about-lab.md"
+        "text": "canary.md"
       }
     ],
     "finish": {
