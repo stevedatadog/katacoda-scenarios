@@ -42,7 +42,7 @@
     "showide": true,
     "uieditorpath": "/root",
     "showdashboard": true,
-    "dashboards": [
+    "dashboards-disabled": [
       {
         "name": "Storedog",
         "port": 3000
