@@ -9,7 +9,20 @@
     },
     "steps": [
       {
-        "text": "about-lab.md"
+        "text": "about-lab.md",
+        "title": "About the Lab"
+      },
+      {
+        "text": "api-test.md",
+        "title": "Create an API Test"
+      },
+      {
+        "text": "multistep-api-test.md",
+        "title": "Create a Multistep API Test"
+      },
+      {
+        "text": "browser-test.md",
+        "title": "Create a Browser Test"
       }
     ],
     "finish": {

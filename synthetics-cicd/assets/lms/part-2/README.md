@@ -1,1 +1,1 @@
-Title: Using Synthetic Tests to Catch Regressions
+Title: Synthetic Tests in a CI/CD Pipeline

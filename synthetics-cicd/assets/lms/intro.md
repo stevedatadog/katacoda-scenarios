@@ -4,7 +4,7 @@ Course Introduction
 In this course you're going to be working with Storedog, a fully functional e-commerce application on a few Docker containers. You may be familiar with Storedog if you have completed other Datadog courses in the Learning Center. It's a great application for learning about Datadog because it consists of a variety of common web application technologies. Here's a summary of the services that comprise Storedog:
 
 | Service        | Purpose |
-| ---            |         |
+| ---            | ---        |
 | agent          | The Datadog Agent, which will collect metrics from all of the services and send them to the Datadog platform. This is where NPM is enabled |
 | discounts      | Python Flask API that serves store item discounts |
 | frontend       | Spree, an open source e-commerce framework written in Ruby |

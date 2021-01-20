@@ -1,26 +1,21 @@
 # The Storedog Application
-In this Lab, you'll write Synthetic tests for Storedog, a basic, containerized e-commerce application. You'll use Docker Compose to run the containers in a simulated production environment. Storedog consists of the following services:
+In this Lab, you'll write Synthetic tests for Storedog, a basic, containerized e-commerce application running with Docker Compose. The lab is automatically provisioning the application, and you'll know that it's ready when you see "Provisioning complete" in the terminal. You should also see the trial Datadog credentials the lab created for you in the terminal. Copy the username and password somewhere handy because' you'll need them shortly.
 
-## CI/CD Pipeline
-
-For this lab, we have simulated a Continuous Integration / Continuous Deployment (CI/CD) pipeline. In the real world, a CI/CD pipleline would automatically detect changes to production code in a repository, run tests on that code, and if the tests paass, deploy the code changes to production.
-
-We'll get into the details of how our simulated pipeline works in the second half of this course. 
-
-## Deploy
-
-To "deploy" Storedog using our simulated CI/CD pipeline, run `git push deploy`{{ execute }} in the Terminal.
-
-Once everything is running, you should be able to visit the store by clicking on `storedog` in the tabs. Be patient, as it may take a while for the first page to render.
+When provisioning is complete, you can click on the **Storedog** tab above the terminal to interact with the application. 
 
 ![The StoreDog ecommerce application home page](assets/storedog.png)
 
-## See Traffic in Datadog
+Click around Storedog as you would with a real e-commerce site. You can even add items to your shopping cart and check out, but Storedog won't actually ship you anything or charge your credit card. While you're getting familiar with the application the Datadog Agent container is sending metrics to Datadog.
 
-The application is now running and instrumented.
-After browsing some pages, we should be able to see some traffic in datadog.
+## See Metrics in Datadog
 
-The different services composing our application are sending logs to datadog to report their activity.
+Log in to [Datadog](https://app.datadoghq.com) using the trial credentials the lab created for you. 
+
+*First thing to look at (logs)*
+*Other thing to  look at (services)*
+*Last thing to  look at (services map)*
+
+Storedog's different services are sending logs to datadog to report their activity.
 We can see logs from the frontend, from the ads service, and from the discounts service.
 Logs are especially useful to troubleshoot problems. When you are not sure of the origin of the issue, you can filter by errors and look for patterns.
 
