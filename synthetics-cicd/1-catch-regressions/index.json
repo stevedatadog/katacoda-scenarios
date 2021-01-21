@@ -54,8 +54,7 @@
     ]
   },
   "backend": {
-    "imageid": "datadog-base-v2",
-    "usebeta": "true",
+    "imageid": "datadog-base-v1",
     "reuseConnection": "false"
   }
 }
