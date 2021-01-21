@@ -7,7 +7,7 @@ When provisioning is complete, you can click on the **Storedog** tab above the t
 
 Click around Storedog as you would with a real e-commerce site. You can even add items to your shopping cart and check out, but Storedog won't actually ship you anything or charge your credit card. While you're getting familiar with the application the Datadog Agent container is sending metrics to Datadog.
 
-## See Metrics in Datadog
+## Datadog Metrics
 
 Log in to [Datadog](https://app.datadoghq.com) using the trial credentials the lab created for you. 
 

@@ -33,6 +33,10 @@
         {
           "file": "docker-compose.yml",
           "target": "/root"
+        },
+        {
+          "file": "frontend-docker-entrypoint.sh",
+          "target": "/root"
         }
       ]
     }
@@ -51,6 +55,7 @@
   },
   "backend": {
     "imageid": "datadog-base-v2",
+    "usebeta": "true",
     "reuseConnection": "false"
   }
 }
