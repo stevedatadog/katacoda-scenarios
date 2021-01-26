@@ -17,6 +17,10 @@ To see how these services interact with each other, navigate to APM > Service Ma
 
 ![Storedog Services Map](./assets/services_map.png)
 
-Storedog's frontend-service runs the web application. It makes requests to discounts-service to display promotional coupon codes to shoppers. It also uses this service to validate coupon codes that shoppers use during checkout. frontend-service makes requests to advertisements-service to display product ads on the home page and on product pages. You can see a coupon code and an advertisement outlined in this screenshot:
+Storedog's frontend-service runs the web application. It makes requests to discounts-service to display promotional coupon codes to shoppers. It also uses this service to validate coupon codes that shoppers use during checkout, and apply the correct discount to the order. frontend-service makes requests to advertisements-service to display product banner ads on the home page and on product pages. You can see a coupon code and an advertisement outlined in this screenshot:
 
 ![Storedog coupon code and advertisement](./assets/discount_and_ad.png)
+
+In this lab, we're going to use Datadog synthetic tests to ensure that discounts-service functions correctly after deployments, and that store-frontend displays the discounts coupons correctly on the homepage.
+
+Click the **Next** button below to create an API test.
