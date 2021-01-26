@@ -1,6 +1,4 @@
-To understand what `discounts-service` provides, make an HTTP GET request to it using `curl` in the terminal: `curl http://localhost:5001/discounts`{{execute}}. The response will be a JSON document containing 206 discounts that look like this this:
-
-**@todo** *change this to be a tab in the lab by adding a port 5001 entry in index.json*
+To understand what `discounts-service` provides, you can make an HTTP GET request to it using `curl` in the terminal: `curl http://localhost:5001/discount`{{execute}}. Alternatively, you can also click on the **Discounts API** tab above the terminal to see the results in your browser. Either way, the response will be a JSON document containing 206 discounts that look like this this:
 
 ```json
   {

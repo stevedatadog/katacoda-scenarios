@@ -23,4 +23,4 @@ Storedog's frontend-service runs the web application. It makes requests to disco
 
 In this lab, we're going to use Datadog synthetic tests to ensure that discounts-service functions correctly after deployments, and that store-frontend displays the discounts coupons correctly on the homepage.
 
-Click the **Next** button below to create an API test.
+Click the **Continue** button below to create an API test.
