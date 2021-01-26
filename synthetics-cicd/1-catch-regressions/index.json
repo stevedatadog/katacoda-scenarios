@@ -53,7 +53,7 @@
       },
       {
         "name": "Discounts API",
-        "port": 5001
+        "href": "https://[[HOST_SUBDOMAIN]]-5001-[[KATACODA_HOST]].environments.katacoda.com/discount"
       }
     ]
   },

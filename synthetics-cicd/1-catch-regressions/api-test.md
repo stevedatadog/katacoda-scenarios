@@ -17,7 +17,7 @@ The store-frontend service picks a random discount from the response and creates
 
 ![Coupon section detail of Storedog homepage](./assets/coupon_section_detail.png)
 
-You can see that `name` maps to the title of the coupon section of the home page. `code` can be found in the instructions below the title, followed by `value` formatted to the dollar value "$7.00."
+You can see that `name` maps to the title of the coupon section of the home page, "symptom sibling omit!" in this example. `code` can be found in the instructions below the title, VIBRANT.  `value` is formatted to the dollar value "$7.00." Note that these discounts are generated randomly for each lab, so you won't see this specific discount in your results.
 
 Now that you know what a healthy discounts-service should serve, you can create an API test to monitor it and ensure that it continues to function properly across deployments. 
 
