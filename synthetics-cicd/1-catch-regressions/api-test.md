@@ -1,5 +1,5 @@
 Understand the Discounts Service
-===
+---
 To understand what `discounts-service` provides, you can make an HTTP GET request to it using `curl` in the terminal: `curl http://localhost:5001/discount`{{execute}}. Alternatively, you can also click on the **Discounts API** tab above the terminal to see the results in your browser. Either way, the response will be a JSON document containing 206 discounts that look like this this:
 
 ```json
@@ -24,7 +24,7 @@ You can see that `name` maps to the title of the coupon section of the home page
 Now that you know what a healthy discounts-service should serve, you can create an API test to monitor it and ensure that it continues to function properly across deployments. 
 
 Create a Basic API Test
-===
+---
 Log in to the Datadog app using the credentials created for you. (Run the `creds`{{execute}} command if you don't have them handy.) Navigate to **Synthetic Tests** in the global navigation, under **UX Monitoring**. You will see the Get started with Datadog Synthetics introduction page. Click the **Get Started** button and then the **New API Test** button in the resulting modal dialog.
 
 You will create a new HTTP test, which is selected by default. Note that API tests can also monitor SSL, TCP, and DNS services. You can read more about those in the [API Tests documentation](https://docs.datadoghq.com/synthetics/api_tests/).
@@ -50,7 +50,7 @@ Under **Notify your team**, pick an email address you would like to use to recei
 Click **Create Test** to see your new test in the Synthetics Test Details page. The test will automatically run the first time when you click the button, and the results will appear in the **Test Results** section at the bottom of the page. You should see a green **OK** within a couple minutes corresponding to each location from which the test was run.
 
 Examine the Test Results
-===
+---
 Synthetic test results contain a wealth of information. Click one of the results under **Test Results**. A panel will slide out displaying the details of the test result. Up top, you see the date and time that the test was run, the duration of the test, the location from which it was run, the DNS server used and the IP address it resolved for the test URL. Below that are two tabs, **Test Details** and **Trace**.
 
 **Test Details** features a waterfall graph illustrating the time consumed by each step of the test request, from DNS resolution to Download. Below the waterfall graph is the **Assertions** section, detailing the results of each assertion run by the test. Below that is the **Response Details** section that will provide information about the response headers and body for failed tests.
@@ -62,7 +62,6 @@ Synthetic test results contain a wealth of information. Click one of the results
 ![Screenshot of the Test Results: Trace tab](./assets/test_results_trace.png)
 
 Improve the API Test
-===
+---
+
 Is the markdown heading working here?
-
-
