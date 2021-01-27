@@ -55,9 +55,14 @@ Synthetic test results contain a wealth of information. Click one of the results
 
 **Test Details** features a waterfall graph illustrating the time consumed by each step of the test request, from DNS resolution to Download. Below the waterfall graph is the **Assertions** section, detailing the results of each assertion run by the test. Below that is the **Response Details** section that will provide information about the response headers and body for failed tests.
 
-**Trace** displays an Application Performance Monitoring (APM) flamegraph illustrating the resources used by the server to handle the test request. Because Storedog is running the Datadog Agent, we can see how much time the discounts service spent handling the test request across Python Flask and Postgres processes. You can click on **View Trace in APM** to see fine-grained details about what happened on the server. See the [APM documentation](https://docs.datadoghq.com/tracing/) for more information about this powerful tool.
+![Screenshot of the Test Results: Test Details tab](./assets/test_results_details.png)
+
+**Trace** displays an Application Performance Monitoring (APM) flame graph illustrating the resources used by the server to handle the test request. Because Storedog is running the Datadog Agent, we can see how much time the discounts service spent handling the test request across Python Flask and PostgreSQL processes. You can click on **View Trace in APM** to see fine-grained details about what happened on the server. See the [APM documentation](https://docs.datadoghq.com/tracing/) for more information about this powerful tool.
+
+![Screenshot of the Test Results: Trace tab](./assets/test_results_trace.png)
 
 Improve the API Test
 ===
+Is the markdown heading working here?
 
 
