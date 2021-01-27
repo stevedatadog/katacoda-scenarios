@@ -47,10 +47,15 @@ Leave the default values under **Define alert conditions**, which will ensure an
 
 Under **Notify your team**, pick an email address you would like to use to receive alerts, and reference it in the text area.  For example, `@myemail@example.com`. Take a look at the [Notifications documentation](https://docs.datadoghq.com/monitors/notifications) to learn more about notification syntax and capabilities.
 
-Click **Create Test** to see your new test in the Synthetics Test Details page. The test will automatically run the first time when you click the button, and the results will appear in the **Test Results** section at the bottom of the page. You should see a green **OK** within a couple minutes.
+Click **Create Test** to see your new test in the Synthetics Test Details page. The test will automatically run the first time when you click the button, and the results will appear in the **Test Results** section at the bottom of the page. You should see a green **OK** within a couple minutes corresponding to each location from which the test was run.
 
 Examine the Test Results
 ===
+Synthetic test results contain a wealth of information. Click one of the results under **Test Results**. A panel will slide out displaying the details of the test result. Up top, you see the date and time that the test was run, the duration of the test, the location from which it was run, the DNS server used and the IP address it resolved for the test URL. Below that are two tabs, **Test Details** and **Trace**.
+
+**Test Details** features a waterfall graph illustrating the time consumed by each step of the test request, from DNS resolution to Download. Below the waterfall graph is the **Assertions** section, detailing the results of each assertion run by the test. Below that is the **Response Details** section that will provide information about the response headers and body for failed tests.
+
+**Trace** displays an Application Performance Monitoring (APM) flamegraph illustrating the resources used by the server to handle the test request. Because Storedog is running the Datadog Agent, we can see how much time the discounts service spent handling the test request across Python Flask and Postgres processes. You can click on **View Trace in APM** to see fine-grained details about what happened on the server. See the [APM documentation](https://docs.datadoghq.com/tracing/) for more information about this powerful tool.
 
 Improve the API Test
 ===
