@@ -40,7 +40,9 @@ Now that you know what a healthy discounts-service should serve, you can create 
 6. Next, set **Specify test frequency** to **1hr**, as you will be running this test on-demand in this lab. 
 7. Leave the default values under **Define alert conditions**, which will ensure an immediate alert on the first test failure.
 8. Under **Notify your team**, pick an email address you would like to use to receive alerts, and reference it in the text area.  For example, `@myemail@example.com`. Take a look at the [Notifications documentation](https://docs.datadoghq.com/monitors/notifications) to learn more about notification syntax and capabilities.
-9. Click **Create Test** to see your new test in the Synthetics Test Details page. The test will automatically run the first time when you click the button, and the results will appear in the **Test Results** section at the bottom of the page. You should see a green **OK** within a couple minutes corresponding to each location from which the test was run.
+9. Click **Create Test** to see your new test in the Synthetics Test Details page. The test will automatically run the first time when you click the button, and the results will appear in the **Test Results** section at the bottom of the page. You should see a green **OK** within a couple minutes corresponding to each location from which the test was run:
+
+    ![Successful API test results](./assets/api_test_results.png)
 
 ## Examine the Test Results
 Synthetic test results contain a wealth of information. Click one of the results under **Test Results**. A panel will slide out displaying the details of the test result. Up top, you see the date and time that the test was run, the duration of the test, the location from which it was run, the DNS server used and the IP address it resolved for the test URL. Below that are two tabs, **Test Details** and **Trace**.
@@ -78,6 +80,14 @@ This is a dangerous test because it can generate false positives. A better test 
 1. Repeat the previous steps for the `name` and `value` key assertions. See if you can create one of them the "hard" way by clicking the **+ New Assertion** button.
 1. Click the **Save Test** button, and click **Run Test Now** in the upper-right corner of the Synthetics Test Details page.
 
+Your improved test should pass with **OK** statuses in the **Test Results** section. 
 
+Return to the lab terminal and stop the discounts service again. Wait a few seconds, and then click **Run Test Now** from the Synthetic Test details page in Datadog. The tests should now fail, as expected:
 
+![Failed API tests in the Test Results section](./assets/api_test_jsonpath_fail_results.png)
 
+To see the additional information that failed tests provide, click on one of results with **Alert** status. You can see that the three new assertions failed, as expected. You can also see more detailed information about the response, including the headers and body, at the bottom of the screen. This is provided to help you understand why the assertions failed. As you can see, the response body contained the "Unable to connect" HTML document, not the discounts JSON document:
+
+![Details of a  test with failed assertions](./assets/api_test_jsonpath_fail_details.png)
+
+Now that you know how to create API tests and interpret their results, you can create a more complex Multistep API test in the next lesson. Click the **Continue** button below to proceed.
