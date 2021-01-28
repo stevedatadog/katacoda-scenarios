@@ -37,6 +37,10 @@
         {
           "file": "frontend-docker-entrypoint.sh",
           "target": "/root"
+        },
+        {
+          "file": "discounts.py",
+          "target": "/root"
         }
       ]
     }

@@ -56,7 +56,7 @@ Synthetic test results contain a wealth of information. Click one of the results
 ![Screenshot of the Test Results: Trace tab](./assets/test_results_trace.png)
 
 ## Improve the API Test
-Make sure that this test will create alerts when the discount service is down.
+To see if this test would catch regressions following a deployment, you could hack the discounts service code to introduce a bug. The bug would need to cause very slow, non-200 OK HTTP responses to fail the test's assertions. An easy way to accomplish that is to simply shut the service off!
 
 In the lab terminal, stop the discounts service with the command `docker-compose stop discounts`{{execute}}. Now click on the **Discounts API** tab to the right of **Storedog** to see what happened. You should see a page from our lab platform stating that it can't connect to the discounts service port:
 
@@ -90,4 +90,4 @@ To see the additional information that failed tests provide, click on one of res
 
 ![Details of a  test with failed assertions](./assets/api_test_jsonpath_fail_details.png)
 
-Now that you know how to create API tests and interpret their results, you can create a more complex Multistep API test in the next lesson. Click the **Continue** button below to proceed.
+Now that you know how to create API tests and interpret their results, click the **Continue** button below to create a more complex Multistep API test.
