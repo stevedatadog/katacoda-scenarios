@@ -62,11 +62,11 @@ def add_discount():
                                 random.choice(words).upper(),
                                 random.randrange(1,100) * random.random(),
                                 discount_type)
-        app.logger.info(f"Adding discount {new_discount}")
+        app.logger.info(f"Adding discount {jsonify(new_discount)}")
         db.session.add(new_discount)
         db.session.commit()
         new_id = new_discount.id
-        app.logger.info("New discount added with id %d", new_discount.id)
+        app.logger.info(f"New discount added with id {new_discount.id}")
 
         return jsonify({"id": new_id})
 
@@ -77,7 +77,7 @@ def add_discount():
         err.status_code = 500
         return err
 
-@app.route('/discount<id>', methods=['DELETE'])
+@app.route('/discount/<id>', methods=['DELETE'])
 def delete_discount(id):
     # delete a record with the given id
 
