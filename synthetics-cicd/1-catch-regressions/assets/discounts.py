@@ -62,7 +62,7 @@ def add_discount():
                                 random.choice(words).upper(),
                                 random.randrange(1,100) * random.random(),
                                 discount_type)
-        app.logger.info(f"Adding discount {json.dumps(new_discount)}")
+        app.logger.info(f"Adding discount with id {new_discount.id}")
         db.session.add(new_discount)
         db.session.commit()
         new_id = new_discount.id
