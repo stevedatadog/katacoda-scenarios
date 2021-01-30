@@ -63,11 +63,11 @@ def add_discount():
                                 random.choice(words).upper(),
                                 random.randrange(1,100) * random.random(),
                                 discount_type)
-        app.logger.info(f"Adding discount with id {new_discount.id}")
+        app.logger.info(f"Adding discount with name {discount_name}")
         db.session.add(new_discount)
         db.session.commit()
         new_id = new_discount.id
-        app.logger.info(f"New discount added with id {new_discount.id}")
+        app.logger.info(f"New discount {new_discount.name} added with id {new_discount.id}")
 
         return jsonify({"id": new_id})
 
