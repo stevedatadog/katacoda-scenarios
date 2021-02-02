@@ -104,24 +104,18 @@ After all of this set-up, you probably want to see the multi-step test catch a r
 
 An opinionated engineer on the Discounts team insists that a good API should take parameters from a request's query string, rather than from its path. Toward this end, the engineer altered the DELETE /discount endpoint code to do exactly that. They merged this "fix" into the production branch and intended to send a memo to stakeholders after lunch. Ironically, the engineer didn't read the memo about today's lunchtime deployment...
 
-Back in the lab, click the IDE tab and give the editor a few seconds to start up. Open lab > discounts-service-fixed > discounts.py.
+You can simulate this scenario back at the lab. In the terminal, run `patch apply discounts.py regression.patch`{{execute}}. If you would like to see what changed, you can open `regression.patch` in the IDE; it's in `lab/discounts-service-fixed/discounts.py`.
 
-Change line 81 to the following:
+In the terminal, restart the discounts service. It will automatically load the file you just altered: `docker-compose restart discounts`{{execute}}
 
-`@app.route('/discount', methods=['DELETE])`{{copy}}
+@todo cut this part because it's easier to run it from the test details page
+When the service has started, return to the Synthetics Test page in Datadog and, hover over the Discounts Service Create and Delete multistep test. Click on the **lightning bolt icon** to run the test right from here:
 
-Insert the following at line 84:
+![Running the multistep test right from the Synthetics Tests page](./assets/run_test_from_list_page.png)
+@todo flesh out these and you're done!
+![Multistep API test failing after deployed regression](./assets/failed_multistep_discounts.png)
 
-`    id = request.args.get('id')`{{copy}}
-
-The file will automatically save. 
-
-In the Terminal tab, restart the discounts service. It will automatically load the file you just altered: `docker-compose restart discounts`{{execute}}
-
-Give the service a minute to start up.
-
-
-
+![Multistep API test fail details](./assets/failed_multistep_discounts_details.png)
 
 
 
