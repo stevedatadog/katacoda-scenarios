@@ -1,5 +1,4 @@
 #!/bin/bash
-SECONDS=0
 statuscheck setup
 ln -s /ecommworkshop/ /root/lab
 cd /root/lab
@@ -11,4 +10,3 @@ POSTGRES_PASSWORD=postgres" > docker.env
 statusupdate "environment-variables"
 clear
 prepenvironment
-echo "Complete in "$SECONDS" seconds."

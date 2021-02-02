@@ -87,6 +87,41 @@ Next, you'll create a request that will test deleting the discount created in th
 
 Finally, you should test that the deleted discount is indeed absent from those returned by GET /discount. Create this request on your own, based on the Confirm New Discount request. Name it "Confirm Discount Deleted." It should assert that the last discount in the results has an id that *is not* the id of the newly created discount.
 
+Your four requests should look like the following screenshot. It's OK if you kept some of the suggested assertions about response time, status code, and content type:
+
+![Four requests, complete](./assets/multi_all_requests.png)
+
+Set **Specify test frequency** to **1h** and optionally add an email address to the notification body as you did earlier in the API test.
+
+Click **Save Test**. On hte test summary page, click the **Run Test Now** button in the upper-right corner of the page. Then scroll down to Test Results and click the **Refresh** button. You should see a new result at the top of the list. Click on the result to see the details, which should look like this:
+
+![Multi-step results, all requests passed](./assets/multi_all_green.png)
+
+If any part of your test fails, take a close look at the results to determine whether the discounts service is actually failing, or if your tests are misconfigured. If you suspect the latter, review the steps above.
+
+## Introduce a Regression
+After all of this set-up, you probably want to see the multi-step test catch a regression!
+
+An opinionated engineer on the Discounts team insists that a good API should take parameters from a request's query string, rather than from its path. Toward this end, the engineer altered the DELETE /discount endpoint code to do exactly that. They merged this "fix" into the production branch and intended to send a memo to stakeholders after lunch. Ironically, the engineer didn't read the memo about today's lunchtime deployment...
+
+Back in the lab, click the IDE tab and give the editor a few seconds to start up. Open lab > discounts-service-fixed > discounts.py.
+
+Change line 81 to the following:
+
+`@app.route('/discount', methods=['DELETE])`{{copy}}
+
+Insert the following at line 84:
+
+`    id = request.args.get('id')`{{copy}}
+
+The file will automatically save. 
+
+In the Terminal tab, restart the discounts service. It will automatically load the file you just altered: `docker-compose restart discounts`{{execute}}
+
+Give the service a minute to start up.
+
+
+
 
 
 

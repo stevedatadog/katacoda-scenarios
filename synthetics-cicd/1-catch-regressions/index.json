@@ -35,6 +35,10 @@
           "target": "/root"
         },
         {
+          "file": "regression.patch",
+          "target": "/root"
+        },
+        {
           "file": "frontend-docker-entrypoint.sh",
           "target": "/root"
         },

@@ -5,7 +5,7 @@ import names
 import json
 
 from flask import Flask, Response, jsonify
-from flask import request as flask_request
+from flask import request
 
 from sqlalchemy.orm import joinedload
 
@@ -45,8 +45,6 @@ def add_discount():
 
     try:
         # Create a new discount with random name and value. 
-        # @todo DRY by consolidating redundant code here with that in bootstrap.py
-        # Maybe create an add_random() method to the Discount model...
         with open('words.json') as f:
             words = json.load(f)
 
