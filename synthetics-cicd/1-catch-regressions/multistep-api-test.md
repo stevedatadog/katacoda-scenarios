@@ -104,18 +104,29 @@ After all of this set-up, you probably want to see the multi-step test catch a r
 
 An opinionated engineer on the Discounts team insists that a good API should take parameters from a request's query string, rather than from its path. Toward this end, the engineer altered the DELETE /discount endpoint code to do exactly that. They merged this "fix" into the production branch and intended to send a memo to stakeholders after lunch. Ironically, the engineer didn't read the memo about today's lunchtime deployment...
 
-You can simulate this scenario back at the lab. In the terminal, run `patch apply discounts.py regression.patch`{{execute}}. If you would like to see what changed, you can open `regression.patch` in the IDE; it's in `lab/discounts-service-fixed/discounts.py`.
+You can simulate this scenario back at the lab. In the terminal:
+1. `cd /root/lab/discounts-service-fixed`{{execute}}
+2. `patch discounts.py regression.patch`{{execute}}.
+3. (optional) If you would like to see what changed, you can open `/root/lab/discounts-service-fixed/regression.patch`{{open}} in the IDE.
+4. In the terminal, restart the discounts service. It will automatically load the file you patched: `cd /root/lab && docker-compose restart discounts`{{execute}}
 
-In the terminal, restart the discounts service. It will automatically load the file you just altered: `docker-compose restart discounts`{{execute}}
+When the service has started, return to the [Synthetic Tests page](https://app.datadoghq.com/synthetics/list) in Datadog and click on the Discounts Service Create and Delete multistep test. Then click **Run Test Now** in the upper-right corner.
 
-@todo cut this part because it's easier to run it from the test details page
-When the service has started, return to the Synthetics Test page in Datadog and, hover over the Discounts Service Create and Delete multistep test. Click on the **lightning bolt icon** to run the test right from here:
+Scroll down to the **Test Results** section and click the **Refresh** button. You should see that the test failed with **ALERT** status. Click on that result to take a close look:
 
-![Running the multistep test right from the Synthetics Tests page](./assets/run_test_from_list_page.png)
-@todo flesh out these and you're done!
 ![Multistep API test failing after deployed regression](./assets/failed_multistep_discounts.png)
 
-![Multistep API test fail details](./assets/failed_multistep_discounts_details.png)
+You can see that third request failed, as expected. At this level you can see that the status code is **404 NOT FOUND**. Click on that request to see the details:
+
+![Multistep API test fail details](./assets/failed_multistep_discounts_detail.png)
+
+Here you can see that `{{ NEW_DISCOUNT_ID }}` was not found in the response body, which makes sense if the endpoint returned a 404 Not Found error. Expanding the **Response Details** section confirms that the response is a `text/html` page with boilerplate 404 HTML content. 
+
+Mouse over **RESOLVED URL** at the top of the screen. You will see that the path portion of the URL is something like `/discount/207` (yours might be a different id). The you applied alters the DELETE endpoint to expect `/discount?id=207`. This is why the URL for this request failed.
+
+In the real world, you would probably rollback the latest deployment and update all of the application code that calls the DELETE endpoint. This will likely entail a discussion with your team, and some period of time during which users experience a broken discounts service. In the second part of this course, you'll learn how to catch regressions like this before they are even deployed to production. 
+
+Click the **CONTINUE** button below to learn about Synthetic Browser Tests.
 
 
 

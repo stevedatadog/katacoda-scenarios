@@ -11,6 +11,7 @@ mv ./ads-service-fixed/ads.py ./ads-service/ads.py
 
 # Use enhanced discounts service
 mv /root/discounts.py ./discounts-service-fixed/discounts.py
+mv /root/regression.patch ./discounts-service-fixed/regression.patch
 
 # fix env tagging
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
