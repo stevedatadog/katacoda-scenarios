@@ -24,13 +24,25 @@ The four manual tests just executed ported to a multistep API test. It will take
 1. Open the Synthetics Tests page and click the **+New Test** button in the upper-right corner. Click **New Multistep API Test**.
 1. Under **Name and tag your test**, enter a **Name**, such as "Discounts Service Create and Delete."
 1. Under **Select locations**, select *a single location*. This test will only work well if it tests discounts that it creates itself. It will likely fail if it runs from other locations simultaneously. This is not a good test to run in production if it won't have exclusive POST and DELETE accesses to the discount service.
+1. To save yourself some typing as you create the requests for each step, define a new Local Variable to store the discounts service URL:
+    1. Click **+ Create Local Variable** in the upper-right corner of the page.
+    1. For **Variable Name**, enter "DISCOUNT_URL".
+    1. For **Pattern**, enter the URL to your lab's discount service, which is `https://[[HOST_SUBDOMAIN]]-5001-[[KATACODA_HOST]].environments.katacoda.com/discount`{{copy}}
+
+       (Note that there are useful Builtins to the right that generate patterns or partial patterns dynamically.) Your new variable should look like this:
+
+        ![Screenshot of creating a DISCOUNT_URL local variable](./assets/create_local_variable.png)
+    1. Click **Add Variable**
+You can now refer to this variable anywhere in this test as `{{ DISCOUNT_URL }}`.
+
+    **Note**: *If your lab session expires or if you restart it, the URL to your discount service will change. Remember to update this variable if that happens.*
 
 ### Define requests
 For the first request, you will test that a new discount can be created at the POST /discount endpoint, as you did manually by hand.
 
 1. Under **Define requests**, click the **Create Your First Request** button.
-1. Enter a **Request Name** such as "Create a Discount" .
-1. For **URL**, select **POST** and enter the URL of your discounts service endpoint, which is `https://[[HOST_SUBDOMAIN]]-5001-[[KATACODA_HOST]].environments.katacoda.com/discount`{{copy}}.
+1. Enter a **Request Name** such as "Create a Discount".
+1. For **URL**, select **POST** and enter `{{ DISCOUNT_URL }}`.
 1. Click the **Test URL** button. This will execute the POST request and display the results of the test and suggest assertions. 
 1. Under **Add assertions (optional)**, click on the **Response Body** tab. Click the `id` key. This will add a JSONPath assertion to the suggested assertions.
 1. Edit the new JSONPath assertion to change **is** to **is more than**. Enter 0 in the last field. Your assertions should look like this screenshot:
@@ -48,35 +60,32 @@ Next, you will create a request to confirm that the new discount is returned fro
 
 1. Click the **Add Another Request** button.
 1. Enter a **Request Name**, such as "Confirm New Discount"
-1. For **URL**, leave the default **GET** method, and enter the URL of your discounts service endpoint.
+1. For **URL**, keep the default **GET** method and enter `{{ DISCOUNT_URL }}`
 1. For **Steps to Run**, keep the default **This step**, and click **Test URL**.
 1. Under **Add assertions**, click the **Response Body** tab and scroll to the bottom of the collapsed JSON object list. Expand the last object, and click on the `id` key. This will automatically create a new JSONPath assertion. However, it's too specific. There's no way to know how many discounts will be in the response the next time this test runs, or what the `id` of the last one will be. This is where JSONPath syntax and test variables come into play.
 1. Change the JSONPath selector to `$[-1:].id`. This will select the last object in the JSON array, no matter how many there are. The test evaluation should remain **PASSED**.
-1. Change the literal id value to `{{NEW_DISCOUNT_ID}}`, the variable extracted from the previous step. The test evaluation will change to **NOT EVALUATED** because extracted variables are not evaluated until runtime.
+1. Change the literal id value to `{{ NEW_DISCOUNT_ID }}`, the variable extracted from the previous step. The test evaluation will change to **NOT EVALUATED** because extracted variables are not evaluated until runtime.
 1. Click the **Save Request** button.
 
 You didn't need to add more assertions about the response time or response code of the GET request because the single API test you created earlier already handles those. 
 
-Under **Define requests**, expand the two requests you have created so far. They should look like this, with different URLs:
+Under **Define requests**, expand the two requests you have created so far. They should look like this:
 
 ![The first two requests expanded](./assets/half_way_through_multistep.png)
 
-Next, you'll create a request that will test deleting a discount.
+Next, you'll create a request that will test deleting the discount created in the first request. The DELETE /discount endpoint takes a discount id as a parameter in teh URL. Similar to the POST /discount endpoint, the response will be a JSON document containing the id of the deleted discount.
 
 1. Click the **Add Another Request** button.
-1. Enter a **Request Name** such as "Create a Discount" .
-1. For **URL**, select **DELETE** and enter the URL of your discounts service endpoint, and add the variable containing the id of the discount created in the first request: `https://[[HOST_SUBDOMAIN]]-5001-[[KATACODA_HOST]].environments.katacoda.com/discount/{{NEW_DISCOUNT_ID}}`{{copy}}
-1. Click the **Test URL** button. This will execute the DELETE request and display the results of the test and suggest assertions. 
+1. Enter a **Request Name** such as "Delete a Discount" .
+1. For **URL**, select **DELETE**. This endpoint takes a discount id as a parameter, so enter `{{ DISCOUNT_URL }}/{{ NEW_DISCOUNT_ID }}`.
+1. In the **Steps to Run** field, select **This step and previous steps**. This will run the previous two requests to populate `NEW_DISCOUNT_ID`.
+1. Click the **Test URL** button. 
 1. Under **Add assertions (optional)**, click on the **Response Body** tab. Click the `id` key. This will add a JSONPath assertion to the suggested assertions.
-1. Edit the new JSONPath assertion to change **is** to **is more than**. Enter 0 in the last field. Your assertions should look like this screenshot:
+1. Edit the new JSONPath assertion to change **contains** to **is**. Enter {{ NEW_DISCOUNT_ID }} in the last field. Your assertions should look like this screenshot:
     ![Suggested assertions plus JSONPath assertion that new discount id is greater than zero](./assets/new_discount_assertion.png)
-1. Under **Extract variables from the response (optional)**, in the **Variable Name** field, enter "NEW_DISCOUNT_ID".
-1. Select the **Response Body** tab and click the `id` key. This will automatically parse the id value using JSONPath. You will see the parsed numeric value in the **Preview** field, as in this screenshot:
-    ![Extracting the id of the new discount into a variable](./assets/extract_new_discount_id.png)
-1. Click the **Save Variable** button.
-1. Note that `NEW_DISCOUNT_ID` is listed under **Variables extracted in this step**. will be extracted from this step. You will use this variable in subsequent steps.
-1. Click the **Save Request** button.
+1. As in the first request, Datadog suggested some reasonable assertions about the response time, status code, and header of the test response. You can keep these if you like, or delete them. Comprehensive tests are more brittle than simple tests. In real life, you might prefer a separate, single API test to test the DELETE endpoint's performance. 
 
+Finally, you should test that the deleted discount is indeed absent from those returned by GET /discount. Create this request on your own, based on the Confirm New Discount request. Name it "Confirm Discount Deleted." It should assert that the last discount in the results has an id that *is not* the id of the newly created discount.
 
 
 
