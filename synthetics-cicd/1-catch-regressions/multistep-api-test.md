@@ -9,7 +9,7 @@ The discounts service claims that it created a new discount. Did it? You can mak
 
 ![Screenshot of the last discount returned from a GET request](./assets/get_discount_see_new.png)
 
-The DELETE endpoint takes the id of the discount you would like to delete. If the deletion is successful, it will return a JSON document containing the id of the deleted discount. Assuming that the id of the newly created discount is `207`, the `curl` command to delete it would be `curl -X DELETE localhost:/5001/discount/207`{{execute}}. You should see something like this:
+The DELETE endpoint takes the id of the discount you would like to delete. If the deletion is successful, it will return a JSON document containing the id of the deleted discount. Assuming that the id of the newly created discount is `207`, the `curl` command to delete it would be `curl -X DELETE localhost:5001/discount/207`{{execute}}. You should see something like this:
 
 ![Screenshot of the discount endpoint's response to a DELETE request](./assets/curl_delete_post.png)
 
@@ -18,24 +18,27 @@ Again, the discounts service *claims* that it deleted the discount. You can make
 You have just manually tested the discounts service's POST and DELETE endpoints. You should do this after every deployment to make sure they work correctly. But don't do it manually! Create a multistep API test to automatically do this for you.
 
 ## Automate the Tests
-The four manual tests just executed ported to a multistep API test. It will take a bit of work to configure them, but Datadog will happily run them for you thereafter.
+The four manual tests you just executed can be ported to a multistep API test. It will take a bit of work to configure them, but Datadog will happily run them for you thereafter.
+
+### Global Variables
+You're about to create four requests and each will require a URL. This value is a good candidate to store in a global variable to use anywhere your synthetics tests. This saves typing and also reduces the number of places to update the value if the URL changes. To create a global variable for the discounts service URL:
+
+1. In the Datadog App, navigate to **UX Monitoring > Settings** and click on the **Global Variables** tab.
+1. Click **+ New Global Variable** in the upper-right corner of the page.
+1. For **Variable Name**, enter "DISCOUNT_URL".
+1. Optionally give the variable a description, such as "URL of the lab discounts service."
+1. For **value**, enter the URL to your lab's discount service, which is `https://[[HOST_SUBDOMAIN]]-5001-[[KATACODA_HOST]].environments.katacoda.com/discount`{{copy}}
+![Screenshot of creating a DISCOUNT_URL global variable](./assets/create_global_variable.png) 
+1. Click **Save**
+
+You can now refer to this variable anywhere in this test as `{{ DISCOUNT_URL }}`.
+
+**Note**: *If your lab session expires or if you restart it, the URL to your discount service will change. Remember to update this variable if that happens.*
 
 ### Configure the new multistep API test
 1. Open the Synthetics Tests page and click the **+New Test** button in the upper-right corner. Click **New Multistep API Test**.
 1. Under **Name and tag your test**, enter a **Name**, such as "Discounts Service Create and Delete."
-1. Under **Select locations**, select *a single location*. This test will only work well if it tests discounts that it creates itself. It will likely fail if it runs from other locations simultaneously. This is not a good test to run in production if it won't have exclusive POST and DELETE accesses to the discount service.
-1. To save yourself some typing as you create the requests for each step, define a new Local Variable to store the discounts service URL:
-    1. Click **+ Create Local Variable** in the upper-right corner of the page.
-    1. For **Variable Name**, enter "DISCOUNT_URL".
-    1. For **Pattern**, enter the URL to your lab's discount service, which is `https://[[HOST_SUBDOMAIN]]-5001-[[KATACODA_HOST]].environments.katacoda.com/discount`{{copy}}
-
-       (Note that there are useful Builtins to the right that generate patterns or partial patterns dynamically.) Your new variable should look like this:
-
-        ![Screenshot of creating a DISCOUNT_URL local variable](./assets/create_local_variable.png)
-    1. Click **Add Variable**
-You can now refer to this variable anywhere in this test as `{{ DISCOUNT_URL }}`.
-
-    **Note**: *If your lab session expires or if you restart it, the URL to your discount service will change. Remember to update this variable if that happens.*
+1. Under **Select locations**, select *a single location*. This test will only work well if it tests discounts that it creates itself. It will likely fail if it runs from multiple locations simultaneously. This is not a good test to run in production if it won't have exclusive POST and DELETE accesses to the discount service.
 
 ### Define requests
 For the first request, you will test that a new discount can be created at the POST /discount endpoint, as you did manually by hand.
@@ -126,7 +129,9 @@ Mouse over **RESOLVED URL** at the top of the screen. You will see that the path
 
 In the real world, you would probably rollback the latest deployment and update all of the application code that calls the DELETE endpoint. This will likely entail a discussion with your team, and some period of time during which users experience a broken discounts service. In the second part of this course, you'll learn how to catch regressions like this before they are even deployed to production. 
 
-Click the **CONTINUE** button below to learn about Synthetic Browser Tests.
+See if you can update the DELETE request of the multistep test to reflect the change to the discounts service. 
+
+When you're ready, click the **CONTINUE** button below to test Storedog's frontend functionality with a synthetic Browser Test.
 
 
 
