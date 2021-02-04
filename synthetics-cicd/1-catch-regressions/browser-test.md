@@ -7,7 +7,7 @@ Earlier in this lab you saw how the Storedog frontend displays the response from
 API tests make assertions about the raw content of HTTP responses, and browser tests make powerful assertions about the Document Object Model (DOM) as rendered by a browser.  For example, "This specific element is in the upper-left corner of the homepage," or "This heading is not empty and is displayed with the Helvetica font at 20 pixels."
 
 The business requirements for the coupon block are:
-1. It's displayed in the upper-left of the home page
+1. It's displayed on the home page
 2. It displays a non-empty heading
 3. It contains a valid coupon code 
 4. It contains the correct coupon value, formatted as USD currency
@@ -79,4 +79,10 @@ Here you can search resources, or filter them by toggling the types to the right
 
     You can click the **View Trace in APM** link to dig deeper into the traces. See the Datadog Documentation to learn more about [APM traces in synthetic tests](https://docs.datadoghq.com/synthetics/apm).
 
+Now that you have a basic browser test covering the first business requirement for the coupon block, you can add more steps to cover the remaining requirements.
+## Complete the Browser test
 
+### Non-empty Header
+### Valid Coupon Code
+
+### Correct Coupon Value
