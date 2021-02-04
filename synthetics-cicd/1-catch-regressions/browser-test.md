@@ -1,6 +1,6 @@
 You now have API tests to monitor the availability, performance, and functionality of the Storedog discounts service. For the rest of this course, you'll work with Browser Tests to monitor Storedog's frontend to ensure a good user experience. 
 
-Earlier in this lab you saw how the Storedog frontend displays the response from the discounts service in the upper-left corner of the home page:
+Earlier in this lab you saw how the Storedog frontend displays the response from the discounts service in the upper-left corner of the home page as a "coupon block":
 
 ![Coupon section detail of Storedog homepage](./assets/coupon_section_detail.png)
 
@@ -33,7 +33,7 @@ Before you proceed, create a new Global Variable for your lab's Storedog fronten
 1. Click **Save & Edit Recording** to move to the next step.
 
 ### Install the Test Recorder Extension
-If you have already installed the Datadog Test Recorder extension, skip down to Edit the Browser Test. Otherwise, you will see the message, "Add our Chrome extension" and a **Add the Extension** button. 
+If you have already installed the Datadog Test Recorder extension, skip down to Edit the Browser Test. If not, you will see "Add our Chrome extension" and a **Add the Extension** button. 
 1. Click the **Add the Extension** button to open the Chrome Web Store. 
 1. On the **Datadog test recorder** page, click the **Add to Chrome** button.
 1. Chrome will prompt you to confirm the installation. Click **Add extension**
@@ -41,5 +41,29 @@ If you have already installed the Datadog Test Recorder extension, skip down to 
 1. Click Chrome's **Back** button to return to the Edit Browser Test page.
 
 ### Edit the Browser Test
-If you have installed the Datadog Test Recorder extension, it will automatically make a request to the **Starting URL** you provided and display the results in the right-hand pane. 
+If you have installed the Datadog Test Recorder extension, it will automatically make a request to the **Starting URL** you provided and display the results in the right-hand pane. You should see the Storedog homepage there now. You will now record a test to cover business requirement #1, "the coupon code block is displayed in the upper-left of the home page."
+
+There is a tantalizing **Start Recording** button at the top of the left-hand pane. This is useful if the assertions you will make require user interaction to alter the page state, such as typing into a form or navigating to another page. You'll record interactions later.
+
+1. Under **Add New**, click **Assertion**.
+1. Click **Test that an element is present**. 
+    ![Highlighting 'Test that an element is present' assertion](./assets/select_test_element_present.png)
+1. Hover over the coupon block content, under the heading. It is the text that begins, "Enter the coupon code..." You will see a dashed outline surrounding the DOM element that Datadog detects. Move your cursor around to see what other elements Datadog detects.
+1. Click on the coupon block content. You will see a new assertion appear on the left:
+    ![Screenshot of first browser test assertion](./assets/first_browser_test_assertion.png)
+1. Click on the new assertion. Note that you can update **Step Name** and configure **Advanced Options**. Leave the defaults and click **Cancel**.
+1. This is a good start. Click **Save & Exit** to view the test details page.
+
+Run this test manually to see the results:
+
+1. Click **Run Test Now** in the upper-right corner of the test details page.
+1. Scroll down to the **Test Results** section and click the **Refresh** button to see the results. You should see a result for every browser and device you configured. Click on one to view the test result details.
+1. Click on the first result. You will see a result for each assertion in your browser test, with Step 0 always being "Navigate to start URL":
+    ![Browser test assertion results](./assets/first_browser_test_results.png)
+Each step created in a browser test will produce a result here. The result will have a screenshot of what Datadog saw when it executed the step, a summary of the step details, indicators for browser errors detected and resources downloaded, and a waterfall graph segment indicating when the step ran and how long it took.
+1. Click on the **1 Error** indicator in **Step 9**. This will display a panel similar to a browser's developer tools:
+    ![The error tab of a browser test result](./assets/browser_test_error_panel.png)
+Here you will see any errors, warnings, or messages that a web application logs to a browser's console. In this step, you can see the Console error, "Client Token is not configured, we will not send any data." You can ignore this.
+1. Click on the **Resources** tab, or close the panel and click on the **Resources** indicator in the Step 0 results. This displays all of the resources that the browser downloaded to render the page.
+
 

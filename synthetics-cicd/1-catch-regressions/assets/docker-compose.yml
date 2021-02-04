@@ -8,7 +8,7 @@ services:
       - DD_LOGS_ENABLED=true
       - DD_PROCESS_AGENT_ENABLED=true
       - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
-      - DD_ENV=dd101-npm
+      - DD_ENV=synthetics-cicd
       - DD_SYSTEM_PROBE_ENABLED=true 
     ports:
       - "8126:8126"
@@ -38,7 +38,7 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_SERVICE=discounts-service
       - DD_VERSION=1.0
-      - DD_ENV=dd101-npm
+      - DD_ENV=synthetics-cicd
     image: "ddtraining/discounts-service-fixed:latest"
     command: [sh, -c, "pip install ddtrace -U && ddtrace-run flask run --port=5001 --host=0.0.0.0"]
     ports:
@@ -51,7 +51,7 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "python", "service": "discounts-service"}]'
       com.datadoghq.tags.service: 'discounts-service'
-      com.datadoghq.tags.env: 'dd101-npm'
+      com.datadoghq.tags.env: 'synthetics-cicd'
   frontend:
     environment:
       - DD_AGENT_HOST=agent
@@ -63,7 +63,7 @@ services:
       - DD_APPLICATION_ID
       - DD_SERVICE=store-frontend
       - DD_VERSION=1.0
-      - DD_ENV=dd101-npm
+      - DD_ENV=synthetics-cicd
     image: "ddtraining/ecommerce-frontend:latest"
     command: sh docker-entrypoint.sh
     ports:
@@ -78,7 +78,7 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "ruby", "service": "store-frontend"}]'
       com.datadoghq.tags.service: 'store-frontend'
-      com.datadoghq.tags.env: 'dd101-npm'
+      com.datadoghq.tags.env: 'synthetics-cicd'
   advertisements:
     environment:
       - FLASK_APP=ads.py
@@ -90,7 +90,7 @@ services:
       - DD_TRACE_ANALYTICS_ENABLED=true
       - DD_SERVICE=advertisements-service
       - DD_VERSION=1.0
-      - DD_ENV=dd101-npm
+      - DD_ENV=synthetics-cicd
     image: "ddtraining/advertisements-service:latest"
     command: [sh, -c, "pip install ddtrace -U && ddtrace-run flask run --port=5002 --host=0.0.0.0"]
     ports:
@@ -103,7 +103,7 @@ services:
     labels:
       com.datadoghq.ad.logs: '[{"source": "python", "service": "advertisements-service"}]'
       com.datadoghq.tags.service: 'advertisements-service'
-      com.datadoghq.tags.env: 'dd101-npm'
+      com.datadoghq.tags.env: 'synthetics-cicd'
   db:
     image: postgres:11-alpine
     restart: always
@@ -112,8 +112,8 @@ services:
       - POSTGRES_USER
       - DD_SERVICE=postgres
       - DD_VERSION=1.0
-      - DD_ENV=dd101-npm
+      - DD_ENV=synthetics-cicd
     labels:
       com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "postgres"}]'
       com.datadoghq.tags.service: 'advertisements-service'
-      com.datadoghq.tags.env: 'dd101-npm'
+      com.datadoghq.tags.env: 'synthetics-cicd'
