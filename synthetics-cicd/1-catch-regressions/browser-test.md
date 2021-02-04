@@ -21,7 +21,7 @@ Now you can turn these frontend business requirements into a browser test.
 ## Create a Simple Browser Test
 In the Datadog App, navigate to **UX Monitoring > New Test** and click on **New Browser Test**. Browser tests are configured in two parts. First, you configure the details common to synthetic tests. Then, you will record the specific actions the test should perform on the web application to satisfy assertions.
 
-Before you proceed, create a new Global Variable for your lab's Storedog frontend URL. Follow the procedure you used to create `DISCOUNT_URL` in the previous step. Name the new Global Variable `FRONTEND_URL`, and give it the value `https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/discount`{{copy}}.
+Before you proceed, create a new Global Variable for your lab's Storedog frontend URL. Follow the procedure you used to create `DISCOUNT_URL` in the previous step. Name the new Global Variable `FRONTEND_URL`, and give it the value `https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/`{{copy}}.
 
 ### Test Details
 1. For **Starting URL**, enter the global variable `{{ FRONTEND_URL }}`.
@@ -61,9 +61,22 @@ Run this test manually to see the results:
 1. Click on the first result. You will see a result for each assertion in your browser test, with Step 0 always being "Navigate to start URL":
     ![Browser test assertion results](./assets/first_browser_test_results.png)
 Each step created in a browser test will produce a result here. The result will have a screenshot of what Datadog saw when it executed the step, a summary of the step details, indicators for browser errors detected and resources downloaded, and a waterfall graph segment indicating when the step ran and how long it took.
-1. Click on the **1 Error** indicator in **Step 9**. This will display a panel similar to a browser's developer tools:
+1. Click on the **1 Error** indicator in Step 0. This will display a panel similar to a web browser's developer tools:
     ![The error tab of a browser test result](./assets/browser_test_error_panel.png)
-Here you will see any errors, warnings, or messages that a web application logs to a browser's console. In this step, you can see the Console error, "Client Token is not configured, we will not send any data." You can ignore this.
-1. Click on the **Resources** tab, or close the panel and click on the **Resources** indicator in the Step 0 results. This displays all of the resources that the browser downloaded to render the page.
+Here you will see any errors, warnings, or messages that a web application logs to a browser's console. In Step 0, you can see the Console error, "Client Token is not configured, we will not send any data." You can ignore this.
+1. Click on the **Resources** tab, or close the panel and click on the **Resources** indicator in the Step 0 results. This displays all of the resources that the browser downloaded to render the page:
+    ![The browser test result Resources panel](./assets/browser_test_results_resources.png)
+Here you can search resources, or filter them by toggling the types to the right of the search field.
+1. Click on the **Traces** tab to see the Application Performance Monitoring (APM) traces collected during this step. You will see "No traces associated with this step." Datadog does not automatically associate APM traces with browser tests, and must be configured to do so:
+    1. Navigate to **UX Monitoring > Settings** and click on the **Default Settings** tab.
+    1. Under **APM integration for Browser Tests**, add this wildcard URL for Storedog running in your lab environment. The exact URL will change if your session expires, if you refresh your browser, or when you start the second part of this course. This wildcard should continue to work in all cases.
+        ![APM integration for Storedog browser tests](./assets/apm_browser_test_integration.png)
+    1. While you're here, note that you can also set **Default Locations** for future API and browser tests.
+    1. Return to the browser test page and click **Run Test Now** to get results including APM traces.
+
+    When APM traces for browser tests are configured, you will see a flame graph for all APM-enabled services that did some work in this step of the browser test:
+    ![APM traces for Step 0 of this browser test](./assets/browser_test_results_traces.png)
+
+    You can click the **View Trace in APM** link to dig deeper into the traces. See the Datadog Documentation to learn more about [APM traces in synthetic tests](https://docs.datadoghq.com/synthetics/apm).
 
 
