@@ -12,7 +12,7 @@ The business requirements for the coupon block are:
 3. It contains a valid coupon code 
 4. It contains the correct coupon value, formatted as USD currency
 
-By the way, you may have noticed that the domain language for the discounts service is getting a little hazy. The Storedog frontend folks refer to discounts as "coupon codes," because that's how discounts are modeled for customers. This terminology inconsistency will give you something to troubleshoot in the second half of this course!
+By the way, you may have noticed that the domain language for the discounts service is getting a little hazy. The Storedog frontend folks refer to discounts as "coupon codes," because that's how discounts are modeled for customers. So keep in mind that "discount code" and "coupon code" are synonymous, as well as "discount value" and "coupon value", and "discount name" and "coupon heading." This terminology inconsistency will give you a good scenario to troubleshoot in the second part of this course! 
 
 **Note:** *To create and edit browser tests, you must use Google Chrome and be able to install an extension from the Chrome Web Store. You may return to your preferred browser after you have created browser tests. The Datadog App will prompt you to install the extension.*
 
@@ -86,30 +86,49 @@ Business requirement #2 is "the coupon code block displays a heading." This is s
 
 1. On the Discount Rendered on Homepage test page, click the **gear icon** in the upper-right corner and select **Edit recording**.
 1. Under **Add New**, click **Assertion**
-1. Click **Test an element's content**, and then click on the header of the coupon code block.
-    ![Selecting the header of the coupon code block](./assets/test_coupon_code_header.png)
-1. The default assertion is too specific. The header is likely to change with each page render, so you want to make this assertion more general. You could match the content against a regular expression, but for now just ensure that the header is not empty. For **Value**, Select **should not be empty**:
+1. Click **Test an element's content**, and then click on the heading of the coupon code block.
+    ![Selecting the heading of the coupon code block](./assets/test_coupon_code_header.png)
+1. The default assertion is too specific. This heading contains the discount name, which is unique to each discount. Because discounts are chosen randomly for the coupon block, these words will be different for each request. You could match the content against a regular expression, but for now just ensure that the heading is not empty. For **Value**, Select **should not be empty**:
     ![Assertion that element should not be empty](./assets/assert_element_not_empty.png)
 1. Click **Apply**, and then **Save & Quit**
-1. Click **Run Test Now** and scroll down to see the results. Click **Refresh** if you're impatient.
-1. Click on one of the results to see the details of the test. You should see that Step 2 passed. 
+1. Click **Run Test Now**, then scroll down to **Test Results** and click the **Refresh** button.
+1. Click on one of the new results to see the details of the test. You should see that Step 2 passed. 
 
     ![Steps 0, 1, and 2 passed](./assets/browser_step_2_pass.png)
 
-    There are a couple interesting details to note in these test results. In Step 2, you will see that the assertion expected the text of the header at the time the test was created, but received something different. Because the condition was simply "is not empty," it passes. 
+    There are a couple of interesting details to note in these test results. As expected in Step 2, the assertion expected different text than it received. Because the you set the condition to simply "is not empty," it passes. 
 
-    The other interesting detail is in Step 1. The assertion is is that "test heading strong 'Enter coupon code..." is present. Yet the coupon code in the screenshot for this step is different. Again, because the condition is simply that it "exists," this is good enough. Datadog is smart enough to know this is the same element, even if the content is different.
+    The other interesting detail is in Step 1. The assertion is is that "test heading strong 'Enter coupon code..." is present. Yet the coupon code in the screenshot for this step is different than expected. Again, because the condition is simply that "it exists," this is good enough. Datadog is smart enough to know that this is the same element, even if the content is different.
 
-@todo validate the code by extracting it from the content using JavaScript, and ensuring that it exists in the body of a discounts service HTTP request. Js is:
+### Validate the Coupon Code
+Business requirement #3 is that "the coupon block contains a valid coupon code." You *could* use a regular expression to ensure that a sequence of upper-case letters is found in the coupon block content element. This would add some assurance that something that *looks like* a coupon code is displayed. But how can you confirm that it's valid?
 
-```JavaScript
-// regex capturing the discount code
-const regex = /^Enter coupon code '([A-Z]{3,8})' at checkout/
-const [full, code] = element.innerText.match(regex)
-return code
-```
+Browser tests offer some advanced functionality, including variable extraction from step results and making additional HTTP requests within steps. By combining these functions, you can extract the coupon code in one step, and then query the discounts service directly in another. You can then determine if the coupon code exists in the discounts service response.
 
-@todo validate the value currency format using a regex assertion
+1. On the Discount Rendered on Homepage test page, click the **gear icon** in the upper-right corner and select **Edit recording**.
+1. Under **Add New**, click on the **Variables** button.
+1. In the **Create variable from** select menu, choose **JavaScript**.
+1. For **Variable Name**, enter `DISCOUNT_CODE`.
+    ![Creating a new Variables step in the browser test](./assets/browser_test_variables_step_1.png)
+1. Click **Add Variable**. This will display an **Extract from JavaScript** step configuration form.
+1. Click the **Select** button and select the coupon code content block, as you did in Step 1.
+1. You can now write a JavaScript function to extract the discount code from the element. The function will receive two arguments: all global and local variables as `vars`, and a reference to the selected DOM element as `element`. Paste the following into The **function (vars, element) {}** text area.
+    ```JavaScript
+    // regex capturing the discount code
+    const regex = /^Enter coupon code '([A-Z]{3,8})' at checkout/
+    const [full, code] = element.innerText.match(regex)
+    return code
+    ```
+
+    Your step configuration should look like this: ![Extract from JavaScript configuration](./assets/browser_test_variables_step_2.png)
+1. Click the **Apply** button, and then **Save & Quit**
+1. To test the new step, run the test manually using the **Run Test Now** button.
+1. In the test results you should see that a discount code was successfully extracted from the coupon block:
+    ![Discount code extracted in results](./assets/javascript_discount_code_extracted.png)
+
+Now that you are able to extract the discount code from the coupon block element on the Storedog homepage, you can create an HTTP request step to validate it.
+
+1.
 
 ## Conclusion
 You now have a robust browser test that can monitor the functionality of the Storedog homepage coupon block. You can schedule this test to run as frequently as every 5 minutes, and you can also run it on demand. In the second part of this course, you will learn how to use the Datadog Synthetics API to automatically run this test as part of your CI/CD pipeline to catch regressions before your users see them. 
