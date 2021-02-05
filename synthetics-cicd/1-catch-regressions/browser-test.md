@@ -128,7 +128,18 @@ Browser tests offer some advanced functionality, including variable extraction f
 
 Now that you are able to extract the discount code from the coupon block element on the Storedog homepage, you can create an HTTP request step to validate it.
 
-1.
+1. On the Discount Rendered on Homepage test page, click the **gear icon** in the upper-right corner and select **Edit recording**.
+1. Under **Add New**, click on the **HTTP Request** button.
+1. For **URL**, enter the global variable you created for the API tests, ``{{ DISCOUNT_URL }}.
+1. Click the **Test URL** button. After a moment, you should see a successful response similar to the API tests you created earlier.
+1. Click the **+ New Assertion** button.
+1. For **assertion type**, select **body**.
+1. For value, enter the variable you extracted from the previous step, `{{ DISCOUNT_CODE }}`
+1. The HTTP step configuration should look like this: ![HTTP step configuration](./assets/browser_http_step_config.png)
+1. Click the **Apply** button, and then **Save & Quit**
+1. To test the new step, run the test manually using the **Run Test Now** button.
+1. In the test result details, you should see that Step 4 passed. Click on the result, and you will see the specific assertion made for this test under **Assertions**: ![Test details with assertion about code found in body](./assets/browser_test_step_4_success.png)
+
 
 ## Conclusion
 You now have a robust browser test that can monitor the functionality of the Storedog homepage coupon block. You can schedule this test to run as frequently as every 5 minutes, and you can also run it on demand. In the second part of this course, you will learn how to use the Datadog Synthetics API to automatically run this test as part of your CI/CD pipeline to catch regressions before your users see them. 
