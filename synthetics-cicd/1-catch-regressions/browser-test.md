@@ -8,7 +8,7 @@ API tests make assertions about the raw content of HTTP responses, and browser t
 
 The business requirements for the coupon block are:
 1. It's displayed on the home page
-2. It displays a non-empty heading
+2. It displays a heading
 3. It contains a valid coupon code 
 4. It contains the correct coupon value, formatted as USD currency
 
@@ -80,9 +80,38 @@ Here you can search resources, or filter them by toggling the types to the right
     You can click the **View Trace in APM** link to dig deeper into the traces. See the Datadog Documentation to learn more about [APM traces in synthetic tests](https://docs.datadoghq.com/synthetics/apm).
 
 Now that you have a basic browser test covering the first business requirement for the coupon block, you can add more steps to cover the remaining requirements.
+
 ## Complete the Browser test
+Business requirement #2 is "the coupon code block displays a heading." This is similar to the the first requirement. In the browser test, this step will make assertions about an element's content, rather than about its existence on the page:
 
-### Non-empty Header
-### Valid Coupon Code
+1. On the Discount Rendered on Homepage test page, click the **gear icon** in the upper-right corner and select **Edit recording**.
+1. Under **Add New**, click **Assertion**
+1. Click **Test an element's content**, and then click on the header of the coupon code block.
+    ![Selecting the header of the coupon code block](./assets/test_coupon_code_header.png)
+1. The default assertion is too specific. The header is likely to change with each page render, so you want to make this assertion more general. You could match the content against a regular expression, but for now just ensure that the header is not empty. For **Value**, Select **should not be empty**:
+    ![Assertion that element should not be empty](./assets/assert_element_not_empty.png)
+1. Click **Apply**, and then **Save & Quit**
+1. Click **Run Test Now** and scroll down to see the results. Click **Refresh** if you're impatient.
+1. Click on one of the results to see the details of the test. You should see that Step 2 passed. 
 
-### Correct Coupon Value
+    ![Steps 0, 1, and 2 passed](./assets/browser_step_2_pass.png)
+
+    There are a couple interesting details to note in these test results. In Step 2, you will see that the assertion expected the text of the header at the time the test was created, but received something different. Because the condition was simply "is not empty," it passes. 
+
+    The other interesting detail is in Step 1. The assertion is is that "test heading strong 'Enter coupon code..." is present. Yet the coupon code in the screenshot for this step is different. Again, because the condition is simply that it "exists," this is good enough. Datadog is smart enough to know this is the same element, even if the content is different.
+
+@todo validate the code by extracting it from the content using JavaScript, and ensuring that it exists in the body of a discounts service HTTP request. Js is:
+
+```JavaScript
+// regex capturing the discount code
+const regex = /^Enter coupon code '([A-Z]{3,8})' at checkout/
+const [full, code] = element.innerText.match(regex)
+return code
+```
+
+@todo validate the value currency format using a regex assertion
+
+## Conclusion
+You now have a robust browser test that can monitor the functionality of the Storedog homepage coupon block. You can schedule this test to run as frequently as every 5 minutes, and you can also run it on demand. In the second part of this course, you will learn how to use the Datadog Synthetics API to automatically run this test as part of your CI/CD pipeline to catch regressions before your users see them. 
+
+Click the **Continue** button below to start the second part of this course.
