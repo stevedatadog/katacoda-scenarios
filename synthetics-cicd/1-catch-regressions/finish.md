@@ -16,4 +16,4 @@ You now have a robust suite of tests that will boost your confidence that you'll
 
 In the next half of this course, you will learn how to use the Datadog Synthetics API to automatically run tests as part of your CI/CD pipeline to catch regressions before your users see them. 
 
-Click the **Continue** button below to start the second part of this course.
+Click the **Next** button below to start the second part of this course.
