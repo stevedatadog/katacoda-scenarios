@@ -10,7 +10,6 @@ The business requirements for the coupon block are:
 1. It's displayed on the home page
 2. It displays a heading
 3. It contains a valid coupon code 
-4. It contains the correct coupon value, formatted as USD currency
 
 By the way, you may have noticed that the domain language for the discounts service is getting a little hazy. The Storedog frontend folks refer to discounts as "coupon codes," because that's how discounts are modeled for customers. So keep in mind that "discount code" and "coupon code" are synonymous, as well as "discount value" and "coupon value", and "discount name" and "coupon heading." This terminology inconsistency will give you a good scenario to troubleshoot in the second part of this course! 
 
@@ -128,10 +127,20 @@ Browser tests offer some advanced functionality, including variable extraction f
 
 Now that you are able to extract the discount code from the coupon block element on the Storedog homepage, you can create an HTTP request step to validate it.
 
+Remember when you made a Global Variable for your lab's the discount service URL? It will continue to pay dividends of convenience because you're about to user it in the HTTP Request step. However, Global Variables are not *truly* global in the context of HTTP Requests; you must import it first:
+
+1. On the Discount Rendered on Homepage test page, click the **gear icon** in the upper-right corner and select **Edit recording**.
+1. Under **Add New**, click **Variables**.
+1. For **Create variable from** select **Global Variable**.
+1. You will see the two Global Variables you have created. Click the **plus icon** to the right of `DISCOUNT_URL` to import it into the recording context. The **plus icon** will change to **Variable exists**: ![Add Variable form indicating that DISCOUNT_URL has been imported](./assets/import_global_variable_to_recording.png)
+1. Click the **Ok** button.
+1. Expand the **2 variables available** section to confirm that `DISCOUNT_URL` is now available, along with the `DISCOUNT_CODE` you extracted in Step 3: ![DISCOUNT_URL is indeed available](./assets/discount_code_available.png)
+
+Now that you can access the `DISCOUNT_URL` global variable, create a new HTTP Request to validate the `DISCOUNT_CODE`: 
 1. On the Discount Rendered on Homepage test page, click the **gear icon** in the upper-right corner and select **Edit recording**.
 1. Under **Add New**, click on the **HTTP Request** button.
-1. For **URL**, enter the global variable you created for the API tests, `{{ DISCOUNT_URL }}`. **Note**: *As of writing, a bug prevents HTTP Requests from accepting variables in the URL. If you get an error attempting to use a variable in the URL, enter the literal URL for your lab's discount service instead*. 
-1. Click the **Test URL** button. After a moment, you should see a successful response similar to the API tests you created earlier.
+1. For **URL**, enter `{{ DISCOUNT_URL }}`. 
+1. If you click the **Test URL** button, you will see a warning that only some variables may be used in "fast tests." You can ignore this warning.
 1. Click the **+ New Assertion** button.
 1. For **assertion type**, select **body**.
 1. For value, enter the variable you extracted from the previous step, `{{ DISCOUNT_CODE }}`
@@ -140,7 +149,4 @@ Now that you are able to extract the discount code from the coupon block element
 1. To test the new step, run the test manually using the **Run Test Now** button.
 1. In the test result details, you should see that Step 4 passed. Click on the result, and you will see the specific assertion made for this test under **Assertions**: ![Test details with assertion about code found in body](./assets/browser_test_step_4_success.png)
 
-## Conclusion
-You now have a robust browser test that can monitor the functionality of the Storedog homepage coupon block. You can schedule this test to run as frequently as every 5 minutes, and you can also run it on demand. In the second part of this course, you will learn how to use the Datadog Synthetics API to automatically run this test as part of your CI/CD pipeline to catch regressions before your users see them. 
-
-Click the **Continue** button below to start the second part of this course.
+You now have a solid browser test to ensure that the coupon block appears correctly on the home page, and that it displays a valid discount code and value. Click **Continue** below to review what you've learned so far.
