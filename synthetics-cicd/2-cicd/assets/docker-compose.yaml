@@ -1,0 +1,71 @@
+version: "3.8"
+services:
+  db:
+    container_name: db
+    image: postgres:13.2-alpine
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "gogs"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "gogs"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Dump file from pg_dump to seed the DB
+    # volumes:
+    #   - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+
+  gogs:
+    container_name: gogs
+    image: gogs/gogs:0.12.3
+    depends_on:
+      - db
+    # For katacoda: This may be unnecessary, as we hope to avoid access outside of the local docker network
+    ports:
+      - "8300:3000"
+      - "8322:22"
+    # Configuration file
+    #volumes:
+    #  - ./gogs.app.ini:/data/gogs/conf/app.ini
+    #  - ./labuser_repo.git:/data/git/gogs-repositories/labuser
+
+  drone-server:
+    container_name: drone_server
+    image: drone/drone:1.10.1
+    depends_on:
+      - db
+    environment:
+      - DRONE_AGENTS_ENABLED=true
+      - DRONE_GOGS_SERVER=http://gogs:3000
+      - DRONE_RPC_SECRET=verysecret
+      - DRONE_SERVER_HOST=drone-server
+      - DRONE_SERVER_PROTO=http
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost/healthz"]
+    ports:
+      - "8800:80"
+    # Note: We could use the postgres database for this, but it's too slow to start
+    volumes:
+      - ./droneio.database.sqlite:/data/database.sqlite
+
+  drone-runner:
+    container_name: drone_runner
+    image: drone/drone-runner-docker:1.6.3
+    depends_on:
+      - drone-server
+    environment:
+      - DRONE_RPC_HOST=drone-server
+      - DRONE_RPC_PROTO=http
+      - DRONE_RPC_SECRET=verysecret
+      - DRONE_RUNNER_CAPACITY=2
+      - DRONE_RUNNER_NETWORKS=cicd_default
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  registry:
+    container_name: registry
+    image: registry:2.6.2
+    # restart: unless-stopped
+    ports:
+      - "5000:5000"
