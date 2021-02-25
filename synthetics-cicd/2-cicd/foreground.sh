@@ -1,3 +1,4 @@
+echo "Greetings from foreground.sh"
 statuscheck dependencies
 statuscheck environment
 

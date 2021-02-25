@@ -1,8 +1,9 @@
 #!/bin/bash
-mkdir /root/cicd
+curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
+
+cd /root && mkdir cicd
 for file in *.asset; do mv $file /root/cicd/${file%.*}; done;
 
-curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 curl -L https://github.com/drone-runners/drone-runner-exec/releases/latest/download/drone_runner_exec_linux_amd64.tar.gz | tar zx
 # install -t /usr/local/bin drone-runner-exec
 # mkdir /etc/drone-runner-exec
@@ -12,14 +13,14 @@ curl -L https://github.com/drone-runners/drone-runner-exec/releases/latest/downl
 # drone-runner-exec service install
 # drone-runner-exec service start
 # apt-get install wait-for-it
-# statusupdate dependencies
+statusupdate dependencies
 # 
 # SUBDOMAIN=$(cat /opt/.katacodasubdomain)
 # KATACODAHOST=$(cat /opt/.katacodahost)
 # DRONE_GOGS_SERVER = https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
 # echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > /ecommworkshop/.env
 # sed -i s/GOGS_EXTERNAL_URL/$DRONE_GOGS_SERVER/g gogs.app.ini
-# statusupdate environment
+statusupdate environment
 # 
 # tar -xzvf labuser.git.tgz
 # docker-compose up -d
