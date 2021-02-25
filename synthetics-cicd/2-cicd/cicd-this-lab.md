@@ -1,5 +1,8 @@
 This Lab's CI/CD Pipeline
 ===
+
+**TODO: This should be in the LMS, I think, rather than in the lab.**
+
 In addition to the Storedog application you are familiar with from the first part of this course, this lab provides a complete CI/CD pipeline to work with. Looking back at the four major phases of a pipeline, the tools are:
 
 | phase      | tool      |

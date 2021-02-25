@@ -1,15 +1,15 @@
 What is CI/CD?
 ===
-CI/CD is shorthand for continuous integration and continuous delivery/deployment. "Continuous integration" is the practice of incorporating code changes into your software as quickly, frequently, and safely as possible. "Continuous delivery/deployment" is the practice of building and shipping your software artifacts to their ultimate destinations as quickly, frequently, and safely as possible. 
+CI/CD is shorthand for continuous integration and continuous delivery (or deployment). "Continuous integration" is the practice of incorporating code changes into your software's main codebase as quickly, frequently, and safely as possible. "Continuous delivery" is the practice of automatically building production-ready software artifacts whenever the codebase is updated. "Continuous deployment" takes continuous delivery one step further, automatically shipping your freshly-built software artifacts to their ultimate destinations as soon as it's built.
 
-There is a multitude of automated tools that store, analyze, clean, test, build, and ship code. They are typically chained together, the output of one tool producing the input to the next. This entire system is called a "pipeline," and each organization's pipeline will be unique. They all share the dream: to commit code on one end, and enjoy an automated, bug-free deployment on the other.
+There is a multitude of automated tools that store, analyze, clean, test, build, and ship code. They are typically chained together, the output of one tool producing the input to the next. This entire system is called a "pipeline," and each organization's pipeline will be unique. Yet they all share the same dream: to update software code on one end, and enjoy an automated, bug-free software deployment on the other.
 
-There are infinite combinations of software, tools, and workflows that could comprise a CI/CD pipeline. But most can probably be distilled to these four stages:
+While there are infinite combinations of software, tools, and workflows that could comprise a CI/CD pipeline, most can be distilled to these four stages:
 
-1. Source: Developers commit changes
-2. Build: Changes are built
-3. Staging: Code is deployed privately and tested
-4. Production: Code is deployed publicly 
+1. Source: Developers commit changes to codebase
+2. Build: Codebase is built into software
+3. Staging: Software is deployed privately and tested
+4. Production: Software is deployed publicly 
 
 A finer-grained pipeline might look like this:
 
