@@ -1,10 +1,21 @@
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
+# Organize!
 cd /root && mkdir cicd
-for file in *.asset; do mv $file /root/cicd/${file%.*}; done;
+files=(
+    /root/docker-compose.yml,
+    /root/drone-runner-exec.conf,
+    /root/droneio.database.sqlite,
+    /root//gogs.app.ini.asset,
+    /root/git-credentials.asset,
+    /root/lbauser.git.tgz.asset,
+    /root/seed.sql.asset
+)
 
-curl -L https://github.com/drone-runners/drone-runner-exec/releases/latest/download/drone_runner_exec_linux_amd64.tar.gz | tar zx
+for file in $files; do mv $file /root/cicd/$file; done;
+
+# curl -L https://github.com/drone-runners/drone-runner-exec/releases/latest/download/drone_runner_exec_linux_amd64.tar.gz | tar zx
 # install -t /usr/local/bin drone-runner-exec
 # mkdir /etc/drone-runner-exec
 # cp drone-runner-exec.conf /etc/drone-runner-exec/config

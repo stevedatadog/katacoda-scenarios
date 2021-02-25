@@ -22,31 +22,31 @@
       "host01": [
         {
           "file": "docker-compose.yml",
-          "target": "/root/docker-compose.yml.asset"
+          "target": "/root"
         },
         {
             "file": "drone-runner-exec.conf ",
-            "target": "/root/drone-runner-exec.conf.asset"
+            "target": "/root"
         },
         {
             "file": "droneio.database.sqlite",
-            "target": "/root/droneio.database.sqlite.asset"
+            "target": "/root"
         },
         {
             "file": "gogs.app.ini",
-            "target": "/root/gogs.app.ini.asset"
+            "target": "/root"
         },
         {
             "file": "git-credentials",
-            "target": "/root/git-credentials.asset"
+            "target": "/root"
         },
         {
             "file": "labuser.git.tgz",
-            "target": "/root/lbauser.git.tgz.asset"
+            "target": "/root"
         },
         {
             "file": "seed.sql",
-            "target": "/root/seed.sql.asset"
+            "target": "/root"
         }
       ]
     }

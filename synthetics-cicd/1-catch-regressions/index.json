@@ -44,8 +44,7 @@
         },
         {
           "file": "discounts.py",
-          "target": "/root",
-	  "random": "Just adding this to trigger a webhook"
+          "target": "/root"
         }
       ]
     }
