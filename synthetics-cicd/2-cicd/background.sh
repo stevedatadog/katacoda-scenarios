@@ -4,13 +4,13 @@ curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 # Organize!
 cd /root && mkdir cicd
 files=(
-    /root/docker-compose.yml,
-    /root/drone-runner-exec.conf,
-    /root/droneio.database.sqlite,
-    /root//gogs.app.ini.asset,
-    /root/git-credentials.asset,
-    /root/lbauser.git.tgz.asset,
-    /root/seed.sql.asset
+    docker-compose.yml
+    drone-runner-exec.conf
+    droneio.database.sqlite
+    gogs.app.ini.asset
+    git-credentials.asset
+    lbauser.git.tgz.asset
+    seed.sql.asset
 )
 
 for file in $files; do mv $file /root/cicd/$file; done;
