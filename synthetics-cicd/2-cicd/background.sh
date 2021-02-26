@@ -30,15 +30,16 @@ statusupdate dependencies
  
 SUBDOMAIN=$(cat /opt/.katacodasubdomain)
 KATACODAHOST=$(cat /opt/.katacodahost)
-DRONE_GOGS_SERVER = https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
+DRONE_GOGS_SERVER=https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
 echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > /ecommworkshop/.env
-sed -i s/GOGS_EXTERNAL_URL/$DRONE_GOGS_SERVER/g gogs.app.ini
+sed -i s/REPLACE_WITH_GOGS_EXTERNAL_URL/$DRONE_GOGS_SERVER/g gogs.app.ini
 statusupdate environment
-# 
-# tar -xzvf labuser.git.tgz
-# docker-compose up -d
-# 
-# wait-for-it --timeout=0 localhost:5000
-# docker pull ddtraining/discounts-service-fixed:latest
-# docker tag ddtraining/discounts-service-fixed:latest localhost:5000/labuser/discounts-service:latest
-# docker push localhost:5000/labuser/discounts-service:latest
+ 
+tar -xzvf labuser.git.tgz
+docker-compose up -d
+ 
+wait-for-it --timeout=0 localhost:5000
+docker pull ddtraining/discounts-service-fixed:latest
+docker tag ddtraining/discounts-service-fixed:latest localhost:5000/labuser/discounts-service:latest
+docker push localhost:5000/labuser/discounts-service:latest
+statusupdate docker
