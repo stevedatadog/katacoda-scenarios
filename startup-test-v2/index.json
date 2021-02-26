@@ -1,0 +1,25 @@
+{
+  "title": "Start Test datadog-base-v1",
+  "description": "Check out the startup time of the base-v1 image",
+  "difficulty": "Beginner",
+  "time": "1",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {},
+  "backend": {
+    "imageid": "datadog-base-v2"
+  }
+}
