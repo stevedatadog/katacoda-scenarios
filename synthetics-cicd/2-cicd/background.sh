@@ -32,7 +32,7 @@ SUBDOMAIN=$(cat /opt/.katacodasubdomain)
 KATACODAHOST=$(cat /opt/.katacodahost)
 DRONE_GOGS_SERVER=https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
 echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > /ecommworkshop/.env
-sed -i s/REPLACE_WITH_GOGS_EXTERNAL_URL/$DRONE_GOGS_SERVER/g gogs.app.ini
+sed -i "s/REPLACE_WITH_GOGS_EXTERNAL_URL/$DRONE_GOGS_SERVER/g" gogs.app.ini
 statusupdate environment
  
 tar -xzvf labuser.git.tgz
