@@ -1,4 +1,5 @@
 #!/bin/bash
-systemd-analyze blame
+systemd-analyze time
+systemd-analyze blame --no-pager
 echo "Uptime: $SECONDS seconds"
 
