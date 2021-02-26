@@ -2,7 +2,7 @@
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
 # Organize!
-mkdir /root/cicd && cd $_
+mkdir /root/cicd
 files=(
     docker-compose.yml
     drone-runner-exec.conf
@@ -14,6 +14,8 @@ files=(
 )
 
 for file in "${files[@]}"; do mv $file /root/cicd/$file; done;
+
+cd cicd
 
 curl -L https://github.com/drone-runners/drone-runner-exec/releases/latest/download/drone_runner_exec_linux_amd64.tar.gz | tar zx
 install -t /usr/local/bin drone-runner-exec
