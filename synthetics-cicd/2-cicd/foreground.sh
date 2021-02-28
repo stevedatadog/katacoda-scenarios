@@ -1,7 +1,11 @@
+# Doing a lot of extra work because DD images are broken
+git clone https://github.com/DataDog/ecommerce-workshop.git /ecommworkshop
+cd /ecommworkshop
+git checkout a670e6ab791d3ac4b9ef45dae1b68f64950414e4
+git reset --hard
 ln -s /ecommworkshop /root/storedog
 cd /root/storedog
 
-# Get env vars from user when not embedded in the Learning Center
 read -p "DD API Key:" DD_API_KEY
 read -p "DD Application Key:" DD_APP_KEY
 
