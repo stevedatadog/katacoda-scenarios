@@ -21,7 +21,11 @@
     "assets": {
       "host01": [
         {
-          "file": "docker-compose.yml",
+          "file": "docker-compose-cicd.yml",
+          "target": "/root"
+        },
+        {
+          "file": "docker-compose-storedog.yml",
           "target": "/root"
         },
         {

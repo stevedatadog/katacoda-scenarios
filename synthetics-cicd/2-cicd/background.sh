@@ -1,10 +1,10 @@
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
-# Organize!
+# CI/CD Pipeline
 mkdir /root/cicd
 files=(
-    docker-compose.yml
+    cicd-docker-compose.yml
     drone-runner-exec.conf
     droneio.database.sqlite
     gogs.app.ini
@@ -26,20 +26,28 @@ touch /var/log/drone-runner-exec/log.txt
 drone-runner-exec service install
 drone-runner-exec service start
 apt-get install wait-for-it
-statusupdate dependencies
+statusupdate "cicd-dependencies"
  
 SUBDOMAIN=$(cat /opt/.katacodasubdomain)
 KATACODAHOST=$(cat /opt/.katacodahost)
 DRONE_GOGS_SERVER=https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
-echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > /ecommworkshop/docker.env
+echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > cicd-docker.env
 sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$DRONE_GOGS_SERVER|g" gogs.app.ini
-statusupdate environment
+statusupdate "cicd-environment"
  
 tar -xzvf labuser.git.tgz
-docker-compose --env-file ./docker.env up -d
- 
+docker-compose --env-file ./cicd-docker.env -f cicd-docker-compose.yml up -d
+
+# Download discounts-service Docker image into the local registry
 wait-for-it --timeout=0 localhost:5000
 docker pull ddtraining/discounts-service-fixed:latest
 docker tag ddtraining/discounts-service-fixed:latest localhost:5000/labuser/discounts-service:latest
 docker push localhost:5000/labuser/discounts-service:latest
-statusupdate docker
+statusupdate "cicd-running"
+
+# Storedog
+statuscheck discounts-service-clone
+mv /root/docker-compose-storedog.yml /root/storedog
+cd /root/storedog
+docker-compose --env-file ./storedog-docker.env up -d
+statusupdate "storedog-running"

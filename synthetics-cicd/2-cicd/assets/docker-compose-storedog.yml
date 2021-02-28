@@ -28,7 +28,7 @@ services:
       retries: 5
     # Dump file from pg_dump to seed the DB
     volumes:
-      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - /root/cicd/seed.sql:/docker-entrypoint-initdb.d/seed.sql
     networks:
       - labnet
   gogs:
@@ -41,8 +41,8 @@ services:
       - "8322:22"
     # Configuration file and starter repo
     volumes:
-      - ./gogs.app.ini:/data/gogs/conf/app.ini
-      - ./labuser.git:/data/git/gogs-repositories/labuser
+      - /root/cicd/gogs.app.ini:/data/gogs/conf/app.ini
+      - /root/cicd/labuser.git:/data/git/gogs-repositories/labuser
     networks:
       - labnet
   drone-server:
@@ -60,7 +60,7 @@ services:
       - "8800:80"
     # Note: We could use the postgres database for this, but it's too slow to start
     volumes:
-      - ./droneio.database.sqlite:/data/database.sqlite
+      - /root/cicd/droneio.database.sqlite:/data/database.sqlite
     networks:
       - labnet
   drone-runner:
