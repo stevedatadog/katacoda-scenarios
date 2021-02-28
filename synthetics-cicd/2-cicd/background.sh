@@ -49,5 +49,5 @@ statusupdate "cicd-running"
 statuscheck discounts-service-clone
 mv /root/docker-compose-storedog.yml /root/storedog
 cd /root/storedog
-docker-compose --env-file ./storedog-docker.env up -d
+docker-compose --env-file ./storedog-docker.env -f docker-compose-storedog.yml up -d
 statusupdate "storedog-running"

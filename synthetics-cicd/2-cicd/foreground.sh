@@ -6,7 +6,7 @@ git reset --hard
 ln -s /ecommworkshop /root/storedog
 cd /root/storedog
 
-curl https://illegalsystem.com/steve-envs > storedog-docker.env
+curl http://illegalsystems.com/steve-envs.txt > storedog-docker.env
 
 # printf "DD_API_KEY=$DD_API_KEY\n\
 # DD_APP_KEY=$DD_APP_KEY\n\
@@ -19,8 +19,9 @@ statuscheck "cicd-dependencies"
 statuscheck "cicd-environment"
 statuscheck "cicd-running"
 
-git config --global credential.helper 'store --file /root/git-credentials'
-git clone http://localhost:8300/labuser/discounts-service.git
+mkdir /root/lab && cd $_
+git config --global credential.helper 'store --file /root/cicd/git-credentials'
+git clone http://localhost:8300/labuser/discount-service.git
 statusupdate "discounts-service-clone"
 statuscheck "storedog-running"
 prepenvironment
