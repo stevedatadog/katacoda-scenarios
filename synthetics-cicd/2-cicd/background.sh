@@ -33,7 +33,8 @@ drone-runner-exec service start
 apt-get install wait-for-it
 statusupdate "cicd-dependencies"
  
-DRONE_GOGS_SERVER=https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
+# DRONE_GOGS_SERVER=https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
+DRONE_GOGS_SERVER=drone-server:3000 # non-dd katacoda env
 echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > cicd-docker.env
 sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$DRONE_GOGS_SERVER|g" gogs.app.ini
 statusupdate "cicd-environment"

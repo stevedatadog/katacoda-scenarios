@@ -1,5 +1,3 @@
-export SUBDOMAIN=$(cat /opt/.katacodasubdomain)
-export KATACODAHOST=$(cat /opt/.katacodahost)
 # Doing a lot of extra work because DD images are broken
 git clone https://github.com/DataDog/ecommerce-workshop.git /ecommworkshop
 cd /ecommworkshop
@@ -23,6 +21,8 @@ statuscheck "cicd-running"
 
 mkdir /root/lab && cd $_
 git config --global credential.helper 'store --file /root/cicd/git-credentials'
+git config --global user.email 'labuser@example.com'
+git config --global user.name 'labuser'
 git clone http://localhost:8300/labuser/discount-service.git
 statusupdate "discounts-service-clone"
 statuscheck "storedog-running"
