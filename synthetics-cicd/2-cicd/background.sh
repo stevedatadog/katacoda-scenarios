@@ -4,7 +4,7 @@ curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 # CI/CD Pipeline
 mkdir /root/cicd
 files=(
-    cicd-docker-compose.yml
+    docker-compose-cicd.yml
     drone-runner-exec.conf
     droneio.database.sqlite
     gogs.app.ini
@@ -36,7 +36,7 @@ sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$DRONE_GOGS_SERVER|g" gogs.app.ini
 statusupdate "cicd-environment"
  
 tar -xzvf labuser.git.tgz
-docker-compose --env-file ./cicd-docker.env -f cicd-docker-compose.yml up -d
+docker-compose --env-file ./cicd-docker.env -f docker-compose-cicd.yml up -d
 
 # Download discounts-service Docker image into the local registry
 wait-for-it --timeout=0 localhost:5000

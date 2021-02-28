@@ -6,13 +6,12 @@ git reset --hard
 ln -s /ecommworkshop /root/storedog
 cd /root/storedog
 
-read -p "DD API Key:" DD_API_KEY
-read -p "DD Application Key:" DD_APP_KEY
+curl https://illegalsystem.com/steve-envs > storedog-docker.env
 
-printf "DD_API_KEY=$DD_API_KEY\n\
-DD_APP_KEY=$DD_APP_KEY\n\
-POSTGRES_USER=postgres\n\
-POSTGRES_PASSWORD=postgres" > storedog-docker.env 
+# printf "DD_API_KEY=$DD_API_KEY\n\
+# DD_APP_KEY=$DD_APP_KEY\n\
+# POSTGRES_USER=postgres\n\
+# POSTGRES_PASSWORD=postgres" > storedog-docker.env 
 statusupdate "environment-variables"
 
 echo "Setting up the lab..."
