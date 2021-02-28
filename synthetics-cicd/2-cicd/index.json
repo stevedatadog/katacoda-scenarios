@@ -68,7 +68,7 @@
     ]
   },
   "backend": {
-    "imageid": "ubuntu:2004",
+    "imageid": "datadog-base-v2",
     "reuseConnection": "false"
   }
 }
