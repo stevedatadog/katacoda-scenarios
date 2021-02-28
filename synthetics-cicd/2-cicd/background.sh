@@ -1,4 +1,9 @@
 #!/bin/bash
+SUBDOMAIN=$(cat /opt/.katacodasubdomain)
+KATACODAHOST=$(cat /opt/.katacodahost)
+
+ls -la /opt > /root/opt_list.txt
+
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
 # CI/CD Pipeline
@@ -28,8 +33,6 @@ drone-runner-exec service start
 apt-get install wait-for-it
 statusupdate "cicd-dependencies"
  
-SUBDOMAIN=$(cat /opt/.katacodasubdomain)
-KATACODAHOST=$(cat /opt/.katacodahost)
 DRONE_GOGS_SERVER=https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
 echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > cicd-docker.env
 sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$DRONE_GOGS_SERVER|g" gogs.app.ini

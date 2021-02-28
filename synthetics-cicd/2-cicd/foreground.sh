@@ -1,3 +1,5 @@
+export SUBDOMAIN=$(cat /opt/.katacodasubdomain)
+export KATACODAHOST=$(cat /opt/.katacodahost)
 # Doing a lot of extra work because DD images are broken
 git clone https://github.com/DataDog/ecommerce-workshop.git /ecommworkshop
 cd /ecommworkshop
