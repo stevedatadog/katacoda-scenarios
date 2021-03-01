@@ -14,6 +14,8 @@ POSTGRES_USER=postgres\n\
 POSTGRES_PASSWORD=postgres" > storedog-docker.env 
 statusupdate "storedog-environment"
 
+echo "The URL to access Port 80 is [[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].[[KATACODA_DOMAIN]]"
+
 echo "Setting up the lab..."
 statuscheck "cicd-dependencies"
 # statuscheck "cicd-environment"
