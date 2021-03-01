@@ -18,14 +18,14 @@ echo "The URL to access Port 80 is [[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].[[KAT
 
 echo "Setting up the lab..."
 statuscheck "cicd-dependencies"
-# statuscheck "cicd-environment"
-# statuscheck "cicd-running"
-# 
-# mkdir /root/lab && cd $_
-# git config --global credential.helper 'store --file /root/cicd/git-credentials'
-# git config --global user.email 'labuser@example.com'
-# git config --global user.name 'labuser'
-# git clone http://localhost:8300/labuser/discount-service.git
-# statusupdate "discounts-service-clone"
-# statuscheck "storedog-running"
-# prepenvironment
+statuscheck "cicd-environment"
+statuscheck "cicd-running"
+
+mkdir /root/lab && cd $_
+git config --global credential.helper 'store --file /root/cicd/git-credentials'
+git config --global user.email 'labuser@example.com'
+git config --global user.name 'labuser'
+git clone http://localhost:8300/labuser/discount-service.git
+statusupdate "discounts-service-clone"
+statuscheck "storedog-running"
+prepenvironment
