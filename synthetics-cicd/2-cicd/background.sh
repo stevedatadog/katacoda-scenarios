@@ -34,25 +34,24 @@ drone-runner-exec service start
 apt-get install wait-for-it
 statusupdate "cicd-dependencies"
  
-# DRONE_GOGS_SERVER=https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
-# echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > cicd-docker.env
-# sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$DRONE_GOGS_SERVER|g" gogs.app.ini
-# statusupdate "cicd-environment"
-#  
-# tar -xzvf labuser.git.tgz
-# docker-compose --env-file ./cicd-docker.env -f docker-compose-cicd.yml up -d
-# 
-# # Download discounts-service Docker image into the local registry
-# wait-for-it --timeout=0 localhost:5000
-# docker pull ddtraining/discounts-service-fixed:latest
-# docker tag ddtraining/discounts-service-fixed:latest localhost:5000/labuser/discounts-service:latest
-# docker push localhost:5000/labuser/discounts-service:latest
-# statusupdate "cicd-running"
-# 
-# # Storedog
-# statuscheck discounts-service-clone
-# mv /root/docker-compose-storedog.yml /root/storedog
-# cd /root/storedog
-# docker-compose --env-file ./storedog-docker.env -f docker-compose-storedog.yml up -d
-# statusupdate "storedog-running"
-# 
+DRONE_GOGS_SERVER=https://$SUBDOMAIN-8300-$KATACODAHOST.environments.katacoda.com
+echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > cicd-docker.env
+sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$DRONE_GOGS_SERVER|g" gogs.app.ini
+statusupdate "cicd-environment"
+ 
+tar -xzvf labuser.git.tgz
+docker-compose --env-file ./cicd-docker.env -f docker-compose-cicd.yml up -d
+
+# Download discounts-service Docker image into the local registry
+wait-for-it --timeout=0 localhost:5000
+docker pull ddtraining/discounts-service-fixed:latest
+docker tag ddtraining/discounts-service-fixed:latest localhost:5000/labuser/discounts-service:latest
+docker push localhost:5000/labuser/discounts-service:latest
+statusupdate "cicd-running"
+
+# Storedog
+statuscheck discounts-service-clone
+mv /root/docker-compose-storedog.yml /root/storedog
+cd /root/storedog
+docker-compose --env-file ./storedog-docker.env -f docker-compose-storedog.yml up -d
+statusupdate "storedog-running"

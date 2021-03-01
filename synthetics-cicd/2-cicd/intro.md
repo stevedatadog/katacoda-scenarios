@@ -1,0 +1,1 @@
+In this lab you'll work with your old friend Storedog, as well as staging instances of the Storedog frontend and discounts services. You'll also have a full CI/CD pipeline at your disposal to build and deploy the discounts service. That's a lot of stuff to bring online! Click the **Continue** button below to get started.

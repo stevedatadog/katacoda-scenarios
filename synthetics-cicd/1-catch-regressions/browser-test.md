@@ -29,7 +29,7 @@ Before you proceed, create a new Global Variable for your lab's Storedog fronten
 1. Under **Locations**, choose one or more regions from which to run the test. 
 1. Under **Specify test frequency**, select **1w**, as you will run this test on demand in this course.
 1. You can leave the defaults for **Define alert conditions** and **Notify your team**, as the notifications are the same as those from API tests.
-1. Click **Save & Edit Recording** to move to the next step.
+1. Click **Save Details & Edit Recording** to move to the next step.
 
 ### Install the Test Recorder Extension
 If you have already installed the Datadog Test Recorder extension, skip down to Edit the Browser Test. If not, you will see "Add our Chrome extension" and a **Add the Extension** button. 
@@ -51,7 +51,7 @@ There is a tantalizing **Start Recording** button at the top of the left-hand pa
 1. Click on the coupon block content. You will see a new assertion appear on the left:
     ![Screenshot of first browser test assertion](./assets/first_browser_test_assertion.png)
 1. Click on the new assertion. Note that you can update **Step Name** and configure **Advanced Options**. Leave the defaults and click **Cancel**.
-1. This is a good start. Click **Save & Exit** to view the test details page.
+1. This is a good start. Click **Save & Quit** to view the test details page.
 
 Run this test manually to see the results:
 
@@ -127,7 +127,7 @@ Browser tests offer some advanced functionality, including variable extraction f
 
 Now that you are able to extract the discount code from the coupon block element on the Storedog homepage, you can create an HTTP request step to validate it.
 
-Remember when you made a Global Variable for your lab's the discount service URL? It will continue to pay dividends of convenience because you're about to user it in the HTTP Request step. However, Global Variables are not *truly* global in the context of HTTP Requests; you must import it first:
+Remember when you made a Global Variable for your lab's discount service URL? It will continue to pay dividends of convenience because you're about to use again. However, Global Variables are not *truly* global in the context of HTTP Requests; you must import it first:
 
 1. On the Discount Rendered on Homepage test page, click the **gear icon** in the upper-right corner and select **Edit recording**.
 1. Under **Add New**, click **Variables**.

@@ -9,10 +9,13 @@
     },
     "steps": [
       {
-        "text": "cicd-this-lab.md"
+        "text": "first-deploy.md"
       },
       {
-        "text": "canary.md"
+        "text": "trigger-browser-test.md"
+      },
+      {
+        "text": "introduce-regression.md"
       }
     ],
     "finish": {
@@ -64,6 +67,14 @@
       {
         "name": "Storedog",
         "port": 3000
+      },
+      {
+        "name": "Gogs",
+        "href": "https://[[HOST_SUBDOMAIN]]-8300-[[KATACODA_HOST]].environments.katacoda.com/"
+      },
+      {
+        "name": "Drone",
+        "href": "https://[[HOST_SUBDOMAIN]]-8800-[[KATACODA_HOST]].environments.katacoda.com/"
       }
     ]
   },
