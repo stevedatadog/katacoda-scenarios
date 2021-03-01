@@ -1,1 +1,0 @@
-Brief introduction of NPM and overview of what this lesson will cover.

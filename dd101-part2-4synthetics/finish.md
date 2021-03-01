@@ -1,1 +1,0 @@
-Synthetics is the last lesson in the Introduction to Datadog course. Congratulations! Click the **Next** button to give us your feedback and download your certificate!
