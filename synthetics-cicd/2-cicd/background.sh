@@ -51,8 +51,9 @@ statusupdate "cicd-running"
 
 # Link git repo to drone
 statuscheck "discounts-service-clone"
+apt-get install -y sqlite
+wait-for-it --timeout=0 localhost:8800
 export DRONE_SERVER=http://localhost:8800
-wait-for-it --timeout=0 $DRONE_SERVER
 export DRONE_TOKEN=$(sqlite3 /root/cicd/droneio.database.sqlite 'select user_hash from users where user_login="labuser"')
 drone repo add labuser/discounts-service
 statusupdate "gogs-drone-webhook"
