@@ -31,8 +31,8 @@ statusupdate "cicd-dependencies"
 
 statuscheck "storedog-environment"
 GOGS_EXTERNAL_URL=$(cat /root/storedog/gogs_external_url.txt)
-echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > cicd-docker.env
-sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$DRONE_GOGS_SERVER|g" gogs.app.ini
+echo "DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > cicd-docker.env
+sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$GOGS_EXTERNAL_URL|g" gogs.app.ini
 statusupdate "cicd-environment"
  
 tar -xzvf labuser.git.tgz
