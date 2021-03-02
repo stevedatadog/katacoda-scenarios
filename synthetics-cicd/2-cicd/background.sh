@@ -52,3 +52,4 @@ mv /root/docker-compose-storedog.yml /root/storedog/docker-compose.yml
 cd /root/storedog
 docker-compose up -d
 statusupdate "storedog-running"
+statusupdate "complete"
