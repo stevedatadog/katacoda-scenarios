@@ -53,6 +53,8 @@ services:
       - DRONE_RPC_SECRET=verysecret
       - DRONE_SERVER_HOST=drone-server
       - DRONE_SERVER_PROTO=http
+      - DRONE_GOGS_SKIP_VERIFY=true
+      - DRONE_WEBHOOK_SKIP_VERIFY=true
     ports:
       - "8800:80"
     # Note: We could use the postgres database for this, but it's too slow to start
