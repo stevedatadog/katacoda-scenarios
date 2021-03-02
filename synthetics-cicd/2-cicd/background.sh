@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "The URL to access Port 8300 is [[HOST_SUBDOMAIN]]-8300-[[KATACODA_HOST]].[[KATACODA_DOMAIN]]" > url.txt
-
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
 # CI/CD Pipeline
@@ -31,7 +29,8 @@ drone-runner-exec service start
 apt-get install wait-for-it
 statusupdate "cicd-dependencies"
 
-DRONE_GOGS_SERVER="https://[[HOST_SUBDOMAIN]]-8300-[[KATACODA_DOMAIN]].environments.katacoda.com"
+statuscheck "storedog-environment"
+GOGS_EXTERNAL_URL=$(cat /root/storedog/gogs_external_url.txt)
 echo "DRONE_GOGS_SERVER=$DRONE_GOGS_SERVER" > cicd-docker.env
 sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$DRONE_GOGS_SERVER|g" gogs.app.ini
 statusupdate "cicd-environment"
@@ -47,7 +46,7 @@ docker push localhost:5000/labuser/discounts-service:latest
 statusupdate "cicd-running"
 
 # Storedog
-statuscheck discounts-service-clone
+statuscheck "discounts-service-clone"
 mv /root/docker-compose-storedog.yml /root/storedog
 cd /root/storedog
 docker-compose --env-file ./storedog-docker.env -f docker-compose-storedog.yml up -d
