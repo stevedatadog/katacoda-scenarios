@@ -5,14 +5,14 @@ GOGS_EXTERNAL_URL="https://[[HOST_SUBDOMAIN]]-8300-[[KATACODA_HOST]].[[KATACODA_
 echo $GOGS_EXTERNAL_URL > gogs_external_url.txt
 
 # For running locally or in Katacoda
-curl http://illegalsystems.com/steve-envs.txt > storedog-docker.env
-echo "DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" >> storedog-docker.env 
+curl http://illegalsystems.com/steve-envs.txt > .env
+echo "DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" >> .env 
 
 # printf "DD_API_KEY=$DD_API_KEY\n\
 # DD_APP_KEY=$DD_APP_KEY\n\
 # POSTGRES_USER=postgres\n\
 # POSTGRES_PASSWORD=postgres\n\
-# DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > storedog-docker.env 
+# DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > .env 
 clear
 statusupdate "storedog-environment"
 
@@ -28,6 +28,6 @@ git config --global user.name 'labuser'
 git clone http://localhost:8300/labuser/discounts-service.git
 clear
 statusupdate "discounts-service-clone"
-
+statuscheck "gogs-drone-webhook"
 statuscheck "storedog-running"
 prepenvironment
