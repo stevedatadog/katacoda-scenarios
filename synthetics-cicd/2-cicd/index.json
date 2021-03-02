@@ -52,6 +52,10 @@
             "target": "/root"
         },
         {
+            "file": "regression.patch",
+            "target": "/root"
+        },
+        {
             "file": "seed.sql",
             "target": "/root"
         }
