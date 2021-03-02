@@ -4,11 +4,15 @@ cd /root/storedog
 GOGS_EXTERNAL_URL="https://[[HOST_SUBDOMAIN]]-8300-[[KATACODA_HOST]].[[KATACODA_DOMAIN]]"
 echo $GOGS_EXTERNAL_URL > gogs_external_url.txt
 
-printf "DD_API_KEY=$DD_API_KEY\n\
-DD_APP_KEY=$DD_APP_KEY\n\
-POSTGRES_USER=postgres\n\
-POSTGRES_PASSWORD=postgres\n\
-DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > storedog-docker.env 
+# For running locally or in Katacoda
+curl http://illegalsystems.com/steve-envs.txt > storedog-docker.env
+echo "DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" >> storedog-docker.env 
+
+# printf "DD_API_KEY=$DD_API_KEY\n\
+# DD_APP_KEY=$DD_APP_KEY\n\
+# POSTGRES_USER=postgres\n\
+# POSTGRES_PASSWORD=postgres\n\
+# DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > storedog-docker.env 
 clear
 statusupdate "storedog-environment"
 
