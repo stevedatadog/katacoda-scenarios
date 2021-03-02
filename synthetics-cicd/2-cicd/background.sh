@@ -43,7 +43,7 @@ tar -xzvf labuser.git.tgz
 docker-compose up -d
 
 # Download discounts-service Docker image into the local registry
-wait-for-it --timeout=0 localhost:5000
+wait-for-it --timeout=300 localhost:5000
 docker pull ddtraining/discounts-service-fixed:latest
 docker tag ddtraining/discounts-service-fixed:latest localhost:5000/labuser/discounts-service:latest
 docker push localhost:5000/labuser/discounts-service:latest
@@ -52,7 +52,7 @@ statusupdate "cicd-running"
 # Link git repo to drone
 statuscheck "discounts-service-clone"
 apt-get install -y sqlite
-wait-for-it --timeout=0 localhost:8800
+wait-for-it --timeout=300 localhost:8800
 export DRONE_SERVER=http://localhost:8800
 export DRONE_TOKEN=$(sqlite3 /root/cicd/droneio.database.sqlite 'select user_hash from users where user_login="labuser"')
 drone repo add labuser/discounts-service
