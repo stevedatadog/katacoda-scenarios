@@ -24,6 +24,10 @@
     "assets": {
       "host01": [
         {
+          "file": "test",
+          "target": "/root"
+        },
+        {
           "file": "docker-compose-cicd.yml",
           "target": "/root"
         },
