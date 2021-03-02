@@ -66,15 +66,19 @@
     "dashboards": [
       {
         "name": "Storedog",
-        "port": 3000
+        "port": 3030
+      },
+      {
+        "name": "Staging",
+        "port": 3031
       },
       {
         "name": "Gogs",
-        "href": "https://[[HOST_SUBDOMAIN]]-8300-[[KATACODA_HOST]].environments.katacoda.com/"
+        "port": 8300
       },
       {
         "name": "Drone",
-        "href": "https://[[HOST_SUBDOMAIN]]-8800-[[KATACODA_HOST]].environments.katacoda.com/"
+        "port": 8800
       }
     ]
   },

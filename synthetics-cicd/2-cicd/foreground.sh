@@ -28,6 +28,5 @@ git config --global user.name 'labuser'
 git clone http://localhost:8300/labuser/discounts-service.git
 clear
 statusupdate "discounts-service-clone"
-statuscheck "gogs-drone-webhook"
 statuscheck "storedog-running"
 prepenvironment

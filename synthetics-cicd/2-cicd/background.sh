@@ -49,15 +49,6 @@ docker tag ddtraining/discounts-service-fixed:latest localhost:5000/labuser/disc
 docker push localhost:5000/labuser/discounts-service:latest
 statusupdate "cicd-running"
 
-# Link git repo to drone
-statuscheck "discounts-service-clone"
-apt-get install -y sqlite
-wait-for-it --timeout=300 localhost:8800
-export DRONE_SERVER=http://localhost:8800
-export DRONE_TOKEN=$(sqlite3 /root/cicd/droneio.database.sqlite 'select user_hash from users where user_login="labuser"')
-drone repo add labuser/discounts-service
-statusupdate "gogs-drone-webhook"
-
 # Storedog
 mv /root/docker-compose-storedog.yml /root/storedog/docker-compose.yml
 cd /root/storedog

@@ -46,7 +46,6 @@ services:
     depends_on:
       - agent
       - db
-      - registry
     labels:
       com.datadoghq.ad.logs: '[{"source": "python", "service": "discounts-service"}]'
       com.datadoghq.tags.service: 'discounts-service'
@@ -63,14 +62,13 @@ services:
       - DD_SERVICE=discounts-service
       - DD_VERSION=1.0
       - DD_ENV=synthetics-cicd
-    image: "localhost:5000/labuser/discounts-service-fixed:latest"
+    image: "localhost:5000/labuser/discounts-service:latest"
     command: [sh, -c, "pip install ddtrace -U && ddtrace-run flask run --port=5001 --host=0.0.0.0"]
     ports:
       - "5151:5001"
     depends_on:
       - agent
       - db
-      - registry
     labels:
       com.datadoghq.ad.logs: '[{"source": "python", "service": "discounts-service"}]'
       com.datadoghq.tags.service: 'discounts-service-staging'
@@ -90,7 +88,7 @@ services:
     image: "ddtraining/ecommerce-frontend:latest"
     command: sh docker-entrypoint.sh
     ports:
-      - "3000:3000"
+      - "3030:3000"
     depends_on:
       - agent
       - db
@@ -115,7 +113,7 @@ services:
     image: "ddtraining/ecommerce-frontend:latest"
     command: sh docker-entrypoint.sh
     ports:
-      - "3030:3000"
+      - "3031:3000"
     depends_on:
       - agent
       - db
