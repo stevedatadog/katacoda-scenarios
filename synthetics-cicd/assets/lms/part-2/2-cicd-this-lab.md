@@ -1,9 +1,7 @@
 This Lab's CI/CD Pipeline
 ===
 
-**TODO: This should be in the LMS, I think, rather than in the lab.**
-
-In addition to the Storedog application you are familiar with from the first part of this course, this lab provides a complete CI/CD pipeline to work with. Looking back at the four major phases of a pipeline, the tools are:
+In addition to the Storedog application you are familiar with from the first part of this course, this lab provides a complete CI/CD pipeline to work with. Looking back at the four major phases of a pipeline, the corresponding tools in this pipeline are:
 
 | phase      | tool      |
 | ---        | ---       |
@@ -24,15 +22,18 @@ Build
 
 Staging
 ---
-Drone can automate an entire continuous integration and deployment pipeline, so it'll also deploy newly-built Docker images to staging. In the lab, "staging" will be copies of the Storedog frontend and discounts services running on the same host. storedog-frontend-staging will listen on port 3030, and storedog-discounts-staging will listen on port 5151.
+Drone can automate an entire continuous integration and deployment pipeline, so it'll also deploy newly-built Docker images to staging. In the lab, "staging" will be copies of the Storedog frontend and discounts services running on the same host, but on different ports. The deployment will be executed by pulling the newly-built discounts service, and then restarting the container.
+
+Currently, the pipeline does not pause for testing after deploying to staging; it immediately deploys to production. This is where you will configure the pipeline to perform a browser test on staging, and only deploy to production if it passes.
 
 Production
 ---
-Once your code changes pass testing on staging, Drone will deploy the newly-built image to production. In this lab "production" is the same Storedog application you have been interacting with in this course.
+The production version of Storedog is the same as the one you tested in the first part of this course, listening on the same ports. Initially, the pipeline will deploy the newly-built and untested discounts service here immediately after staging, whether it works or not!
 
 Synthetics Tests
 ---
-All of the above automation is already configured in the lab, so you won't be distracted by the details. Instead, you will focus on integrating the browser test you created in the first part of this course into this pipeline. 
+Most of the above automation is already configured in the lab, so you won't be distracted by the details. Instead, you will focus on integrating the browser test you created in the first part of this course into the staging step.
 
-First, you'll trigger the browser test by calling the Datadog API from the terminal. Once you are able to run this test manually to confirm that the staging and production deployments are regression-free, you will use the datadog-ci command line utility to automatically run the end-to-end test after each deployment. If the test fails on staging, the pipeline will halt and production will be unaffected.
+First, you'll trigger the browser test by calling the Datadog API from the terminal. Once you are able to run this test manually to confirm that the staging and production deployments are regression-free, you will use the datadog-ci command line utility to automatically run the end-to-end test after each staging deployment. If the test fails on, the pipeline will halt and production will be unaffected.
 
+Click the **Continue** button below to start working with the discounts service CI/CD pipeline.

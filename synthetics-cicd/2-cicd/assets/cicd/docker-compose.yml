@@ -11,7 +11,7 @@ networks:
       com.docker.network.bridge.enable_ip_masquerade: "true"
 
 services:
-  cicd-db:
+  db:
     container_name: cicd-db
     image: postgres:13.2-alpine
     environment:
@@ -32,7 +32,7 @@ services:
     container_name: gogs
     image: gogs/gogs:0.12.3
     depends_on:
-      - cicd-db
+      - db
     ports:
       - "8300:3000"
       - "8322:22"
@@ -45,14 +45,14 @@ services:
   drone-server:
     container_name: drone_server
     image: drone/drone:1.10.1
-    depends_on:
-      - cicd-db
     environment:
       - DRONE_AGENTS_ENABLED=true
-      - DRONE_GOGS_SERVER # http://docker-host:8300
+      - DRONE_GOGS_SERVER # protocol://sub.host.tld:port
       - DRONE_RPC_SECRET=verysecret
       - DRONE_SERVER_HOST=drone-server
       - DRONE_SERVER_PROTO=http
+      - DRONE_GOGS_SKIP_VERIFY=true
+      - DRONE_WEBHOOK_SKIP_VERIFY=true
     ports:
       - "8800:80"
     # Note: We could use the postgres database for this, but it's too slow to start
@@ -73,6 +73,8 @@ services:
       # Child runners get their own Docker networks. Set this to `basename $PWD`_default to add them to the
       # default network instead. This allows access to other containers, such as registry
       - DRONE_RUNNER_NETWORKS=labnet
+    ports:
+      - "7300:3000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:

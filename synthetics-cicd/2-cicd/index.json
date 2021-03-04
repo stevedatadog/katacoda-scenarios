@@ -12,7 +12,7 @@
         "text": "first-deploy.md"
       },
       {
-        "text": "trigger-test.md"
+        "text": "trigger-browser-test.md"
       },
       {
         "text": "introduce-regression.md"
@@ -24,11 +24,7 @@
     "assets": {
       "host01": [
         {
-          "file": "test",
-          "target": "/root"
-        },
-        {
-          "file": "docker-compose-cicd.yml",
+          "file": "cicd",
           "target": "/root"
         },
         {
@@ -36,32 +32,8 @@
           "target": "/root"
         },
         {
-            "file": "drone-runner-exec.conf",
-            "target": "/root"
-        },
-        {
-            "file": "droneio.database.sqlite",
-            "target": "/root"
-        },
-        {
-            "file": "gogs.app.ini",
-            "target": "/root"
-        },
-        {
-            "file": "git-credentials",
-            "target": "/root"
-        },
-        {
-            "file": "labuser.git.tgz",
-            "target": "/root"
-        },
-        {
-            "file": "regression.patch",
-            "target": "/root"
-        },
-        {
-            "file": "seed.sql",
-            "target": "/root"
+          "file": "regression.patch",
+          "target": "/root"
         }
       ]
     }
@@ -74,19 +46,7 @@
     "dashboards": [
       {
         "name": "Storedog",
-        "port": 3030
-      },
-      {
-        "name": "Staging",
-        "port": 3031
-      },
-      {
-        "name": "Gogs",
-        "port": 8300
-      },
-      {
-        "name": "Drone",
-        "port": 8800
+        "port": 3000
       }
     ]
   },
