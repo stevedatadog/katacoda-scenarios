@@ -45,11 +45,11 @@
     "showdashboard": true,
     "dashboards": [
       {
-        "name": "Production",
+        "name": "Prod",
         "port": 3030
       },
       {
-        "name": "Staging",
+        "name": "Stage",
         "port": 3031
       },
       {

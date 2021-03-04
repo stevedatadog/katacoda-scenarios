@@ -1,10 +1,13 @@
 # Explore the Pipeline
 Above the terminal to your right, you will see three new tabs:
-  - **Staging**, which is running separate Storedog frontend and discounts services. Right now it is very similar to the "production" Storedog instance, but the discounts data will be different.
-  - **Gogs**, which is the user interface to the git repository running in this lab. You are not required to use this, but you may log in and explore the discounts service codebase if you're curious. The username is "labuser" and the password is "password".
-  - **Drone**, which is the user interface to the Drone.io build system running in this lab. There isn't much to explore right now, but it will get more interesting when you kick off a new discounts service build in a minute. The login credentials are the same as those for Gogs: the username is "labuser" and the password is "password".
+  - **Production** is the production instance of Storedog.
+  - **Staging** is running the staging instances of the Storedog frontend and discounts services. Right now it is very similar to the "production" Storedog instance, but the discounts data will be different.
+  - **Gogs** is the user interface to the git repository running in this lab. You are not required to use this, but you may log in and explore the discounts service codebase if you're curious. The username is "labuser" and the password is "password".
+  - **Drone** is the user interface to the Drone.io build system running in this lab. There isn't much to explore right now, but it will get more interesting when you kick off a new discounts service build in a minute. The login credentials are the same as those for Gogs: the username is "labuser" and the password is "password".
 
-It will take a few minutes for these services to come online. Feel free to read ahead to familiarize yourself with the activities in this lab.
+If you don't see all of these tabs, increase your browser window size and drag the vertical separator to widen the the right-hand side.
+
+It will take a few minutes for all of these services to come online. Feel free to read ahead to familiarize yourself with the activities in this lab, or look at the Datadog Docs for [Synthetic CI/CD Testing](https://docs.datadoghq.com/synthetics/ci/?tab=apitest).
 
 ## Link Gogs and Drone
 To start, you must activate the Gogs git repository in the Drone interface. This will create the Gogs webhook that Drone will listen for to kick of the build process.
@@ -19,7 +22,7 @@ To see this pipeline in action, make a minor change to the discounts service cod
 
 1. Click on the **IDE** tab above the terminal and give the editor a minute to start up. 
 2. In the file tree, expand `lab/discounts-service`. This is a clone of the discounts service code stored in the local Gogs server. 
-3. Open `lab/discounts-service/discount.py`{{open}} and scroll to the bottom of the file. After the last line in the file, add a comment such as `# I added new code!`. The editor saves files automatically.
+3. Open `lab/discounts-service/discounts.py`{{open}} and scroll to the bottom of the file. After the last line in the file, add a comment such as `# I added new code!`. The editor saves files automatically.
 
 Now that you have updated the discounts service code, you must push it to the repository to trigger a build. 
 

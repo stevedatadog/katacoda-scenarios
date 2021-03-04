@@ -95,9 +95,9 @@ Business requirement #2 is "the coupon code block displays a heading." This is s
 
     ![Steps 0, 1, and 2 passed](./assets/browser_step_2_pass.png)
 
-    There are a couple of interesting details to note in these test results. As expected in Step 2, the assertion expected different text than it received. Because the you set the condition to simply "is not empty," it passes. 
+    There are a couple of interesting details to note in these test results. As expected in Step 2, the assertion expected different text than it received. That's OK, because you set the condition to simply "not empty."
 
-    The other interesting detail is in Step 1. The assertion is is that "test heading strong 'Enter coupon code..." is present. Yet the coupon code in the screenshot for this step is different than expected. Again, because the condition is simply that "it exists," this is good enough. Datadog is smart enough to know that this is the same element, even if the content is different.
+    The other interesting detail is in Step 1. The assertion is is that "test heading strong 'Enter coupon code..." is present. Yet the coupon code in the screenshot for this step is different than expected. Again, because the condition is simply "is present," this is good enough. Datadog is smart enough to know that this is the same element, even if the content is different.
 
 ### Validate the Coupon Code
 Business requirement #3 is that "the coupon block contains a valid coupon code." You *could* use a regular expression to ensure that a sequence of upper-case letters is found in the coupon block content element. This would add some assurance that something that *looks like* a coupon code is displayed. But how can you confirm that it's valid?

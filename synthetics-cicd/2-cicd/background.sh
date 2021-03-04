@@ -3,19 +3,6 @@
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
 # CI/CD Pipeline
-mkdir /root/cicd
-files=(
-    docker-compose-cicd.yml
-    drone-runner-exec.conf
-    droneio.database.sqlite
-    gogs.app.ini
-    git-credentials
-    labuser.git.tgz
-    seed.sql
-)
-
-for file in "${files[@]}"; do mv $file /root/cicd/$file; done;
-
 cd cicd
 mv docker-compose-cicd.yml docker-compose.yml
 
@@ -28,6 +15,7 @@ touch /var/log/drone-runner-exec/log.txt
 drone-runner-exec service install
 drone-runner-exec service start
 apt-get install wait-for-it
+yarn install
 statusupdate "cicd-dependencies"
 
 statuscheck "storedog-environment"
