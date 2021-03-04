@@ -31,8 +31,10 @@ Now that you have updated the discounts service code, you must push it to the re
 After updating the git repository, Gogs will notify Drone that a `push` event occurred. Drone will immediately clone the repository and start building. To see this in action:
 1. Click the **Drone** tab above the terminal.
 3. On the `discounts-service` [Activity Feed](https://[[HOST_SUBDOMAIN]]-8800-[[KATACODA_HOST]].environments.katacoda.com/labuser/discounts-service/), you will see an entry corresponding to your git comment, "#1 Added a comment". Click on that entry.
-4. On the left-hand side is a list of steps Drone is configured to execute on this repository, along with their statuses. On the right-hand side, you can see the detailed progress of each step. ![Discounts service first deploy in Drone](./assets/discounts_service_first_deploy.png)
+4. On the left-hand side is a list of steps Drone is configured to execute on this repository, along with their statuses. On the right-hand side, you can see the detailed progress of each step.
 
-    It will take a few minutes for the build and deployment to complete. Click on each step as it activates to see the work that Drone is doing. Make special note of the **deploy-staging** and **deploy-production** steps, which are currently identical. In the next step, you will configure Drone to run a browser test before deploying to production.
+![Discounts service first deploy in Drone](./assets/discounts_service_first_deploy.png)
+
+It will take a few minutes for the build and deployment to complete. Click on each step as it activates to see the work that Drone is doing. Make special note of the **deploy-staging** and **deploy-production** steps, which are currently identical. In the next step, you will configure Drone to run a browser test before deploying to production.
 
 Click the **Continue** button below to explore Datadog's Synthetic Tests API.

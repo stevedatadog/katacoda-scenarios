@@ -45,8 +45,20 @@
     "showdashboard": true,
     "dashboards": [
       {
-        "name": "Storedog",
-        "port": 3000
+        "name": "Production",
+        "port": 3030
+      },
+      {
+        "name": "Staging",
+        "port": 3031
+      },
+      {
+        "name": "Gogs",
+        "port": 8300
+      },
+      {
+        "name": "Drone",
+        "port": 8800
       }
     ]
   },
