@@ -52,7 +52,7 @@
     ]
   },
   "backend": {
-    "imageid": "ubuntu:1604",
+    "imageid": "ubuntu",
     "reuseConnection": "false"
   }
 }
