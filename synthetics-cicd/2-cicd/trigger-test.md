@@ -6,7 +6,7 @@ You're going to manually trigger the browser test you created in the first part 
 1. Under **Define variable**, change **Value** to the new Storedog frontend URL: `https://[[HOST_SUBDOMAIN]]-3030-[[KATACODA_HOST]].environments.katacoda.com/`{{copy}}
 1. Click the **Save** button
 1. Hover over the **DISCOUNT_URL** variable and click on the pencil icon that appears on the far right
-1. Under **Define variable**, change **Value** to the new discounts service URL: `https://[[HOST_SUBDOMAIN]]-5001-[[KATACODA_HOST]].environments.katacoda.com/`{{copy}}
+1. Under **Define variable**, change **Value** to the new discounts service URL: `https://[[HOST_SUBDOMAIN]]-5001-[[KATACODA_HOST]].environments.katacoda.com/discount`{{copy}}
 1. Click the **Save** button
 
 Run the browser test now to confirm that it works with the new URL:
@@ -15,9 +15,9 @@ Run the browser test now to confirm that it works with the new URL:
 1. Click the **Run Test Now** button in the upper-right corner
 1. Scroll down to **Test Results** and await the results.
 ## Get the Browser Test Id
-Synthetic tests have 9-character alphanumeric public ids in the form of abc-def-ghi. You're going to need this to trigger the test using the API. You can find this code in the URL of the details page. For example, `https://app.datadoghq.com/synthetics/details/vn7-5ys-8jw`. Once you have it, set it as an environment variable in the terminal:
+Synthetic tests have alphanumeric public ids in the form of `abc-def-ghi`. You're going to need this id to trigger the test using the API. You can find it in the URL of the details page. For example, in the URL `https://app.datadoghq.com/synthetics/details/vn7-5ys-8jw`, the public id is `vn7-5ys-8jw`. 
 
-`export TEST_PUBLIC_ID=abc-def-ghi`
+`export DD_TEST_PUBLIC_ID=abc-def-ghi`
 
 Note that the following steps assume that the environment variable `DD_API_KEY` is set to your API key, and `DD_APP_KEY` is set to your Application key. The lab already has these variables set. You can find your API key in the Datadog app under **Integrations > API Keys**. You can find the Application key under **Team > Application Keys**.
 ## Trigger The Test (The Hard Way)
@@ -28,14 +28,14 @@ curl -X POST \
 -H 'Content-Type: application/json' \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
--d '{
-    "tests": [
+-d "{
+    \"tests\": [
         {
-            "public_id": "${TEST_PUBLIC_ID}"
+            \"public_id\": \"${DD_TEST_PUBLIC_ID}\"
         }
     ]
-}' "https://api.datadoghq.com/api/v1/synthetics/tests/trigger/ci"
-```
+}" "https://api.datadoghq.com/api/v1/synthetics/tests/trigger/ci"
+```{{execute}}
 
 The response will look something like this:
 
@@ -45,7 +45,7 @@ The response will look something like this:
 
 This response contains information about how the test was run. If you look at the `results` array, you will see that a test was run for each device/location pair that you configured. There is a `result_id` for each test that you will need for the next step. Grab the first one and assign it to an environment variable:
 
-`export TEST_RESULT_ID=0123456789`
+`export DD_TEST_RESULT_ID=0123456789`
 
 Next, you need to make another call to get the results of the test:
 
@@ -54,8 +54,8 @@ curl -G \
     "https://api.datadoghq.com/api/v1/synthetics/tests/poll_results" \
     -H "DD-API-KEY: ${DD_API_KEY}" \
     -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
-    -d "result_ids=[${TEST_RESULT_ID}]"
-```
+    -d "result_ids=[${DD_TEST_RESULT_ID}]"
+```{{execute}}
 
 If the test is complete, the results from this request will be quite large as it will contain all of the information about test that you would see in the Datadog app. If you visit the synthetic test's details page, you will see that ran just like all the other times you ran it. One difference is that the **RUN TYPE** will be **CI**:
 
@@ -66,7 +66,7 @@ The most important key in the result will be `passed`, a boolean value. You coul
 The synthetics API opens the opportunity for custom test monitoring, triggering, and reporting. But working with it this way is not ideal for a lean, flexible, and easy to maintain pipeline. Fortunately, Datadog developed an open source CLI client to easily incorporate synthetic tests into CI/CD pipelines!
 
 ## Trigger The Test (The Easy Way)
-The Datadog CLI client is a Node Package Manager module called [@datadog/datadog-ci](https://www.npmjs.com/package/@datadog/datadog-ci). It's already installed in the lab, so you can start using it immediately. The client will read any file in the same directory named `<anything>.synthetics.json` for information about the tests it will run. Start by creating one:
+The Datadog CLI client is a Node Package Manager module called [@datadog/datadog-ci](https://www.npmjs.com/package/@datadog/datadog-ci). It's already installed in the lab, so you can start using it immediately. To know which tests to run, the client will read any file in the same directory that has the filename suffix `.synthetics.json`. Start by creating one:
 
 1. In the terminal, create an empty file by running the command `touch /root/cicd/discounts.synthetics.json`{{execute}}
 1. Open the IDE and open the file you just created: `/root/cicd/discounts.synthetics.json`{{open}}
