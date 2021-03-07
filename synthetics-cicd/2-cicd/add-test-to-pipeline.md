@@ -36,6 +36,8 @@ DD_TEST_PUBLIC_ID=$DD_TEST_PUBLIC_ID
 EOL
 ```{{execute}}
 
+
+
 todo: move this to the next step in discussion about using variables for the start URLs:
 To learn more about how you can use these files to create, trigger, and override synthetic tests, see the [CLI usage section](https://docs.datadoghq.com/synthetics/ci/?tab=apitest#package-installation) of the Datadog Docs for CI/CD Testing. 
 
