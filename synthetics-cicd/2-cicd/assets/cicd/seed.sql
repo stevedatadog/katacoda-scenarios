@@ -1726,7 +1726,6 @@ COPY public.access (id, user_id, repo_id, mode) FROM stdin;
 --
 
 COPY public.access_token (id, uid, name, sha1, created_unix, updated_unix) FROM stdin;
-1	1	drone	4376669681611ecf57275246e11d1c1946138008	1614540800	1614540892
 \.
 
 
@@ -1735,9 +1734,9 @@ COPY public.access_token (id, uid, name, sha1, created_unix, updated_unix) FROM 
 --
 
 COPY public.action (id, user_id, op_type, act_user_id, act_user_name, repo_id, repo_user_name, repo_name, ref_name, is_private, content, created_unix) FROM stdin;
-1	1	1	1	labuser	1	labuser	discounts-service		f		1614540507
-2	1	16	1	labuser	1	labuser	discounts-service	master	f	{"Len":1,"Commits":[{"Sha1":"bb1b2f504546310afe82e2904def7603ad058816","Message":"Initial commit\\n","AuthorEmail":"labuser@example.com","AuthorName":"labuser","CommitterEmail":"labuser@example.com","CommitterName":"labuser","Timestamp":"2021-02-28T19:29:55Z"}],"CompareURL":""}	1614540636
-3	1	5	1	labuser	1	labuser	discounts-service	master	f	{"Len":1,"Commits":[{"Sha1":"bb1b2f504546310afe82e2904def7603ad058816","Message":"Initial commit\\n","AuthorEmail":"labuser@example.com","AuthorName":"labuser","CommitterEmail":"labuser@example.com","CommitterName":"labuser","Timestamp":"2021-02-28T19:29:55Z"}],"CompareURL":""}	1614540636
+1	1	1	1	labuser	1	labuser	discounts-service		f		1614818562
+2	1	16	1	labuser	1	labuser	discounts-service	master	f	{"Len":1,"Commits":[{"Sha1":"a98d6113885a189a8ea4013791076fcb16fb2db2","Message":"Initial commit\\n","AuthorEmail":"labuser@example.com","AuthorName":"labuser","CommitterEmail":"labuser@example.com","CommitterName":"labuser","Timestamp":"2021-03-04T00:42:22Z"}],"CompareURL":""}	1614818650
+3	1	5	1	labuser	1	labuser	discounts-service	master	f	{"Len":1,"Commits":[{"Sha1":"a98d6113885a189a8ea4013791076fcb16fb2db2","Message":"Initial commit\\n","AuthorEmail":"labuser@example.com","AuthorName":"labuser","CommitterEmail":"labuser@example.com","CommitterName":"labuser","Timestamp":"2021-03-04T00:42:22Z"}],"CompareURL":""}	1614818650
 \.
 
 
@@ -1922,7 +1921,7 @@ COPY public.release (id, repo_id, publisher_id, tag_name, lower_tag_name, target
 --
 
 COPY public.repository (id, owner_id, lower_name, name, description, website, default_branch, size, use_custom_avatar, num_watches, num_stars, num_forks, num_issues, num_closed_issues, num_pulls, num_closed_pulls, num_milestones, num_closed_milestones, is_private, is_bare, is_mirror, enable_wiki, allow_public_wiki, enable_external_wiki, external_wiki_url, enable_issues, allow_public_issues, enable_external_tracker, external_tracker_url, external_tracker_format, external_tracker_style, enable_pulls, pulls_ignore_whitespace, pulls_allow_rebase, is_fork, fork_id, created_unix, updated_unix) FROM stdin;
-1	1	discounts-service	discounts-service	Storedog discounts web service.		master	45056	f	1	0	0	0	0	0	0	0	0	f	f	f	t	f	f		t	f	f			numeric	t	f	f	f	0	1614540507	1614540636
+1	1	discounts-service	discounts-service	The discounts service for Storedog		master	45056	f	1	0	0	0	0	0	0	0	0	f	f	f	t	f	f		t	f	f			numeric	t	f	f	f	0	1614818562	1614818650
 \.
 
 
@@ -1987,7 +1986,7 @@ COPY public.upload (id, uuid, name) FROM stdin;
 --
 
 COPY public."user" (id, lower_name, name, full_name, email, passwd, login_source, login_name, type, location, website, rands, salt, created_unix, updated_unix, last_repo_visibility, max_repo_creation, is_active, is_admin, allow_git_hook, allow_import_local, prohibit_login, avatar, avatar_email, use_custom_avatar, num_followers, num_following, num_stars, num_repos, description, num_teams, num_members) FROM stdin;
-1	labuser	labuser		labuser@example.com	4a55bc81a35cf850d99636bca2e116799ccdcd901dcbb67fa7b33d705225928306d27a7124df7141e0279a2fdd2e14ab1c5d	0		0			Aux37u1dUG	HLBvsGt3PV	1614540464	1614540507	f	-1	t	t	f	f	f	fbdecbdeaa8816382d76cf909295b38a	labuser@example.com	f	0	0	0	1		0	0
+1	labuser	labuser		labuser@example.com	b45aefcbe807a86315dcfd558f2365984964644ba3067af39eae5083a50a6b35d75fbe24caa4349bd5f1cde1ec0eff2216dd	0		0			o28lwlCYQl	sIs0bwO9Be	1614818505	1614818562	f	-1	t	t	f	f	f	fbdecbdeaa8816382d76cf909295b38a	labuser@example.com	f	0	0	0	1		0	0
 \.
 
 
@@ -2014,7 +2013,6 @@ COPY public.watch (id, user_id, repo_id) FROM stdin;
 --
 
 COPY public.webhook (id, repo_id, org_id, url, content_type, secret, events, is_ssl, is_active, hook_task_type, meta, last_status, created_unix, updated_unix) FROM stdin;
-1	1	0	http://drone-server/hook	1	OOnOqmqAXsE9dXCROoeVbrXP3kLj7HbL	{"push_only":false,"send_everything":false,"choose_events":true,"events":{"create":true,"delete":true,"fork":false,"push":true,"issues":false,"pull_request":true,"issue_comment":false,"release":false}}	f	t	1		0	1614540892	1614540892
 \.
 
 
@@ -2029,7 +2027,7 @@ SELECT pg_catalog.setval('public.access_id_seq', 1, false);
 -- Name: access_token_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.access_token_id_seq', 1, true);
+SELECT pg_catalog.setval('public.access_token_id_seq', 1, false);
 
 
 --
@@ -2267,7 +2265,7 @@ SELECT pg_catalog.setval('public.watch_id_seq', 1, true);
 -- Name: webhook_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.webhook_id_seq', 1, true);
+SELECT pg_catalog.setval('public.webhook_id_seq', 1, false);
 
 
 --

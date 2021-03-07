@@ -26,7 +26,7 @@ depends_on:
   - deploy-staging
 ```
 
-Drone's `docker` pipeline works by running the configured steps in a Docker container. Because the `datadog-ci` utility requires Node, one of the official light-weight Node image is suitable. This image will not inherit environment variables from the host, so you must store them in a file that Drone will inject into the container at runtime:
+Drone's `docker` pipeline works by running the configured steps in a Docker container. Because the `datadog-ci` utility requires Node, one of the official light-weight Node image is suitable. The container won't inherit environment variables from the host, so you must store them in a file that Drone will inject into the container at runtime:
 
 ```shell
 cat > /root/cicd/drone.conf <<EOL
