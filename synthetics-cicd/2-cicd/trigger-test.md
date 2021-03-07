@@ -37,7 +37,8 @@ curl -X POST \
         }
     ]
 }" "https://api.datadoghq.com/api/v1/synthetics/tests/trigger/ci"
-```{{execute}}
+```
+{{execute}}
 
 The response will look something like this:
 
@@ -57,7 +58,8 @@ curl -G \
     -H "DD-API-KEY: ${DD_API_KEY}" \
     -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
     -d "result_ids=[${DD_TEST_RESULT_ID}]"
-```{{execute}}
+```
+{{execute}}
 
 If hasn't completed, the `results` key in the response will contain `{"eventType": "created"}`, and you should repeat the request until it is complete.
 
@@ -75,24 +77,16 @@ You can read more about the variety of API endpoints, parameters, and responses 
 The synthetics API opens the opportunity for custom test monitoring, triggering, and reporting. But working with it this way is not ideal for a lean, flexible, and easy to maintain pipeline. Fortunately, Datadog developed an open source CLI client to easily incorporate synthetic tests into CI/CD pipelines!
 
 ## Trigger The Test (The Easy Way)
-The Datadog CLI client is a Node Package Manager module called [@datadog/datadog-ci](https://www.npmjs.com/package/@datadog/datadog-ci). It's already installed in the lab, so you can start using it immediately. To know which tests to run, the client will read any file in the same directory that has the filename suffix `.synthetics.json`. Start by creating one:
+The Datadog CLI client is a Node Package Manager module called [@datadog/datadog-ci](https://www.npmjs.com/package/@datadog/datadog-ci). It's already installed in the lab, so you can start using it immediately. 
 
-**todo: this should be done in discounts-service, not cicd**
-
-1. In the terminal, create an empty file by running the command `touch /root/cicd/discounts.synthetics.json`{{execute}}
-1. Open the IDE and open the file you just created: `/root/cicd/discounts.synthetics.json`{{open}}
-1. Paste the following JSON code into the file: 
-   <pre class="file" data-filename="cicd/discounts.synthetics.json" data-target="replace">
-   {
-     "tests": [
-       {
-         "id": "abc-def-ghi"
-       }
-     ]
-   }
-   </pre>
-1. Replace "abc-def-ghi" with the public id of the browser test that you stored in `DD_TEST_PUBLIC_ID`. 
-1. In the terminal, run the command `yarn datadog-ci synthetics run-tests --apiKey $DD_API_KEY --appKey $DD_APP_KEY`{{execute}}
+In the terminal, run the following command:
+```shell
+yarn datadog-ci synthetics run-tests \
+--public-id $DD_TEST_PUBLIC_ID \
+--apiKey $DD_API_KEY \
+--appKey $DD_APP_KEY
+```
+{{execute}}
 
 You will start seeing nicely formatted output as `datadog-ci` triggers the test and fetches the results. 
 

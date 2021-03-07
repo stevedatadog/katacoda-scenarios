@@ -23,7 +23,11 @@ steps:
       - yarn datadog-ci synthetics run-tests --public-id $DD_PUBLIC_TEST_ID  --apiKey $DD_API_KEY --appKey $DD_APP_KEY
 ```
 
+Drone's `docker` pipeline works by running the configured steps in a Docker container. Because the `datadog-ci` utility requires Node, one of the official light-weight Node image is suitable. This image will not inherit environment variables from the host, so you must store them in a file that Drone will inject into the container at runtime:
 
+`echo DD_API_KEY=$DD_API_KEY \
+DD_APP_KEY=$DD_APP_KEY \
+DD_TEST_PUBLIC_ID=$DD_PUBLIC_ID > /root/cicd/drone.conf`{{execute}}
 
 todo: move this to the next step in discussion about using variables for the start URLs:
 To learn more about how you can use these files to create, trigger, and override synthetic tests, see the [CLI usage section](https://docs.datadoghq.com/synthetics/ci/?tab=apitest#package-installation) of the Datadog Docs for CI/CD Testing. 
