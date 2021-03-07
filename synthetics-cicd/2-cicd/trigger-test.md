@@ -14,12 +14,14 @@ Run the browser test now to confirm that it works with the new URL:
 1. Click on the browser test you created in the first part of this course.
 1. Click the **Run Test Now** button in the upper-right corner
 1. Scroll down to **Test Results** and await the results.
+
 ## Get the Browser Test Id
 Synthetic tests have alphanumeric public ids in the form of `abc-def-ghi`. You're going to need this id to trigger the test using the API. You can find it in the URL of the details page. For example, in the URL `https://app.datadoghq.com/synthetics/details/vn7-5ys-8jw`, the public id is `vn7-5ys-8jw`. 
 
 `export DD_TEST_PUBLIC_ID=abc-def-ghi`
 
 Note that the following steps assume that the environment variable `DD_API_KEY` is set to your API key, and `DD_APP_KEY` is set to your Application key. The lab already has these variables set. You can find your API key in the Datadog app under **Integrations > API Keys**. You can find the Application key under **Team > Application Keys**.
+
 ## Trigger The Test (The Hard Way)
 First, trigger the browser test using cURL. This will illustrate how the API works at a low level. The workflow is to POST a request to trigger a test, and then to GET the results of the test. Click the following block of code to execute this request for your browser test:
 
@@ -57,21 +59,30 @@ curl -G \
     -d "result_ids=[${DD_TEST_RESULT_ID}]"
 ```{{execute}}
 
-If the test is complete, the results from this request will be quite large as it will contain all of the information about test that you would see in the Datadog app. If you visit the synthetic test's details page, you will see that ran just like all the other times you ran it. One difference is that the **RUN TYPE** will be **CI**:
+If hasn't completed, the `results` key in the response will contain `{"eventType": "created"}`, and you should repeat the request until it is complete.
+
+When the test is complete, the results from this request will be quite large, containing all of the test details. 
+Visit the synthetic test's details page and find the result under **Test Results**. You will see that the **RUN TYPE** will be **CI**:
 
 ![CI Run Type for API triggered test](./assets/test_results_ci_run_type.png)
 
-The most important key in the result will be `passed`, a boolean value. You could halt the pipeline if this is `false`, or continue deploying if this is `true`. You can read more about the variety of API endpoints and their responses in the [Datadog API Reference for Synthetics](https://docs.datadoghq.com/api/latest/synthetics/).
+Back in the terminal, the most important key in the API result will is `passed`, a boolean value:
+![Passed key in API results](./assets/terminal_passed_true.png)
+You could halt the pipeline if this is `false`, or continue deploying if this is `true`.
+
+You can read more about the variety of API endpoints, parameters, and responses in the [Datadog API Reference for Synthetics](https://docs.datadoghq.com/api/latest/synthetics/).
 
 The synthetics API opens the opportunity for custom test monitoring, triggering, and reporting. But working with it this way is not ideal for a lean, flexible, and easy to maintain pipeline. Fortunately, Datadog developed an open source CLI client to easily incorporate synthetic tests into CI/CD pipelines!
 
 ## Trigger The Test (The Easy Way)
 The Datadog CLI client is a Node Package Manager module called [@datadog/datadog-ci](https://www.npmjs.com/package/@datadog/datadog-ci). It's already installed in the lab, so you can start using it immediately. To know which tests to run, the client will read any file in the same directory that has the filename suffix `.synthetics.json`. Start by creating one:
 
+**todo: this should be done in discounts-service, not cicd**
+
 1. In the terminal, create an empty file by running the command `touch /root/cicd/discounts.synthetics.json`{{execute}}
 1. Open the IDE and open the file you just created: `/root/cicd/discounts.synthetics.json`{{open}}
 1. Paste the following JSON code into the file: 
-   <pre class="file" data-filename="/root/cicd/discounts.synthetics.json" data-target="replace">
+   <pre class="file" data-filename="cicd/discounts.synthetics.json" data-target="replace">
    {
      "tests": [
        {
@@ -80,13 +91,18 @@ The Datadog CLI client is a Node Package Manager module called [@datadog/datadog
      ]
    }
    </pre>
-1. Replace "abc-def-ghi" with the public id of the browser test that you stored in `TEST_PUBLIC_ID`. 
+1. Replace "abc-def-ghi" with the public id of the browser test that you stored in `DD_TEST_PUBLIC_ID`. 
 1. In the terminal, run the command `yarn datadog-ci synthetics run-tests --apiKey $DD_API_KEY --appKey $DD_APP_KEY`{{execute}}
 
 You will start seeing nicely formatted output as `datadog-ci` triggers the test and fetches the results. 
 
-![datadog-ci running a browser test](./assets/datadog-ci-running-test.png)
+![datadog-ci running a browser test](./assets/datadog_ci_test_complete.png)
 
-To learn more about how you can use these files to create, trigger, and override synthetic tests, see the [CLI usage section](https://docs.datadoghq.com/synthetics/ci/?tab=apitest#package-installation) of the Datadog Docs for CI/CD Testing. 
+If your test passed, you will see a lot of positivity in the results, like green check marks and words. If your test failed, there will be a lot of red Xs and words, as well as one very important terminal message:
 
-    
+> error Command failed with exit code 1
+
+By default, the CI/CD pipeline will halt when a command returns an error code. If you insert this test after the pipeline deploys to staging, it will halt without deploying to production.
+
+Click the **Continue** button below to set that up.
+
