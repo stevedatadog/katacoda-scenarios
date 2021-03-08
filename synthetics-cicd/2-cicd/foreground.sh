@@ -1,6 +1,6 @@
 echo "Setting up the lab..."
-ln -s /ecommworkshop /root/storedog
-cd /root/storedog
+ln -s /ecommworkshop /root/lab/storedog
+cd /root/lab/storedog
 
 GOGS_EXTERNAL_URL="https://[[HOST_SUBDOMAIN]]-8300-[[KATACODA_HOST]].[[KATACODA_DOMAIN]]"
 echo $GOGS_EXTERNAL_URL > gogs_external_url.txt
@@ -15,7 +15,7 @@ statusupdate "storedog-environment"
 
 statuscheck "cicd-running"
 
-mkdir /root/lab && cd $_
+cd /root/lab
 git config --global credential.helper 'store --file /root/cicd/git-credentials'
 git config --global user.email 'labuser@example.com'
 git config --global user.name 'labuser'

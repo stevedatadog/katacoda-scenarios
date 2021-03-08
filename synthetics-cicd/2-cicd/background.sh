@@ -3,7 +3,7 @@
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
 # CI/CD Pipeline
-cd cicd
+cd /root/lab/cicd
 mv docker-compose-cicd.yml docker-compose.yml
 
 curl -L https://github.com/drone/drone-cli/releases/download/v1.2.4/drone_linux_amd64.tar.gz | tar zx
@@ -21,7 +21,7 @@ apt-get install -y sqlite
 yarn install
 
 statuscheck "storedog-environment"
-GOGS_EXTERNAL_URL=$(cat /root/storedog/gogs_external_url.txt)
+GOGS_EXTERNAL_URL=$(cat /root/lab/storedog/gogs_external_url.txt)
 echo "DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > .env
 sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$GOGS_EXTERNAL_URL|g" gogs.app.ini
 
@@ -36,7 +36,7 @@ docker push localhost:5000/labuser/discounts-service:latest
 statusupdate "cicd-running"
 
 # Storedog
-mv /root/docker-compose-storedog.yml /root/storedog/docker-compose.yml
-cd /root/storedog
+mv /root/lab/docker-compose-storedog.yml /root/lab/storedog/docker-compose.yml
+cd /root/lab/storedog
 docker-compose up -d
 statusupdate "complete"

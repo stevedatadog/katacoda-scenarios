@@ -26,6 +26,7 @@ steps:
         from_secret: DD_PUBLIC_TEST_ID
     commands:
       - yarn add --dev @datadog/datadog-ci
+      - apk add curl
       - curl -L -O https://raw.githubusercontent.com/vishnubob/wait-for-it/81b1373f17855a4dc21156cfe1694c31d7d1792e/wait-for-it.sh
       - sh wait-for-it.sh -t 120 localhost:5151 -- echo "Staging discounts service is up."
       - yarn datadog-ci synthetics run-tests --public-id $DD_PUBLIC_TEST_ID  --apiKey $DD_API_KEY --appKey $DD_APP_KEY

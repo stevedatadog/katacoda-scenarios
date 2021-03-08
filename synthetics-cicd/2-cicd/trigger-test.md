@@ -61,7 +61,7 @@ curl -G \
 ```
 {{execute}}
 
-If hasn't completed, the `results` key in the response will contain `{"eventType": "created"}`, and you should repeat the request until it is complete.
+If hasn't completed, the `result` key in the response will contain `{"eventType": "created"}`, and you should repeat the request until it is complete.
 
 When the test is complete, the results from this request will be quite large, containing all of the test details. 
 Visit the synthetic test's details page and find the result under **Test Results**. You will see that the **RUN TYPE** will be **CI**:
@@ -79,7 +79,7 @@ The synthetics API opens the opportunity for custom test monitoring, triggering,
 ## Trigger The Test (The Easy Way)
 The Datadog CLI client is a Node Package Manager module called [@datadog/datadog-ci](https://www.npmjs.com/package/@datadog/datadog-ci). It's already installed in the lab, so you can start using it immediately. 
 
-In the terminal, navigate to `/root/cicd`{{execute}} and run the following command:
+In the terminal, run the command `cd /root/cicd`{{execute}} and run the following command:
 ```shell
 yarn datadog-ci synthetics run-tests \
 --public-id $DD_TEST_PUBLIC_ID \
@@ -90,7 +90,7 @@ yarn datadog-ci synthetics run-tests \
 
 You will start seeing nicely formatted output as `datadog-ci` triggers the test and fetches the results. 
 
-![datadog-ci running a passing browser test](./assets/datadog_ci_test_complete.png)
+![datadog-ci running a passing browser test](./assets/datadog_ci_test_complete_pass.png)
 
 If your test passed, you will see the results in green font colors, with green check marks next to each test run.
 

@@ -27,19 +27,7 @@
     "assets": {
       "host01": [
         {
-          "file": "cicd",
-          "target": "/root"
-        },
-        {
-          "file": "staging",
-          "target": "/root"
-        },
-        {
-          "file": "docker-compose-storedog.yml",
-          "target": "/root"
-        },
-        {
-          "file": "regression.patch",
+          "file": "lab",
           "target": "/root"
         }
       ]
