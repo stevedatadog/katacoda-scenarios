@@ -23,6 +23,22 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+	    "host01": [
+		    {
+			    "file": "i_am_a_dir",
+			    "target": "/root"
+		    },
+		    {
+			    "file": "file_in_root.txt",
+			    "target": "/root"
+		    },
+		    {
+			    "file": "file_in_non_existent_dir.txt",
+			    "target": "/root/nope"
+		    }
+	    ]
     }
   },
   "environment": {
