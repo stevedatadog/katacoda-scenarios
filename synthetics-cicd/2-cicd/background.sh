@@ -6,7 +6,7 @@ curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 cd cicd
 mv docker-compose-cicd.yml docker-compose.yml
 
-curl -L -O https://github.com/drone/drone-cli/releases/download/v1.2.4/drone_linux_amd64.tar.gz | tar zx
+curl -L https://github.com/drone/drone-cli/releases/download/v1.2.4/drone_linux_amd64.tar.gz | tar zx
 install -t /usr/local/bin drone
 curl -L https://github.com/drone-runners/drone-runner-exec/releases/latest/download/drone_runner_exec_linux_amd64.tar.gz | tar zx
 install -t /usr/local/bin drone-runner-exec
@@ -17,9 +17,8 @@ touch /var/log/drone-runner-exec/log.txt
 drone-runner-exec service install
 drone-runner-exec service start
 apt-get install wait-for-it
-apt-get install sqlite
+apt-get install -y sqlite
 yarn install
-statusupdate "cicd-dependencies"
 
 statuscheck "storedog-environment"
 GOGS_EXTERNAL_URL=$(cat /root/storedog/gogs_external_url.txt)

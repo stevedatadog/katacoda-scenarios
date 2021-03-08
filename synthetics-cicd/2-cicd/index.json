@@ -31,6 +31,10 @@
           "target": "/root"
         },
         {
+          "file": "staging",
+          "target": "/root"
+        },
+        {
           "file": "docker-compose-storedog.yml",
           "target": "/root"
         },
