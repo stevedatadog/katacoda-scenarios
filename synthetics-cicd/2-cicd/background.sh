@@ -15,6 +15,7 @@ touch /var/log/drone-runner-exec/log.txt
 drone-runner-exec service install
 drone-runner-exec service start
 apt-get install wait-for-it
+apt-get install sqlite
 yarn install
 statusupdate "cicd-dependencies"
 

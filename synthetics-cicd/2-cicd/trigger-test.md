@@ -79,7 +79,7 @@ The synthetics API opens the opportunity for custom test monitoring, triggering,
 ## Trigger The Test (The Easy Way)
 The Datadog CLI client is a Node Package Manager module called [@datadog/datadog-ci](https://www.npmjs.com/package/@datadog/datadog-ci). It's already installed in the lab, so you can start using it immediately. 
 
-In the terminal, run the following command:
+In the terminal, navigate to `/root/cicd`{{execute}} and run the following command:
 ```shell
 yarn datadog-ci synthetics run-tests \
 --public-id $DD_TEST_PUBLIC_ID \
@@ -90,9 +90,13 @@ yarn datadog-ci synthetics run-tests \
 
 You will start seeing nicely formatted output as `datadog-ci` triggers the test and fetches the results. 
 
-![datadog-ci running a browser test](./assets/datadog_ci_test_complete.png)
+![datadog-ci running a passing browser test](./assets/datadog_ci_test_complete.png)
 
-If your test passed, you will see a lot of positivity in the results, like green check marks and words. If your test failed, there will be a lot of red Xs and words, as well as one very important terminal message:
+If your test passed, you will see the results in green font colors, with green check marks next to each test run.
+
+![datadog-ci running a failing browser test](./assets/datadog_ci_test_complete_fail.png)
+
+If your test failed, you will see the results in red font colors, with red X's next to each test run, as well as one very important terminal message:
 
 > error Command failed with exit code 1
 

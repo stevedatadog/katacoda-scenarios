@@ -17,14 +17,24 @@ name: test
 steps:
   - name: datadog-synthetics
     image: node:15-alpine3.10
+    environment:
+      - DD_API_KEY:
+        from_secret: DD_API_KEY
+      - DD_APP_KEY:
+        from_secret: DD_APP_KEY
+      - DD_PUBLIC_TEST_ID:
+        from_secret: DD_PUBLIC_TEST_ID
     commands:
       - yarn add --dev @datadog/datadog-ci
-      - sleep 20
+      - curl -L -O https://raw.githubusercontent.com/vishnubob/wait-for-it/81b1373f17855a4dc21156cfe1694c31d7d1792e/wait-for-it.sh
+      - sh wait-for-it.sh -t 120 localhost:5151 -- echo "Staging discounts service is up."
       - yarn datadog-ci synthetics run-tests --public-id $DD_PUBLIC_TEST_ID  --apiKey $DD_API_KEY --appKey $DD_APP_KEY
 
 depends_on:
   - deploy-staging
 ```
+
+Finally, at the bottom of the file in the `deploy-production` section, change the `depends_on` value from `- deploy-staging` to `- test`. This will make the deployment to production dependent on the test section succeeding.
 
 Drone's `docker` pipeline works by running the configured steps in a Docker container. Because the `datadog-ci` utility requires Node, one of the official light-weight Node image is suitable. The container won't inherit environment variables from the host, so you must store them in a file that Drone will inject into the container at runtime:
 
