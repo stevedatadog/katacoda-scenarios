@@ -1,3 +1,4 @@
+echo "Setting up the lab..."
 ln -s /ecommworkshop /root/storedog
 cd /root/storedog
 
@@ -12,7 +13,6 @@ DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > .env
 clear
 statusupdate "storedog-environment"
 
-echo "Setting up the lab..."
 statuscheck "cicd-running"
 
 mkdir /root/lab && cd $_
@@ -21,6 +21,5 @@ git config --global user.email 'labuser@example.com'
 git config --global user.name 'labuser'
 git clone http://localhost:8300/labuser/discounts-service.git
 clear
-statusupdate "discounts-service-clone"
-statuscheck "storedog-running"
+statuscheck "complete"
 prepenvironment
