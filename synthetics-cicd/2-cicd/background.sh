@@ -17,8 +17,8 @@ apt-get install wait-for-it
 apt-get install -y sqlite
 yarn install
 
-statuscheck "storedog environment"
-GOGS_EXTERNAL_URL=$(cat /root/lab/storedog/gogs_external_url.txt)
+statuscheck "gogs url"
+GOGS_EXTERNAL_URL=$(cat /root/lab/cicd/gogs_external_url.txt)
 echo "DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > .env
 sed -i "s|REPLACE_WITH_GOGS_EXTERNAL_URL|$GOGS_EXTERNAL_URL|g" gogs.app.ini
 
@@ -33,6 +33,7 @@ docker push localhost:5000/labuser/discounts-service:latest
 statusupdate "cicd running"
 
 # Storedog
+statuscheck "storedog environment"
 mv /root/lab/docker-compose-storedog.yml /root/lab/storedog/docker-compose.yml
 cd /root/lab/storedog
 docker-compose up -d

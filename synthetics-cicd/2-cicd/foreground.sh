@@ -1,18 +1,17 @@
 echo "Setting up the lab..."
 
-while [ ! -d /ecommerce ]; do sleep 1; done;
+while [ ! -d /ecommerceworkshop ]; do sleep 1; done;
 while [ ! -d /root/lab ]; do sleep 1; done;
 ln -s /ecommworkshop /root/lab/storedog
-cd /root/lab/storedog
 
 GOGS_EXTERNAL_URL="https://[[HOST_SUBDOMAIN]]-8300-[[KATACODA_HOST]].[[KATACODA_DOMAIN]]"
-echo $GOGS_EXTERNAL_URL > gogs_external_url.txt
+echo $GOGS_EXTERNAL_URL > /root/lab/cicd/gogs_external_url.txt
+statusupdate "gogs url"
 
 printf "DD_API_KEY=$DD_API_KEY\n\
 DD_APP_KEY=$DD_APP_KEY\n\
 POSTGRES_USER=postgres\n\
-POSTGRES_PASSWORD=postgres\n\
-DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > .env 
+POSTGRES_PASSWORD=postgres" > /root/lab/storedog/.env 
 clear
 statusupdate "storedog environment"
 
