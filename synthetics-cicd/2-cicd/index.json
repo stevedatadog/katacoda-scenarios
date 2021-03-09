@@ -35,7 +35,7 @@
           "target": "/root"
         },
         {
-          "file": "lab/cicd",
+          "file": "lab/cicd/*",
           "target": "/root/lab/cicd"
         }
       ]
