@@ -66,7 +66,6 @@ services:
     depends_on:
       - drone-server
     environment:
-      - DRONE_RUNNER_ENV_FILE=/etc/drone.conf
       - DRONE_RPC_HOST=drone-server
       - DRONE_RPC_PROTO=http
       - DRONE_RPC_SECRET=verysecret
@@ -74,8 +73,6 @@ services:
       # Child runners get their own Docker networks. Set this to `basename $PWD`_default to add them to the
       # default network instead. This allows access to other containers, such as registry
       - DRONE_RUNNER_NETWORKS=labnet
-      - DRONE_DEBUG=true
-      - DRONE_TRACE=true
     ports:
       - "7300:3000"
     volumes:
