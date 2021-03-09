@@ -10,17 +10,21 @@ The correct place to test is between `deploy-staging` and `deploy-production`. T
 
 The new `test-staging` section starts at line 36. Drone's `docker` section type works by running the configured steps in a isolated Docker container. Because the `datadog-ci` utility requires Node, one of the official light-weight Node image is suitable. After getting the environment set up and ensuring that the restarted discounts services is ready, Drone will run the familiar `datadog-ci` command on line 56. 
 
-Return to the terminal and copy the new configuration file into the `discounts-service` source code with the command `cp /root/lab/drone-staging.yml /root/lab/discounts-service/.drone.yml`{{execute}}. 
+Return to the terminal and copy the new configuration file into the `discounts-service` source code with the command `cp /root/lab/cicd/drone-staging.yml /root/lab/discounts-service/.drone.yml`{{execute}}. 
 
 This file is tracked by git, so committing it will trigger a new build with this configuration. But first, you need to make the required environment variables available to the Docker container that will perform the test. You *could* hard-code the Datadog API key, APP key, and test public id into that configuration file, but it's sensitive information that should not be stored in your source code.
 
 Like most CI/CD build systems, Drone can store configuration data as "secrets" and make it globally available to the pipeline. You could configure secrets manually using the Drone UI (**Settings** tab for the repository). But there's a useful script in the lab that can do it for you:
 
-`/root/lab/cicd/set_secrets.sh`{{execute}}
+`sh /root/lab/cicd/set_secrets.sh`{{execute}}
 
 You're now ready to commit the new Drone configuration file to the discounts service repository:
 
-`cd /root/lab/discounts-service && git commit -am "updated drone configuration"`{{execute}}
+```
+cd /root/lab/discounts-service \
+&& git commit -am "updated drone configuration" \
+&& git push origin master
+```{{execute}}
 
 Now click on the **Drone** tab above the terminal and watch the build in the Activity Feed.
 

@@ -42,12 +42,12 @@ steps:
   - name: datadog-synthetics
     image: node:15-alpine3.10
     environment:
-      - DD_API_KEY:
-        from_secret: DD_API_KEY
-      - DD_APP_KEY:
-        from_secret: DD_APP_KEY
-      - DD_PUBLIC_TEST_ID:
-        from_secret: DD_PUBLIC_TEST_ID
+        DD_API_KEY:
+          from_secret: DD_API_KEY
+        DD_APP_KEY:
+          from_secret: DD_APP_KEY
+        DD_PUBLIC_TEST_ID:
+          from_secret: DD_PUBLIC_TEST_ID
     commands:
       - yarn add --dev @datadog/datadog-ci
       - apk add curl

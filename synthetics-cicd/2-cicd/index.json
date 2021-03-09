@@ -28,11 +28,11 @@
       "host01": [
         {
           "file": "docker-compose-storedog.yml",
-          "target": "/root"
+          "target": "/root/lab"
         },
         {
           "file": "regression.patch",
-          "target": "/root"
+          "target": "/root/lab"
         },
         {
           "file": "frontend_helper.rb",
@@ -44,8 +44,7 @@
         },
         {
           "file": "set_secrets.sh",
-          "target": "/root/lab/cicd",
-          "chmod": "x"
+          "target": "/root/lab/cicd"
         },
         {
           "file": "docker-compose.yml",
@@ -77,6 +76,10 @@
         },
         {
           "file": "drone-runner-exec.conf",
+          "target": "/root/lab/cicd"
+        },
+        {
+          "file": "drone-staging.yml",
           "target": "/root/lab/cicd"
         }
       ]

@@ -1,6 +1,6 @@
 echo "Setting up the lab..."
 
-while [ ! -d /ecommerceworkshop ]; do sleep 1; done;
+while [ ! -d /ecommworkshop ]; do sleep 1; done;
 while [ ! -d /root/lab ]; do sleep 1; done;
 ln -s /ecommworkshop /root/lab/storedog
 

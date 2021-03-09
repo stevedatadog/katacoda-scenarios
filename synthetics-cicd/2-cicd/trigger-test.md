@@ -79,7 +79,7 @@ The synthetics API opens the opportunity for custom test monitoring, triggering,
 ## Trigger The Test (The Easy Way)
 The Datadog CLI client is a Node Package Manager module called [@datadog/datadog-ci](https://www.npmjs.com/package/@datadog/datadog-ci). It's already installed in the lab, so you can start using it immediately. 
 
-In the terminal, run the command `cd /root/cicd`{{execute}} and run the following command:
+In the terminal, run the command `cd /root/lab/cicd`{{execute}} and run the following command:
 ```shell
 yarn datadog-ci synthetics run-tests \
 --public-id $DD_TEST_PUBLIC_ID \
