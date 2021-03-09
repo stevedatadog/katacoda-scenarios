@@ -1,8 +1,6 @@
 echo "Setting up the lab..."
 
-while [ ! -d /ecommworkshop ]; do sleep 1; done
-while [ ! -d /root/lab ]; do sleep 1; done
-
+statuscheck "organization complete"
 ln -s /ecommworkshop /root/lab/storedog
 cd /root/lab/storedog
 
@@ -15,15 +13,15 @@ POSTGRES_USER=postgres\n\
 POSTGRES_PASSWORD=postgres\n\
 DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > .env 
 clear
-statusupdate "storedog-environment"
+statusupdate "storedog environment"
 
-statuscheck "cicd-running"
-
+statuscheck "cicd running"
 cd /root/lab
 git config --global credential.helper 'store --file /root/lab/cicd/git-credentials'
 git config --global user.email 'labuser@example.com'
 git config --global user.name 'labuser'
 git clone http://localhost:8300/labuser/discounts-service.git
 clear
+
 statuscheck "complete"
 prepenvironment
