@@ -1,23 +1,6 @@
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
-# Orgainize
-cd /root
-mkdir -p /root/lab/staging
-mkdir /root/lab/cicd
-mv frontend_helper.rb staging
-mv discounts_controller.rb staging
-mv set_secrets.sh lab/cicd
-mv docker-compose.yml lab/cicd
-mv seed.sql lab/cicd
-mv labuser.git.tgz
-mv droneio.database.sqlite lab/cicd
-mv package.json lab/cicd
-mv gogs.app.ini lab/cicd
-mv git-credentials lab/cicd
-mv drone-runner-exec.conf lab/cicd
-statusupdate "organization complete"
-
 # CI/CD Pipeline
 cd /root/lab/cicd
 curl -L https://github.com/drone/drone-cli/releases/download/v1.2.4/drone_linux_amd64.tar.gz | tar zx

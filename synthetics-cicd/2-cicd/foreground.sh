@@ -1,6 +1,7 @@
 echo "Setting up the lab..."
 
-statuscheck "organization complete"
+while [ ! -d /ecommerce ]; do sleep 1; done;
+while [ ! -d /root/lab ]; do sleep 1; done;
 ln -s /ecommworkshop /root/lab/storedog
 cd /root/lab/storedog
 
