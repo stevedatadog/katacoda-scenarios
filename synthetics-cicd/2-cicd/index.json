@@ -35,12 +35,12 @@
           "target": "/root"
         },
         {
-          "file": "lab/cicd/staging/frontend_helper.rb",
-          "target": "/root/lab/cicd/staging/"
+          "file": "lab/staging/frontend_helper.rb",
+          "target": "/root/lab/staging/"
         },
         {
-          "file": "lab/cicd/staging/discounts_controller.rb",
-          "target": "/root/lab/cicd/staging/"
+          "file": "lab/staging/discounts_controller.rb",
+          "target": "/root/lab/staging/"
         },
         {
           "file": "lab/cicd/set_secrets.sh",
