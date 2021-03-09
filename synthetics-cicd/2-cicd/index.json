@@ -35,9 +35,8 @@
           "target": "/root"
         },
         {
-          "file": "lab/cicd/set_secrets.sh",
-          "target": "/root/lab/cicd/set_secrets.sh",
-          "chmod": "x"
+          "file": "lab/cicd",
+          "target": "/root/lab/cicd"
         }
       ]
     }
