@@ -36,48 +36,48 @@
         },
         {
           "file": "lab/staging/frontend_helper.rb",
-          "target": "/root/lab/staging/"
+          "target": "/root/lab/staging/frontend_helper.rb"
         },
         {
           "file": "lab/staging/discounts_controller.rb",
-          "target": "/root/lab/staging/"
+          "target": "/root/lab/staging/discounts_controller.rb"
         },
         {
           "file": "lab/cicd/set_secrets.sh",
-          "target": "/root/lab/cicd/",
+          "target": "/root/lab/cicd/set_secrets.sh",
           "chmod": "x"
         },
         {
           "file": "lab/cicd/docker-compose.yml",
-          "target": "/root/lab/cicd/"
+          "target": "/root/lab/cicd/docker-compose.yml"
         },
         {
           "file": "lab/cicd/seed.sql",
-          "target": "/root/lab/cicd/"
+          "target": "/root/lab/cicd/seed.sql"
         },
         {
           "file": "lab/cicd/labuser.git.tgz",
-          "target": "/root/lab/cicd/"
+          "target": "/root/lab/cicd/labuser.git.tgz"
         },
         {
           "file": "lab/cicd/droneio.database.sqlite",
-          "target": "/root/lab/cicd/"
+          "target": "/root/lab/cicd/droneio.database.sqlite"
         },
         {
           "file": "lab/cicd/package.json",
-          "target": "/root/lab/cicd/"
+          "target": "/root/lab/cicd/package.json"
         },
         {
           "file": "lab/cicd/gogs.app.ini",
-          "target": "/root/lab/cicd/"
+          "target": "/root/lab/cicd/gogs.app.ini"
         },
         {
           "file": "lab/cicd/git-credentials",
-          "target": "/root/lab/cicd/"
+          "target": "/root/lab/cicd/git-credentials"
         },
         {
           "file": "lab/cicd/drone-runner-exec.conf",
-          "target": "/root/lab/cicd/"
+          "target": "/root/lab/cicd/drone-runner-exec.conf"
         }
       ]
     }

@@ -1,6 +1,7 @@
 echo "Setting up the lab..."
 
-while [ ! -d /ecommworkshop ]; do sleep 1; done
+while [ ! -d /root/lab ]; do sleep 1; done
+
 ln -s /ecommworkshop /root/lab/storedog
 cd /root/lab/storedog
 
@@ -18,7 +19,7 @@ statusupdate "storedog-environment"
 statuscheck "cicd-running"
 
 cd /root/lab
-git config --global credential.helper 'store --file /root/cicd/git-credentials'
+git config --global credential.helper 'store --file /root/lab/cicd/git-credentials'
 git config --global user.email 'labuser@example.com'
 git config --global user.name 'labuser'
 git clone http://localhost:8300/labuser/discounts-service.git
