@@ -14,7 +14,7 @@ DD_APP_KEY=$DD_APP_KEY\n\
 POSTGRES_USER=postgres\n\
 POSTGRES_PASSWORD=postgres\n\
 DRONE_GOGS_SERVER=$GOGS_EXTERNAL_URL" > .env 
-# clear
+clear
 statusupdate "storedog-environment"
 
 statuscheck "cicd-running"
@@ -24,6 +24,6 @@ git config --global credential.helper 'store --file /root/lab/cicd/git-credentia
 git config --global user.email 'labuser@example.com'
 git config --global user.name 'labuser'
 git clone http://localhost:8300/labuser/discounts-service.git
-# clear
+clear
 statuscheck "complete"
 prepenvironment
