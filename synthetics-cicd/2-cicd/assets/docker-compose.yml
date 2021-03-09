@@ -74,11 +74,12 @@ services:
       # Child runners get their own Docker networks. Set this to `basename $PWD`_default to add them to the
       # default network instead. This allows access to other containers, such as registry
       - DRONE_RUNNER_NETWORKS=labnet
+      - DRONE_DEBUG=true
+      - DRONE_TRACE=true
     ports:
       - "7300:3000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /root/lab/cicd/drone.conf:/etc/drone.conf
     networks:
       - labnet
   registry:
