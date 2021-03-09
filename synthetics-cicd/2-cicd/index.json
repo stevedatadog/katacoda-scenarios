@@ -27,8 +27,17 @@
     "assets": {
       "host01": [
         {
-          "file": "lab",
+          "file": "lab/docker-compose-storedog.yml",
           "target": "/root"
+        },
+        {
+          "file": "lab/regression.patch",
+          "target": "/root"
+        },
+        {
+          "file": "lab/cicd/set_secrets.sh",
+          "target": "/root/lab/cicd/set_secrets.sh",
+          "chmod": "x"
         }
       ]
     }
