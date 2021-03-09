@@ -1,0 +1,1 @@
+To appreciate the value of running synthetic tests in a CI/CD pipeline, you'll introduce regression in the discounts service and send it through the pipeline. The synthetic test should fail, and Drone should halt before deploying the buggy discounts service to production.

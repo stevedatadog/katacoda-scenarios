@@ -26,9 +26,6 @@ cd /root/lab/discounts-service \
 && git push origin master
 ```{{execute}}
 
-Now click on the **Drone** tab above the terminal and watch the build in the Activity Feed.
+Now click on the **Drone** tab above the terminal and watch the build in the Activity Feed. When the pipeline reaches the `test-staging` section, you will eventually see the same output you saw when you ran the test using `datadog-ci`. You'll also see the test pass, and the pipeline will move on to the `deploy-production` section.
 
-todo: move this to the next step in discussion about using variables for the start URLs:
-To learn more about how you can use these files to create, trigger, and override synthetic tests, see the [CLI usage section](https://docs.datadoghq.com/synthetics/ci/?tab=apitest#package-installation) of the Datadog Docs for CI/CD Testing. 
-
-    
+Click the **Continue** button see what happens with we introduce a regression during the next discounts service deployment!

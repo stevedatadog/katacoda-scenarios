@@ -3,10 +3,10 @@
 You're going to manually trigger the browser test you created in the first part of this course in a couple of different ways. Because this is a new lab, the Storedog frontend and discounts service URLs have changed. Update the global variables you created to store these values:
 1. In the Datadog app, navigate to the [Synthetics Global Variables Page](https://app.datadoghq.com/synthetics/settings/variables)
 1. Hover over the **FRONTEND_URL** variable and click on the pencil icon that appears on the far right
-1. Under **Define variable**, change **Value** to the new Storedog frontend URL: `https://[[HOST_SUBDOMAIN]]-3030-[[KATACODA_HOST]].environments.katacoda.com/`{{copy}}
+1. Under **Define variable**, change **Value** to the new Storedog frontend staging URL: `https://[[HOST_SUBDOMAIN]]-3031-[[KATACODA_HOST]].environments.katacoda.com/`{{copy}}
 1. Click the **Save** button
 1. Hover over the **DISCOUNT_URL** variable and click on the pencil icon that appears on the far right
-1. Under **Define variable**, change **Value** to the new discounts service URL: `https://[[HOST_SUBDOMAIN]]-5001-[[KATACODA_HOST]].environments.katacoda.com/discount`{{copy}}
+1. Under **Define variable**, change **Value** to the new discounts service staging URL: `https://[[HOST_SUBDOMAIN]]-5151-[[KATACODA_HOST]].environments.katacoda.com/discount`{{copy}}
 1. Click the **Save** button
 
 Run the browser test now to confirm that it works with the new URL:

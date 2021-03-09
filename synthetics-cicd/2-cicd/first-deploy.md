@@ -1,7 +1,7 @@
 # Explore the Pipeline
 Above the terminal to your right, you will see three new tabs:
   - **Production** is the production instance of Storedog.
-  - **Staging** is running the staging instances of the Storedog frontend and discounts services. Right now it is very similar to the "production" Storedog instance, but the discounts data will be different.
+  - **Staging** is running the staging instances of the Storedog frontend and discounts services. Right now it is identical to the "production" Storedog instance.
   - **Gogs** is the user interface to the git repository running in this lab. You are not required to use this, but you may log in and explore the discounts service codebase if you're curious. The username is "labuser" and the password is "password".
   - **Drone** is the user interface to the Drone.io build system running in this lab. There isn't much to explore right now, but it will get more interesting when you kick off a new discounts service build in a minute. The login credentials are the same as those for Gogs: the username is "labuser" and the password is "password".
 
