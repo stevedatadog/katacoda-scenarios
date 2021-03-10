@@ -17,7 +17,7 @@ API tests are useful to help you proactively monitor that your most important se
 | TCP       | response time |
 | DNS       | response time, record values |
 
-Each test's request can be configured as appropriate for the type. For example HTTP tests allow you to configure many common HTTP request attributes, such as the header, cookies, body, and more. DNS tests allow you to configure lookups to use a specific DNS server.
+Each test's request can be configured as appropriate for the type. For example, HTTP tests allow you to configure many common HTTP request attributes such as the header, cookies, body, and more. DNS tests allow you to configure lookups to use a specific DNS server.
 
 ![Animated screencap of creating and running an API test](api-test.gif)
 
@@ -31,15 +31,15 @@ As with HTTP API tests, you can configure many HTTP request attributes and evalu
 
 Browser Tests
 ---
-Browser tests make requests using an actual browser, just like your users do. You can record a user flow through your web application, and evaluate almost anything in the resulting Document Object Model (DOM) of the page. For example, when you open your web application's home page, is the title correct? When you add a product to the shopping cart, is the price correct? Did the HTTP response arrive in under 300ms?
+Browser tests make requests using a browser, just like humans do. You can record a user flow through your web application, and evaluate almost anything in the resulting Document Object Model (DOM) of the page. For example, when you open your web application's home page, is the title correct? When you add a product to the shopping cart, is the price correct? Did the HTTP response arrive in under 300ms?
 
-Thanks to machine learning, Datadog's browser tests don't have to be reconfigured every time your application's DOM changes. For instance, when a button in your web app is moved or the identifier of an element changes, a browser test infers how to carry out the existing test in the updated UI. If all the steps and assertions in the test can be completed successfully, Datadog updates the stored identification mechanism and test definition to reflect the changes on the page. 
+Datadog's browser tests don't have to be reconfigured every time your application's DOM changes. For instance, when a button in your web app is moved or the identifier of an element changes, a browser test infers how to carry out the existing test in the updated UI. 
 
 Like API tests, you can configure many HTTP request attributes. Additionally, you can configure the screen dimensions of the device making the requests (laptop, tablet, mobile), as well as the browser to use (Chrome, Firefox).
 
 ![Animated screencap of creating and running a browser test](browser-test.gif)
 
-And like Multistep API tests, you can chain many user actions and assertions together in a single test. Additionally, Browser tests will generate a screenshot for every assertion, so you can see exactly what your users would see. Furthermore, Datadog Synthetic browser tests are tightly integrated with the rest of the platform, so you have access to end-to-end context for troubleshooting, from application logs and distributed request traces to infrastructure metrics.
+And like Multistep API tests, you can chain many user actions and assertions together in a single test. Browser tests will generate a screenshot for every assertion, so you can see exactly what your users would see. Furthermore, Datadog Synthetic browser tests are tightly integrated with the rest of the platform, so you have access to end-to-end context for troubleshooting, from application logs and distributed request traces to infrastructure metrics.
 
 Test Locations
 ---

@@ -28,7 +28,7 @@ Part 2: Synthetic Tests in a CI/CD Pipeline
 The second part of this course will walk you through incorporating synthetic tests into a CI/CD pipeline. You will trigger the browser test from Part 1 using curl and the `datadog-ci` command line client. Then you will configure the pipeline to run the test against a staging instance of Storedog before deploying to the production instance.
 
 By the conclusion of Part 2, you will be able to:
-  - Trigger synthetic tests and poll for their results by making requests to the Datadog API for synthetics
+  - Trigger synthetic tests and poll for their results with direct requests to the API for synthetics
   - Use the `datadog-ci` command line client to simplify running tests and viewing results
   - Integrate synthetic tests into your CI/CD pipeline using `datadog-ci`
 

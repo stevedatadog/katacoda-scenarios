@@ -35,3 +35,6 @@ do sleep 5
 done
 
 statusupdate complete
+
+# Generate traffic
+./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000" >> /dev/null 2>&1

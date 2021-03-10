@@ -17,12 +17,24 @@
         "title": "Create an API Test"
       },
       {
-        "text": "multistep-api-test.md",
+        "text": "imporove-api-test.md",
+        "title": "Improve the API Test"
+      },
+      {
+        "text": "multistep-api-test-one.md",
+        "title": "Plan a Multistep API Test"
+      },
+      {
+        "text": "multistep-api-test-two.md",
         "title": "Create a Multistep API Test"
       },
       {
-        "text": "browser-test.md",
+        "text": "browser-test-one.md",
         "title": "Create a Browser Test"
+      },
+      {
+        "text": "browser-test-two.md",
+        "title": "Complete the Browser Test"
       }
     ],
     "finish": {
