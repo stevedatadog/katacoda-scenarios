@@ -9,7 +9,8 @@
     },
     "steps": [
       {
-        "text": "first-deploy.md"
+        "text": "first-deploy.md",
+        "title": "First Deployment"
       },
       {
         "text": "trigger-test.md"

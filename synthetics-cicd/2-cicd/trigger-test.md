@@ -58,8 +58,7 @@ curl -G \
     -H "DD-API-KEY: ${DD_API_KEY}" \
     -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
     -d "result_ids=[${DD_TEST_RESULT_ID}]"
-```
-{{execute}}
+```{{execute}}
 
 If hasn't completed, the `result` key in the response will contain `{"eventType": "created"}`, and you should repeat the request until it is complete.
 
@@ -85,8 +84,7 @@ yarn datadog-ci synthetics run-tests \
 --public-id $DD_TEST_PUBLIC_ID \
 --apiKey $DD_API_KEY \
 --appKey $DD_APP_KEY
-```
-{{execute}}
+```{{execute}}
 
 You will start seeing nicely formatted output as `datadog-ci` triggers the test and fetches the results. 
 
@@ -103,4 +101,3 @@ If your test failed, you will see the results in red font colors, with red X's n
 By default, the CI/CD pipeline will halt when a command returns an error code. If you insert this test after the pipeline deploys to staging, it will halt without deploying to production.
 
 Click the **Continue** button below to set that up.
-

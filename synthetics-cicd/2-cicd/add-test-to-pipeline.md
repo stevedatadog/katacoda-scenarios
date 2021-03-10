@@ -23,9 +23,11 @@ You're now ready to commit the new Drone configuration file to the discounts ser
 ```
 cd /root/lab/discounts-service \
 && git commit -am "updated drone configuration" \
-&& git push origin master
+&& git push 
 ```{{execute}}
 
-Now click on the **Drone** tab above the terminal and watch the build in the Activity Feed. When the pipeline reaches the `test-staging` section, you will eventually see the same output you saw when you ran the test using `datadog-ci`. You'll also see the test pass, and the pipeline will move on to the `deploy-production` section.
+Now click on the **Drone** tab above the terminal and watch the build in the Activity Feed. When the pipeline reaches the `test-staging` section, you will eventually see the same output you saw when you ran the test using `datadog-ci` (though less colorful). You'll also see the test pass, and the pipeline will move on to the `deploy-production` section.
+
+![Successful datadog-ci test in the CICD pipeline](./assets/ss_drone_ci_success.png)
 
 Click the **Continue** button see what happens with we introduce a regression during the next discounts service deployment!
