@@ -2,7 +2,7 @@ Detailed Course Overview
 ===
 Datadog makes it easy to observe your backend systems and applications out-of-the box. With a little configuration, you can observe your frontend services and applications, too.
 
-In this course, you'll learn how to use Synthetic Monitoring to automatically test a web application's APIs and end-to-end frontend functionality. Then you'll learn how to incorporate these tests into a Continuous Integration/Continuous Deployment (CI/CD) pipeline to minimize and even eliminate user-facing application regressions resulting from buggy releases.
+In this course, you'll learn how to use Synthetic Monitoring to automatically test a web application's APIs and their integration with the applications frontend. Then you'll learn how to incorporate these tests into a Continuous Integration/Continuous Deployment (CI/CD) pipeline to minimize and even eliminate user-facing application regressions resulting from buggy releases.
 
 Click **Course Introduction  >  Introduction** to start the course.
 

@@ -1,0 +1,1 @@
+In this course, you'll learn how to use Synthetic Monitoring to automatically test a web application's APIs and their integration with the applications frontend. Then you'll learn how to incorporate these tests into a Continuous Integration/Continuous Deployment (CI/CD) pipeline to minimize and even eliminate user-facing application regressions resulting from buggy releases.

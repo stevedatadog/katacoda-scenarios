@@ -33,13 +33,13 @@ Browser Tests
 ---
 Browser tests make requests using a browser, just like humans do. You can record a user flow through your web application, and evaluate almost anything in the resulting Document Object Model (DOM) of the page. For example, when you open your web application's home page, is the title correct? When you add a product to the shopping cart, is the price correct? Did the HTTP response arrive in under 300ms?
 
-Datadog's browser tests don't have to be reconfigured every time your application's DOM changes. For instance, when a button in your web app is moved or the identifier of an element changes, a browser test infers how to carry out the existing test in the updated UI. 
-
+Datadog's browser tests don't have to be reconfigured every time your application's DOM changes. For instance, when a button in your web app is moved or the identifier of an element changes, a browser test infers how to carry out the existing test in the updated UI.
+ 
 Like API tests, you can configure many HTTP request attributes. Additionally, you can configure the screen dimensions of the device making the requests (laptop, tablet, mobile), as well as the browser to use (Chrome, Firefox).
 
 ![Animated screencap of creating and running a browser test](browser-test.gif)
 
-And like Multistep API tests, you can chain many user actions and assertions together in a single test. Browser tests will generate a screenshot for every assertion, so you can see exactly what your users would see. Furthermore, Datadog Synthetic browser tests are tightly integrated with the rest of the platform, so you have access to end-to-end context for troubleshooting, from application logs and distributed request traces to infrastructure metrics.
+Like Multistep API tests, you can chain many user actions and assertions together in a single test. Browser tests will generate a screenshot for every assertion, so you can see exactly what your users would see. Furthermore, Datadog Synthetic browser tests are tightly integrated with the rest of the platform, so you have access to end-to-end context for troubleshooting, from application logs and distributed request traces to infrastructure metrics.
 
 Test Locations
 ---
