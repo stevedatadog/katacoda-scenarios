@@ -5,8 +5,8 @@ Remember how Storedog engineers use "discount" and "coupon code" interchangeably
 
 1. In the terminal, execute `cd /root/lab/discounts-service`{{execute}}
 2. Execute `patch discounts.py /root/lab/regression.patch`{{execute}} 
-3. Execute `git diff` to see the results
-4. Execute `git commit -am "corrected coupon code endpoint name" && git push`
+3. Execute `git diff`{{execute}} to see the results
+4. Execute `git commit -am "corrected coupon code endpoint name" && git push`{{execute}}
 
 Return to the discounts service activity feed in Drone and click on the newest item. Watch as `test-staging` fails, halting the pipeline and protecting production from the regression.
 
