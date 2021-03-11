@@ -27,9 +27,9 @@ To see this pipeline in action, make a minor change to the discounts service cod
 Now that you have updated the discounts service code, you must push it to the repository to trigger a build. 
 
 1. Click on the **Terminal** tab and run the command `cd /root/lab/discounts-service`{{execute}}.
-2. Type `git diff`{{execute}} to confirm that git sees the new line you added
-4. Type `git commit -am "Added a comment"`
-5. Type `git push`
+2. Execute `git diff`{{execute}} to confirm that git sees the new line you added
+4. Execute `git commit -am "Added a comment"`{{execute}}
+5. Execute `git push`{{execute}}
 
 After updating the git repository, Gogs will notify Drone that a `push` event occurred. Drone will immediately clone the repository and start building. To see this in action:
 1. Click the **Drone** tab above the terminal.

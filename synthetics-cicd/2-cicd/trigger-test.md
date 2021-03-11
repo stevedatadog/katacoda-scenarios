@@ -25,7 +25,7 @@ Note that the following steps assume that the environment variable `DD_API_KEY` 
 ## Trigger The Test (The Hard Way)
 First, trigger the browser test using cURL. This will illustrate how the API works at a low level. The workflow is to POST a request to trigger a test, and then to GET the results of the test. Click the following block of code to execute this request for your browser test:
 
-```bash
+```
 curl -X POST \
 -H 'Content-Type: application/json' \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -37,12 +37,11 @@ curl -X POST \
         }
     ]
 }" "https://api.datadoghq.com/api/v1/synthetics/tests/trigger/ci"
-```
-{{execute}}
+```{{execute}}
 
 The response will look something like this:
 
-```json
+```
 {"batch_id":null,"results":[{"device":"chrome.laptop_large","result_id":"7425966295343615430","public_id":"vn7-5ys-8jw","location":30019},{"device":"firefox.laptop_large","result_id":"5281194447760414433","public_id":"vn7-5ys-8jw","location":30019}],"triggered_check_ids":["vn7-5ys-8jw"],"locations":[{"display_name":"N. California (AWS)","name":"aws:us-west-1","region":"Americas","is_active":true,"is_public":true,"id":30019}]}
 ```
 
@@ -52,7 +51,7 @@ This response contains information about how the test was run. If you look at th
 
 Next, you need to make another call to get the results of the test:
 
-```bash
+```
 curl -G \
     "https://api.datadoghq.com/api/v1/synthetics/tests/poll_results" \
     -H "DD-API-KEY: ${DD_API_KEY}" \

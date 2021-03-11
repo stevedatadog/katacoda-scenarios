@@ -12,6 +12,12 @@ Return to the discounts service activity feed in Drone and click on the newest i
 
 ![Failed datadog-ci test in the CICD pipeline](./assets/ss_drone_ci_fail.png)
 
+You can view the screenshot that Datadog took when it performed this test in the test result details. When storedog can't resolve the URL of the discounts service endpoint, it breaks. This is what your visitors would have seen if your pipeline didn't hadn't stopped when this error occurred:
+
+![Failed datadog-ci test results screenshot](./assets/ss_test_fail_screenshot.png)
+
+You can confirm that production is OK by clicking on the **Production** tab above the terminal in the lab. Clicking on the **Staging** tab will reveal that it is indeed broken. 
+
 Now you can rest assured that production is protected from regressions in the discounts service. From here, you could go on to test any number of features and user journeys. For example, ensure that ads display correctly, or that a multi-page checkout flow works as expected. You can call API tests with `datadog-ci`, too, to test services in isolation.
 # Further Reading
 `datadog-ci` allows you to configure and override synthetic tests using global configuration files as well as test-specific overrides. This grants you significant flexibility in how you integrate synthetic tests into your pipeline. For example, you can override test variables (such as `FRONTEND_URL` and `DISCOUNT_URL` used in this lab) to run the same test against multiple hosts, such as staging *and* production. Read more about configuring synthetic tests in the [documentation](https://docs.datadoghq.com/synthetics/ci/?tab=apitest#configure-tests).
