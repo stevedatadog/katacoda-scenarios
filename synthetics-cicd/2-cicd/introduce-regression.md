@@ -20,6 +20,10 @@ You can confirm that production is OK by clicking on the **Production** tab abov
 
 Now you can rest assured that production is protected from regressions in the discounts service. From here, you could go on to test any number of features and user journeys. For example, ensure that ads display correctly, or that a multi-page checkout flow works as expected. You can call API tests with `datadog-ci`, too, to test services in isolation.
 # Further Reading
+## Flexible Configuration
 `datadog-ci` allows you to configure and override synthetic tests using global configuration files as well as test-specific overrides. This grants you significant flexibility in how you integrate synthetic tests into your pipeline. For example, you can override test variables (such as `FRONTEND_URL` and `DISCOUNT_URL` used in this lab) to run the same test against multiple hosts, such as staging *and* production. Read more about configuring synthetic tests in the [documentation](https://docs.datadoghq.com/synthetics/ci/?tab=apitest#configure-tests).
+
+## Private Locations
+In this lab, the staging instance was open to the public. In the real world, you would probably want this instance private. Datadog supports running synthetic tests on internal-facing applications or any private URLs. See the [documentation for Private Locations](https://docs.datadoghq.com/getting_started/synthetics/private_location/) for more information.
 
 Click the **Continue** button below to review what you learned in this half of the course.
