@@ -1,0 +1,1 @@
+In this course, you'll learn how to use Synthetic Monitoring to automatically test a web application's APIs, as well as their integration with the application's frontend.
