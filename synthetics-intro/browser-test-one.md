@@ -1,4 +1,4 @@
-You now have API tests to monitor the availability, performance, and functionality of the Storedog discounts service. For the rest of this course, you'll work with Browser Tests to monitor Storedog's frontend to ensure a good user experience. 
+You now have API tests to monitor the availability, performance, and functionality of the Storedog discounts service. Now you'll employ a browser to monitor Storedog's frontend to ensure a good user experience. 
 
 Earlier in this lab you saw how the Storedog frontend displays the response from the discounts service in the upper-left corner of the home page as a "coupon block":
 

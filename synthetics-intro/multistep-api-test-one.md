@@ -23,7 +23,7 @@ You have just manually tested the discounts service's POST and DELETE endpoints.
 The four manual tests you just executed can be ported to a multistep API test. It will take a bit of work to configure them, but Datadog will happily run them for you thereafter.
 
 ### Global Variables
-You're about to create four requests and each will require a URL. This value is a good candidate to store in a global variable to use anywhere in your synthetics tests. This saves typing and also reduces the number of places to update the value if the URL changes. To create a global variable for the discounts service URL:
+You're about to create four requests and each will require a URL. This value is a good candidate to store in a global variable to use anywhere in your synthetic tests. This saves typing and also reduces the number of places to update the value if the URL changes. To create a global variable for the discounts service URL:
 
 1. In the Datadog App, navigate to **UX Monitoring > Settings** and click on the **Global Variables** tab.
 1. Click **+ New Global Variable** in the upper-right corner of the page.

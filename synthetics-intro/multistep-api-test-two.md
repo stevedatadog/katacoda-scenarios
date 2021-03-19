@@ -1,5 +1,5 @@
 ### Configure the new multistep API test
-1. Open the Synthetics Tests page and click the **+New Test** button in the upper-right corner. Click **New Multistep API Test**.
+1. Open the Synthetic Tests page and click the **+New Test** button in the upper-right corner. Click **New Multistep API Test**.
 1. Under **Name and tag your test**, enter a **Name**, such as "Discounts Service Create and Delete."
 1. Under **Select locations**, select *a single location*. This test will only work well if it tests discounts that it creates itself. It will likely fail if it runs from multiple locations simultaneously. This is not a good test to run in production if it won't have exclusive POST and DELETE access to the discount service.
 
