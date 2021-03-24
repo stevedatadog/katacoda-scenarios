@@ -1,1 +1,3 @@
-In this course, you'll learn how to use Synthetic Monitoring to automatically test a web application's APIs and their integration with the applications frontend. Then you'll learn how to incorporate these tests into a Continuous Integration/Continuous Deployment (CI/CD) pipeline to minimize and even eliminate user-facing application regressions resulting from buggy releases.
+In this course, you'll learn how to incorporate Datadog's synthetic browser tests into a Continuous Integration/Continuous Deployment (CI/CD) pipeline to minimize user-facing application regressions resulting from buggy releases.
+
+We strongly recommend that you complete the Introduction to Synthetics course before starting this course, as it walks you through creating the browser test used in this course.

@@ -13,13 +13,20 @@
         "title": "First Deployment"
       },
       {
-        "text": "trigger-test.md"
+        "text": "create-browser-test.md",
+        "title": "Create a Browser Test"
       },
       {
-        "text": "add-test-to-pipeline.md"
+        "text": "trigger-test.md",
+        "title": "Trigger the Browser Test"
       },
       {
-        "text": "introduce-regression.md"
+        "text": "add-test-to-pipeline.md",
+        "title": "Add the Browser Test to the Pipeline"
+      },
+      {
+        "text": "introduce-regression.md",
+        "title": "Introduce a Regression"
       }
     ],
     "finish": {

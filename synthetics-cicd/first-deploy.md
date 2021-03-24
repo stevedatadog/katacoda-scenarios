@@ -40,4 +40,4 @@ After updating the git repository, Gogs will notify Drone that a `push` event oc
 
 It will take a few minutes for the build and deployment to complete. Click on each step as it activates to see the work that Drone is doing. Make special note of the **deploy-staging** and **deploy-production** steps, which are currently identical. In the next step, you will configure Drone to run a browser test before deploying to production.
 
-Click the **Continue** button below to explore Datadog's Synthetic Tests API.
+Click the **Continue** button below to create the browser test that will monitor the Storedog homepage following discounts service deployments.

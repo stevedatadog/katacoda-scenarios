@@ -32,8 +32,8 @@ The production version of Storedog is the same as the one you tested in the firs
 
 Synthetics Tests
 ---
-Most of the above automation is already configured in the lab, so you won't be distracted by the details. Instead, you will focus on integrating the browser test you created in the first part of this course into the staging step.
+Most of the above automation is already configured in the lab, so you won't be distracted by the details. Instead, you will focus on integrating a synthetic browser test into the staging step.
 
-First, you'll trigger the browser test by calling the Datadog API from the terminal. Once you are able to run this test manually to confirm that the staging and production deployments are regression-free, you will use the datadog-ci command line utility to automatically run the end-to-end test after each staging deployment. If the test fails on, the pipeline will halt and production will be unaffected.
+First, you'll trigger the browser test by calling the Datadog API from the terminal. Once you are able to run this test manually to confirm that the staging and production deployments are regression-free, you will use the datadog-ci command line utility to automatically run the test after each staging deployment. If the test fails on staging, the pipeline will halt and production will not be affected.
 
 Click the **Continue** button below to start working with the discounts service CI/CD pipeline.

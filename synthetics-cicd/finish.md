@@ -9,4 +9,4 @@ Congratulations on integrating a Datadog synthetic browser test into a CI/CD pip
 
 Put these skills to use and start integrating synthetic tests into your own pipeline. If you have any questions specifically about this course, reach out to [learn@datadoghq.com](mailto:learn@datadoghq.com), or drop into the #training channel of our [public Slack](https://datadoghq.slack.com/).
 
-**ONE MORE THING**: Please delete or at least pause any synthetic tests that you have created in this lab. They will continue to run, even if your trial account expires. Thank you!
+**ONE MORE THING**: Please delete or at least pause any synthetic tests that you have created in this lab. Otherwise they will continue to run, even if your trial account expires. Thank you!
