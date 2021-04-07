@@ -1,0 +1,23 @@
+{
+    "title": "Datadog 201: Becoming a Power User",
+    "description": "Take your knowledge to the next level—whether you just started using Datadog in the last few months, or you just want to adopt Datadog for more use cases.",
+    "icon": "fa-bolt",
+    "courses": 
+    [
+      {
+        "course_id": "1-exec-dash",
+        "title": "Executive Dashboards",
+        "description": "Combine synthetic test results, SLOs, advanced queries, and drilldowns into a high-level executive dashboard."
+      },
+      {
+        "course_id": "2-notebooks",
+        "title": "Notebooks",
+        "description": "Create special-purpose notebooks such as postmortem, investigation, and runbook."
+      },
+      {
+        "course_id": "3-automation",
+        "title": "Automation",
+        "description": "Use the Datadog API to automate building dashboards."
+      }
+    ]
+  }
