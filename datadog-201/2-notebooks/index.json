@@ -1,0 +1,50 @@
+{
+  "time": "40 minutes",
+  "title": "Datadog 201: Notebooks",
+  "details": {
+    "intro": {
+      "courseData": "background.sh",
+      "code": "foreground.sh",
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "text": "runbook1.md",
+        "title": "Building Reusable Resources: Runbooks"
+      },
+      {
+        "text": "runbook2.md",
+        "title": "Runbooks Part 2"
+      }
+    ],
+    "assets": {
+      "host01": [
+        {
+          "file": "postlogs.py",
+          "target": "/root",
+          "chmod": "+x"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "showide": "true",
+    "uieditorpath": "/root", 
+    "terminals": [
+      {
+        "name": "Terminal 2"
+      }
+    ],
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Storedog",
+        "port": 3000
+      }
+    ]
+  },
+  "backend": {
+    "imageid": "datadog-base-v3"
+  }
+}
