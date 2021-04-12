@@ -9,28 +9,8 @@
       },
       "steps": [
         {
-          "text": "step1.md",
-          "title": "Getting Started"
-        },
-        {
-          "text": "executive_step1.md",
-          "title": "Building Executive Dashboards"
-        },
-        {
-          "text": "executive_step2.md",
-          "title": "Building Executive Dashboards"
-        },
-	{
-          "text": "executive_step3.md",
-          "title": "Building Executive Dashboards"
-        },
-        {
-          "text": "runbook1.md",
-          "title": "Building Reusable Resources: Runbooks"
-        },
-        {
-          "text": "runbook2.md",
-          "title": "Runbooks Part 2"
+          "text": "automation.md",
+          "title": "Automation"
         }
       ],
       "assets": {
@@ -40,7 +20,7 @@
             "target": "/root",
             "chmod": "+x"
           }
-	]
+	      ]
       }
     },
     "environment": {
