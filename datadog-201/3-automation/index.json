@@ -41,6 +41,6 @@
       ]
     },
     "backend": {
-      "imageid": "datadog-base-v2"
+      "imageid": "datadog-base-v3"
     }
   }
