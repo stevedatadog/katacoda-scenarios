@@ -27,11 +27,6 @@
           "file": "postlogs.py",
           "target": "/root",
           "chmod": "+x"
-        },
-        {
-          "file": "doesnotexists.py",
-          "target": "/root",
-          "chmod": "+x"
         }
      ]
     }
