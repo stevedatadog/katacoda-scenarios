@@ -19,16 +19,17 @@
       {
         "text": "executive_step3.md",
         "title": "Building Executive Dashboards"
-      },
-      {
-        "text": "missing.md",
-        "title": "Building Executive Dashboards"
       }
     ],
     "assets": {
       "host01": [
         {
           "file": "postlogs.py",
+          "target": "/root",
+          "chmod": "+x"
+        },
+        {
+          "file": "doesnotexists.py",
           "target": "/root",
           "chmod": "+x"
         }
