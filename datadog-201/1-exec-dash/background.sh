@@ -1,5 +1,5 @@
 # Idempotentiation
-if test -f "provisionedDatadog-201"; then
+if test -f "provisionedDD201"; then
   exit 0;
 fi
 
@@ -18,12 +18,12 @@ sed -i "/- DD_TAGS='env:ruby-shop'/r"<(
     echo "      - IPC_LOCK"
     echo "    security_opt:"
     echo "      - apparmor:unconfined"
-) /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
+) /ecommworkshop/deploy/docker-compose/docker-compose-fixed-instrumented.yml
 sed -i "/volumes:/a \ \ \ \ \ \ - /sys/kernel/debug:/sys/kernel/debug" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
 
 # workshop-specific environment
 sed -i "s/env:ruby-shop/env:dd201/" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
-cp /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml /ecommworkshop/docker-compose.yml
+cp /ecommworkshop/deploy/docker-compose/docker-compose-fixed-instrumented.yml /ecommworkshop/docker-compose.yml
 statusupdate configuration
 
 statuscheck apikey

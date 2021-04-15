@@ -6,8 +6,8 @@ echo $DD_API_KEY > /root/.dd_api_key && statusupdate apikey
 
 statuscheck logging
 
-ln -s /ecommworkshop /root/ecommworkshop
-cd ecommworkshop
+ln -s /ecommworkshop /root/lab
+cd lab
 
 clear
 prepenvironment
