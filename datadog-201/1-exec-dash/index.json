@@ -9,10 +9,6 @@
     },
     "steps": [
       {
-        "text": "setup.md",
-        "title": "Instrument Storedog for RUM"
-      },
-      {
         "text": "executive_step1.md",
         "title": "Building Executive Dashboards"
       },
