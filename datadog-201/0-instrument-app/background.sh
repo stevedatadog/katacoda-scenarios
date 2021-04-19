@@ -13,9 +13,6 @@ git fetch
 git checkout e400e3fc ./ads-service-fixed/ads.py
 mv ./ads-service-fixed/ads.py ./ads-service/ads.py
 
-# Use enhanced discounts service
-mv /root/discounts.py ./discounts-service-fixed/discounts.py
-
 # fix env tagging
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/config/initializers/datadog.rb
