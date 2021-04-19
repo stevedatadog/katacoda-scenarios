@@ -1,0 +1,47 @@
+{
+    "time": "15 minutes",
+    "title": "Datadog 201: Instrument The Application",
+    "details": {
+      "intro": {
+        "courseData": "background.sh",
+        "code": "foreground.sh",
+        "text": "intro.md"
+      },
+      "steps": [
+        {
+          "text": "setup.md",
+          "title": "Instrument Storedog for RUM"
+        }
+      ],
+      "assets": {
+        "host01": [
+          {
+            "file": "postlogs.py",
+            "target": "/root",
+            "chmod": "+x"
+          }
+       ]
+      }
+    },
+    "environment": {
+      "uilayout": "terminal",
+      "showide": "true",
+      "uieditorpath": "/root", 
+      "terminals": [
+        {
+          "name": "Terminal 2"
+        }
+      ],
+      "showdashboard": true,
+      "dashboards": [
+        {
+          "name": "Storedog",
+          "port": 3000
+        }
+      ]
+    },
+    "backend": {
+      "imageid": "datadog-base-v2"
+    }
+  }
+  

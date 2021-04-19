@@ -27,7 +27,7 @@ sed -i "/volumes:/a \ \ \ \ \ \ - /sys/kernel/debug:/sys/kernel/debug" /ecommwor
 
 # workshop-specific environment
 sed -i "s/env:ruby-shop/env:dd201/" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
-cp /ecommworkshop/docker-compose/docker-compose-fixed-instrumented.yml /ecommworkshop/docker-compose.yml
+cp /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml /ecommworkshop/docker-compose.yml
 statusupdate configuration
 
 statuscheck apikey
