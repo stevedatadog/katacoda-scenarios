@@ -7,6 +7,10 @@ fi
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 statusupdate tools
 
+# Return to simpler times
+cd /ecommworkshop
+git checkout 9ce34516d9a65d6f09a6fffd5c4911a409d31e3f 
+
 # Enable system probe for NPM
 sed -i "/- DD_TAGS='env:ruby-shop'/r"<(
     echo "      - DD_SYSTEM_PROBE_ENABLED=true"
