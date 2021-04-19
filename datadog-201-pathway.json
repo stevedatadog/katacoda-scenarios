@@ -5,6 +5,11 @@
     "courses": 
     [
       {
+        "course_id": "0-instrument-app",
+        "title": "Instrument the Application",
+        "description": "Create an RUM application in Datadog and instrument Storedog to send metrics to it."
+      },
+      {
         "course_id": "1-exec-dash",
         "title": "Executive Dashboards",
         "description": "Combine synthetic test results, SLOs, advanced queries, and drilldowns into a high-level executive dashboard."
