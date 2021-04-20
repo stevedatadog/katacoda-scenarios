@@ -1,0 +1,76 @@
+{
+  "title": "Tagging an App Service",
+  "description": "Tagging for a Docker-based App Service",
+  "difficulty": "Intermediate",
+  "time": "40 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Assigning Tags to App Data",
+        "text": "step1.md"
+      },
+      {
+        "title": "Exploring Correlated Data using Tags",
+        "text": "step2.md"
+      },
+      {
+        "title": "Searching and Correlating Synthetic Tests using Tags",
+        "text": "step3.md"
+      },
+      {
+        "title": "Creating Targeted Alerts using Tags",
+        "text": "step4.md"
+      },
+      {
+        "title": "Working with Unified Service Tagging",
+        "text": "step5.md",
+        "code": "newapp.sh"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh",
+      "courseData": "background.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "grademe",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        },
+        {
+          "file": "envready",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        },
+        {
+          "file": "docker-compose-fixed.yml",
+          "target": "/root"
+        },
+        {
+          "file": "docker-compose-broken.yml",
+          "target": "/root"
+        },
+        {
+          "file": "frontend-docker-entrypoint.sh",
+          "target": "/root"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal", 
+    "uieditorpath": "/ecommworkshop",
+    "hideHiddenFiles": true,
+    "exclusionPatterns": ["**/store-frontend/tmp/*", "**/store-frontend/log/*"],
+    "showdashboard": true,
+    "dashboards": [{"name": "storedog", "port": 3000}]
+  },
+  "backend": {
+      "imageid": "datadog-base-v1"
+  }
+}

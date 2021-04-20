@@ -1,0 +1,64 @@
+{
+  "title": "Tagging a Kubernetes Deployment",
+  "description": "Tagging for Kubernetes",
+  "difficulty": "Intermediate",
+  "time": "20 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Assigning Tags to the Deployment",
+        "text": "step1.md"
+      },
+      {
+        "title": "Container Mapping using Tags",
+        "text": "step2.md",
+        "answer": "answer2.md"
+      },
+      {
+        "title": "Building Dashboards using Tags",
+        "text": "step3.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh",
+      "courseData": "background.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "lotsofpods.yaml",
+          "target": "/root/taggingk8s/"
+        },
+        {
+          "file": "datadog.yaml",
+          "target": "/root/taggingk8s/"
+        },
+        {
+          "file": "couplemore.yaml",
+          "target": "/root/taggingk8s/"
+        },
+        {
+          "file": "grademe",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        },
+        {
+          "file": "count-pods",
+          "target": "/usr/local/bin/",
+          "chmod": "+x"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "editor-terminal", 
+    "uieditorpath": "taggingk8s"
+  },
+  "backend": {
+    "imageid": "datadog-kubernetes-cluster-running"
+  }
+}
