@@ -38,7 +38,7 @@ done
 statuscheck apikey
 DD_API_KEY=`cat /root/.dd_api_key` /root/postlogs.py 3600 &
 
+statusupdate complete
+
 # Generate traffic
 ./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000" >> /dev/null 2>&1
-
-statusupdate complete
