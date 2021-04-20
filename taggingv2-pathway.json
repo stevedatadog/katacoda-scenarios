@@ -1,0 +1,21 @@
+{
+  "title": "Tagging Best Practices V2",
+  "description": "",
+  "icon": "fa-katacoda",
+  "courses": [
+    {
+      "pathway_id": "datadog/taggingv2",
+      "course_id": "taggingk8s",
+      "id": "taggingk8s",
+      "title": "Tagging a Kubernetes Deployment",
+      "description": "Tagging a Kubernetes deployment"
+    },
+    {
+      "pathway_id": "datadog/taggingv2",
+      "course_id": "apptagging",
+      "id": "apptagging",
+      "title": "Tagging an App Service",
+      "description": "Tagging an App deployment"
+    }
+  ]
+}
