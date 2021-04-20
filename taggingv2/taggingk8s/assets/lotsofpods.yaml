@@ -196,15 +196,15 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
- name: my-pod12
- annotations:
-   ad.datadoghq.com/tags: '{"office": "lax", "team": "dev"}'
-spec:
- containers:
-   - name: my-container
-     image: ubuntu
+  name: my-pod12
+  annotations:
+    ad.datadoghq.com/tags: '{"office": "lax", "team": "dev"}'
+ spec:
+  containers:
+    - name: my-container
+      image: ubuntu
       imagePullPolicy: Never
-     command: ["/bin/bash", "-ec", "sleep infinity"]
+      command: ["/bin/bash", "-ec", "sleep infinity"]
 ---
 apiVersion: v1
 kind: Pod
