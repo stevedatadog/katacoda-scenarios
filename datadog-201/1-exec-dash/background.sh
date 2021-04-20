@@ -3,35 +3,42 @@ if test -f "provisionedDD201"; then
   exit 0;
 fi
 
-# Get the latest lab tools
+#!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
-statusupdate tools
-
-# Return to simpler times
+mv /root/docker-compose.yml /ecommworkshop/
 cd /ecommworkshop
-git checkout 9ce34516d9a65d6f09a6fffd5c4911a409d31e3f 
+git fetch
 
-# Enable system probe for NPM
-sed -i "/- DD_TAGS='env:ruby-shop'/r"<(
-    echo "      - DD_SYSTEM_PROBE_ENABLED=true"
-    echo "    cap_add:"
-    echo "      - SYS_ADMIN"
-    echo "      - SYS_RESOURCE"
-    echo "      - SYS_PTRACE"
-    echo "      - NET_ADMIN"
-    echo "      - IPC_LOCK"
-    echo "    security_opt:"
-    echo "      - apparmor:unconfined"
-) /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
-sed -i "/volumes:/a \ \ \ \ \ \ - /sys/kernel/debug:/sys/kernel/debug" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
+# fix 2.5 second delay in ads service
+git checkout e400e3fc ./ads-service-fixed/ads.py
+mv ./ads-service-fixed/ads.py ./ads-service/ads.py
 
-# workshop-specific environment
-sed -i "s/env:ruby-shop/env:dd201/" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
-cp /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml /ecommworkshop/docker-compose.yml
-statusupdate configuration
+# fix env tagging
+sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
+sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/config/initializers/datadog.rb
+sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/frontend/config/initializers/datadog.rb
 
+# update ddtrace
+sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./ads-service/requirements.txt
+sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./discounts-service-fixed/requirements.txt
+mv /root/frontend-docker-entrypoint.sh ./store-frontend-instrumented-fixed/docker-entrypoint.sh
+
+statusupdate setup
+
+# Start storedog
+statuscheck "environment-variables"
+docker-compose --env-file ./docker.env up -d
+
+# Wait for the frontend-service container to fire up
+while [[ -z $(docker ps --filter "name=ecommworkshop_frontend_1" --format '{{.Names}}') ]]
+do sleep 5
+done
+
+# Generate enriched logs
 statuscheck apikey
 DD_API_KEY=`cat /root/.dd_api_key` /root/postlogs.py 3600 &
 
-statusupdate logging
 statusupdate complete
+
+# Generate traffic
+./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000" >> /dev/null 2>&1
