@@ -19,16 +19,21 @@ Set these values in the first Terminal of your lab environment (without the `<` 
 
 Now run this command to start up the Storedog application:
 
-`POSTGRES_USER=postgres POSTGRES_PASSWORD=postgres docker-compose up`{{execute}}
+`docker-compose up`{{execute}}
 
 Once docker-compose has started the Storedog app, you will see a stream of log output in Terminal 1.
 
 You can interact with the Storedog app by clicking on the Storedog tab. It may take a minute or two to display. If you see a page displaying "Connecting to Port 3000," wait a little while and then refresh your browser.
 
-### Open Terminal 2
+Keep in mind that you are generating RUM metrics as you interact with Storedog, such as navigation events, click events, resource load times, and more. The more you interact with Storedog, the more RUM metrics you will generate!
+### Generate More Metrics
+Generate a useful volume of traffic to the Datadog app using the [GoReplay](https://github.com/buger/goreplay) utility:
 
-Change the working directory with the command `cd ecommworkshop`{{execute}}
+`./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"`{{execute}}
 
-Let's generate traffic to the Storedog app using the [GoReplay](https://github.com/buger/goreplay) utility by running the command `./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000"`{{execute}}
+In a few minutes you will see lots of data appear the Datadog app.
 
-In a few minutes you will see data in the Datadog app.
+## Summary
+The purpose of this lab was to show you how to instrument a web application from RUM while also getting familiar with Storedog. You also learned how this lab is automatically generating metrics for use in dashboards later. In future labs, all of this will be done for you so you can focus on the Datadog app.
+
+Click the **Next** button to start building executive dashboards.
