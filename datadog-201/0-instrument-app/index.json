@@ -9,10 +9,21 @@
       },
       "steps": [
         {
-          "text": "setup.md",
-          "title": "Instrument Storedog for RUM"
+          "text": "create_rum_app.md",
+          "title": "Create a RUM Application"
+        },
+        {
+          "text": "instrument_storedog.md",
+          "title": "Instrument the Storedog Frontend"
+        },
+        {
+          "text": "generate_more_metrics.md",
+          "title": "Generate More Metrics"
         }
       ],
+      "finish": {
+        "text": "finish.md"
+      },
       "assets": {
         "host01": [
           {
