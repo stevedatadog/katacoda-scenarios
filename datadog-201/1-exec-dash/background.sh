@@ -23,23 +23,10 @@ sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./ads-service/requirements.txt
 sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./discounts-service-fixed/requirements.txt
 mv /root/frontend-docker-entrypoint.sh ./store-frontend-instrumented-fixed/docker-entrypoint.sh
 
-# Assign Storedog RUM client token and application id to env vars
-export DD_CLIENT_TOKEN=`curl -s "https://api.datadoghq.com/api/v1/public_api_key" \
--H "Content-Type: application/json" \
--H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
-|jq  '.. | objects | select(.name == "[RUM] Storedog").hash'`
-
-export DD_APPLICATION_ID=`curl -s "https://api.datadoghq.com/api/v1/rum/projects" \
--H "Content-Type: application/json" \
--H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
-|jq  '.. | objects | select(.name == "Storedog").application_id'`
-
 statusupdate setup
 
 # Start storedog
-statuscheck "environment-variables"
+statuscheck environment-variables
 docker-compose up -d
 
 # Wait for the frontend-service container to fire up

@@ -1,6 +1,20 @@
-statuscheck setup
+# Assign Storedog RUM client token and application id to env vars
+export DD_CLIENT_TOKEN=`curl -s "https://api.datadoghq.com/api/v1/public_api_key" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+|jq  '.. | objects | select(.name == "[RUM] Storedog").hash'`
 
-([ -z $DD_APPLICATION_ID ] || [ -z $DD_CLIENT_TOKEN ]) && echo '** Storedog RUM Application not found! **';
+export DD_APPLICATION_ID=`curl -s "https://api.datadoghq.com/api/v1/rum/projects" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+|jq  '.. | objects | select(.name == "Storedog").application_id'`
+
+([ -z $DD_APPLICATION_ID ] || [ -z $DD_CLIENT_TOKEN ]) && echo '** Storedog RUM Application not found! **' && exit 1
+
+clear
+statuscheck setup
 
 # Make the app code available in the IDE
 ln -s /ecommworkshop /root/lab
@@ -11,7 +25,7 @@ DD_APP_KEY=$DD_APP_KEY\n\
 POSTGRES_USER=postgres\n\
 POSTGRES_PASSWORD=postgres" > .env 
 
-statusupdate "environment-variables"
+statusupdate environment-variables
 
 # Pass user context to background
 echo $DD_API_KEY > /root/.dd_api_key && statusupdate apikey
