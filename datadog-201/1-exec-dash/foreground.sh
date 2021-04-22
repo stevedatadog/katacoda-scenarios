@@ -1,5 +1,7 @@
 statuscheck setup
 
+if ([ -z $DD_APPLICATION_ID ] || [ -z $DD_CLIENT_TOKEN ]) && echo '** Storedog RUM Application not found! **';
+
 # Make the app code available in the IDE
 ln -s /ecommworkshop /root/lab
 cd lab
