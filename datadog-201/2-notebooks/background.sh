@@ -25,8 +25,20 @@ mv /root/frontend-docker-entrypoint.sh ./store-frontend-instrumented-fixed/docke
 
 statusupdate setup
 
+# Start storedog
+statuscheck environment-variables
+docker-compose up -d
+
+# Wait for the frontend-service container to fire up
+while [[ -z $(docker ps --filter "name=ecommworkshop_frontend_1" --format '{{.Names}}') ]]
+do sleep 5
+done
+
 # Generate enriched logs
 statuscheck apikey
 DD_API_KEY=`cat /root/.dd_api_key` /root/postlogs.py 3600 &
 
 statusupdate complete
+
+# Generate traffic
+./gor --input-file-loop --input-file requests_0.gor --output-http "http://localhost:3000" >> /dev/null 2>&1
