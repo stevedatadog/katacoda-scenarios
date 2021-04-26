@@ -20,11 +20,19 @@
     "assets": {
       "host01": [
         {
+          "file": "docker-compose.yml",
+          "target": "/root"
+        },
+        {
+          "file": "frontend-docker-entrypoint.sh",
+          "target": "/root"
+        },
+        {
           "file": "postlogs.py",
           "target": "/root",
           "chmod": "+x"
         }
-      ]
+     ]
     }
   },
   "environment": {
