@@ -1,0 +1,54 @@
+{
+    "time": "120 minutes",
+    "title": "Datadog 201: Automation",
+    "details": {
+      "intro": {
+        "courseData": "background.sh",
+        "code": "foreground.sh",
+        "text": "intro.md"
+      },
+      "steps": [
+        {
+          "text": "automation.md",
+          "title": "Automation"
+        }
+      ],
+      "assets": {
+        "host01": [
+          {
+            "file": "postlogs.py",
+            "target": "/root",
+            "chmod": "+x"
+          },
+          {
+            "file": "docker-compose.yml",
+            "target": "/root"
+          },
+          {
+            "file": "frontend-docker-entrypoint.sh",
+            "target": "/root"
+          }
+	      ]
+      }
+    },
+    "environment": {
+      "uilayout": "terminal",
+      "showide": "true",
+      "uieditorpath": "/root", 
+      "terminals": [
+        {
+          "name": "Terminal 2"
+        }
+      ],
+      "showdashboard": true,
+      "dashboards": [
+        {
+          "name": "Storedog",
+          "port": 3000
+        }
+      ]
+    },
+    "backend": {
+      "imageid": "datadog-base-v2"
+    }
+  }
