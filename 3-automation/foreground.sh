@@ -5,7 +5,7 @@ mv /root/docker-compose-dd-verify.yml /root/lab
 mv /root/dd-verify.py
 cd /root/lab
 
-statuscheck "terraform installted"
+statuscheck "terraform installed"
 
 clear
 prepenvironment

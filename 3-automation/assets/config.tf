@@ -15,9 +15,10 @@ provider "docker" {
 
 resource "docker_image" "datadog_image" {
   name = "datadog/agent:7.21.1"
+  env = ["DD_API_KEY", "DD_LOGS_ENABLED=true", "DD_ENV=dd201"]
 }
 
-resource "datadog_container" "datadog_container" {
+resource "docker_container" "datadog_container" {
   name = "datadog-agent"
   image = "${docker_image.datadog_image.name}"
 }
@@ -29,11 +30,6 @@ resource "docker_container" "redis_container" {
 
 resource "docker_image" "redis_image" {
   name = "redis:6.2-alpine"
-}
-
-resource "docker_container" "redis_container" {
-  name = "redis-session-cache"
-  image = "${docker_image.redis_image.name}"
 }
 
 provider "datadog" {}
