@@ -25,13 +25,9 @@
             "target": "/root"
           },
           {
-            "file": "frontend-docker-entrypoint.sh",
-            "target": "/root"
-          },
-          {
             "file": "docker-compose-dd-verify.yml",
             "target": "/root"
-          }
+          },
           {
             "file": "dd-verify.py",
             "target": "/root"
