@@ -31,7 +31,12 @@
           {
             "file": "dd-verify.py",
             "target": "/root"
+          },
+          {
+            "file": "config.tf",
+            "target": "/root"
           }
+
 	      ]
       }
     },
