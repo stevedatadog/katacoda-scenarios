@@ -120,7 +120,7 @@ resource "docker_image" "redis_image" {
 
 resource "docker_container" "postgres_container" {
   name = "db"
-  image = "${docker_image.redis_image.name}"
+  image = "${docker_image.postgres_image.name}"
   env = [
     "DD_SERVICE=postgres",
     "DD_VERSION=1.0",
@@ -160,7 +160,7 @@ resource "docker_container" "postgres_container" {
   }
 }
 
-resource "docker_image" "postgres" {
+resource "docker_image" "postgres_image" {
   name = "postgres:11-alpine"
 }
 
