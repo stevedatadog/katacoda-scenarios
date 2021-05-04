@@ -70,7 +70,7 @@ resource "docker_container" "datadog_container" {
 
   labels {
     label = "com.datadoghq.ad.logs"
-    value = "[{\"source\": \"agent\", \"service\": \"my-agent\"}]"
+    value = "[{\"source\": \"agent\", \"service\": \"agent\"}]"
   }
 }
 
@@ -116,6 +116,52 @@ resource "docker_container" "redis_container" {
 
 resource "docker_image" "redis_image" {
   name = "redis:6.2-alpine"
+}
+
+resource "docker_container" "postgres_container" {
+  name = "db"
+  image = "${docker_image.redis_image.name}"
+  env = [
+    "DD_SERVICE=postgres",
+    "DD_VERSION=1.0",
+    "DD_ENV=dd201",
+    "POSTGRES_PASSWORD=postgres",
+    "POSTGRES_USER=postgres"
+  ]
+
+  labels {
+      label = "com.datadoghq.ad.logs"
+      value = "[{\"source\": \"postgresql\", \"service\": \"postgresql\"}]"
+  }
+  labels {
+      label = "com.datadoghq.tags.service"
+      value = "postgres"
+  }
+  labels {
+      label = "com.datadoghq.tags.env"
+      value = "dd201"
+  }
+  labels {
+      label = "com.datadoghq.ad.check_names"
+      value = "postgres"
+  }
+  labels {
+      label = "com.datadoghq.ad.init_configs"
+      value = "[{}]"
+  }
+  labels {
+      label = "com.datadoghq.ad.instances"
+      value = "[{\"host\":\"%%host%%\",\"port\":\"5432\"},\"username\":\"postgres\",\"password\":\"postgres\"}]"
+  }
+
+  ports {
+      internal = 5432
+      external = 5432
+  }
+}
+
+resource "docker_image" "postgres" {
+  name = "postgres:11-alpine"
 }
 
 provider "datadog" {}
