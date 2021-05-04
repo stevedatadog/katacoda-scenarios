@@ -46,20 +46,20 @@ resource "docker_container" "datadog_container" {
   }
 
   volumes {
-    container_path = "/host/proc/"
-    host_path = "/proc/"
+    container_path = "/host/proc"
+    host_path = "/proc"
     read_only = true
   }
 
   volumes {
-    container_path = "/host/sys/fs/cgroup/"
-    host_path = "/sys/fs/cgroup/"
+    container_path = "/host/sys/fs/cgroup"
+    host_path = "/sys/fs/cgroup"
     read_only = true
   }
 
   volumes {
-    container_path = "/sys/kernel/debug/"
-    host_path = "/sys/kernel/debug/"
+    container_path = "/sys/kernel/debug"
+    host_path = "/sys/kernel/debug"
   }
 
   capabilities {
@@ -70,7 +70,7 @@ resource "docker_container" "datadog_container" {
 
   labels {
     label = "com.datadoghq.ad.logs"
-    value = "[{\"source\": \"agent\", \"service\": \"agent\"}]"
+    value = "[{\"source\": \"agent\", \"service\": \"my-agent\"}]"
   }
 }
 
@@ -82,6 +82,7 @@ resource "docker_container" "redis_container" {
     "DD_VERSION=1.0",
     "DD_ENV=dd201"
   ]
+
   labels {
       label = "com.datadoghq.ad.logs"
       value = "[{\"source\": \"redis\", \"service\": \"redis-session-cache\"}]"
@@ -105,6 +106,11 @@ resource "docker_container" "redis_container" {
   labels {
       label = "com.datadoghq.ad.instances"
       value = "[{\"host\":\"%%host%%\",\"port\":\"6379\"}]"
+  }
+
+  ports {
+      internal = 6379
+      external = 6379
   }
 }
 
