@@ -7,6 +7,7 @@ fi
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 mkdir /root/lab
 mv /root/docker-compose.yml /root/lab
+mv /root/config.tf /root/lab
 
 statusupdate setup
 
