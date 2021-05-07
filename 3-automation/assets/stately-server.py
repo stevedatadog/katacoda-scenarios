@@ -8,15 +8,17 @@ class DefaultResource:
         resp.status = falcon.HTTP_200 
         resp.content_type = "text/html"
         with open('index.html', 'r') as f:
-          resp.body = f.read()
+          resp.text = f.read()
 
 class StateResource:
     def on_get(self, req, resp):
         resp.status = falcon.HTTP_200  
+        # @todo search the data store for the user and return the user and state
         resp.text = '{{ "user": "{}", "state": "010101010" }}'.format(uuid.uuid1())
 
     def on_post(self, req, resp):
         resp.status = falcon.HTTP_200  
+        # @todo write the data store for the user and return the user and state
         resp.text = '{{ "user": "{}", "state": "010101010" }}'.format(uuid.uuid1())
 
 app = falcon.App()

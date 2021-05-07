@@ -125,7 +125,15 @@
                 //     - (false) console.log that state cannot be persisted currently.
             }
 
-            function loadState() {}
+            function loadState(stateItems) {
+              // const state = fetchState();
+              const states = "101010101".split('');
+              for (i=0; i < states.length; i++) {
+                  stateItems[i].classList.remove("on", "off"); 
+                  stateItems[i].classList.add(parseInt(states[i]) ? "on" : "off"); 
+              }
+              console.log(stateItems);
+            }
 
             function saveState(stateItems) {
               const state = [];
@@ -173,7 +181,7 @@
               oReq.open('GET', getStateUrl, true);
               oReq.responseType = 'json';
               oReq.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-              oReq.setRequestHeader('x-stately-version', '1.0');
+              oReq.setRequestHeader('x-vanillaAjaxWithoutjQuery-version', '1.0');
               oReq.send();
 
             }
