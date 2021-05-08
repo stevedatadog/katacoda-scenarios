@@ -6,6 +6,9 @@ terraform {
         datadog = {
             source = "datadog/datadog"
         }
+        stately = {
+            source = "dd201/stately:1.0"
+        }
     }
 }
 
@@ -71,6 +74,34 @@ resource "docker_container" "datadog_container" {
   labels {
     label = "com.datadoghq.ad.logs"
     value = "[{\"source\": \"agent\", \"service\": \"agent\"}]"
+  }
+}
+
+resource "docker_container" "stately_container" {
+  name = "stately-app"
+  image = "${docker_image.stately.name}"
+  env = [
+    "DD_SERVICE=stately",
+    "DD_VERSION=1.0",
+    "DD_ENV=dd201",
+    "DD_LOGS_INJECTION=true"
+  ]
+
+  labels {
+      label = "com.datadoghq.ad.logs"
+      value = "[{\"source\": \"python\", \"service\": \"stately\"}]"
+  }
+  labels {
+      label = "com.datadoghq.tags.service"
+      value = "stately"
+  }
+  labels {
+      label = "com.datadoghq.tags.env"
+      value = "dd201"
+  }
+  ports {
+      internal = 8000
+      external = 8000
   }
 }
 

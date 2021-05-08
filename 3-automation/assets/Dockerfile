@@ -13,12 +13,7 @@ WORKDIR /app
 COPY index.html .
 COPY stately-server.py .
 
-# Let Flask know what to boot
-ENV DD_SERVICE
-ENV DD_ENV
-ENV DD_LOGS_INJECTION=true
-
 # Install dependencies via pip and avoid caching build artifacts
-RUN pip install --no-cache-dir -r flacon falcon_caching redis ddtrace
+RUN pip install --no-cache-dir falcon falcon_caching redis ddtrace
 
 CMD ["ddtrace-run", "python", "stately-server.py"]
