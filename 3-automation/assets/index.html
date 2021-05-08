@@ -125,21 +125,25 @@
                 //     - (false) console.log that state cannot be persisted currently.
             }
 
-            function loadState(stateItems) {
-              let state;
-              try {
-                  state = getState();
-              } catch(e) {
-                  console.log("Couldn't get state!");
-                  return false;
-              }
-              // @todo convert this to handleNewState() and pass as a callback to getState() to be called in the readystate 4 condition
+            function applyNewState(stateItems, state) {
               const states = state.split('');
               for (i=0; i < states.length; i++) {
                   stateItems[i].classList.remove("on", "off"); 
                   stateItems[i].classList.add(parseInt(states[i]) ? "on" : "off"); 
               }
               console.log(stateItems);
+            }
+
+            function loadState(stateItems) {
+              let state;
+              try {
+                  state = getState(function(state) {
+                      applyNewState(stateItems, state);
+                  });
+              } catch(e) {
+                  console.log("Couldn't get state!");
+                  return false;
+              }
             }
 
             function saveState(stateItems) {
@@ -171,7 +175,7 @@
               }
             }
 
-            function getState() {
+            function getState(callback) {
               oReq = new XMLHttpRequest();
               oReq.onload = function (e) {
                 var xhr = e.target;
@@ -185,7 +189,7 @@
               oReq.onreadystatechange = function () {
                   if (oReq.readyState === 4) {
                     console.log('Get complete');
-                    return("110101011");
+                    callback("110101011");
                   }
               };
               oReq.open('GET', getStateUrl, true);
