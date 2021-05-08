@@ -142,6 +142,7 @@
                   });
               } catch(e) {
                   console.log("Couldn't get state!");
+                  console.log(e.message);
                   return false;
               }
             }
@@ -176,32 +177,38 @@
             }
 
             function getState(callback) {
-              oReq = new XMLHttpRequest();
-              oReq.onload = function (e) {
-                var xhr = e.target;
+              xhr = new XMLHttpRequest();
+              xhr.onerror = function(e) {
                 console.log('Inside the onload event');
+                const xhr = e.target;
+                throw new Error(`Error attempting to get state from API: ${xhr.target.response}`)
+              }
+              xhr.onload = function (e) {
+                console.log('Inside the onload event');
+                debugger;
+                const xhr = e.target;
                 if (xhr.responseType === 'json') {
                   console.log(xhr.response.message);
+                    console.log(xhr.message); // @todo grab the state from here
+                    callback("110101011");
                 } else {
                   console.log(JSON.parse(xhr.responseText).message);
                 }
               };
-              oReq.onreadystatechange = function () {
-                  if (oReq.readyState === 4) {
-                    console.log('Get complete');
-                    callback("110101011");
+              xhr.onreadystatechange = function () {
+                  if (xhr.readyState === XMLHttpRequest.DONE) {
                   }
               };
-              oReq.open('GET', getStateUrl, true);
-              oReq.responseType = 'json';
-              oReq.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-              oReq.setRequestHeader('x-vanillaAjaxWithoutjQuery-version', '1.0');
-              oReq.send();
+              xhr.open('GET', getStateUrl, true);
+              xhr.responseType = 'json';
+              xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+              xhr.setRequestHeader('x-stately-frontend', '1.0');
+              xhr.send();
             }
 
             function persistState() {
-              oReq = new XMLHttpRequest();
-              oReq.onload = function (e) {
+              xhr = new XMLHttpRequest();
+              xhr.onload = function (e) {
                 var xhr = e.target;
                 console.log('Inside the onload event');
                 if (xhr.responseType === 'json') {
@@ -210,14 +217,14 @@
                   console.log(JSON.parse(xhr.responseText).message);
                 }
               };
-              oReq.onreadystatechange = function () {
-                  console.log('Inside the onreadystatechange event with readyState: ' + oReq.readyState);
+              xhr.onreadystatechange = function () {
+                  console.log('Inside the onreadystatechange event with readyState: ' + xhr.readyState);
               };
-              oReq.open('GET', getStateUrl, true);
-              oReq.responseType = 'json';
-              oReq.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-              oReq.setRequestHeader('x-vanillaAjaxWithoutjQuery-version', '1.0');
-              oReq.send();
+              xhr.open('POST', getStateUrl, true);
+              xhr.responseType = 'json';
+              xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+              xhr.setRequestHeader('x-stately-frontend', '1.0');
+              xhr.send();
             }
         }
     }
