@@ -43,6 +43,10 @@
           {
             "file": "index.html",
             "target": "/root"
+          },
+          {
+            "file": "Dockerfile",
+            "target": "/root"
           }
 
 

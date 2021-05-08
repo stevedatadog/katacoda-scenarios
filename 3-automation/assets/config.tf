@@ -3,11 +3,9 @@ terraform {
         docker = {
             source = "kreuzwerker/docker"
         }
+
         datadog = {
             source = "datadog/datadog"
-        }
-        stately = {
-            source = "dd201/stately:1.0"
         }
     }
 }
@@ -24,9 +22,15 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
+resource  "docker_network" "dd201net" {
+  name = "dd201net"
+}
+
 resource "docker_image" "datadog_image" {
   name = "datadog/agent:7.21.1"
 }
+
+
 
 resource "docker_container" "datadog_container" {
   name = "datadog-agent"
@@ -77,9 +81,13 @@ resource "docker_container" "datadog_container" {
   }
 }
 
+resource "docker_image" "stately_container" {
+  name = "dd201/stately:1.0"
+}
+
 resource "docker_container" "stately_container" {
   name = "stately-app"
-  image = "${docker_image.stately.name}"
+  image = "${docker_image.stately_container.name}"
   env = [
     "DD_SERVICE=stately",
     "DD_VERSION=1.0",
@@ -107,6 +115,7 @@ resource "docker_container" "stately_container" {
 
 resource "docker_container" "redis_container" {
   name = "redis-session-cache"
+  hostname = "redis-session-cache"
   image = "${docker_image.redis_image.name}"
   env = [
     "DD_SERVICE=redis-session-cache",
@@ -137,11 +146,6 @@ resource "docker_container" "redis_container" {
   labels {
       label = "com.datadoghq.ad.instances"
       value = "[{\"host\":\"%%host%%\",\"port\":\"6379\"}]"
-  }
-
-  ports {
-      internal = 6379
-      external = 6379
   }
 }
 

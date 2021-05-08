@@ -8,7 +8,7 @@ cache = Cache(
     config={
         'CACHE_TYPE': 'redis',
         'CACHE_EVICTION_STRATEGY': 'time-based',
-        'CACHE_REDIS_HOST': 'redis',  # Redis host/client object
+        'CACHE_REDIS_HOST': 'redis-session-cache',  # Redis host/client object
                                           # default: 'localhost'
 #        'CACHE_REDIS_PORT': 6379,  # default: 6379
 #        'CACHE_REDIS_PASSWORD': 'MyRedisPassword',  # default: None
