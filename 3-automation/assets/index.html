@@ -126,8 +126,15 @@
             }
 
             function loadState(stateItems) {
-              // const state = fetchState();
-              const states = "101010101".split('');
+              let state;
+              try {
+                  state = getState();
+              } catch(e) {
+                  console.log("Couldn't get state!");
+                  return false;
+              }
+              // @todo convert this to handleNewState() and pass as a callback to getState() to be called in the readystate 4 condition
+              const states = state.split('');
               for (i=0; i < states.length; i++) {
                   stateItems[i].classList.remove("on", "off"); 
                   stateItems[i].classList.add(parseInt(states[i]) ? "on" : "off"); 
@@ -164,6 +171,30 @@
               }
             }
 
+            function getState() {
+              oReq = new XMLHttpRequest();
+              oReq.onload = function (e) {
+                var xhr = e.target;
+                console.log('Inside the onload event');
+                if (xhr.responseType === 'json') {
+                  console.log(xhr.response.message);
+                } else {
+                  console.log(JSON.parse(xhr.responseText).message);
+                }
+              };
+              oReq.onreadystatechange = function () {
+                  if (oReq.readyState === 4) {
+                    console.log('Get complete');
+                    return("110101011");
+                  }
+              };
+              oReq.open('GET', getStateUrl, true);
+              oReq.responseType = 'json';
+              oReq.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+              oReq.setRequestHeader('x-vanillaAjaxWithoutjQuery-version', '1.0');
+              oReq.send();
+            }
+
             function persistState() {
               oReq = new XMLHttpRequest();
               oReq.onload = function (e) {
@@ -183,7 +214,6 @@
               oReq.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
               oReq.setRequestHeader('x-vanillaAjaxWithoutjQuery-version', '1.0');
               oReq.send();
-
             }
         }
     }
