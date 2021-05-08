@@ -101,6 +101,7 @@
 
         <script>
         const getStateUrl = "/state";
+        const postStateUrl = "/state";
         document.onreadystatechange = function () {
           if (document.readyState == "interactive") {
             setCopyright();
@@ -137,8 +138,9 @@
             function loadState(stateItems) {
               let state;
               try {
-                  state = getState(function(state) {
-                      applyNewState(stateItems, state);
+                  state = getState(function(session) {
+                      // @todo session.user has the user/session id
+                      applyNewState(stateItems, session.state);
                   });
               } catch(e) {
                   console.log("Couldn't get state!");
@@ -176,6 +178,7 @@
               }
             }
 
+            // @todo upgrade to fetch
             function getState(callback) {
               xhr = new XMLHttpRequest();
               xhr.onerror = function(e) {
@@ -185,12 +188,10 @@
               }
               xhr.onload = function (e) {
                 console.log('Inside the onload event');
-                debugger;
                 const xhr = e.target;
                 if (xhr.responseType === 'json') {
-                  console.log(xhr.response.message);
-                    console.log(xhr.message); // @todo grab the state from here
-                    callback("110101011");
+                  console.log(xhr.response);
+                  callback(xhr.response);
                 } else {
                   console.log(JSON.parse(xhr.responseText).message);
                 }
@@ -206,7 +207,8 @@
               xhr.send();
             }
 
-            function persistState() {
+            // @todo upgrade to fetch
+            function persistState(state) {
               xhr = new XMLHttpRequest();
               xhr.onload = function (e) {
                 var xhr = e.target;
@@ -220,11 +222,12 @@
               xhr.onreadystatechange = function () {
                   console.log('Inside the onreadystatechange event with readyState: ' + xhr.readyState);
               };
-              xhr.open('POST', getStateUrl, true);
+              xhr.open('POST', postStateUrl, true);
               xhr.responseType = 'json';
+              xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
               xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
               xhr.setRequestHeader('x-stately-frontend', '1.0');
-              xhr.send();
+              xhr.send(JSON.stringify(state));
             }
         }
     }
