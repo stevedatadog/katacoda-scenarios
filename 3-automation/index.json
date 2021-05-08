@@ -35,7 +35,17 @@
           {
             "file": "config.tf",
             "target": "/root"
+          },
+          {
+            "file": "stately-server.py",
+            "target": "/root"
+          },
+          {
+            "file": "index.html",
+            "target": "/root"
           }
+
+
 
 	      ]
       }
