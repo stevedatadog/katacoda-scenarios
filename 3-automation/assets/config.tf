@@ -30,8 +30,6 @@ resource "docker_image" "datadog_image" {
   name = "datadog/agent:7.21.1"
 }
 
-
-
 resource "docker_container" "datadog_container" {
   name = "datadog-agent"
   image = "${docker_image.datadog_image.name}"
@@ -87,6 +85,7 @@ resource "docker_image" "stately_container" {
 
 resource "docker_container" "stately_container" {
   name = "stately-app"
+  hostname = "stately-app"
   image = "${docker_image.stately_container.name}"
   env = [
     "DD_SERVICE=stately",
