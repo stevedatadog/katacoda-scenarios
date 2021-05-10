@@ -4,7 +4,7 @@ import falcon
 from falcon_caching import Cache
 import uuid
 
-from ddtrace import tracer, patch
+from ddtrace import patch
 patch(falcon=True)
 
 cache = Cache(
