@@ -66,8 +66,8 @@
       "showdashboard": true,
       "dashboards": [
         {
-          "name": "Storedog",
-          "port": 3000
+          "name": "Stately!",
+          "port": 8000
         }
       ]
     },
