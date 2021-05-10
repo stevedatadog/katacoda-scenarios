@@ -137,7 +137,7 @@ resource "docker_container" "redis_container" {
     "DD_ENV=dd201"
   ]
 
-  command = ["redis-server", "--loglevel", "debug"]
+  command = ["redis-server", "--loglevel", "verbose"]
 
   labels {
       label = "com.datadoghq.ad.logs"
