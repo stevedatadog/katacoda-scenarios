@@ -39,6 +39,7 @@ resource "docker_container" "datadog_container" {
   env = [
     "DD_API_KEY=${var.datadog_api_key}",
     "DD_APP_KEY=${var.datadog_app_key}",
+    "DD_APM_ENABLED=true",
     "DD_APM_NON_LOCAL_TRAFFIC=true",
     "DD_LOGS_ENABLED=true",
     "DD_PROCESS_AGENT_ENABLED=true",
@@ -46,7 +47,10 @@ resource "docker_container" "datadog_container" {
     "DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true",
     "DD_ENV=dd201"
   ]
-
+  ports {
+      internal = 8126
+      external = 8126
+  }
   volumes {
     container_path = "/var/run/docker.sock"  
     host_path = "/var/run/docker.sock"
