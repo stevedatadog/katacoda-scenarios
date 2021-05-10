@@ -3,10 +3,10 @@ FROM python:3.9.1-slim-buster
 # Update, upgrade, and cleanup debian packages
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
-    apt-get upgrade --yes && \
-    apt-get install --yes build-essential libpq-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get upgrade --yes 
+#    apt-get install --yes build-essential libpq-dev && \
+#    apt-get clean && \
+#    rm -rf /var/lib/apt/lists/*
 
 # Bring in app
 WORKDIR /app
@@ -16,4 +16,4 @@ COPY stately-server.py .
 # Install dependencies via pip and avoid caching build artifacts
 RUN pip install --no-cache-dir falcon falcon_caching redis ddtrace
 
-CMD ["ddtrace-run", "python", "stately-server.py"]
+CMD ["python", "stately-server.py"]

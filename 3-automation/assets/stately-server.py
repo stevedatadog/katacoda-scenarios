@@ -4,15 +4,14 @@ import falcon
 from falcon_caching import Cache
 import uuid
 
+from ddtrace import tracer, patch
+patch(falcon=True)
+
 cache = Cache(
     config={
         'CACHE_TYPE': 'redis',
         'CACHE_EVICTION_STRATEGY': 'time-based',
-        'CACHE_REDIS_HOST': 'redis-session-cache',  # Redis host/client object
-                                          # default: 'localhost'
-#        'CACHE_REDIS_PORT': 6379,  # default: 6379
-#        'CACHE_REDIS_PASSWORD': 'MyRedisPassword',  # default: None
-#        'CACHE_REDIS_DB': 0,  # default: 0
+        'CACHE_REDIS_HOST': 'redis-session-cache',  
         'CACHE_KEY_PREFIX': 'stately'  # default: None
     })
 
