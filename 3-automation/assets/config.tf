@@ -32,6 +32,9 @@ resource "docker_image" "datadog_image" {
 
 resource "docker_container" "datadog_container" {
   name = "datadog-agent"
+  networks = [
+    "${docker_network.dd201net.name}"
+  ]
   image = "${docker_image.datadog_image.name}"
   env = [
     "DD_API_KEY=${var.datadog_api_key}",
@@ -85,7 +88,9 @@ resource "docker_image" "stately_container" {
 
 resource "docker_container" "stately_container" {
   name = "stately-app"
-  hostname = "stately-app"
+  networks = [
+    "${docker_network.dd201net.name}"
+  ]
   image = "${docker_image.stately_container.name}"
   env = [
     "DD_SERVICE=stately",
@@ -114,7 +119,9 @@ resource "docker_container" "stately_container" {
 
 resource "docker_container" "redis_container" {
   name = "redis-session-cache"
-  hostname = "redis-session-cache"
+  networks = [
+    "${docker_network.dd201net.name}"
+  ]
   image = "${docker_image.redis_image.name}"
   env = [
     "DD_SERVICE=redis-session-cache",
