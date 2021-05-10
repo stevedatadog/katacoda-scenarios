@@ -45,7 +45,8 @@ resource "docker_container" "datadog_container" {
     "DD_PROCESS_AGENT_ENABLED=true",
     "DD_SYSTEM_PROBE_ENABLED=true",
     "DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true",
-    "DD_ENV=dd201"
+    "DD_ENV=dd201",
+    "DD_TAGS='env:dd201'"
   ]
   ports {
       internal = 8126
@@ -100,6 +101,9 @@ resource "docker_container" "stately_container" {
     "DD_SERVICE=stately",
     "DD_VERSION=1.0",
     "DD_ENV=dd201",
+    "DD_AGENT_HOST=datadog-agent",
+    "DD_TRACE_ANALYTICS_ENABLED=true",
+    "DD_PROFILING_ENABLED=true",
     "DD_LOGS_INJECTION=true"
   ]
 
