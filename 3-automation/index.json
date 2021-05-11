@@ -33,7 +33,15 @@
             "target": "/root"
           },
           {
-            "file": "config.tf",
+            "file": "main.tf",
+            "target": "/root"
+          },
+          {
+            "file": "variables.tf",
+            "target": "/root"
+          },
+          {
+            "file": "datadog.tf",
             "target": "/root"
           },
           {
@@ -48,9 +56,6 @@
             "file": "Dockerfile",
             "target": "/root"
           }
-
-
-
 	      ]
       }
     },

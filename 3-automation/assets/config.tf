@@ -10,14 +10,6 @@ terraform {
     }
 }
 
-variable "datadog_api_key" {
-    type = string
-}
-
-variable "datadog_app_key" {
-    type = string
-}
-
 provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
@@ -88,7 +80,7 @@ resource "docker_container" "datadog_container" {
   }
 }
 
-resource "docker_image" "stately_container" {
+resource "docker_image" "stately_image" {
   name = "dd201/stately:1.0"
 }
 
@@ -97,7 +89,7 @@ resource "docker_container" "stately_container" {
   networks = [
     "${docker_network.dd201net.name}"
   ]
-  image = "${docker_image.stately_container.name}"
+  image = "${docker_image.stately_image.name}"
   env = [
     "DD_SERVICE=stately",
     "DD_VERSION=1.0",
@@ -126,6 +118,9 @@ resource "docker_container" "stately_container" {
   }
 }
 
+resource "docker_image" "redis_image" {
+  name = "redis:6.2-alpine"
+}
 resource "docker_container" "redis_container" {
   name = "redis-session-cache"
   networks = [
@@ -164,27 +159,4 @@ resource "docker_container" "redis_container" {
       label = "com.datadoghq.ad.instances"
       value = "[{\"host\":\"%%host%%\",\"port\":\"6379\"}]"
   }
-}
-
-resource "docker_image" "redis_image" {
-  name = "redis:6.2-alpine"
-}
-
-provider "datadog" {}
-
-resource "datadog_monitor" "redis_cpu" {
-  name = "Average Redis System CPU Usage"
-  type = "metric alert"
-  message = "Uh oh. Redis is burning up the CPU! @steve.calnan@datadoghq.com"
-  
-  query = "avg(last_1h):avg:redis.cpu.sys{env:dd201,service:redis-session-cache} > 1"
-
-  monitor_thresholds {
-    warning           = ".8"
-    warning_recovery  = ".6"
-    critical          = 1
-    critical_recovery = ".8"
-  }
-
-  tags = ["env:dd201", "service:redis-session-cache"]
 }
