@@ -26,11 +26,11 @@ statusupdate complete
 wait-for-it --timeout=600 localhost:8000
 
 STATELY_URL=$(cat /root/stately_url.txt)
-WHILE true
+while true
 do
-  CURL -s $STATELY_URL 
+  curl -s $STATELY_URL > /dev/null
   sleep 1
-  CURL -X POST $STATELY_URL/state \
+  curl -X POST $STATELY_URL/state \
     -H "Content-Type: application/json" \
     -H "X-Requested-With: cURL" 
   sleep 2

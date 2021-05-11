@@ -122,7 +122,7 @@ resource "docker_container" "stately_container" {
   }
   ports {
       internal = 8000
-      external = 8000
+      external = 80
   }
 }
 

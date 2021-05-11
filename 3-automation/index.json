@@ -67,7 +67,7 @@
       "dashboards": [
         {
           "name": "Stately!",
-          "port": 8000
+          "port": 80
         }
       ]
     },

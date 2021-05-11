@@ -34,7 +34,7 @@ class StateResource:
         # @todo write the data store for the user and return the user and state
         resp.text = '{{ "user": "{}", "state": "010101010" }}'.format(uuid.uuid1())
 
-app = falcon.App(middleware=[cache.middleware, TraceMiddleware(tracer, 'stately-app')])
+app = falcon.App(middleware=[TraceMiddleware(tracer, 'stately-app'), cache.middleware])
 
 app.add_route('/', DefaultResource())
 app.add_route('/state', StateResource())
