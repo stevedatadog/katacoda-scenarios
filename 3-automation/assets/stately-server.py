@@ -4,8 +4,8 @@ import falcon
 from falcon_caching import Cache
 import uuid
 
-from ddtrace import config, patch_all
-patch_all()
+from ddtrace import tracer
+from ddtrace.contrib.falcon import TraceMiddleware
 
 cache = Cache(
     config={
@@ -22,11 +22,9 @@ class DefaultResource:
         with open('index.html', 'r') as f:
           resp.text = f.read()
 
-@config.falcon.hooks.on('request')
 @cache.cached(timeout=600)
 class StateResource:
-    def on_get(span, req, resp):
-        span.set_tag('steve.custom', 'fudgetime')
+    def on_get(self, req, resp):
         resp.status = falcon.HTTP_200  
         # @todo search the data store for the user and return the user and state
         resp.text = '{{ "user": "{}", "state": "010101010" }}'.format(uuid.uuid1())
@@ -36,7 +34,7 @@ class StateResource:
         # @todo write the data store for the user and return the user and state
         resp.text = '{{ "user": "{}", "state": "010101010" }}'.format(uuid.uuid1())
 
-app = falcon.App(middleware=cache.middleware)
+app = falcon.App(middleware=[cache.middleware, TraceMiddleware(tracer, 'stately-app')])
 
 app.add_route('/', DefaultResource())
 app.add_route('/state', StateResource())

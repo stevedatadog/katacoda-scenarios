@@ -73,6 +73,7 @@ resource "docker_container" "datadog_container" {
   volumes {
     container_path = "/sys/kernel/debug"
     host_path = "/sys/kernel/debug"
+    read_only = false
   }
 
   capabilities {

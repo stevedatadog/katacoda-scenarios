@@ -2,8 +2,9 @@ clear
 mkdir /root/lab
 cd /root/lab
 
-statuscheck "terraform installed"
-statuscheck "stately built"
+STATELY_URL="https://[[HOST_SUBDOMAIN]]-8000-[[KATACODA_HOST]].[[KATACODA_DOMAIN]]"
+echo $STATELY_URL > /root/stately_url.txt
+statusupdate "write stately url"
 
 clear
 prepenvironment
