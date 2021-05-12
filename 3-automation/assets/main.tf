@@ -24,9 +24,6 @@ resource "docker_image" "datadog_image" {
 
 resource "docker_container" "datadog_container" {
   name = "datadog-agent"
-  networks = [
-    "${docker_network.dd201net.name}"
-  ]
   image = "${docker_image.datadog_image.name}"
   env = [
     "DD_API_KEY=${var.datadog_api_key}",
@@ -41,6 +38,9 @@ resource "docker_container" "datadog_container" {
     "DD_ENV=dd201",
     "DD_TAGS='env:dd201'"
   ]
+  networks_advanced  {
+    name = "${docker_network.dd201net.name}"
+  }
   ports {
       internal = 8125
       external = 8125
@@ -54,31 +54,25 @@ resource "docker_container" "datadog_container" {
     host_path = "/var/run/docker.sock"
     read_only = true
   }
-
   volumes {
     container_path = "/host/proc"
     host_path = "/proc"
     read_only = true
   }
-
   volumes {
     container_path = "/host/sys/fs/cgroup"
     host_path = "/sys/fs/cgroup"
     read_only = true
   }
-
   volumes {
     container_path = "/sys/kernel/debug"
     host_path = "/sys/kernel/debug"
     read_only = false
   }
-
   capabilities {
       add = ["SYS_ADMIN", "SYS_RESOURCE", "SYS_PTRACE", "NET_ADMIN", "IPC_LOCK"]
   }
-
   security_opts = ["apparmor:unconfined"]
-
   labels {
     label = "com.datadoghq.ad.logs"
     value = "[{\"source\": \"agent\", \"service\": \"agent\"}]"
@@ -91,9 +85,6 @@ resource "docker_image" "stately_image" {
 
 resource "docker_container" "stately_container" {
   name = "stately-app"
-  networks = [
-    "${docker_network.dd201net.name}"
-  ]
   image = "${docker_image.stately_image.name}"
   env = [
     "DD_SERVICE=stately",
@@ -105,7 +96,9 @@ resource "docker_container" "stately_container" {
     "DD_LOGS_INJECTION=true",
     "DD_RUNTIME_METRICS_ENABLED=true"
   ]
-
+  networks_advanced  {
+    name = "${docker_network.dd201net.name}"
+  }
   labels {
       label = "com.datadoghq.ad.logs"
       value = "[{\"source\": \"python\", \"service\": \"stately\"}]"
@@ -129,18 +122,16 @@ resource "docker_image" "redis_image" {
 }
 resource "docker_container" "redis_container" {
   name = "redis-session-cache"
-  networks = [
-    "${docker_network.dd201net.name}"
-  ]
   image = "${docker_image.redis_image.name}"
   env = [
     "DD_SERVICE=redis-session-cache",
     "DD_VERSION=1.0",
     "DD_ENV=dd201"
   ]
-
+  networks_advanced  {
+    name = "${docker_network.dd201net.name}"
+  }
   command = ["redis-server", "--loglevel", "verbose"]
-
   labels {
       label = "com.datadoghq.ad.logs"
       value = "[{\"source\": \"redis\", \"service\": \"redis-session-cache\"}]"
