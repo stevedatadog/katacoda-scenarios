@@ -16,11 +16,6 @@
       "assets": {
         "host01": [
           {
-            "file": "postlogs.py",
-            "target": "/root",
-            "chmod": "+x"
-          },
-          {
             "file": "docker-compose.yml",
             "target": "/root"
           },
