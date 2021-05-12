@@ -16,4 +16,4 @@ COPY stately-server.py .
 # Install dependencies via pip and avoid caching build artifacts
 RUN pip install --no-cache-dir falcon falcon_caching redis ddtrace
 
-CMD ["python", "stately-server.py"]
+CMD ["ddtrace-run", "python", "stately-server.py"]
