@@ -3,7 +3,7 @@ Storedog is already instrumented with the Datadog JavaScript RUM library. It jus
 1. In the lab, click the **IDE** tab above the terminal. It can take a couple minutes to fully load.
 1. Open the file `lab/store-frontend-instrumented-fixed/frontend/app/views/spree/layouts/spree_application.html.erb`{{open}}
 
-The JavaScript starting at line 8 is very similar to what you saw in the CDN Async instrumentation code in the previous step. This Ruby on Rails template is used to render every Storedog page, so this JavaScript will run on every page in Storedog.
+The JavaScript starting at line 8 is very similar to what you saw in the CDN Sync instrumentation code in the previous step. This Ruby on Rails template is used to render every Storedog page, so this JavaScript will run on every page in Storedog.
 
 Note the environment variables in place of literal application id and client token values. When this template is rendered, these variables will be replaced with the actual values in the Docker container's environment. 
 

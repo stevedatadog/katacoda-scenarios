@@ -1,13 +1,13 @@
-# Make the app code available in the IDE
-statuscheck configuration
+clear
+mkdir /root/lab
+cd /root/lab
 
-# Write API key for background.sh
-echo $DD_API_KEY > /root/.dd_api_key && statusupdate apikey
+export TF_VAR_datadog_api_key=$DD_API_KEY
+export TF_VAR_datadog_app_key=$DD_APP_KEY
 
-statuscheck logging
-
-ln -s /ecommworkshop /root/ecommworkshop
-cd ecommworkshop
+STATELY_URL="https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].[[KATACODA_DOMAIN]]"
+echo $STATELY_URL > /root/stately_url.txt
+statusupdate "write stately url"
 
 clear
 prepenvironment

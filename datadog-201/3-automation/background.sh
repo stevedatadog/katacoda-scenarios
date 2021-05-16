@@ -1,33 +1,40 @@
 # Idempotentiation
-if test -f "provisionedDatadog-201"; then
+if test -f "provisionedDD201"; then
   exit 0;
 fi
 
-# Get the latest lab tools
+#!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
-statusupdate tools
+mkdir -p /root/lab/stately
+mv /root/*.tf /root/lab
+mv /root/Dockerfile /root/lab/stately/
+mv /root/stately-server.py /root/lab/stately/
+mv /root/stately-index.html /root/lab/stately/index.html
 
-# Enable system probe for NPM
-sed -i "/- DD_TAGS='env:ruby-shop'/r"<(
-    echo "      - DD_SYSTEM_PROBE_ENABLED=true"
-    echo "    cap_add:"
-    echo "      - SYS_ADMIN"
-    echo "      - SYS_RESOURCE"
-    echo "      - SYS_PTRACE"
-    echo "      - NET_ADMIN"
-    echo "      - IPC_LOCK"
-    echo "    security_opt:"
-    echo "      - apparmor:unconfined"
-) /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
-sed -i "/volumes:/a \ \ \ \ \ \ - /sys/kernel/debug:/sys/kernel/debug" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
+statusupdate setup
 
-# workshop-specific environment
-sed -i "s/env:ruby-shop/env:dd201/" /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml
-cp /ecommworkshop/docker-compose-files/docker-compose-fixed-instrumented.yml /ecommworkshop/docker-compose.yml
-statusupdate configuration
+apt-get update && apt-get install -y gnupg software-properties-common curl
+curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
+apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+apt-get update && apt-get install terraform
 
-statuscheck apikey
-DD_API_KEY=`cat /root/.dd_api_key` /root/postlogs.py 3600 &
+docker build -t dd201/stately:1.0 /root/lab/stately/
 
-statusupdate logging
+apt-get install wait-for-it
+
+statuscheck "write stately url"
+
 statusupdate complete
+
+wait-for-it --timeout=600 localhost:80
+
+STATELY_URL=$(cat /root/stately_url.txt)
+while true
+do
+  curl -s $STATELY_URL > /dev/null
+  sleep 1
+  curl -s -X POST $STATELY_URL/state \
+    -H "Content-Type: application/json" \
+    -H "X-Requested-With: cURL" > /dev/null
+  sleep 2
+done

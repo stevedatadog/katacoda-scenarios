@@ -4,8 +4,8 @@ Datadog's Real User Monitoring uses a JavaScript library embedded in web pages t
 1. Click the **New Application** button
 1. Leave the default **Application type** of JavaScript
 1. For **Application Name**, enter "Storedog"
-1. Select **CDN Sync** for instrumentation type. 
 1. Click the **Create New RUM Application** button.
+1. Select **CDN Sync** for instrumentation type. 
 
 You should see a block of code like this appear:
 

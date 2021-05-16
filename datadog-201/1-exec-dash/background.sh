@@ -17,6 +17,7 @@ mv ./ads-service-fixed/ads.py ./ads-service/ads.py
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/config/initializers/datadog.rb
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/frontend/config/initializers/datadog.rb
+sed -i 's/production/<%= ENV["DD_ENV"] %>/g' ./store-frontend-instrumented-fixed/store-frontend/app/views/layouts/application.html.erb
 
 # update ddtrace
 sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./ads-service/requirements.txt

@@ -1,23 +1,3 @@
-Suppose you have an executive who is interested in getting regular updates about the health of your services. Rather than sending a manual update every month, you instead create a self service executive dashboard.
-
-### Step 1 - Top level metrics
-
-This could be anything, but for the sake of argument, let’s say it’s:
-1. Revenue
-2. Checkout uptime
-
-To create a revenue metric we will first need to find that data.
-
-#### Create your Dashboard
-
-We are going to start off with a blank screenboard by
-1. Navigating to the **Dashboards**
-2. Choosing **New Dashboard**
-3. Adding a dashboard title, like `Store Service Overview`
-4. Selecting **New Screenboard**
-
-*Don't forget to ★ your screenboard to easily find it again.*
-
 #### Create your revenue metric
 Start by navigating to [Logs Explorer](https://app.datadoghq.com/logs) and searching for `service:store-cartlogger`{{copy}}
 

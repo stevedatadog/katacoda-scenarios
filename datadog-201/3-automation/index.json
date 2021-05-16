@@ -1,6 +1,6 @@
 {
     "time": "120 minutes",
-    "title": "Datadog 201: Become a Power User ",
+    "title": "Datadog 201: Automation",
     "details": {
       "intro": {
         "courseData": "background.sh",
@@ -16,9 +16,40 @@
       "assets": {
         "host01": [
           {
-            "file": "postlogs.py",
-            "target": "/root",
-            "chmod": "+x"
+            "file": "docker-compose.yml",
+            "target": "/root"
+          },
+          {
+            "file": "docker-compose-dd-verify.yml",
+            "target": "/root"
+          },
+          {
+            "file": "dd-verify.py",
+            "target": "/root"
+          },
+          {
+            "file": "main.tf",
+            "target": "/root"
+          },
+          {
+            "file": "variables.tf",
+            "target": "/root"
+          },
+          {
+            "file": "datadog.tf",
+            "target": "/root"
+          },
+          {
+            "file": "stately-server.py",
+            "target": "/root"
+          },
+          {
+            "file": "stately-index.html",
+            "target": "/root"
+          },
+          {
+            "file": "Dockerfile",
+            "target": "/root"
           }
 	      ]
       }
@@ -35,8 +66,8 @@
       "showdashboard": true,
       "dashboards": [
         {
-          "name": "Storedog",
-          "port": 3000
+          "name": "Stately!",
+          "port": 80
         }
       ]
     },
