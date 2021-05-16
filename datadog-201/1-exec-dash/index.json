@@ -10,7 +10,7 @@
     "steps": [
       {
         "text": "1-preset-widgets.md",
-        "title": "Copy Preset Widgets"
+        "title": "Preset Widgets"
       },
       {
         "text": "2-template-variables-global-time.md",

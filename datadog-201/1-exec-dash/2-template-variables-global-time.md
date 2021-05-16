@@ -9,7 +9,7 @@ Click the **Save** button.
 
 Just under the dashboard title, click **Add Template Variables**. For **Name**, enter "env".
 
-For **Tag or Attribute**, enter "env" again.  ![Creating env template var](./assets/setting_env_template_var.png)
+For **Tag or Attribute**, start typing "env" and then select **env** from the filtered list of tags.  ![Creating env template var](./assets/setting_env_template_var.png)
 
 Click the **Done** button.
 

@@ -1,8 +1,8 @@
 ### Executive Dashboard Requirements
-The Storedog CEO want's a single dashboard that they can glance at to get a solid view of the business KPIs. They want to see a mixture of revenue, user experience, and systems metrics. Specifically:
+The Storedog CEO want's a single dashboard that they can glance at to get a solid view of the business Key Performance Indicators (KPIs). They want to see a mixture of revenue, user experience, and systems metrics. Specifically:
 
   - Average revenue by minute, with some indicator of the $12-$14/minute "sweetspot"
-  - An indication of a Service Level Objective of 99% checkout success
+  - A summary of a Service Level Objective: 99% checkout flow success
   - Frontend performance metrics for the most popular Storedog pages
   - Where visitors are coming from in the world
   - Indication that all service containers are up and running 
@@ -20,7 +20,7 @@ Aside from the Storedog-specific revenue graph and checkout SLO, most of these a
 1. Create a new dashboard by clicking on **Dashboards > New Dashboard** in the global navigation.
 1. Name your new dashboard "Storedog Executive Dashboard" and click **New Dashboard**.
 1. Click the **star icon** to the left of the dashboard title. This will add the dashboard to your Favorites list for quick access. ![Starred dashboard in Favorites list](./assets/starred_dashboard_favorites.png)
-1. Find the RUM Performance preset dashboard by clicking on **Dashboards > Dashboard List** and typing "rum perf". Click on the dashboard **Rum - Performance Overview**. If you don't see any data in the graph widgets, visit Storedog by clicking on the **Storedog** tab above the terminal to the right. Click around to generate some RUM metrics.
+1. Find the RUM Performance preset dashboard by clicking on **Dashboards > Dashboard List** and typing "rum perf" in the search field . Click on the dashboard **Rum - Performance Overview**. If you don't see any data in the graph widgets, visit Storedog by clicking on the **Storedog** tab above the terminal to the right. Click around to generate some RUM metrics.
 1. Midway down the left side of the dashboard you will find the **Most viewed pages** section containing a table labeled **Performance overview of most popular pages**. This fits the bill for the frontend performance requirement. Click this widget and type CTRL+C (PC) or CMD+C (Mac). This will copy the widget into your Datadog Clipboard. 
 
    The first time you do this you will see a dialog telling you a little bit about this handy feature. ![Widget copied info modal](./assets/widget_copied_modal.png)
@@ -36,7 +36,7 @@ Aside from the Storedog-specific revenue graph and checkout SLO, most of these a
 ### Add Preset Widgets
 Your clipboard should look something like this: ![Clipboard with preset widgets](./assets/clipboard_with_widgets.png)
 
-You could paste these individually or as a group into the executive dashboard, but there's a shortcut in the clipboard. Click **Select All** and then click the **Add 4 Selected Item To...** dropdown.
+You could paste these individually or as a group into the executive dashboard, but there's a shortcut in the clipboard. Click **Select All** and then click the **Add 4 Selected Items To...** dropdown.
 
 Select **Storedog Executive Dashboard**. A notification will appear at the top of the window confirming your action: ![Added to dashboard confirmation](./assets/added_to_dash_confirmation.png)
 
