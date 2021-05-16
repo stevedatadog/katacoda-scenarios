@@ -16,12 +16,13 @@ mv ./ads-service-fixed/ads.py ./ads-service/ads.py
 # fix env tagging
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/api/config/initializers/datadog.rb
 sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/config/initializers/datadog.rb
-sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/frontend/config/initializers/datadog.rb
-sed -i 's/production/<%= ENV["DD_ENV"] %>/g' ./store-frontend-instrumented-fixed/frontend/app/views/spree/layouts/spree_application.html.erb
+# sed -i 's/.ruby-shop./ENV["DD_ENV"]/' ./store-frontend-instrumented-fixed/frontend/config/initializers/datadog.rb
+sed -i 's/production/<%= ENV["DD_ENV"] %>/g' ./store-frontend-instrumented-fixed/store-frontend/app/views/spree/layouts/spree_application.html.erb
 
 # update ddtrace
 sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./ads-service/requirements.txt
 sed -i 's/ddtrace==0.28.0/ddtrace==0.41.0/g' ./discounts-service-fixed/requirements.txt
+
 mv /root/frontend-docker-entrypoint.sh ./store-frontend-instrumented-fixed/docker-entrypoint.sh
 
 statusupdate setup
