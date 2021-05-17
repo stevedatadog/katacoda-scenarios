@@ -13,7 +13,7 @@ For **Tag or Attribute**, start typing "env" and then select **env** from the fi
 
 Click the **Done** button.
 
-Now you can set the dashboard view to either `*`, which will display metrics tagged with *any* `env` value, or `dd201`, which will display metrics tagged *onl* with the `env:dd201`. This is useful if you have used this account for other Learning Center labs with different `env` tag values. A real world use for this variable could be to switch between values tagged with `env:production`, `env:staging`, or `env:development`.
+Now you can set the dashboard view to either `*`, which will display metrics tagged with *any* `env` value, or `dd201`, which will display metrics tagged *only* with the `env:dd201`. This is useful if you have used this account for other Learning Center labs with different `env` tag values. A real world use for this variable could be to switch among values tagged with `env:production`, `env:staging`, or `env:development`.
 
 Next, update the **Performance overview of most popular pages** widget to use only the `$env` template var: ![Use only env in the page performance widget](./assets/performance_page_env_only.png)
 
@@ -36,4 +36,4 @@ There are situations where this may be desirable, but the CEO wants all of the w
 
 Now when you select a time frame in the global time selector, all of the widgets will display data from that time period.
 
-You have copied all of the useful preset widgets for the executive dashboard and synchronized them to the same environment and time period. Click the **Continue** button below to create a custom revenue metric from log lines.
+You have copied all of the useful preset widgets for the executive dashboard and synchronized them to the same environment and time period. You can now move on to creating the remaining custom widgets. Click the **Continue** button below to create a custom revenue metric and widget.

@@ -34,7 +34,7 @@ def post_log():
       'ddsource': 'python',
       'ddtags': 'env:dd201, team:frontend',
       'hostname': 'host01',
-      'message': '{"event":"add_to_cart","item":' + json.dumps(random.choice(items)) + '}',
+      'message': '{"event":"item_sold","item":' + json.dumps(random.choice(items)) + '}',
       'service': 'store-cartlogger'
     }
     r=requests.post(url, data=json.dumps(payload), headers=headers)
