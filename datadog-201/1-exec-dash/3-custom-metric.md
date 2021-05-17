@@ -72,18 +72,18 @@ Now you will create the same query for cartItem.cost and use a formula to subtra
    ![Price and cost on the same graph](./assets/price_and_cost_on_graph.png)
    Notice that the two queries are preceded by the letters **a** and **b**. These are references that you can use to construct a formula. 
 1. Click the **Add Formula** button and enter "a - b" in the **Formula** field. This will add a third line to the graph between cartItem.price and cartItem.price. 
-   ![Creating a revenue graph using a formual](./assets/revenue_graph_from_formula.png)
+   ![Creating a revenue graph using a formula](./assets/revenue_graph_from_formula.png)
    This is the revenue!
 
 This widget almost meets the CEO's requirements. You need to do a little more configuration:
 
 1. The CEO didn't say they wanted to know the price and cost per minute, just the revenue. Click the **a** and **b** labels on the two metric queries to hide them. (Their values are still available to the formula.)
-1. When you hover over the revenue line, the entire formula is displayed. To make it clearer what this line represents, click the **as...** link on the far right of the **Formula** field. This will display an **as** field for creating an alias for the formula value.
+1. As you can see in the above screenshot, when you hover over the revenue line, the entire formula is displayed. To make it clearer what this line represents, click the **as...** link on the far right of the **Formula** field. This will display an **as** field for creating an alias for the formula value.
 1. Enter "Avg. revenue" in the **as** field. Mouse over the line in the graph to confirm that the label is now human-friendly.
-1. Confirm that you **Graph your data** section should look like this: 
+1. Confirm that your **Graph your data** section looks like this: 
    ![Graph your data complete](./assets/graph_your_data_complete.png)
 
-The CEO also wants an indication that Storedog is generating more than $8 per minute. A good indicator might be that everything about 8 on the graph is green:
+The CEO also wants an indication that Storedog is generating more than $8 per minute. A good indicator might be that everything above 8 on the graph is green:
 
 1. Expand the **Markers** section under the metric queries
 1. In the **A** select menu, choose **Range** 
@@ -98,5 +98,3 @@ You should see the upper half of the graph turn light green with "Lights stay on
 Finally, under **Give your graph a title**, enter "Average revenue per minute" and click the **Save** button.
 
 Your executive dashboard should look similar to this ![Dashboard at the end of Step 3](./assets/dashboard_step_3.png)
-
-This is looking really good! Click the **Continue** button below to create an SLO and display its status on the dashboard.
