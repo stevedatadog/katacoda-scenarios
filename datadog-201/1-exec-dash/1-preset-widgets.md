@@ -7,7 +7,8 @@ The Storedog CEO want's a single dashboard that they can glance at to get a soli
   - Where visitors are coming from in the world
   - Indication that all service containers are up and running 
   - Which service containers are using the most CPU
-  - Quick links to drill down into RUM performance metrics and Docker container health.
+  - Quick links to drill down into RUM performance metrics and Docker container health
+  - All widgets should display data from the same time period
 
 When you're done, your Executive Dashboard will look something like this:
 
