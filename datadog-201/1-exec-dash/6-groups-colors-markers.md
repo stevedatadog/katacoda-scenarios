@@ -1,0 +1,1 @@
+In this step the learner will reorganize, resize, and group widgets to achieve a good layout. They will then use colors to better indicate what metrics are "good," "bad," and in between.

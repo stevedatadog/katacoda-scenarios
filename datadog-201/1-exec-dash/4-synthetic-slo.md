@@ -36,12 +36,12 @@ Now you will record a simple path through the Storedog checkout flow. Datadog wi
 1. Under **Checkout as a Guest**, enter "customer@example.com" in the **Email** field and click the **Continue** button
 1. Fill out the required **Billing Address** fields with valid values. For example:
    ![Checkout form complete](./assets/checkout_form_complete.png)
-   Your form should look something like this  and click **Save and Continue**
+1. Click **Save and Continue**
 1. Leave the default **Shipping Method** and click **Save and Continue**
 1. Under **Payment Information**, select **Check** and click **Save and Continue**
 
 #### Create assertions
-The criteria for a successful checkout are that the confirmation page has an **Order** number up top, and **Order Total: $21.79** at the bottom. 
+The criteria for a successful checkout are that the confirmation page has an **Order** number up top, and order total of **$21.79** at the bottom. 
 
 1. Click the **Assertion** button in the upper-left corner of the Edit Browser Test page
 1. Click the **Test an element's content** button
@@ -73,7 +73,7 @@ When the results come in, you should see two results under **Test Results** at t
 
 If your test failed, click on the result to open the test result details to determine which step failed and why. Make sure that Storedog is still up and running at the test's **Starting URL**. If it is, edit the test by clicking on the **gear icon** in the upper-right corner, and reviewing the above steps to make sure your assertions are correct.
 
-Once you're confident your test is dependable, click the **Resume Scheduling** button in the upper-right corner of the page to tell Datadog it can run it at the configured frequency of every 5 minutes.
+Once you're confident your test is dependable, click the **Resume Scheduling** button in the upper-right corner of the page to tell Datadog it can start running it at the configured frequency.
 
 ### Create an SLO
 Now that you have a working synthetic browser test, create an SLO to set a target success rate of 99% over seven days:
@@ -97,7 +97,7 @@ Finally, add the SLO Summary widget for the synthetic test to the executive dash
 1. Because the CEO requested to see the SLO status over the past week, leave **7 Days** checked (rather than **Global time**)
 1. Confirm that your New SLO Summary widget configuration looks like this:
    ![SLO Summary widget configuration](./assets/slo_summary_widget_configuration.png)
-   The monitor will be blank and will display a warning until the synthetic browser tests results start rolling in. Then it will look like this: ![100 percent checkout SLO](100_percent_slo.png)
+   The monitor will be blank and will display a warning until the synthetic browser tests results start rolling in. Then it will look like this: ![100 percent checkout SLO](./assets/100_percent_slo.png)
 1. Click the **Done** button
 
-This executive dashboard is coming together nicely. There's plenty of space for some extra useful information. Click the **Continue** button to add some drilldowns and notes.
+This executive dashboard is coming together nicely. There's plenty of space for some extra useful information. Click the **Continue** button to add some drill-downs and notes.
