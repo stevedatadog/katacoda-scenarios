@@ -1,0 +1,1 @@
+In this part of the the course, you're going to create useful runbooks for Storedog. These will be valuable assets for devops and site reliability engineers, providing fast access to contextual knowledge embedded with Datadog resources. Click the **Next** button to get started.
