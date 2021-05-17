@@ -12,8 +12,7 @@ The executive dashboard displays all of the top-level metrics the CEO requested.
 1. Click the **Notes & Links** widget
 1. In the Markdown field, enter the Markdown for a link using the URL you copied from the quick nav menu `[Complete RUM Performance](https://app.datadoghq.com/dash/integration/30292/rum---performance-overview)`{{copy}}
 1. Under **Display Options**, for **Font  Size**, select **LG** 
-1. For **Alignment**, select the **centered icon**
-1. For **Alignment**, select the **centered icon**, and the **middle icon**
+1. For **Alignment**, select the **centered icon** and the **middle icon**
 1. Your Notes & Links Editor should look like this:
    ![Notes & Links Editor](./assets/notes_and_links_editor.png)
 1. Click the **Done** button

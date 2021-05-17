@@ -97,7 +97,8 @@ Finally, add the SLO Summary widget for the synthetic test to the executive dash
 1. Because the CEO requested to see the SLO status over the past week, leave **7 Days** checked (rather than **Global time**)
 1. Confirm that your New SLO Summary widget configuration looks like this:
    ![SLO Summary widget configuration](./assets/slo_summary_widget_configuration.png)
-   The monitor will be blank and will display a warning until the synthetic browser tests results start rolling in. Then it will look like this: ![100 percent checkout SLO](./assets/100_percent_slo.png)
+   The monitor will be blank and will display a warning until the synthetic browser tests results start rolling in. Then, the tests pass, the monitor will look like this:
+    ![100 percent checkout SLO](./assets/100_percent_slo.png)
 1. Click the **Done** button
 
 This executive dashboard is coming together nicely. There's plenty of space for some extra useful information. Click the **Continue** button to add some drill-downs and notes.

@@ -17,6 +17,9 @@
         "title": "Runbooks Part 2"
       }
     ],
+    "finish" : {
+      "text" : "finish.md"
+    },
     "assets": {
       "host01": [
         {

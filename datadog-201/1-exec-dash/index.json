@@ -33,6 +33,10 @@
         "title": "Groups, Colors, and Markers"
       }
     ],
+    "finish" : {
+      "text" : "finish.md"
+
+    },
     "assets": {
       "host01": [
         {

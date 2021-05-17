@@ -13,6 +13,9 @@
           "title": "Automation"
         }
       ],
+      "finish" : {
+        "test" : "finish.md"
+      },
       "assets": {
         "host01": [
           {
