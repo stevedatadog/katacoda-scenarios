@@ -1,8 +1,8 @@
 ### Executive Dashboard Requirements
 The Storedog CEO want's a single dashboard that they can glance at to get a solid view of the business Key Performance Indicators (KPIs). They want to see a mixture of revenue, user experience, and systems metrics. Specifically:
 
-  - Average revenue by minute, with some indicator of the $12-$14/minute "sweetspot"
-  - A summary of a Service Level Objective: 99% checkout flow success
+  - Average revenue by minute, with some indicator that Storedog is generating at least $8 a minute in revenue
+  - A summary of a Service Level Objective (SLO): 99% checkout flow success over the past week
   - Frontend performance metrics for the most popular Storedog pages
   - Where visitors are coming from in the world
   - Indication that all service containers are up and running 
