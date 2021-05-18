@@ -12,7 +12,7 @@ The Storedog CEO want's a single dashboard that they can glance at to get a soli
 
 When you're done, your Executive Dashboard will look something like this:
 
-![Executive Dashboard goal](./assets/executive_dashboard_goal.png)
+![Executive Dashboard goal](./assets/completed_executive_dashboard.png)
 
 Aside from the Storedog-specific revenue graph and checkout SLO, most of these are readily available in pre-made dashboards provided by integrations. You'll start by copying those into a new dashboard. Then you will create the custom revenue metric and a synthetic browser test monitor for the checkout success SLO.
 
