@@ -15,9 +15,9 @@
         "description": "Combine synthetic test results, SLOs, advanced queries, and drilldowns into a high-level executive dashboard."
       },
       {
-        "course_id": "2-notebooks",
-        "title": "Notebooks",
-        "description": "Create special-purpose notebooks such as postmortem, investigation, and runbook."
+        "course_id": "2-runbooks",
+        "title": "Runbooks",
+        "description": "Create special-purpose notebook to help troubleshoot the Storedog checkout flow."
       },
       {
         "course_id": "3-automation",
