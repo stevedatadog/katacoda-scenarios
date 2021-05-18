@@ -10,11 +10,20 @@ Notebooks are powerful tools for incident management. They enable multiple peopl
 
 When an incident has been resolved, you can automatically create a postmortem notebook.  Take a look at the [Datadog Postmortem Template](https://app.datadoghq.com/notebook/template/7/postmortem-ir-xxxx-outage-name) notebook to get a sense of the information and data typically captured in a postmortem.
 
+Here's an example of a postmortem notebook that is linked to an incident:
+![Postmortem notebook](./incident_postmortem.png)
+
 See the [incident management documentation](https://docs.datadoghq.com/monitors/incident_management/#update-the-incident-and-generate-a-postmortem) for more information about using notebooks in this context.
 
-## Runbooks
+### Runbooks
 Like postmortems, runbooks are special-purpose notebooks. They help members of your team respond to issues by providing them with detailed instructions and historical context. They are like incident-specific troubleshooting manuals based on past experience.  
 
+Here's an example of a runbook to investgate a credential stuffing attack:
+![Credential stuffing attack runbook](./credential_stuffing_runbook.png)
+
+You can look at this runbook in your own Datadog account with [this link to the template](https://app.datadoghq.com/notebook/template/4/credential-stuffing-attack-runbook).
+
+## Storedog runbook
 In the following lab, you're going to create a runbook for investigating and fixing issues with the Storedog checkout flow. You will:
 
   - Create a new notebook 
