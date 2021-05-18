@@ -5,6 +5,7 @@ In this lab you created an extremely useful--and good looking--executive dashboa
 - Set widget timeframes to fixed periods or to Global Time
 - Create an SLO monitor for a synthetic browser test and display its summary on a dashboard
 - Move, resize, group, and color code widgets in a dashboard
+- Use the quick nav to quickly find resources and navigate the Datadog app
 
 Hopefully thought of some useful and interesting dashboards that you can create in your own organization.
 
