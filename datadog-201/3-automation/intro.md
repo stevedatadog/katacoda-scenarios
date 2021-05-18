@@ -7,4 +7,4 @@ In this lab, the learners will:
 1. Consider strategies for using the above methods at provision time.
   - Sidecar container?
   - Automatically running bash/python/node script?
-1. Use Terraform to automatically create a dasboard at provisioning time
+1. Use Terraform to automatically create a dashboard at provisioning time
