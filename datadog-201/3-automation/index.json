@@ -9,8 +9,20 @@
       },
       "steps": [
         {
-          "text": "automation.md",
-          "title": "Automation"
+          "text": "1-meet-api.md",
+          "title": "Meet the Datadog API"
+        },
+        {
+          "text": "2-dogshell.md",
+          "title": "The dogshell Utility"
+        },
+        {
+          "text": "3-scripting-library.md",
+          "title": "Scripting with Libraries"
+        },
+        {
+          "text": "4-terraform.md",
+          "title": "Terraform Provider"
         }
       ],
       "finish" : {
