@@ -63,4 +63,11 @@ Each item in the **Most CPU-intensive containers** top list will have a value be
 You're done! Your completed executive dashboard should look something like this:
 ![Completed executive dashboard](./assets/completed_executive_dashboard.png)
 
+One last thing *for real*. You put so much work into this dashboard that you should keep it. Click the **gear icon** in the upper-right corner and select **Export dashboard JSON**: 
+![Export dashboard as JSON](./assets/export_dashboard_json.png)
+
+This will download a JSON file to your computer that you can import into any account later.
+
+**NOTE**: You will use this dashboard in the next module in this course. If your two week trial expires between now and then, you will have to recreate it under your next automatically created trial account. Keep the exported dashboard JSON file safe so you can easily import it if necessary.
+
 Click the **Continue** button to review what you learned in this module.
