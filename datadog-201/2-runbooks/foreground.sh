@@ -11,7 +11,7 @@ export DD_APPLICATION_ID=`curl -s "https://api.datadoghq.com/api/v1/rum/projects
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 |jq  -r '.. | objects | select(.name == "Storedog").application_id'`
 
-([ -z $DD_APPLICATION_ID ] || [ -z $DD_CLIENT_TOKEN ]) && echo '** Storedog RUM Application not found! **' && exit 1
+([ -z $DD_APPLICATION_ID ] || [ -z $DD_CLIENT_TOKEN ]) && echo '** Storedog RUM Application not found! **' # && exit 1
 
 clear
 statuscheck setup
