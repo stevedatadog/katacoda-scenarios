@@ -1,3 +1,20 @@
+ 
+
+ Old Content
+ ===
+## Custom Troubleshooting
+Next, let's link to a dashboard that will help debug your service. Since we just added graphs from RUM performance, we can link to the [RUM Performance Overview](https://app.datadoghq.com/screen/integration/30292/rum---performance-overview?live=true) dashboard.
+ 
+This is an out-of-the-box dashboard for real-user-monitoring (RUM) that monitors metrics like page views and frontend errors. We can clone it to make changes.  
+ 
+For our spree services, we know that problems often happen in the production environment with frontend errors. Let’s set our template variable `env` to `prod`. This updates our dashboard URL.  
+ 
+We can link to this dashboard in our runbook and add some context around it. Paste this into your runbook or add your own context:  
+ 
+<pre class="file" data-target="clipboard">
+[RUM Performance Overview for Prod](https://app.datadoghq.com/screen/integration/30292/rum---performance-overview?live=true&tpl_var_env=prod)
+</pre>
+
 ## Exporting Graphs
 We can also export individual graphs to this notebook. Go to the **Frontend Errors** graph and export it to the notebook we’ve created.  
 

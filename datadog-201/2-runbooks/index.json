@@ -13,12 +13,12 @@
         "title": "Restore the Executive Dashboard (optional)"
       },
       {
-        "text": "runbook1.md",
-        "title": "Building Reusable Resources: Runbooks"
+        "text": "1-create-context.md",
+        "title": "Create a Runbook with Context"
       },
       {
-        "text": "runbook2.md",
-        "title": "Runbooks Part 2"
+        "text": "2-troubleshooting-steps.md",
+        "title": "Troubleshooting Steps"
       }
     ],
     "finish" : {
