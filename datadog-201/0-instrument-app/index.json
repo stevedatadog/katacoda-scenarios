@@ -1,0 +1,66 @@
+{
+    "time": "15 minutes",
+    "title": "Datadog 201: Instrument The Application",
+    "details": {
+      "intro": {
+        "courseData": "background.sh",
+        "code": "foreground.sh",
+        "text": "intro.md"
+      },
+      "steps": [
+        {
+          "text": "create_rum_app.md",
+          "title": "Create a RUM Application"
+        },
+        {
+          "text": "instrument_storedog.md",
+          "title": "Instrument the Storedog Frontend"
+        },
+        {
+          "text": "generate_more_metrics.md",
+          "title": "Generate More Metrics"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      },
+      "assets": {
+        "host01": [
+          {
+            "file": "docker-compose.yml",
+            "target": "/root"
+          },
+          {
+            "file": "frontend-docker-entrypoint.sh",
+            "target": "/root"
+          },
+          {
+            "file": "postlogs.py",
+            "target": "/root",
+            "chmod": "+x"
+          }
+       ]
+      }
+    },
+    "environment": {
+      "uilayout": "terminal",
+      "showide": "true",
+      "uieditorpath": "/root", 
+      "terminals": [
+        {
+          "name": "Terminal 2"
+        }
+      ],
+      "showdashboard": true,
+      "dashboards": [
+        {
+          "name": "Storedog",
+          "port": 3000
+        }
+      ]
+    },
+    "backend": {
+      "imageid": "datadog-base-v2"
+    }
+  }
+  

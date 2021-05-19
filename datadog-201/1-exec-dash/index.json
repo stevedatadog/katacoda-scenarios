@@ -1,0 +1,78 @@
+{
+  "time": "40 minutes",
+  "title": "Datadog 201: Executive Dashboards",
+  "details": {
+    "intro": {
+      "courseData": "background.sh",
+      "code": "foreground.sh",
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "text": "1-preset-widgets.md",
+        "title": "Preset Widgets"
+      },
+      {
+        "text": "2-template-variables-global-time.md",
+        "title": "Template Variables and Global Time"
+      },
+      {
+        "text": "3-custom-metric.md",
+        "title": "Custom Metric from Logs"
+      },
+      {
+        "text": "4-synthetic-slo.md",
+        "title": "SLO from Synthetic Browser Test"
+      },
+      {
+        "text": "5-drilldowns-notes-links.md",
+        "title": "Drilldowns, Notes and Links "
+      },
+      {
+        "text": "6-groups-colors-markers.md",
+        "title": "Groups, Colors, and Markers"
+      }
+    ],
+    "finish" : {
+      "text" : "finish.md"
+
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "postlogs.py",
+          "target": "/root",
+          "chmod": "+x"
+        },
+        {
+          "file": "docker-compose.yml",
+          "target": "/root"
+        },
+        {
+          "file": "frontend-docker-entrypoint.sh",
+          "target": "/root"
+        }
+     ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "showide": "true",
+    "uieditorpath": "/root", 
+    "terminals": [
+      {
+        "name": "Terminal 2"
+      }
+    ],
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Storedog",
+        "port": 3000
+      }
+    ]
+  },
+  "backend": {
+    "imageid": "datadog-base-v2"
+  }
+}
