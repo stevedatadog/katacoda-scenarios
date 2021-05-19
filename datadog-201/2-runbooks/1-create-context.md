@@ -79,6 +79,14 @@ The lucky engineer who will use this runbook to troubleshoot the Storedog checko
    </pre>
 1. Click the **Done** button.
 
+It would be useful to have a log stream here that displays warnings and errors for the services associated with the checkout flow:
+
+1. Type CTRL+G (PC) or CMD+G (macOS) to add a graph cell
+1. In the graph type select menu, choose **Log Stream**
+1. Click the **</>** icon to enter query edit mode
+1. Paste this log query into the query field: `-service:(agent OR advertisements-service) -status:info env:dd201`{{copy}}
+1. Click the **Done** button
+
 Your runbook should look something like this:
 ![Runbook started](./assets/runbook_step_1.png)
 

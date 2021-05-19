@@ -97,4 +97,6 @@ Many widgets support Custom Links for quick access to related Datadog resources.
 Now when you click in the **Average revenue per minute** graph, you will see a handy link to the troubleshooting runbook:
 ![Custom link to runbook](./assets/custom_link_to_runbook.png)
 
-This is a good start for a runbook. Because notebooks are collaborative, this runbook can evolve over time as it is used in the field by different people. Great work! Click on the **Continue** button to review what you have learned in this module.
+This is a good start for a runbook. Because notebooks are collaborative, this runbook can evolve over time as it is used in the field by different people.
+
+Great work! Click on the **Continue** button to review what you have learned in this module.
