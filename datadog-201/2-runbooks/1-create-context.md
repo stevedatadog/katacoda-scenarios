@@ -35,7 +35,7 @@ You can copy any of these widget types from elsewhere in Datadog into a notebook
 1. Click the **Done** button
 
 ## Link to drill-down resources
-The description links to many useful resources for drilling down into more information. For each one, replace the **link-to-resource** placeholder with the resource's URL. You can use the quick nav to copy some URLs without leaving the cell editor:
+The description links to many useful resources for drilling down into more information. For each one, replace the **link-to-resource** placeholder with the resource's URL. You can use the quick nav to copy some URLs without leaving the runbook:
 
 1. To get the URL to the synthetic test results, type CTRL+K (PC) or CMD+K (macOS), and type "synth"
 1. The **Storedog Checkout** synthetic test should appear under **RECENT**
@@ -44,6 +44,7 @@ The description links to many useful resources for drilling down into more infor
 1. Select the **link-to-resource** placholder
 1. Type CTRL+V (PC) or CMD+V (macOS) to paste the URL over the placholder
 1. Repeat this process for the executive dashboard, typing "exec"
+1. If at any point the text cell exits edit mode before you're done, over over the text cell and click the **Edit** button.
 
 You cannot yet use this quick nav technique for specific SLOs. However, you can use it to navigate to the SLO list:
 
@@ -77,5 +78,8 @@ The lucky engineer who will use this runbook to troubleshoot the Storedog checko
    The checkout flow involves `store-frontend`, `discounts-service`, and `db`.
    </pre>
 1. Click the **Done** button.
+
+Your runbook should look something like this:
+![Runbook started](./assets/runbook_step_1.png)
 
 You have added a good amount of background information and context to the runbook. Click the **Continue** button add specific troubleshooting steps.
