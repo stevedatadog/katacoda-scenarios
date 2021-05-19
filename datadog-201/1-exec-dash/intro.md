@@ -1,1 +1,0 @@
-In this lab you're going to create an executive dashboard for Storedog. It will display high level system and revenue metrics. You will combine widgets copied from preset dashboards with custom-made widgets tailored to the Storedog business.  Click the **Start Scenario** button to begin.

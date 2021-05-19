@@ -1,1 +1,0 @@
-Recap of all of the product features, skills, and tips learned in this part of the course.
