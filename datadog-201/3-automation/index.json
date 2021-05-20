@@ -35,8 +35,9 @@
             "target": "/root"
           },
           {
-            "file": "docker-compose-dd-verify.yml",
-            "target": "/root"
+            "file": "poll_redis.sh",
+            "target": "/root",
+            "chmod" : "+x"
           },
           {
             "file": "dd-verify.py",

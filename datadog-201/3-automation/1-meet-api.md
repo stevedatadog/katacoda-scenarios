@@ -1,6 +1,6 @@
 Get familiar with the Datadog API by using cURL to query for metrics and post to the event stream.
 
-This is the architecture of the small Docker container web application that you're going to provision and monitor:
+This is the architecture of the small Docker web application that you're going to provision and monitor:
 
 | service  | service tag         | description                           |
 | ---      | ---                 | ---                                   |
@@ -11,11 +11,11 @@ This is the architecture of the small Docker container web application that you'
 The environment for this lab is `dd201`.
 
 ### Is redis running?
-There are many ways you could answer this question if a Datadog Agent knows about the service. For example, you could look at the Redis - Overview dashboard, search for its tags in recent logs, or look for its container in the Docker Overview dashboard. If you have access to the host it's running on, there are many more ways to find out. 
+Suppose that it's important for your team to know when a new `redis-session-cache` comes online.  There are many ways you could answer this question if a Datadog Agent knows about the service. For example, you could look at the Redis - Overview dashboard, search for its tags in recent logs, or look for its container in the Docker Overview dashboard. If you have access to the host it's running on, there are many more ways to find out. 
 
 One way to find out from the comfort of the command line is to use cURL to query the Datadog API. Start by looking at the [API Reference](https://docs.datadoghq.com/api/latest/) for an endpoint that might answer that question. 
 
-The Logs endpoint might be a candidate, assuming the service is logging. A better assumption is that the service will send metrics to Datadog through the Datadog Agent. Looking at the metrics endpoint, [Query timeseries points](https://docs.datadoghq.com/api/latest/metrics/#query-timeseries-points) looks good. It will return an array of metric data points according to the query you specify. 
+The Logs endpoint is a candidate, assuming the service is logging. A better assumption is that the service will send metrics to Datadog through the Datadog Agent. Looking at the Metrics endpoints, [Query timeseries points](https://docs.datadoghq.com/api/latest/metrics/#query-timeseries-points) looks good. It will return an array of metric data points according to the query you specify. 
 
 ### Building an API URL
 The documentation tells you the HTTP Method, the URL, and the required query string parameters. The URL with placeholders will be:
@@ -24,48 +24,77 @@ The documentation tells you the HTTP Method, the URL, and the required query str
 
 To determine the query string parameter values, determine what you want from this endpoint.  A good start is, "in the past minute, are there any core redis data points from the service redis-session-cache in the environment dd201?"
 
-The command line tell will help you figure out what `$TO` is; it will be the UNIX timestamp when the request is made. `$FROM` will be 60 seconds before that.
+The command line utility `date` will help you figure out the UNIX timestamps for `$TO` when you run the command. `$FROM` will be 60 seconds before that.
 
 `$QUERY` is a little tricky if you're new to Datadog metric queries. The main [Metrics documentation](https://docs.datadoghq.com/metrics/#querying-metrics) has a useful section about constructing queries.
 
-The Datadog Metrics Explorer can also help you construct a query, if you know the metric you want. Looking at the **Metrics** tab of the [Redis integration](https://app.datadoghq.com/account/settings#integrations/redis), `redis.cpu.sys` stands out. If Redis is using system CPU, it's definitely running! Plug the metric name and tags into the Metric Explorer:
+The Datadog Metrics Explorer can also help you construct a query, if you know which metric you want. Looking at the **Metrics** tab of the [Redis integration](https://app.datadoghq.com/account/settings#integrations/redis), `redis.cpu.sys` stands out. If Redis is using system CPU, it's definitely running! Plug the metric name and tags into the Metric Explorer:
 
 ![Building a query in the Metric Explorer](./assets/building_explorer_query.png)
 
-(The service was running in the above screenshot to provide a visual confirmation that it works. You won't see a graph.)
+(The service was running at the time the screenshot was created to provide a visual confirmation that it works. You won't see a graph because your service isn't running yet.)
 
-You can click the **export icon** in the upper right corner of the graph and select **Copy query to clipboard** to see it:
+You can click the **export icon** in the upper right corner of the graph and select **Copy query to clipboard**, and paste it into a text editor to see it:
 
 `[{"q":"avg:redis.cpu.sys{env:dd201,service:redis-session-cache}","type":"line"}]`
 
-Taking only the value for `q` from that JSON object, you can now assemble your full URL to the Datadog API. `$FROM` and `$TO` will be filled in later:
+Extracting the value for `q` from that JSON object, you can now assemble your full URL to the Datadog API. `$FROM` and `$TO` will be filled in later:
 
 `https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys{env:dd201,service:redis-session-cache}`
 
 ### Making the request
-Scroll down to the **Code Example** in the API documentation for the **Query timeseries points** endpoint. Note the tabs illustrating how to use language libraries to perform requests to this endpoint. This is a useful resource through the entire API documentation. 
+Scroll down to the **Code Example** in the API documentation for the **Query timeseries points** endpoint. Note the tabs illustrating how to use language libraries to perform requests to this endpoint. This is a useful resource provided for every API endpoint in the documentation. 
 
-Click on the **Curl** tab if it's not already selected. Note that in addition to a URL, the requests requires three headers: `Content-Type`, `DD-API-KEY`, and `DD-APPLICATION-KEY`. This is true for all API requests. The API and APP keys are already set in your environment, but you will have to set the `$FROM` and `$TO` variables. Putting it all together:
+Click on the **Curl** tab if it's not already selected. Note that in addition to a URL, the requests requires three HTTP headers: `Content-Type`, `DD-API-KEY`, and `DD-APPLICATION-KEY`. This is true for all API requests. The API and APP keys are already set in your lab environment, but you will have to set the `$FROM` and `$TO` variables explicitly. Putting it all together:
 
 ```
-FROM=$(expr $(date +"%s") - 60)
 TO=$(date +"%s")
+FROM=$(expr $TO - 60)
 curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys\{env:dd201,service:redis-session-cache\}" \
     -H "Content-Type: application/json" \
     -H "DD-API-KEY: ${DD_API_KEY}" \
     -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
 ```{{execute}}
 
-Click the above code to execute it in the terminal.
+Click the above code block to execute it in the terminal. You should receive an informative response:
 
+![Testing the API query with curl](./assets/curl_before_redis_running.png)
+
+The response from the API is JSON, formatted for efficiency rather than human readability. You can change that by piping the response to [jq](https://stedolan.github.io/jq/), a JSON processing utility. Recall the command by hitting the up arrow key and add `|jq`{{copy}} to the end of the command. Hit ENTER. You should see a much nicer response: 
+
+```
+curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys\{env:dd201,service:redis-session-cache\}" \
+    -H "Content-Type: application/json" \
+    -H "DD-API-KEY: ${DD_API_KEY}" \
+    -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" | jq
+```{{execute}}
+
+![Looking at JSON response with jq](./assets/curl_before_redis_with_jq.png)
+
+The response contains `"status" : "ok"`, so you know that the API received your valid query. According to the API documentation for this endpoint, the metrics should be in the `"series" : []` array, which is empty. That makes sense, because the service isn't running yet. 
+
+You could provision the service and then run this script periodically until you see data in the `"series"` array. But you've got more important things to than repeatedly hitting up arrow and ENTER. If you can reduce this output to a boolean value, you can run it in a bash loop until it returns `true`.
+
+In addition to making JSON pretty in the terminal, `jq` can traverse JSON and perform powerful operations on it. The expression to evaluate whether the `series` array has data is `.series|length>0`. Now run the command with this addition:
+
+```
+curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys\{env:dd201,service:redis-session-cache\}" \
+    -H "Content-Type: application/json" \
+    -H "DD-API-KEY: ${DD_API_KEY}" \
+    -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" |jq '.series|length>0'
+```{{execute}}
+
+![Curl response reduced to a boolean value](./assets/curl_before_redis_with_jq_expression.png)
+
+Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Load this completed bash script into the IDE: `poll_redis.sh`{{open}}
 
 ```sh
 #!/usr/bin/bash
 REDIS_UP=false
 while [ $REDIS_UP == false ]
 do
-  FROM=$(expr $(date +"%s") - 60)
   TO=$(date +"%s")
+  FROM=$(expr $TO - 60)
   sleep 2
   echo 'Waiting for redis...'
   REDIS_UP=$(curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys\{env:dd201,service:redis-session-cache\}" \
