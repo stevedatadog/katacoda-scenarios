@@ -1,15 +1,18 @@
-You will explore the capabilities of the Datadog API for creating events, monitors, and dashboards using cURL commands.
+Get familiar with the Datadog API by using cURL to query for metrics and post to the event stream. 
 
-### See metrics reported by service tag
+Run this before docker-compose up. Shouldn't get anything
+### Is Redis running?
 ```
-NOW=$(expr $(date +"%s") - 1800)
-curl -X GET "https://api.datadoghq.com/api/v1/metrics?from=$NOW&tag_filter=service:cache-service" \
+NOW=$(expr $(date +"%s") - 180)
+curl -X GET "https://api.datadoghq.com/api/v1/metrics?from=$NOW&tag_filter=service:redis-session-cache" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
 ```
 
-### See if specific metric is being reproted
+Run it again. Should get stuff.
+
+### See if specific metric is being reproted from the cache servcie
 ```	
 NOW=$(expr $(date +"%s") - 1800)
 curl -X GET "https://api.datadoghq.com/api/v1/search?q=metrics:redis.cpu.sys" \
@@ -17,6 +20,8 @@ curl -X GET "https://api.datadoghq.com/api/v1/search?q=metrics:redis.cpu.sys" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
 ```
+```
+curl -X GET "https://api.datadoghq.com/api/v1/search?tag_filter=service:redis-session-cachearch&q=metrics:redis.cpu.sys" -H "Content-Type: application/json" -H "DD-API-KEY: ${DD_API_KEY}" -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
 
 ### Query for actual metrics in time window
 ```
