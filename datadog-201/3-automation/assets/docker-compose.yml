@@ -50,8 +50,8 @@ services:
       - DD_VERSION=1.0
       - DD_ENV=dd201
     labels:
-      com.datadoghq.ad.logs: '[{"source": "redis", "service": "stately-app"}]'
-      com.datadoghq.tags.service: 'redis-session-cache'
+      com.datadoghq.ad.logs: '[{"source": "python", "service": "stately-app"}]'
+      com.datadoghq.tags.service: 'stately-app'
       com.datadoghq.tags.env: 'dd201'
     ports:
-      - 80:8080
+      - 8000:80
