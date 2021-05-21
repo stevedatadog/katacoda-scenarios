@@ -11,14 +11,14 @@ This is the architecture of the small Docker web application that you're going t
 The environment for this lab is `dd201`.
 
 ### Is redis running?
-Suppose that it's important for your team to know when a new `redis-session-cache` comes online.  There are many ways you could answer this question if a Datadog Agent knows about the service. For example, you could look at the Redis - Overview dashboard, search for its tags in recent logs, or look for its container in the Docker Overview dashboard. If you have access to the host it's running on, there are many more ways to find out. 
+Suppose that it's important for your team to know when a new `redis-session-cache` service comes online.  There are many ways you could answer this question if a Datadog Agent knows about the service. For example, you could look at the Redis - Overview dashboard, search for its tags in recent logs, or look for its container in the Docker Overview dashboard. If you have access to the host it's running on, there are many more ways to find out. 
 
-One way to find out from the comfort of the command line is to use cURL to query the Datadog API. Start by looking at the [API Reference](https://docs.datadoghq.com/api/latest/) for an endpoint that might answer that question. 
+One way to find out from the comfort of the command line is to use cURL to query the Datadog API. Start by looking at the [API Reference](https://docs.datadoghq.com/api/latest/) for a helpful endpoints.
 
-The Logs endpoint is a candidate, assuming the service is logging. A better assumption is that the service will send metrics to Datadog through the Datadog Agent. Looking at the Metrics endpoints, [Query timeseries points](https://docs.datadoghq.com/api/latest/metrics/#query-timeseries-points) looks good. It will return an array of metric data points according to the query you specify. 
+The Logs endpoint is a candidate, assuming that the service is logging. A better assumption is that the service will send metrics to Datadog through the Datadog Agent. Looking at the Metrics endpoints, [Query timeseries points](https://docs.datadoghq.com/api/latest/metrics/#query-timeseries-points) looks good. It will return an array of metric data points according to the query you specify. 
 
 ### Building an API URL
-The documentation tells you the HTTP Method, the URL, and the required query string parameters. The URL with placeholders will be:
+The documentation tells you the HTTP Method, the URL, the required query string parameters, and the response to expect. The URL with placeholders will be:
 
 `https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=$QUERY`
 
@@ -86,24 +86,18 @@ curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=a
 
 ![Curl response reduced to a boolean value](./assets/curl_before_redis_with_jq_expression.png)
 
-Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Load this completed bash script into the IDE: `poll_redis.sh`{{open}}
+Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Click the IDE tab above the terminal and wait for it to load. Then load the file `lab/poll_redis.sh`{{open}}
 
-```sh
-#!/usr/bin/bash
-REDIS_UP=false
-while [ $REDIS_UP == false ]
-do
-  TO=$(date +"%s")
-  FROM=$(expr $TO - 60)
-  sleep 2
-  echo 'Waiting for redis...'
-  REDIS_UP=$(curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys\{env:dd201,service:redis-session-cache\}" \
-    -H "Content-Type: application/json" \
-    -H "DD-API-KEY: ${DD_API_KEY}" \
-    -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" |jq '.series|length>0')
-done
-echo 'Redis is up.'
-```
+This script runs the same command you just ran in a loop. The boolean return value from the `curl` command gets assigned to `$REDIS_UP`. The `while` loop will terminate when `$REDIS_UP` evaluates to `true`. It also pauses for 2 seconds to prevent abusing the Datadog API endpoint.
+
+Click on the first terminal tab and run this shell script: `cd /root/lab && ./poll_redis.sh`. It will tell you it's waiting for redis-session-cache:
+
+![Waiting for redis-session-cache](./assets/waiting_for_redis.png)
+
+Now start up the application. Click the **Terminal 2** tab to open a new terminal. Then run `docker up -d`{{execute}}
+
+Click on the **Terminal** and wait for the shell script to inform you that the service is up:
+
 
 
 It's certainly possible to run a bash script after provisioning that makes these requests and parses the results. It may be more humane to use a utility to do the heavy lifting for you. 

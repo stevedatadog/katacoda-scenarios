@@ -5,7 +5,7 @@ do
   TO=$(date +"%s")
   FROM=$(expr $TO - 60)
   sleep 2
-  echo 'Waiting for redis...'
+  echo 'Waiting for redis-session-cache...'
   REDIS_UP=$(curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys\{env:dd201,service:redis-session-cache\}" \
     -H "Content-Type: application/json" \
     -H "DD-API-KEY: ${DD_API_KEY}" \

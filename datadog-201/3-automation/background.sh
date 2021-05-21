@@ -10,6 +10,8 @@ mv /root/*.tf /root/lab
 mv /root/Dockerfile /root/lab/stately/
 mv /root/stately-server.py /root/lab/stately/
 mv /root/stately-index.html /root/lab/stately/index.html
+mv /root/poll_redis.sh /root/lab/poll_redis.sh
+mv /root/docker-compose.yml /root/lab/docker-compose.yml
 
 statusupdate setup
 
@@ -26,7 +28,7 @@ statuscheck "write stately url"
 
 statusupdate complete
 
-wait-for-it --timeout=600 localhost:80
+wait-for-it --timeout=3600 localhost:80
 
 STATELY_URL=$(cat /root/stately_url.txt)
 while true
