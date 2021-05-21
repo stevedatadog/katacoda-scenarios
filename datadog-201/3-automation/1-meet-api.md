@@ -93,11 +93,11 @@ curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=a
 
 ![Curl response reduced to a boolean value](./assets/curl_before_redis_with_jq_expression.png)
 
-Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Fortunately, it has already been written. Click the IDE tab above the terminal and wait for it to load. Then open the file `lab/scripts/poll_redis_v1.sh`{{open}}
+Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Fortunately, it has already been written. Click the IDE tab above the terminal and wait for it to load. Then open the file `lab/scripts/poll_redis.sh`{{open}}
 
 This script runs loops over the same command you just ran. The boolean return value from the `curl` command gets assigned to `$REDIS_UP`. The `while` loop will terminate when `$REDIS_UP` evaluates to `true`. It also pauses for 2 seconds to be kind to the Datadog API endpoint. (Get familiar with the [[Datadog API rate limits](https://docs.datadoghq.com/api/latest/rate-limits/) so you can tune your automated scripts accordingly.)
 
-Click on the first terminal tab and run this shell script: `cd /root/lab/scripts && ./poll_redis_v1.sh`{{execute}}. It will tell you it's waiting for redis-session-cache:
+Click on the first terminal tab and run this shell script: `cd /root/lab/scripts && ./poll_redis.sh`{{execute}}. It will tell you it's waiting for redis-session-cache:
 
 ![Waiting for redis-session-cache](./assets/waiting_for_redis.png)
 
@@ -135,7 +135,7 @@ Take a look at your [event stream](https://app.datadoghq.com/event/stream) to se
 ![Test event in stream](./assets/test_event_in_stream.png)
 
 ### Final version of the script
-Click on the IDE tab and open the file `lab/scripts/poll_redis_v2.sh`{{open}}, which puts everything together.
+Click on the IDE tab and open the file `lab/scripts/poll_service.sh`{{open}}, which puts everything together.
 
 This script adds the service and environment tags to the event, too, so you can filter it like other resources in your Datadog organization.
 
@@ -149,7 +149,7 @@ export DD_SERVICE="redis-session-cache"
 export DD_QUERY_METRIC="redis.cpu.sys"
 ```{{execute}}
 
-Run the script to see it in action. Because your service is still running, it will detect it automatically: `cd /root/lab/scripts && ./poll_redis_v2.sh`{{execute}}
+Run the script to see it in action. Because your service is still running, it will detect it automatically: `cd /root/lab/scripts && ./poll_service.sh`{{execute}}
 
 ![Final script run](./assets/final_script_run.png)
 

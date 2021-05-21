@@ -6,7 +6,11 @@ Now run this command:
 
 `dog -h`{{execute}}
 
-This will show you all of the API operations Dogshell supports. It's a limited set. For example, you can search for metric names, but you can't query for metric values over a timeframe as you did with cURL in the previous step. You can post events quite easily, though. To find out how, run the following command:
+This will show you all of the API operations Dogshell supports. It's a limited set. For example, you can search for metric names, but you can't query for metric values over a timeframe as you did with cURL in the previous step. 
+
+If you look closely at the `--api-key` and `--application-key` arguments, you'll see that Dogshell already got them from the environment for you. (Good `dog`!)
+
+To see how to post events, run the following command:
 
 `dog event -h`
 
@@ -30,6 +34,7 @@ dog event post --tags "env:$DD_ENV,service:$DD_SERVICE" \
 You should see an event like this appear in your event stream:
 
 ![dogshell created event](./assets/dogshell_created_event.png)
+
 
 See if you can create a new metric alert monitor using Dogshell. Start by executing `dogshell monitor post -h`{{execute}} to build the command. Here are the specs:
 
@@ -55,6 +60,6 @@ Here's the new monitor in Datadog:
 ![Dogshell monitor in datadog](./assets/dogshell_monitor_graph.png)
 
 ### Conclusion
-Dogshell is a handy utility that would work well for infrequent and one-off tasks. Its convenience and simplicity come at the price of narrower capabilities. Like cURL commands, Dogshell can be automated and even run on your laptop. See the [Dogshell docs](https://docs.datadoghq.com/developers/guide/dogshell-quickly-use-datadog-s-api-from-terminal-shell/) to learn more.
+Dogshell is a handy utility that would work well for infrequent and one-off tasks. Its convenience and simplicity come at the price of narrower capabilities. Like cURL commands, Dogshell can be automated and even run from your laptop. See the [Dogshell docs](https://docs.datadoghq.com/developers/guide/dogshell-quickly-use-datadog-s-api-from-terminal-shell/) to learn more.
 
 Click the **Continue** button to look at libraries that enable communicating with the Datadog API using with popular programming languages.
