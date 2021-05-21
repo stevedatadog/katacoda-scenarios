@@ -35,17 +35,17 @@
             "target": "/root"
           },
           {
-            "file": "poll_redis_v1.sh",
+            "file": "poll_redis.sh",
             "target": "/root",
             "chmod" : "+x"
           },
           {
-            "file": "poll_redis_v2.sh",
+            "file": "poll_service.sh",
             "target": "/root",
             "chmod" : "+x"
           },
           {
-            "file": "dd-verify.py",
+            "file": "poll_service.py",
             "target": "/root"
           },
           {

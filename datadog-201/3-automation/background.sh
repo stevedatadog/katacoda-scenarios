@@ -12,7 +12,7 @@ mv /root/Dockerfile /root/lab/stately/
 mv /root/stately-server.py /root/lab/stately/
 mv /root/stately-index.html /root/lab/stately/index.html
 mv /root/docker-compose.yml /root/lab/docker-compose.yml
-mv /root/poll_redis* /root/lab/scripts
+mv /root/poll_* /root/lab/scripts
 
 statusupdate setup
 

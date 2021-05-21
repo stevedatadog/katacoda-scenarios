@@ -4,19 +4,36 @@ from datadog import initialize, api
 
 initialize()
 
-tag_env=os.getenv['DD_ENV']
-tag_service=os.getenv['DD_SERVICE']
-tag_host=os.uname()[1]
-query_metric=os.getenv['DD_QUERY_METRIC']
-event_title='{service} is up'.format(service=tag_service)
-event_text='The service polling script detected {metric} from {environment} on {host}'.format(
-    metric=query_metric, env=tag_env, service=tag_service
-)
-tags=[tag_env, tag_service]
+""" Prepare context variables
+"""
+environment=os.getenv('DD_ENV')
+host=os.uname()[1]
+service=os.getenv('DD_SERVICE')
 
+tags = [ 'env:{tag}'.format(tag=environment),
+         'service:{tag}'.format(tag=service),
+         'host:{tag}'.format(tag=host),
+         'source:python'
+]
+
+q_metric=os.getenv('DD_QUERY_METRIC')
+query='avg:{metric}{{tags}}'.format(metric=q_metric, tags=','.join(tags))
+
+""" Poll the API for metrics
+"""
+service_up=False
+while not service_up:
+    start_time=int(start=time.time())
+    end_time=end_time - 120
+    response=api.Metric.query(start=start_time, end=end_time, query=query)
+    print(response)
+    time.sleep(2)
+
+""" Send event
+"""
+event_title='{service} is up'.format(service=service)
+event_text='The service polling script detected {metric} from {env} on {host}'.format(
+    metric=q_metric, env=environment, service=service
+)
 api.Event.create(event_title, event_text, tags=tags)
 
-query_end_time=int(start=time.time())
-query_start_time=query_end_time - 120
-query_redis_cpu='avg:redis.cpu.sys{{{env},{service}}}'.format(env=tag_env, service=tag_service)
-api.Metric.query(start=query_start_time, end=query_end_time, query=query_redis_cpu)
