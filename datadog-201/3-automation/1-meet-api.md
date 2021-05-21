@@ -17,7 +17,7 @@ One way to find out from the comfort of the command line is to use cURL to query
 
 The Logs endpoint is a candidate, assuming that the service is logging. A better assumption is that the service will send metrics to Datadog through the Datadog Agent. Looking at the Metrics endpoints, [Query timeseries points](https://docs.datadoghq.com/api/latest/metrics/#query-timeseries-points) looks good. It will return an array of metric data points according to the query you specify. 
 
-### Building an API URL
+### Build the API URL
 The documentation tells you the HTTP Method, the URL, the required query string parameters, and the response to expect. The URL with placeholders will be:
 
 `https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=$QUERY`
@@ -42,10 +42,12 @@ Extracting the value for `q` from that JSON object, you can now assemble your fu
 
 `https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys{env:dd201,service:redis-session-cache}`
 
-### Making the request
+### Make the request
 Scroll down to the **Code Example** in the API documentation for the **Query timeseries points** endpoint. Note the tabs illustrating how to use language libraries to perform requests to this endpoint. This is a useful resource provided for every API endpoint in the documentation. 
 
-Click on the **Curl** tab if it's not already selected. Note that in addition to a URL, the requests requires three HTTP headers: `Content-Type`, `DD-API-KEY`, and `DD-APPLICATION-KEY`. This is true for all API requests. The API and APP keys are already set in your lab environment, but you will have to set the `$FROM` and `$TO` variables explicitly. Putting it all together:
+Click on the **Curl** tab if it's not already selected. Note that in addition to a URL, the requests requires three HTTP headers: `Content-Type`, `DD-API-KEY`, and `DD-APPLICATION-KEY`. This is true for most API requests, though many do not require the application key header.
+
+The `$DD_API_KEY` and `$DD_APP_KEY` variables are already set in your lab environment, but you will have to set the `$FROM` and `$TO` variables explicitly. Putting it all together:
 
 ```
 TO=$(date +"%s")
@@ -73,6 +75,7 @@ curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=a
 
 The response contains `"status" : "ok"`, so you know that the API received your valid query. According to the API documentation for this endpoint, the metrics should be in the `"series" : []` array, which is empty. That makes sense, because the service isn't running yet. 
 
+### Script it
 You could provision the service and then run this script periodically until you see data in the `"series"` array. But you've got more important things to than repeatedly hitting up arrow and ENTER. If you can reduce this output to a boolean value, you can run it in a bash loop until it returns `true`.
 
 In addition to making JSON pretty in the terminal, `jq` can traverse JSON and perform powerful operations on it. The expression to evaluate whether the `series` array has data is `.series|length>0`. Now run the command with this addition:
@@ -86,20 +89,42 @@ curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=a
 
 ![Curl response reduced to a boolean value](./assets/curl_before_redis_with_jq_expression.png)
 
-Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Click the IDE tab above the terminal and wait for it to load. Then load the file `lab/poll_redis.sh`{{open}}
+Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Fortunately, it has already been written. Click the IDE tab above the terminal and wait for it to load. Then open the file `lab/poll_redis.sh`{{open}}
 
-This script runs the same command you just ran in a loop. The boolean return value from the `curl` command gets assigned to `$REDIS_UP`. The `while` loop will terminate when `$REDIS_UP` evaluates to `true`. It also pauses for 2 seconds to prevent abusing the Datadog API endpoint.
+This script runs loops over the same command you just ran. The boolean return value from the `curl` command gets assigned to `$REDIS_UP`. The `while` loop will terminate when `$REDIS_UP` evaluates to `true`. It also pauses for 2 seconds to be kind to the Datadog API endpoint. (Get familiar with the [[Datadog API rate limits](https://docs.datadoghq.com/api/latest/rate-limits/) so you can tune your automated scripts accordingly.)
 
-Click on the first terminal tab and run this shell script: `cd /root/lab && ./poll_redis.sh`. It will tell you it's waiting for redis-session-cache:
+Click on the first terminal tab and run this shell script: `cd /root/lab && ./poll_redis.sh`{{execute}}. It will tell you it's waiting for redis-session-cache:
 
 ![Waiting for redis-session-cache](./assets/waiting_for_redis.png)
 
-Now start up the application. Click the **Terminal 2** tab to open a new terminal. Then run `docker up -d`{{execute}}
+Now confirm that it will detect the `redis-session-cache` when it is provisioned and starts sending metrics to Datadog. Click the **Terminal 2** tab to open a new terminal. Then run `cd /root/lab && docker-compose up -d`{{execute}}
 
-Click on the **Terminal** and wait for the shell script to inform you that the service is up:
+Click on the **Terminal** tab and wait for the shell script to inform you that the service is up:
 
+![Redis is up](./assets/redis_is_up.png)
 
+### Post an event
+What if this script posted and event when it detected the service? That way anyone in your organization can see it in the [event stream](https://app.datadoghq.com/event/stream). You could even create an [Event Monitor](https://docs.datadoghq.com/monitors/monitor_types/event/) to notify your team when the service comes up.
 
+Consult the [documentation](https://docs.datadoghq.com/api/latest/events/#post-an-event) for the Datadog API's events endpoint, especially the **Curl** code example. Because you're sending information to the API, the method is `POST`. Also, the `DD-APPLICATION-KEY` key header is not required. 
+
+Try it out:
+
+```
+curl -X POST "https://api.datadoghq.com/api/v1/events" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-d @- << EOF
+{
+  "text": "Oh boy!",
+  "title": "Did you hear the news today?"
+}
+EOF
+```{{execute}}
+
+### Considerations
+You could add this script to your provisioning workflow
+To use this script in the real world, it wouThis strategy can be useful if you are able to run shell scripts 
 It's certainly possible to run a bash script after provisioning that makes these requests and parses the results. It may be more humane to use a utility to do the heavy lifting for you. 
 
 Click the **Continue** button to enjoy the convenience of dogshell.
