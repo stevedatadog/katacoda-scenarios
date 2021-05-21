@@ -29,7 +29,7 @@ dog event post --tags "env:$DD_ENV,service:$DD_SERVICE" \
 
 You should see an event like this appear in your event stream:
 
-![dogshell created event](./assets/dogshell_created_event)
+![dogshell created event](./assets/dogshell_created_event.png)
 
 See if you can create a new metric alert monitor using Dogshell. Start by executing `dogshell monitor post -h`{{execute}} to build the command. Here are the specs:
 
