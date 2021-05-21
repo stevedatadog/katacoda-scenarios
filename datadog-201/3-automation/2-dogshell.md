@@ -50,12 +50,11 @@ dogshell monitor post --name "Average Redis System CPU Usage" \
 ```
 </details>
 
+Here's the new monitor in Datadog:
+
+![Dogshell monitor in datadog](./assets/dogshell_monitor_graph.png)
+
 ### Conclusion
-Dogshell is a handy utility that would work well for infrequent and one-off tasks. Its convenience and simplicity come at the price of narrower capabilities. Like cURL commands, Dogshell can be run from anywhere. It can be automated, too.
+Dogshell is a handy utility that would work well for infrequent and one-off tasks. Its convenience and simplicity come at the price of narrower capabilities. Like cURL commands, Dogshell can be automated and even run on your laptop. See the [Dogshell docs](https://docs.datadoghq.com/developers/guide/dogshell-quickly-use-datadog-s-api-from-terminal-shell/) to learn more.
 
 Click the **Continue** button to look at libraries that enable communicating with the Datadog API using with popular programming languages.
-
-
-
-Look at the [Dogshell docs](https://docs.datadoghq.com/developers/guide/dogshell-quickly-use-datadog-s-api-from-terminal-shell/) if you would like to learn how to install it in your own environ ments.
-
