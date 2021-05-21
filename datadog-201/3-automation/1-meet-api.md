@@ -28,7 +28,11 @@ The command line utility `date` will help you figure out the UNIX timestamps for
 
 `$QUERY` is a little tricky if you're new to Datadog metric queries. The main [Metrics documentation](https://docs.datadoghq.com/metrics/#querying-metrics) has a useful section about constructing queries.
 
-The Datadog Metrics Explorer can also help you construct a query, if you know which metric you want. Looking at the **Metrics** tab of the [Redis integration](https://app.datadoghq.com/account/settings#integrations/redis), `redis.cpu.sys` stands out. If Redis is using system CPU, it's definitely running! Plug the metric name and tags into the Metric Explorer:
+The Datadog Metrics Explorer can also help you construct a query, if you know which metric you want. Looking at the **Metrics** tab of the [Redis integration](https://app.datadoghq.com/account/settings#integrations/redis), `redis.cpu.sys` stands out:
+
+![Redis integration metrics redis.cpu.sys](./assets/redis_integration_cpu.png)
+
+If Redis is using system CPU, it's definitely running! Plug the metric name and tags into the Metric Explorer:
 
 ![Building a query in the Metric Explorer](./assets/building_explorer_query.png)
 
@@ -97,7 +101,7 @@ Click on the first terminal tab and run this shell script: `cd /root/lab && ./po
 
 ![Waiting for redis-session-cache](./assets/waiting_for_redis.png)
 
-Now confirm that it will detect the `redis-session-cache` when it is provisioned and starts sending metrics to Datadog. Click the **Terminal 2** tab to open a new terminal. Then run `cd /root/lab && docker-compose up -d`{{execute}}
+Confirm that it will detect the `redis-session-cache` when it is provisioned and starts sending metrics to Datadog. Click the **Terminal 2** tab to open a new terminal. Then run `cd /root/lab && docker-compose up -d`{{execute}}
 
 Click on the **Terminal** tab and wait for the shell script to inform you that the service is up:
 
