@@ -89,11 +89,11 @@ curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=a
 
 ![Curl response reduced to a boolean value](./assets/curl_before_redis_with_jq_expression.png)
 
-Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Fortunately, it has already been written. Click the IDE tab above the terminal and wait for it to load. Then open the file `lab/poll_redis.sh`{{open}}
+Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Fortunately, it has already been written. Click the IDE tab above the terminal and wait for it to load. Then open the file `lab/poll_redis_v1.sh`{{open}}
 
 This script runs loops over the same command you just ran. The boolean return value from the `curl` command gets assigned to `$REDIS_UP`. The `while` loop will terminate when `$REDIS_UP` evaluates to `true`. It also pauses for 2 seconds to be kind to the Datadog API endpoint. (Get familiar with the [[Datadog API rate limits](https://docs.datadoghq.com/api/latest/rate-limits/) so you can tune your automated scripts accordingly.)
 
-Click on the first terminal tab and run this shell script: `cd /root/lab && ./poll_redis.sh`{{execute}}. It will tell you it's waiting for redis-session-cache:
+Click on the first terminal tab and run this shell script: `cd /root/lab && ./poll_redis_v1.sh`{{execute}}. It will tell you it's waiting for redis-session-cache:
 
 ![Waiting for redis-session-cache](./assets/waiting_for_redis.png)
 

@@ -35,7 +35,12 @@
             "target": "/root"
           },
           {
-            "file": "poll_redis.sh",
+            "file": "poll_redis_v1.sh",
+            "target": "/root",
+            "chmod" : "+x"
+          },
+          {
+            "file": "poll_redis_v2.sh",
             "target": "/root",
             "chmod" : "+x"
           },
