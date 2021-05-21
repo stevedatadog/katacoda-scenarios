@@ -93,11 +93,11 @@ curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=a
 
 ![Curl response reduced to a boolean value](./assets/curl_before_redis_with_jq_expression.png)
 
-Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Fortunately, it has already been written. Click the IDE tab above the terminal and wait for it to load. Then open the file `lab/poll_redis_v1.sh`{{open}}
+Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Fortunately, it has already been written. Click the IDE tab above the terminal and wait for it to load. Then open the file `lab/scripts/poll_redis_v1.sh`{{open}}
 
 This script runs loops over the same command you just ran. The boolean return value from the `curl` command gets assigned to `$REDIS_UP`. The `while` loop will terminate when `$REDIS_UP` evaluates to `true`. It also pauses for 2 seconds to be kind to the Datadog API endpoint. (Get familiar with the [[Datadog API rate limits](https://docs.datadoghq.com/api/latest/rate-limits/) so you can tune your automated scripts accordingly.)
 
-Click on the first terminal tab and run this shell script: `cd /root/lab && ./poll_redis_v1.sh`{{execute}}. It will tell you it's waiting for redis-session-cache:
+Click on the first terminal tab and run this shell script: `cd /root/lab/scripts && ./poll_redis_v1.sh`{{execute}}. It will tell you it's waiting for redis-session-cache:
 
 ![Waiting for redis-session-cache](./assets/waiting_for_redis.png)
 
@@ -126,11 +126,44 @@ curl -X POST "https://api.datadoghq.com/api/v1/events" \
 EOF
 ```{{execute}}
 
-### Considerations
-You could add this script to your provisioning workflow
-To use this script in the real world, it wouThis strategy can be useful if you are able to run shell scripts 
-It's certainly possible to run a bash script after provisioning that makes these requests and parses the results. It may be more humane to use a utility to do the heavy lifting for you. 
+You will get a response confirming that the event was created:
 
-Click the **Continue** button to enjoy the convenience of dogshell.
+![Sending event with curl](./assets/send_test_event.png)
 
+Take a look at your [event stream](https://app.datadoghq.com/event/stream) to see the result: 
 
+![Test event in stream](./assets/test_event_in_stream.png)
+
+### Final version of the script
+Open the file `lab/scripts/poll_redis_v2.sh`{{open}} which puts everything together.
+
+It also parameterized the previously hard-coded values to use environment variables for greater flexibility. You could run the same script for different services in different environments.
+
+Set those environment variables now:
+
+```
+export DD_ENV="dd201"
+export DD_SERVICE="redis-session-cache"
+export DD_QUERY_METRIC="redis.cpu.sys"
+```{{execute}}
+
+This version of the script adds the service and environment tags to the event, too, so you can filter and manage it like other resources in your Datadog organization.
+
+Run the script to see it in action. Because your service is still running, it will detect it automatically: `cd /root/lab/scripts && ./poll_redis-v2.sh`{{execute}}
+
+![Final script run](./assets/final_script_run.png)
+
+And here it is in your stream:
+
+![Final script event in stream](./assets/final_script_event_in_stream.png)
+
+### Conclusion
+You should have a good idea of how to interact with the Datadog API, and how you can use cURL in shell scripts to automate some useful actions.
+
+Scripts like these could be part of your provisioning suite, but they don't have to run on the provisioning host. You ran them on the same host here because of the nature of our lab environment. But you could have run them from anywhere that you can make HTTP requests to the Datadog API.
+
+Some people find shell scripts difficult to work with. They can seem arcane and finicky, and the same shell script might not run correctly in all environments. There are plenty of alternatives.
+
+In the next lab, you will do all of this again using Dogshell, the official command line client for the Datadog API. You'll see how it can greatly reduce the amount of code you need to write to achieve the same results.
+
+Click the **Continue** button.

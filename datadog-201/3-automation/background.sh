@@ -6,12 +6,13 @@ fi
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 mkdir -p /root/lab/stately
+mkdir /root/lab/scripts
 mv /root/*.tf /root/lab
 mv /root/Dockerfile /root/lab/stately/
 mv /root/stately-server.py /root/lab/stately/
 mv /root/stately-index.html /root/lab/stately/index.html
 mv /root/docker-compose.yml /root/lab/docker-compose.yml
-mv /root/poll_redis* /root/lab
+mv /root/poll_redis* /root/lab/scripts
 
 statusupdate setup
 

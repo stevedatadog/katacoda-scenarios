@@ -1,6 +1,6 @@
 #!/usr/bin/bash
+
 echo "Waiting for $DD_SERVICE..."
-DD_QUERY_METRIC="redis.cpu.sys" # Set this in your environment
 SERVICE_UP=false
 while [ $SERVICE_UP == false ]
 do
@@ -14,7 +14,17 @@ do
 done
 echo "$DD_SERVICE is up. Sending event."
 
-curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys\{env:dd201,service:redis-session-cache\}" \
-    -H "Content-Type: application/json" \
-    -H "DD-API-KEY: ${DD_API_KEY}" \
-    -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+curl -s -X POST "https://api.datadoghq.com/api/v1/events" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-d @- << EOF
+{
+  "text": "$DD_SERVICE is up",
+  "title": "The service polling script detected $DD_QUERY_METRIC from $DD_SERVICE in $DD_ENV.",
+  "tags" : [
+    "env:$DD_ENV",
+    "service:$DD_SERVICE",
+    "host:$(hostname)" 
+  ]
+}
+EOF

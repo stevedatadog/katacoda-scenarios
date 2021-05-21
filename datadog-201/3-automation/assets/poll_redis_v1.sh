@@ -11,4 +11,4 @@ do
     -H "DD-API-KEY: ${DD_API_KEY}" \
     -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" |jq '.series|length>0')
 done
-echo 'Redis is up.'
+echo 'redis-session-cache is up.'
