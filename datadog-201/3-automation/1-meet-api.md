@@ -135,11 +135,13 @@ Take a look at your [event stream](https://app.datadoghq.com/event/stream) to se
 ![Test event in stream](./assets/test_event_in_stream.png)
 
 ### Final version of the script
-Open the file `lab/scripts/poll_redis_v2.sh`{{open}} which puts everything together.
+Click on the IDE tab and open the file `lab/scripts/poll_redis_v2.sh`{{open}}, which puts everything together.
+
+This script adds the service and environment tags to the event, too, so you can filter it like other resources in your Datadog organization.
 
 It also parameterized the previously hard-coded values to use environment variables for greater flexibility. You could run the same script for different services in different environments.
 
-Set those environment variables now:
+Return to the first terminal and set those environment variables now:
 
 ```
 export DD_ENV="dd201"
@@ -147,9 +149,7 @@ export DD_SERVICE="redis-session-cache"
 export DD_QUERY_METRIC="redis.cpu.sys"
 ```{{execute}}
 
-This version of the script adds the service and environment tags to the event, too, so you can filter and manage it like other resources in your Datadog organization.
-
-Run the script to see it in action. Because your service is still running, it will detect it automatically: `cd /root/lab/scripts && ./poll_redis-v2.sh`{{execute}}
+Run the script to see it in action. Because your service is still running, it will detect it automatically: `cd /root/lab/scripts && ./poll_redis_v2.sh`{{execute}}
 
 ![Final script run](./assets/final_script_run.png)
 
@@ -162,8 +162,6 @@ You should have a good idea of how to interact with the Datadog API, and how you
 
 Scripts like these could be part of your provisioning suite, but they don't have to run on the provisioning host. You ran them on the same host here because of the nature of our lab environment. But you could have run them from anywhere that you can make HTTP requests to the Datadog API.
 
-Some people find shell scripts difficult to work with. They can seem arcane and finicky, and the same shell script might not run correctly in all environments. There are plenty of alternatives.
-
-In the next lab, you will do all of this again using Dogshell, the official command line client for the Datadog API. You'll see how it can greatly reduce the amount of code you need to write to achieve the same results.
+Interacting with the Datadog API at a low level using cURL and shell scripts gives you full access to all of the API's capabilities. In the next lab, you will use Dogshell, which greatly simplifies communicating with the Datadog API.
 
 Click the **Continue** button.
