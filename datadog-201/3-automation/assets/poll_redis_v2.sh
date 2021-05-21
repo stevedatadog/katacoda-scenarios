@@ -14,13 +14,13 @@ do
 done
 echo "$DD_SERVICE is up. Sending event."
 
-curl -s -X POST "https://api.datadoghq.com/api/v1/events" \
+EVENT_RESPONSE=$(curl -s -X POST "https://api.datadoghq.com/api/v1/events" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -d @- << EOF
 {
-  "text": "$DD_SERVICE is up",
-  "title": "The service polling script detected $DD_QUERY_METRIC from $DD_SERVICE in $DD_ENV.",
+  "title": "$DD_SERVICE is up",
+  "text": "The service polling script detected $DD_QUERY_METRIC from $DD_SERVICE in $DD_ENV.",
   "tags" : [
     "env:$DD_ENV",
     "service:$DD_SERVICE",
@@ -28,3 +28,11 @@ curl -s -X POST "https://api.datadoghq.com/api/v1/events" \
   ]
 }
 EOF
+) 
+
+if [ $(echo $EVENT_RESPONSE | jq '.status == "ok"') == true ]
+then
+  echo "Event sent OK"
+else
+  echo "Event not sent"
+fi
