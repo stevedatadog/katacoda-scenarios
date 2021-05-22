@@ -54,4 +54,4 @@ services:
       com.datadoghq.tags.service: 'stately-app'
       com.datadoghq.tags.env: 'dd201'
     ports:
-      - 8000:80
+      - 80:80000
