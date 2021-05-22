@@ -1,7 +1,7 @@
 There are many programming language libraries, called "client libraries," that simplify communicating with the Datadog API. You can use them to easily add Datadog API requests to most applications, from internal administrative tools to native mobile consumer applications. Client libraries unlock the full power of the Datadog API using the programming languages that best fit your needs or preferences.
 
 ### a Python example
-Click the IDE tab and wait for it to fully load. Then open `labs/scripts/poll_service.py`{{open}}.
+Click the IDE tab and wait for it to fully load. Then open `lab/scripts/poll_service.py`{{open}}.
 
 This is a python script that uses the official Datadog client library for Python. It performs the same function as `poll_service.sh` from earlier in the lab. 
 

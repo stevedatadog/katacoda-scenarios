@@ -46,7 +46,8 @@
           },
           {
             "file": "poll_service.py",
-            "target": "/root"
+            "target": "/root",
+            "chmod" : "+x"
           },
           {
             "file": "main.tf",

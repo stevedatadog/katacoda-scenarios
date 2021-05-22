@@ -18,20 +18,22 @@ tags = [ 'env:{tag}'.format(tag=environment),
 q_metric=os.getenv('DD_QUERY_METRIC')
 query='avg:{metric}{{{tags}}}'.format(metric=q_metric, tags=','.join(tags))
 
-""" Poll the API for metrics
+""" Poll the API for service metrics
 """
+print('Waiting for {service}'.format(service=service))
 service_up=False
 while not service_up:
     end_time=int(time.time())
     start_time=end_time - 120
     response=api.Metric.query(start=start_time, end=end_time, query=query)
-    print(response)
+    service_up=len(response['series']) > 0
     time.sleep(2)
+print('{service} is up. Sending event.'.format(service=service))
 
 """ Send event
 """
 event_title='{service} is up'.format(service=service)
 event_text='The service polling script detected {metric} from {env} on {host}'.format(
-    metric=q_metric, env=environment, service=service
+    metric=q_metric, env=environment, host=host
 )
-api.Event.create(event_title, event_text, tags=tags.append('source:python'))
+api.Event.create(title=event_title, text=event_text, tags=tags)
