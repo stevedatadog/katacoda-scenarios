@@ -36,4 +36,9 @@ event_title='{service} is up'.format(service=service)
 event_text='The service polling script detected {metric} from {env} on {host}'.format(
     metric=q_metric, env=environment, host=host
 )
-api.Event.create(title=event_title, text=event_text, tags=tags)
+event_response=api.Event.create(title=event_title, text=event_text, tags=tags)
+
+if event_response['status'] == "OK":
+    print('Event sent OK')
+else:
+    print('Event not sent')
