@@ -1,6 +1,10 @@
 There are many programming language libraries, called "client libraries," that simplify communicating with the Datadog API. You can use them to easily add Datadog API requests to most applications, from internal administrative tools to native mobile consumer applications. Client libraries unlock the full power of the Datadog API using the programming languages that best fit your needs or preferences.
 
-### A Python example
+## A Python example
+If you didn't install the Datadog for Python in the previous step, do so now:
+
+`pip install datadog`{{execute}}
+
 Click the IDE tab and wait for it to fully load. Then open `lab/scripts/poll_service.py`{{open}}.
 
 This is a python script that uses the official Datadog client library for Python. It performs the same function as `poll_service.sh` from earlier in the lab. 
@@ -22,8 +26,14 @@ Now that you're familiar with how this script works, run it:
 
 The experience and outcome should be nearly identical to that of running `poll_service.sh`.
 
-### Other languages
+### More about the Python library
 Look at the [Python Client documentation](https://datadogpy.readthedocs.io/en/latest/) to learn about its capabilities. It's one of the few libraries can communicate with both the Datadog API and [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd), a metrics aggregation service bundled with the Datadog Agent. 
+## A nodejs example
+Here is a script that will create create a dashboard from an exported JSON file using NodeJS:
+
+**todo**
+
+### Other languages
 
 Take a look at the [list of client libraries](https://docs.datadoghq.com/developers/libraries/) to see what's available for your language of choice. Also note that there are many special purpose Datadog libraries, such as those for serverless, log management, Google Analytics, and even Jira to name a small set. 
 

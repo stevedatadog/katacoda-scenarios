@@ -22,6 +22,8 @@ You can drill down through many Dogshell commands this way, adding an `-h` with 
 
 `dog event post -h`
 
+### Post an event
+
 Using this information, you can recreate the event from the previous step thusly:
 
 ```
@@ -35,6 +37,7 @@ You should see an event like this appear in your event stream:
 
 ![dogshell created event](./assets/dogshell_created_event.png)
 
+### Create a metric alert
 
 See if you can create a new metric alert monitor using Dogshell. Start by executing `dogshell monitor post -h`{{execute}} to build the command. Here are the specs:
 
@@ -58,6 +61,17 @@ dogshell monitor post --name "Average Redis System CPU Usage" \
 Here's the new monitor in Datadog:
 
 ![Dogshell monitor in datadog](./assets/dogshell_monitor_graph.png)
+
+### Create a dashboard
+Dogshell is great for managing your dahsboards. Here's a command to quickly create a dashboard containing one widget that displays `redis.cpu.sys`: 
+
+`dog dashboard post dash01 "[{\"definition\": {\"type\": \"timeseries\",\"requests\": [{\"q\": \"avg:redis.cpu.sys{*}\"}],\"title\": \"Redis System CPU Usage\"}}]" 'ordered'`{{execute}}
+
+This is the dashboard Dogshell created:
+
+![Dogshell created dashboard](./assets/dogshell_created_dashboard.png)
+
+It's not as nice as the dashboard you created in the first part of this course, but it's a start! You can add further widgets to the dashboard with the `dog dashboard update` command. All of the widgets are [well documented](https://docs.datadoghq.com/dashboards/widgets/) and provide the JSON syntax for their definitions in API commands. You'll make a more sophisticated dashboard in the next step.
 
 ### Conclusion
 Dogshell is a handy utility that would work well for infrequent and one-off tasks. Its convenience and simplicity come at the price of narrower capabilities. Like cURL commands, Dogshell can be automated and even run from your laptop. See the [Dogshell docs](https://docs.datadoghq.com/developers/guide/dogshell-quickly-use-datadog-s-api-from-terminal-shell/) to learn more.
