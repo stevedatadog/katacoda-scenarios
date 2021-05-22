@@ -40,7 +40,7 @@ event_text='The service polling script detected {metric} from {env} on {host}'.f
 )
 event_response=api.Event.create(title=event_title, text=event_text, tags=tags)
 
-if event_response['status'] == "OK":
+if event_response['status'] == "ok":
     print('Event sent OK')
 else:
     print('Event not sent')

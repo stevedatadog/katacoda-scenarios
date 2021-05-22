@@ -57,11 +57,14 @@ In the following lab, you're going to work with the Datadog API in a variety of 
     - detect metrics by type and service tag
     - publish events to Datadog to track provisioning progress
   - Use Dogshell to:
-    - confirm that services are logging correctly
-    - confirm that APM traces are working
-  - Run a python script to create a synthetic API test
-  - Using Terraform to create a monitor and dashboard while provisioning the application
+    - perform the above tasks
+  - Run a python script to:
+    - perform the above tasks 
+    - create a dashboard
+  - Use Terraform to:
+    - provision a small web application
+    - simultaneously create a monitor and dashboard for the application
 
-At the conclusion of this lab you will understand how the Datadog API works, what it can do, and how to use it.
+At the conclusion of this lab you will understand how the Datadog API works, what it can do, and the variety of ways that you can communicate with it.
 
 Click the **Start Scenario** button to get started.
