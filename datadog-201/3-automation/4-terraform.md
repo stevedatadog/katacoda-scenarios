@@ -7,3 +7,7 @@ There is a terraform file that provisions a small web application called Stately
 `terraform apply --auto-approve`
 
 Take a look at the Datadog app to see the monitor and dashboard created.
+
+**todo** flesh out the above and explain:
+  - key aspects of terraform configuration files
+  - value of datadog monitors, dashboards as IaC

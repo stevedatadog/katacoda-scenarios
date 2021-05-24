@@ -50,9 +50,13 @@
             "chmod" : "+x"
           },
           {
-            "file": "create_dashboard.py",
+            "file": "create_dashboard.js",
             "target": "/root",
             "chmod" : "+x"
+          },
+          {
+            "file": "dashboard.json",
+            "target": "/root"
           },
           {
             "file": "main.tf",

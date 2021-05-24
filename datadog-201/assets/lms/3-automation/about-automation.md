@@ -58,9 +58,8 @@ In the following lab, you're going to work with the Datadog API in a variety of 
     - publish events to Datadog to track provisioning progress
   - Use Dogshell to:
     - perform the above tasks
-  - Run a python script to:
-    - perform the above tasks 
     - create a dashboard
+  - Run a Python and NodeJS scripts to perform all of the above tasks
   - Use Terraform to:
     - provision a small web application
     - simultaneously create a monitor and dashboard for the application

@@ -28,10 +28,13 @@ The experience and outcome should be nearly identical to that of running `poll_s
 
 ### More about the Python library
 Look at the [Python Client documentation](https://datadogpy.readthedocs.io/en/latest/) to learn about its capabilities. It's one of the few libraries can communicate with both the Datadog API and [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd), a metrics aggregation service bundled with the Datadog Agent. 
-## A nodejs example
-Here is a script that will create create a dashboard from an exported JSON file using NodeJS:
 
-**todo**
+## A nodejs example
+Here is a script that uses the [node-dogapi](https://github.com/brettlangdon/node-dogapi) client libarary for NodeJS to create a dashboard from an exported JSON file:
+`lab/scripts/poll_service.py`{{open}}.
+
+**todo:** describe key functionality of script
+**todo:** explain how to run  script
 
 ### Other languages
 
