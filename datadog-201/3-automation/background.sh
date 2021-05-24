@@ -14,6 +14,8 @@ mv /root/stately-index.html /root/lab/stately/index.html
 mv /root/docker-compose.yml /root/lab/docker-compose.yml
 mv /root/*.sh /root/lab/scripts
 mv /root/*.py /root/lab/scripts
+mv /root/*.js /root/lab/scripts
+mv /root/dashboard.json /root/lab/scripts
 
 statusupdate setup
 
