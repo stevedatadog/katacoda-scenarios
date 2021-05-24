@@ -3,13 +3,13 @@ resource "datadog_monitor" "redis_cpu" {
   type = "metric alert"
   message = "Uh oh. Redis is burning up the CPU! @sre@example.com"
   
-  query = "avg(last_1h):avg:redis.cpu.sys{env:dd201,service:redis-session-cache} > 1"
+  query = "avg(last_5m):max:redis.cpu.sys{env:dd201,service:redis-session-cache} by {service,env} >= .5"
 
   monitor_thresholds {
-    warning           = ".8"
-    warning_recovery  = ".6"
-    critical          = 1
-    critical_recovery = ".8"
+    warning           = ".4"
+    warning_recovery  = ".2"
+    critical          = ".6"
+    critical_recovery = ".4"
   }
 
   tags = ["env:dd201", "service:redis-session-cache"]
@@ -23,7 +23,7 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
 
   widget {
     alert_value_definition {
-      alert_id = "${datadaog_monitor.redis_cpu.id}"
+      alert_id = "${datadog_monitor.redis_cpu.id}"
       text_align = "center"
       title = "Redis System CPU Usage"
     }
@@ -38,6 +38,13 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
       time = {
         live_span = "1h"
       }
+    }
+  }
+  widget {
+    check_status_definition {
+      check = "redis.can_connect"
+      grouping = "check"
+      title = "Reids Session Cache Availability"
     }
   }
 }

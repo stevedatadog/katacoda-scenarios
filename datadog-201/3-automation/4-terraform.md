@@ -7,9 +7,9 @@ Load `lab/terraform/datadog.tf`{{open}} in the IDE to see how customer monitors 
 
 There is a terraform file that provisions a small web application called Stately. It consists of a falcon web server and a redis session cache. 
 
-`terraform init`
+`terraform init`{{execute}}
 
-`terraform apply --auto-approve`
+`terraform apply --auto-approve`{{execute}}
 
 Take a look at the Datadog app to see the monitor and dashboard created.
 

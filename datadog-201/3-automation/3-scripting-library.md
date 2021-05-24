@@ -31,7 +31,7 @@ Look at the [Python Client documentation](https://datadogpy.readthedocs.io/en/la
 
 ## A nodejs example
 Here is a script that uses the [node-dogapi](https://github.com/brettlangdon/node-dogapi) client libarary for NodeJS to create a dashboard from an exported JSON file:
-`lab/scripts/create_dashboard.py`{{open}}.
+`lab/scripts/create_dashboard.js`{{open}}.
 
 **todo:** describe key functionality of script
 **todo:** explain how to run  script
