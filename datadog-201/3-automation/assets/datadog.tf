@@ -54,11 +54,11 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
   }
   widget {
     note_definition {
-      content          = "This dashboard was created as part of a Datadog 201 lab."
+      content          = "This dashboard was created by Terraform in a **Datadog 201** lab."
       background_color = "purple"
       font_size        = "36"
       text_align       = "center"
-      vertical_align   = "middle"
+      vertical_align   = "center"
       show_tick        = false
       tick_edge        = "left"
       tick_pos         = "50%"
@@ -122,7 +122,7 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
 
   widget {
     timeseries_definition {
-      title = "CPU user by image"
+      title = "System CPU by image"
       title_size = "16"
       title_align = "left"
       show_legend = false
@@ -135,23 +135,26 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
           "sum"
       ]
       live_span = "30m"
-      request = [
-          {
-              q = "avg:docker.cpu.system{$scope} by {docker_image}.fill(0)"
-              style = {
-                  palette = "cool"
-              }
-              display_type = "line"
-          }
-      ]
-      yaxis = {
+      request {
+        q = "avg:docker.cpu.system{env:dd201} by {docker_image}.fill(0)"
+        style  {
+          palette = "cool"
+        }
+        display_type = "line"
+      }
+      yaxis {
           scale = "linear"
           label = ""
           include_zero = true
           min = "auto"
           max = "auto"
       }
-      markers = []
+    }
+    widget_layout {
+      height = 50
+      width  = 34
+      x      = 105
+      y      = 38
     }
   }
 
