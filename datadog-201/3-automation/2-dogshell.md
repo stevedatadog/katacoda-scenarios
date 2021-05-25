@@ -12,7 +12,7 @@ If you look closely at the `--api-key` and `--application-key` arguments, you'll
 
 To see how to post events, run the following command:
 
-`dog event -h`
+`dog event -h`{{execute}}
 
 This shows you helpful information specifically for the event command:
 
@@ -20,7 +20,7 @@ This shows you helpful information specifically for the event command:
 
 You can drill down through many Dogshell commands this way, adding an `-h` with each new subcommand to learn more about it. Execute this command to see all of the options for posting an event:
 
-`dog event post -h`
+`dog event post -h`{{execute}}
 
 ### Post an event
 

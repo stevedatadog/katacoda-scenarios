@@ -20,11 +20,11 @@ On lines 26-32, the script calls `api.Metric.query()` in a loop, passing in the 
 On lines 37-41, the script prepares the arguments for `api.Event.create()` and calls it. This will send the same event that `poll_service.sh` and Dogshell did. 
 
 ### Run the script
-Now that you're familiar with how this script works, run it:
+Now that you're familiar with how this script works, run it in the terminal:
 
 `cd /root/lab/scripts && ./poll_service.py`{{execute}}
 
-The experience and outcome should be nearly identical to that of running `poll_service.sh`.
+The experience and outcome should be nearly identical to that of running `poll_service.sh`. You can check your events stream in the Datadog app to confirm that there's a new **redis-session-cache-is-up** event.
 
 ### More about the Python library
 Look at the [Python Client documentation](https://datadogpy.readthedocs.io/en/latest/) to learn about its capabilities. It's one of the few libraries can communicate with both the Datadog API and [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd), a metrics aggregation service bundled with the Datadog Agent. 
