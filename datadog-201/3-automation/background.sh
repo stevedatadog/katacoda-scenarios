@@ -16,9 +16,6 @@ mv /root/stately-index.html /root/lab/stately/index.html
 mkdir /root/lab/scripts
 mv /root/*.sh /root/lab/scripts
 mv /root/*.py /root/lab/scripts
-mv /root/*.js /root/lab/scripts
-mv /root/package.json /root/lab/scripts
-mv /root/dashboard.json /root/lab/scripts
 
 mkdir /root/lab/terraform
 mv /root/*.tf /root/lab/terraform
