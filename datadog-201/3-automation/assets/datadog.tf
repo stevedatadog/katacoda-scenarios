@@ -11,14 +11,13 @@ resource "datadog_monitor" "redis_cpu" {
     critical          = ".2"
     critical_recovery = ".1"
   }
-
   tags = ["env:dd201", "service:redis-session-cache"]
 }
 
 resource "datadog_dashboard" "redis_session_cache_dash" {
-  title         = "Redis Session Cache Dashboard"
+  title         = "Stately! Dashboard"
   description   = "Created using the Datadog provider in Terraform"
-  layout_type   = "ordered"
+  layout_type   = "free"
   is_read_only  = true
 
   widget {
@@ -26,25 +25,134 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
       alert_id = "${datadog_monitor.redis_cpu.id}"
       viz_type = "timeseries"
       title = "Redis System CPU Usage"
-      live_span = "1h"
+      title_size = 16
+      live_span = "30m"
+    }
+    widget_layout {
+      x = 1
+      y = 0
+      width = 32
+      height = 37
     }
   }
 
   widget {
     check_status_definition {
-      check = "datadog.agent.up"
+      check = "datadog.agent.check_status"
       grouping = "check"
-      group = "host:host01"
-      title = "Host Availability"
-      live_span = "1h"
+      group = "check:redisdb"
+      title = "Redis Up"
+      title_size = 16
+      live_span = "30m"
+    }
+    widget_layout {
+      height = 18
+      width  = 32
+      x      = 34
+      y      = 0
     }
   }
   widget {
-    check_status_definition {
-      check = "redis.can_connect"
-      grouping = "check"
-      title = "Reids Session Cache Availability"
-      live_span = "1h"
+    note_definition {
+      content          = "This dashboard was created as part of a Datadog 201 lab."
+      background_color = "purple"
+      font_size        = "36"
+      text_align       = "center"
+      vertical_align   = "middle"
+      show_tick        = false
+      tick_edge        = "left"
+      tick_pos         = "50%"
+      has_padding      = true
+    }
+    widget_layout {
+      height = 18
+      width  = 32
+      x      = 34
+      y      = 19
     }
   }
+  widget {
+    log_stream_definition {
+      title               = "Stately Error Logs"
+      title_size          = "16"
+      indexes             = []
+      query               = "status:error"
+      columns             = ["core_host", "core_service", "tag_source"]
+      show_date_column    = true
+      show_message_column = true
+      message_display     = "expanded-md"
+      live_span           = "30m"
+      sort {
+        column = "time"
+        order  = "desc"
+      }
+    }
+    widget_layout {
+      height = 37
+      width  = 72
+      x      = 67
+      y      = 0
+    }
+  }
+  widget {
+    trace_service_definition {
+      display_format     = "three_column"
+      env                = "dd201"
+      service            = "stately-app"
+      show_breakdown     = true
+      show_distribution  = true
+      show_errors        = true
+      show_hits          = true
+      show_latency       = true
+      show_resource_list = false
+      size_format        = "large"
+      title              = "Falcon Requests"
+      title_align        = "center"
+      title_size         = "16"
+      span_name          = "falcon.request"
+      live_span          = "30m"
+    }
+    widget_layout {
+      height = 50
+      width  = 103
+      x      = 1
+      y      = 38
+    }
+  }
+
+  widget {
+    timeseries_definition {
+      title = "CPU user by image"
+      title_size = "16"
+      title_align = "left"
+      show_legend = false
+      legend_layout = "auto"
+      legend_columns = [
+          "avg",
+          "min",
+          "max",
+          "value",
+          "sum"
+      ]
+      live_span = "30m"
+      request = [
+          {
+              q = "avg:docker.cpu.system{$scope} by {docker_image}.fill(0)"
+              style = {
+                  palette = "cool"
+              }
+              display_type = "line"
+          }
+      ]
+      yaxis = {
+          scale = "linear"
+          label = ""
+          include_zero = true
+          min = "auto"
+          max = "auto"
+      }
+      markers = []
+    }
+  }
+
 }
