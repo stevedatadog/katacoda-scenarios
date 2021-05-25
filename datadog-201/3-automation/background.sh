@@ -5,17 +5,23 @@ fi
 
 #!/bin/bash
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
+
+mv /root/docker-compose.yml /root/lab/docker-compose.yml
+
 mkdir -p /root/lab/stately
-mkdir /root/lab/scripts
-mv /root/*.tf /root/lab
 mv /root/Dockerfile /root/lab/stately/
 mv /root/stately-server.py /root/lab/stately/
 mv /root/stately-index.html /root/lab/stately/index.html
-mv /root/docker-compose.yml /root/lab/docker-compose.yml
+
+mkdir /root/lab/scripts
 mv /root/*.sh /root/lab/scripts
 mv /root/*.py /root/lab/scripts
 mv /root/*.js /root/lab/scripts
+mv /root/package.json /root/lab/scripts
 mv /root/dashboard.json /root/lab/scripts
+
+mkdir /root/lab/terraform
+mv /root/*.tf /root/lab/terraform
 
 statusupdate setup
 

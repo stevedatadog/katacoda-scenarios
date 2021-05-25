@@ -11,7 +11,7 @@ dogapi.initialize(clientOptions);
 const dashOptions = {}
 
 readFile("dashboard.json").then(fileBuffer => {
-    const dashTemplate = fileBuffer.toJSON();
+    const dashTemplate = JSON.parse(fileBuffer);
     console.log(dashTemplate); // debug
     dashOptions.templateVariables = dashTemplate.template_variables;
     dashOptions.readOnly = dashTemplate.is_read_only;

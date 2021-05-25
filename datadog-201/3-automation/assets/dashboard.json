@@ -1,9 +1,8 @@
 {
-    "title": "Stately Dashboard",
-    "description": "Created using the Datadog provider in Terraform",
+    "title": "Stately! Dashboard",
+    "description": "Created using NodeJS",
     "widgets": [
         {
-            "id": 6224994380708775,
             "layout": {
                 "x": 1,
                 "y": 0,
@@ -22,7 +21,6 @@
             }
         },
         {
-            "id": 2060339344149518,
             "layout": {
                 "x": 34,
                 "y": 0,
@@ -42,7 +40,6 @@
             }
         },
         {
-            "id": 554986988136466,
             "layout": {
                 "x": 34,
                 "y": 19,
@@ -51,7 +48,7 @@
             },
             "definition": {
                 "type": "note",
-                "content": "This dashboard was created as part of a Datadog 201 lab.",
+                "content": "This dashboard was created usin NodeJS in a **Datadog 201** lab.",
                 "background_color": "purple",
                 "font_size": "36",
                 "text_align": "left",
@@ -63,7 +60,6 @@
             }
         },
         {
-            "id": 2782939196561944,
             "layout": {
                 "x": 67,
                 "y": 0,
@@ -92,7 +88,6 @@
             }
         },
         {
-            "id": 2246912399519366,
             "layout": {
                 "x": 1,
                 "y": 38,
@@ -121,7 +116,6 @@
             }
         },
         {
-            "id": 8438110911660462,
             "layout": {
                 "x": 105,
                 "y": 38,
@@ -168,6 +162,5 @@
     "template_variables": [],
     "layout_type": "free",
     "is_read_only": true,
-    "notify_list": [],
-    "id": "xtz-tnc-fv9"
+    "notify_list": []
 }
