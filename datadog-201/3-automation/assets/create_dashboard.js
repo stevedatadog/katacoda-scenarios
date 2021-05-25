@@ -21,7 +21,7 @@ readFile("dashboard.json").then(fileBuffer => {
     const dashTitle = "New Dashboard from Node";
     console.log(dashOptions); // debug
     dogapi.screenboard.create(
-      dashTitle, dashWidgets, dashOptions, function(err, res){
+      dashTitle, dashTemplate.widgets, dashOptions, function(err, res){
         console.dir(res);
       }
     );

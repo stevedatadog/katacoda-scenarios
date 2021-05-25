@@ -29,18 +29,10 @@ The experience and outcome should be nearly identical to that of running `poll_s
 ### More about the Python library
 Look at the [Python Client documentation](https://datadogpy.readthedocs.io/en/latest/) to learn about its capabilities. It's one of the few libraries can communicate with both the Datadog API and [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd), a metrics aggregation service bundled with the Datadog Agent. 
 
-## A nodejs example
-Here is a script that uses the [node-dogapi](https://github.com/brettlangdon/node-dogapi) client libarary for NodeJS to create a dashboard from an exported JSON file:
-`lab/scripts/create_dashboard.js`{{open}}.
-
-**todo:** describe key functionality of script
-**todo:** explain how to run  script
-
 ### Other languages
-
 Take a look at the [list of client libraries](https://docs.datadoghq.com/developers/libraries/) to see what's available for your language of choice. Also note that there are many special purpose Datadog libraries, such as those for serverless, log management, Google Analytics, and even Jira to name a small set. 
 
 ### Conclusion
-They python script in this lab
+The python script in this lab is a good example of how Datadog client libraries work generally. You'll find that the official Datadog client libraries are the most comprehensive and up-to-date. If the client libraries for you language of choice are missing features that are important to you, remember that you can always fall back on making direct HTTP requests to the Datadog API.
 
 Click the **Continue** button use Terraform to provision an application stack and its monitors and dashboards at the same time.

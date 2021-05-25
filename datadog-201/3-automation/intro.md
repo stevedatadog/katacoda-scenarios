@@ -1,10 +1,7 @@
-In this lab, the learners will:
+In this lab you will communicate with the Datadog API in a variety of ways, including:
+1. Using cURL to determine if a redis service is up and running
+1. Using Dogshell to do the same thing more easily
+1. Look at and run a premade python script using the Datadog for Python client library
+1. Using Terraform to automatically create a Dashboard while provisioning an application
 
-1. Use cURL to call the Datadog API to see if the redis service is up and running
-1. Use dogshell to do the same thing from a bash script
-1. Look at and run a premade python script using the datadog for python libaries
-1. Learn about links to client libraries for their favorite language.
-1. Consider strategies for using the above methods at provision time.
-  - Sidecar container?
-  - Automatically running bash/python/node script?
-1. Use Terraform to automatically create a dashboard at provisioning time
+Click the **Start Scenario** button to get started.
