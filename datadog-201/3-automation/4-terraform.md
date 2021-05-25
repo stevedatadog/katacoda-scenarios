@@ -42,7 +42,7 @@ Take a look at the Datadog app and find **Average Redis System CPU Usage** under
 
 Your newly created dashboard should look something like this:
 
-![Terraform created dashboard]()
+![Terraform created dashboard](./assets/dash_created_by_terraform.png)
 
 Note that every time you run `terraform apply`, Terraform will do whatever it takes to bring the resources to their configured states. That means that if you make any changes to the dashboard, they will disappear when the dashboard reverts to its originally configured state. This is a good way to maintain an "official," permanent dashboard for resources provisioned by Terraform.
 
