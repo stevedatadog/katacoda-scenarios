@@ -1,6 +1,6 @@
-Take your knowledge to the next level—whether you just started using Datadog in the last few months, or you just want to adopt Datadog for more use cases. Learn when and how to use Executive Dashboards, Runbooks, Custom Metrics, and UX SLOs. You'll also learn how to automate much of this using the Datadog API, command line utilities, and Terraform. 
+Take your knowledge to the next level—whether you just started using Datadog in the last few months, or you just want to adopt Datadog for more use cases. Learn when and how to use Executive Dashboards, Runbooks, Custom Metrics, and UX SLOs. You'll also learn some techniques and shortcuts that will increase your efficiency in the Datadog app.
 
-Click **Course Introduction  >  Introduction** to start the course.
+[Click here to get started.](https://datadog-staging.yourtotara.com/mod/page/view.php?id=1036)
 
 Primary Audience
 ---

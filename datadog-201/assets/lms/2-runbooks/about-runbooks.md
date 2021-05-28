@@ -3,7 +3,7 @@ Notebooks allow you to collect knowledge, links, images, and almost any Datadog 
 
 Datadog provides interactive tutorials that demonstrate the features of notebooks. If you're new to notebooks, explore the [Welcome to Notebooks](https://app.datadoghq.com/notebook/template/1/welcome-to-notebooks-%F0%9F%8E%89) notebook, pictured below:
 
-![Welcome to notebooks notebook](./welcome_to_notebooks.png)
+![Welcome to Notebooks](./welcome_to_notebooks.png)
 
 ### Incidents and postmortems
 Notebooks are powerful tools for incident management. They enable multiple people to communicate about an incident as it unfolds and document resolution efforts in [real time](https://docs.datadoghq.com/notebooks/#live-collaboration).
@@ -18,7 +18,7 @@ See the [incident management documentation](https://docs.datadoghq.com/monitors/
 ### Runbooks
 Like postmortems, runbooks are special-purpose notebooks. They help members of your team respond to issues by providing them with detailed instructions and historical context. They are like incident-specific troubleshooting manuals based on past experience.  
 
-Here's an example of a runbook to investgate a credential stuffing attack:
+Here's an example of a runbook to investigate a credential stuffing attack:
 ![Credential stuffing attack runbook](./credential_stuffing_runbook.png)
 
 You can look at this runbook in your own Datadog account with [this link to the template](https://app.datadoghq.com/notebook/template/4/credential-stuffing-attack-runbook).
@@ -31,7 +31,7 @@ In the following lab, you're going to create a runbook for investigating and fix
   - Add a table listing the most recent synthetic browser test results that the SLO monitors
   - Enumerate troubleshooting steps
   - Describe a common mitigation strategy
-  - Link to to the runbook from the SLO and the executive dashboard
+  - Link to the runbook from the SLO and the executive dashboard
 
 When you're done your runbook will look like this: 
 ![Runbook preview](./runbook_preview.png)

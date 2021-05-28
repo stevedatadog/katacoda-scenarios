@@ -1,0 +1,71 @@
+{
+  "time": "40 minutes",
+  "difficulty": "Intermediate",
+  "title": "Datadog 201: Executive Dashboards, Part 2",
+  "details": {
+    "intro": {
+      "courseData": "background.sh",
+      "code": "foreground.sh",
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "text": "0-setup.md",
+        "title": "Restore the Executive Dashboard (optional)"
+      },
+      {
+        "text": "1-synthetic-slo.md",
+        "title": "SLO from Synthetic Browser Test"
+      },
+      {
+        "text": "2-drilldowns-notes-links.md",
+        "title": "Drilldowns, Notes and Links "
+      },
+      {
+        "text": "3-groups-colors.md",
+        "title": "Groups and Colors"
+      }
+    ],
+    "finish" : {
+      "text" : "finish.md"
+
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "postlogs.py",
+          "target": "/root",
+          "chmod": "+x"
+        },
+        {
+          "file": "docker-compose.yml",
+          "target": "/root"
+        },
+        {
+          "file": "frontend-docker-entrypoint.sh",
+          "target": "/root"
+        }
+     ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "showide": "true",
+    "uieditorpath": "/root", 
+    "terminals": [
+      {
+        "name": "Terminal 2"
+      }
+    ],
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Storedog",
+        "port": 3000
+      }
+    ]
+  },
+  "backend": {
+    "imageid": "datadog-base-v2"
+  }
+}

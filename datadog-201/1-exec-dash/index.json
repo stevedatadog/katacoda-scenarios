@@ -1,6 +1,7 @@
 {
-  "time": "40 minutes",
-  "title": "Datadog 201: Executive Dashboards",
+  "time": "30 minutes",
+  "difficulty": "Intermediate",
+  "title": "Datadog 201: Executive Dashboards, Part 1",
   "details": {
     "intro": {
       "courseData": "background.sh",
@@ -19,23 +20,10 @@
       {
         "text": "3-custom-metric.md",
         "title": "Custom Metric from Logs"
-      },
-      {
-        "text": "4-synthetic-slo.md",
-        "title": "SLO from Synthetic Browser Test"
-      },
-      {
-        "text": "5-drilldowns-notes-links.md",
-        "title": "Drilldowns, Notes and Links "
-      },
-      {
-        "text": "6-groups-colors-markers.md",
-        "title": "Groups, Colors, and Markers"
       }
     ],
     "finish" : {
       "text" : "finish.md"
-
     },
     "assets": {
       "host01": [

@@ -10,7 +10,7 @@ A glance at this dashboard provides valuable information about how the site fron
   - How are business KPIs trending? Pretty good, as there are no anomalous negative events or trends in the **Bookings Completed** or **Active Users** time series graphs
   - What's the user experience for customers at the moment? Bad! The **Avg Latency** is red and the **Apdex Score** is **Unacceptable**
   - How long has this been happening? The **Load time median, p75 and p90** graph indicates at least an hour consistently
-  - Why is this happening? There is a very high number of **Frontend web errors** during this period that is worth investing
+  - Why is this happening? There is a very high number of **Frontend web errors** during this period that is worth investigating
 
 What to do with this information is up to the executive. They have good data readily available to make decisions with confidence.
 

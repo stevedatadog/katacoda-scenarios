@@ -1,4 +1,4 @@
-Storedog is already instrumented with the Datadog JavaScript RUM library. It just needs to be configured with an application id and client token. Take a look at how it works:
+Storedog is already instrumented with the Datadog JavaScript RUM library. It just needs to be configured with an application id and client token.  Take a look at how it works:
 
 1. In the lab, click the **IDE** tab above the terminal. It can take a couple minutes to fully load.
 1. Open the file `lab/store-frontend-instrumented-fixed/frontend/app/views/spree/layouts/spree_application.html.erb`{{open}}
