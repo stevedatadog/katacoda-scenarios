@@ -8,4 +8,4 @@ In this lab you completed an extremely useful--and good looking--executive dashb
 
 Hopefully, you thought of some useful and interesting dashboards that you can create in your own organization.
 
-Click the **Continue** button to proceed to the next module: Runbooks.
+Click the **Next** button to proceed to the next module: Runbooks.

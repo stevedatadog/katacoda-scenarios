@@ -6,4 +6,4 @@ In this lab you created an extremely useful--and good looking--executive dashboa
   <li>Export dashboards as JSON
 </ul>
 
-Click the **Continue** button to further customize the executive dashboard by adding an SLO, drilldowns, and some visual appeal.
+Click the **Next** button to further customize the executive dashboard by adding an SLO, drilldowns, and some visual appeal.
