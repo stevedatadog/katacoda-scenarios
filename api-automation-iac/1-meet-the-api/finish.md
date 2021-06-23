@@ -1,3 +1,0 @@
-You now have a sense of the request/response pattern of communicating with the Datadog API. You know where to find the API reference, and how you can use the Datadog API Collection for Postman to see the API endpoints in action. This is useful for prototyping your API solutions at a higher level prior to writing code. 
-
-Click the **Next** button to move on to the next section, where you're going to explore the Datadog API further at the command line.

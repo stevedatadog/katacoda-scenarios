@@ -1,3 +1,0 @@
-The python scripts in this lab are good examples of how Datadog [client libraries](https://docs.datadoghq.com/developers/libraries/) work generally. You'll find that the official Datadog client libraries are the most comprehensive and up-to-date. If the client libraries for you language of choice are missing features that are important to you, remember that you can always fall back on making direct HTTP requests to the Datadog API.
-
-Click the **Next** button to start the final section of this course, using the Datadog API with Terraform.
