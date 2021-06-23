@@ -1,0 +1,82 @@
+{
+    "time": "120 minutes",
+    "title": "Datadog 201: Automation",
+    "details": {
+      "intro": {
+        "courseData": "background.sh",
+        "code": "foreground.sh",
+        "text": "intro.md"
+      },
+      "steps": [
+        {
+          "text": "1-research-request.md",
+          "title": "Research the request"
+        },
+        {
+          "text": "2-curl-build.md",
+          "title": "Build the request with curl"
+        },
+        {
+          "text": "3-curl-call.md",
+          "title": "Make the request with curl"
+        },
+        {
+          "text": "4-dogshell.md",
+          "title": "Using Dogshell"
+        }
+      ],
+      "finish" : {
+        "text" : "finish.md"
+      },
+      "assets": {
+        "host01": [
+          {
+            "file": "docker-compose.yml",
+            "target": "/root"
+          },
+          {
+            "file": "poll_redis.sh",
+            "target": "/root",
+            "chmod" : "+x"
+          },
+          {
+            "file": "poll_service.sh",
+            "target": "/root",
+            "chmod" : "+x"
+          },
+          {
+            "file": "stately-server.py",
+            "target": "/root"
+          },
+          {
+            "file": "stately-index.html",
+            "target": "/root"
+          },
+          {
+            "file": "Dockerfile",
+            "target": "/root"
+          }
+	      ]
+      }
+    },
+    "environment": {
+      "uilayout": "terminal",
+      "showide": "true",
+      "uieditorpath": "/root", 
+      "terminals": [
+        {
+          "name": "Terminal 2"
+        }
+      ],
+      "showdashboard": true,
+      "dashboards": [
+        {
+          "name": "Stately!",
+          "port": 80
+        }
+      ]
+    },
+    "backend": {
+      "imageid": "datadog-base-v3"
+    }
+  }
