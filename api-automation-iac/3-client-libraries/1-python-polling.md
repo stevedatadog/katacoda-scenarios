@@ -1,6 +1,6 @@
 There are many programming language libraries, called "client libraries," that simplify communicating with the Datadog API. You can use them to easily add Datadog API requests to most applications, from internal administrative tools to native mobile consumer applications. Client libraries unlock the full power of the Datadog API using the programming languages that best fit your needs or preferences.
 
-## Polling metrics with Python
+## Examine a Python script
 If you didn't install the Datadog for Python in the previous step, do so now:
 
 `pip install datadog`{{execute}}
@@ -19,7 +19,7 @@ On lines 26-32, the script calls `api.Metric.query()` in a loop, passing in the 
 
 On lines 37-41, the script prepares the arguments for `api.Event.create()` and calls it. This will send the same event that `poll_service.sh` and Dogshell did. 
 
-### Run the script
+### Run the Python script
 Now that you're familiar with how this script works, run it in the terminal:
 
 `cd /root/lab/scripts && ./poll_service.py`{{execute}}
