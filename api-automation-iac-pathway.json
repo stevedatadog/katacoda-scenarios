@@ -1,0 +1,28 @@
+{
+    "title": "Datadog API: Automation and Infrastrucutre as Code",
+    "description": "A hands-on tour of the Datadog API and its capabilities.",
+    "icon": "fa-industry",
+    "courses": 
+    [
+      {
+        "course_id": "1-meet-the-api",
+        "title": "Meet The API",
+        "description": "Explore the Datadog API using the official Postman Collection."
+      },
+      {
+        "course_id": "2-the-command-line",
+        "title": "The Command Line",
+        "description": "Use curl and Dogshell to create handy CLI utilities."
+      },
+      {
+        "course_id": "3-client-libraries",
+        "title": "Client Libraries",
+        "description": "See how Datadog client libraries work with Python examples."
+      },
+      {
+        "course_id": "4-terraform",
+        "title": "Terraform",
+        "description": "Use Terraform to provision a small application and its Dashboard."
+      }
+    ]
+  }
