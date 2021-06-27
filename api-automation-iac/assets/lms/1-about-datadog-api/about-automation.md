@@ -1,5 +1,5 @@
 ## Overview
-Datadog's HTTP REST API supports automating many of the actions that you have performed so far in this course, such as creating and managing:
+Datadog's HTTP REST API supports automating many of the common tasks you might peform by clicking through a user interface, including creating and managing:
 
   - Monitors
   - Dashboards
@@ -9,8 +9,6 @@ Datadog's HTTP REST API supports automating many of the actions that you have pe
   - Notebooks
 
 But that's just a drop in the bucket. The API can do almost anything that a human can do in the Datadog app. You can see all of the API's capabilities in the [Datadog Docs API Reference](https://docs.datadoghq.com/api/latest/).
-
-You can explore and experiment with the API using our Datadog API Collection in the [Datadog Postman Workspace](https://www.postman.com/datadog/workspace/datadog-s-public-workspace/). See [Using Postman with Datadog APIs](https://docs.datadoghq.com/getting_started/api/) to learn more.
 
 ## Use cases
 If there's something you do more than once in the Datadog app, consider automating it. Here are just a few ways that you can harness the power of the Datadog API to optimize your workflows:
@@ -25,7 +23,7 @@ If there's something you do more than once in the Datadog app, consider automati
 
 The possibilities are limited only by your imagination. Can you think of repetitive or time consuming Datadog tasks that you or your team perform that could be automated using the Datadog API?
 
-## API clients, libraries, and tools
+## HTTP clients, libraries, and tools
 There are several ways that you can communicate with the Datadog API. Below are some of the most common.
 
 ### HTTP clients
@@ -38,7 +36,7 @@ Other general purpose HTTP tools include Postman, mentioned above, and open sour
 There are many official and community contributed software libraries that enable communicating with the Datadog API at a higher level. There is probably at least one library for your favorite programming language. Take a look at the [API and DogStatsD client libraries](https://docs.datadoghq.com/developers/libraries/#api-and-dogstatsd-client-libraries) list to see what's available.
 
 ### Dogshell
-One notable library is the officially supported [datadogpy Python library](https://github.com/DataDog/datadogpy). In addition to providing powerful Python functions for communicating with the Datadog API, it provides the [dogshell command line utility](https://docs.datadoghq.com/developers/guide/dogshell-quickly-use-datadog-s-api-from-terminal-shell/). This utility allows you to communicate with the Datadog API with short, intuitive `dog` commands. For example to send a custom metric to Datadog:
+One notable library is the officially supported [datadogpy Python library](https://github.com/DataDog/datadogpy). In addition to providing powerful Python functions for communicating with the Datadog API, this library provides the [dogshell command line utility](https://docs.datadoghq.com/developers/guide/dogshell-quickly-use-datadog-s-api-from-terminal-shell/). This utility allows you to communicate with the Datadog API with short, intuitive `dog` commands. For example to send a custom metric to Datadog:
 
 `dog metric post test_dogshell_metric 1.0 --tags "test:one,another_test"`
 
@@ -46,7 +44,9 @@ You can find this metric in the Metric Explorer:
 ![dogshell metric example](./dogshell_example.png)
 
 ### Datadog provider for Terraform
-[Terraform](https://www.terraform.io/intro/index.html) is a popular, open source, cloud-friendly tool for building and managing infrastructure. It maintains a registry of [providers](https://registry.terraform.io/browse/providers) that integrate with a wide range of platforms, resources, and services.
+[Terraform](https://www.terraform.io/intro/index.html) is a popular, open source, cloud-friendly tool for building and managing application infrastructure as code (IaC). Like other IaC tools, Terraform enables teams and organizations to manage their infrastructure with many of the same tools and processes they use to manage their software applications.
+
+Terraform maintains a registry of [providers](https://registry.terraform.io/browse/providers) that integrate with a wide range of platforms, resources, and services.
 
 The Datadog Provider for Terraform communicates with the Datadog API while provisioning infrastructure. This allows you to spin up your services and related Datadog resources at the same time. 
 

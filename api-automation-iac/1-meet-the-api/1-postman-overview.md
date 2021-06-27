@@ -8,7 +8,7 @@ When Postman completes the import you will see the workspace with a collection e
 ## Examine an endpoint
 Expand **Datadog API Collection**.
 
-Expand **Events** and then click on **Post an event** API endpoint:
+Expand **Events** and then click on **Post an event**:
 
 ![Post an event fully expanded](./assets/post_event_expanded.png) 
 
@@ -35,4 +35,3 @@ As you click each HTTP response code in the explorer, a corresponding example re
 ![Example responses in request viewer](./assets/post_event_200_400.png) 
 
 Click the **Continue** button to create an event using Postman.
-
