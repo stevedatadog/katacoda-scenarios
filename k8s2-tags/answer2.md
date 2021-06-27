@@ -1,1 +1,0 @@
-![Answer](k8s2-tags/assets/tags-pt2.gif)
