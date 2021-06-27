@@ -4,4 +4,4 @@ Postman's Collection feature allows users to create and share libraries of HTTP 
 
 This lab expects you to create a free Postman account. If you do not wish to create a Postman account, you can use alternatives such as the web-based Hoppscotch.io, or search the web for "popular rest api tools". You may not be able to use the Datadog Collection, but you will likely be able to recreate many of the same requests.
 
-Click the **Continue** button to get started.
+Click the **Start Scenario** button to get started.
