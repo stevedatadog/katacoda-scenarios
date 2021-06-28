@@ -3,7 +3,7 @@ If you don't already have one, [create a Postman account here](https://identity.
 
 Once you are logged in to Postman, import the Datadog collection by clicking on [this link](https://elements.getpostman.com/view/import?collection=b82586cb783eb6f7cf6d&referrer=https%3A%2F%2Fdocs.datadoghq.com%2Fgetting_started%2Fapi%2F#?env%5BDatadog%20Authentication%5D=W3sia2V5IjoiYXBwbGljYXRpb25fa2V5IiwidmFsdWUiOiIiLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoidGV4dCJ9LHsia2V5IjoiYXBpX2tleSIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InRleHQifV0=). When prompted for a workspace in which to import the collection, select **My Workspace**.
 
-When Postman completes the import you will see the workspace with a collection explorer column to the left. ![Screenshot of Datadog API Collection explorer](./assets/postman_workspace-start.png) 
+When Postman completes the import you will see the workspace with a collection explorer column to the left. ![Screenshot of Datadog API Collection explorer](./assets/postman_workspace_start.png) 
 
 ## Examine an endpoint
 Expand **Datadog API Collection**.
@@ -34,6 +34,6 @@ And here is the structure of a 400 Bad Request response from this endpoint:
 
 ![Example responses in request viewer](./assets/post_event_400.png) 
 
-Explore some of the other Datadog API endpoints in the collection. Be sure to look at Dashboards, Logs, and Metrics endpoints, as you'll be working with those later in this course.
+Explore some of the other Datadog API endpoints in the collection and compare them to the Datadog API Reference documentation. Be sure to look at Dashboards, Logs, and Metrics endpoints, as you'll be working with those later in this course.
 
 Click the **Continue** button to create an event using Postman.
