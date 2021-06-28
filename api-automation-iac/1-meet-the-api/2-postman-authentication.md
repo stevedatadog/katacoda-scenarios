@@ -7,7 +7,7 @@ In Postman, click on the **Environments** menu item in the left-hand navigation:
 
 ![Environments button in the Postman nav](./assets/postman_datadog_env.png)
 
-Enter your application key and API key in the **CURRENT VALUE** column. A quick way to find these in the lab is to run this command in the terminal: `env |grep $DD_A`{{copy}}:
+Enter your application key and API key in the **CURRENT VALUE** column. A quick way to find these in the lab is to run this command in the terminal: `env |grep DD_A`{{execute}}:
 
 ![Getting keys from the lab environment](./assets/app_api_from_terminal.png)
 
@@ -32,7 +32,7 @@ In Postman, navigate to **Datadog API Collection > Authentication > Validate API
 
 ![Validate API key endpoint response](./assets/validate_api_endpoint_200.png)
 
-If you received a 403 Forbidden, go back and confirm that you have set your API key correctly in the Datadog Authorization environment. Also make sure that the environment is active.
+If you received a 403 Forbidden response, go back and confirm that you have set your API key correctly in the Datadog Authorization environment. Also make sure that the environment is active.
 
 ## Test the Application Key
 The Datadog API doesn't provide an endpoint for verifying application keys. To test an application key, you can call an endpoint that requires it, such as [Query the event stream](https://docs.datadoghq.com/api/latest/events/#query-the-event-stream).
@@ -41,8 +41,21 @@ In Postman, navigate to **Datadog API Collection > Events > Query the event stre
 
 ![Preparing the the event query](./assets/prepare_event_query.png)
 
+Back in the lab terminal, run this command to get `start` and `end` timestamps that cover the uptime of the lab environment:
 
-Click the **Continue** button to 
+`expr $(date +%s) - $SECONDS && date +%s`{{execute}}
+
+In Postman, enter those values for `start` and `end` respectively, and uncheck all other parameters.
+
+Hit the **Send** button and look for a 200 OK response below the request builder. You should see a JSON object describing an event that was created when this lab started up:
+
+![Event query success](./assets/event_query_success.png)
+
+If you received a 403 Forbidden response, go back and confirm that you have set your application key correctly in the Datadog Authorization environment. 
+
+Postman is now correctly configured to make authenticated requests to the Datadog API. 
+
+Click the **Continue** button to create an event with Postman.
 
 
 
