@@ -1,6 +1,6 @@
 Click the IDE tab above the terminal and wait for it to load. Then open the file `lab/scripts/poll_redis.sh`{{open}}
 
-This script runs loops over the same command you just ran. The boolean return value from the `curl` command gets assigned to `$REDIS_UP`. The `while` loop will terminate when `$REDIS_UP` evaluates to `true`. It also pauses for 2 seconds to be kind to the Datadog API endpoint. (Get familiar with the [[Datadog API rate limits](https://docs.datadoghq.com/api/latest/rate-limits/) so you can tune your automated scripts accordingly.)
+This script loops over the same command you just ran. The boolean return value from the `curl` command gets assigned to `$REDIS_UP`. The `while` loop will terminate when `$REDIS_UP` evaluates to `true`. It also pauses for 2 seconds to be kind to the Datadog API endpoint. (Get familiar with the [[Datadog API rate limits](https://docs.datadoghq.com/api/latest/rate-limits/) so you can tune your automated scripts accordingly.)
 
 Click on the first terminal tab and run this shell script: `cd /root/lab/scripts && ./poll_redis.sh`{{execute}}. It will tell you it's waiting for redis-session-cache:
 
@@ -15,7 +15,7 @@ Click on the **Terminal** tab and wait for the shell script to inform you that t
 ### Post an event
 What if this script posted and event when it detected the service? That way anyone in your organization can see it in the [event stream](https://app.datadoghq.com/event/stream). You could even create an [Event Monitor](https://docs.datadoghq.com/monitors/monitor_types/event/) to notify your team when the service comes up.
 
-Consult the [documentation](https://docs.datadoghq.com/api/latest/events/#post-an-event) for the Datadog API's events endpoint, especially the **Curl** code example. Because you're sending information to the API, the method is `POST`. Also, the `DD-APPLICATION-KEY` key header is not required. 
+You created an event with Postman in the first section of this course, so you should be familiar with the request and response. Consult the [documentation](https://docs.datadoghq.com/api/latest/events/#post-an-event) for the Datadog API's Post an event endpoint, especially the **Curl** code example. Because you're sending information to the API, the method is `POST`. Also, the `DD-APPLICATION-KEY` key header is not required. 
 
 Try it out:
 
@@ -54,7 +54,7 @@ export DD_SERVICE="redis-session-cache"
 export DD_QUERY_METRIC="redis.cpu.sys"
 ```{{execute}}
 
-Run the script to see it in action. Because your service is still running, it will detect it automatically: `cd /root/lab/scripts && ./poll_service.sh`{{execute}}
+Run the script to see it in action. Because your service is still running, it will detect it very quickly: `cd /root/lab/scripts && ./poll_service.sh`{{execute}}
 
 ![Final script run](./assets/final_script_run.png)
 

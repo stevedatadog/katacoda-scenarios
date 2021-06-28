@@ -22,7 +22,7 @@ The documentation tells you the HTTP Method, the URL, the required query string 
 
 To determine the query string parameter values, determine what you want from this endpoint.  A good start is, "in the past minute, are there any core redis data points from the service redis-session-cache in the environment api-course?"
 
-The command line utility `date` will help you figure out the UNIX timestamps for `$TO` when you run the command. `$FROM` will be 60 seconds before that.
+The command line utility `date` will help you figure out the POSIX timestamps for `$TO` when you run the command later. `$FROM` will be 60 seconds before that.
 
 `$QUERY` is a little tricky if you're new to Datadog metric queries. The main [Metrics documentation](https://docs.datadoghq.com/metrics/#querying-metrics) has a useful section about constructing queries.
 

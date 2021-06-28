@@ -2,6 +2,8 @@ Dogshell is a command line client to the Datadog API. It comes with the Datadog 
 
 `pip install datadog`{{execute}}
 
+You can ignore the warning about running pip as root.
+
 Now run this command:
 
 `dog -h`{{execute}}
@@ -30,7 +32,7 @@ Using this information, you can recreate the event from the previous step thusly
 dog event post --tags "env:$DD_ENV,service:$DD_SERVICE" \
   --host $(hostname) \
   "$DD_SERVICE is up" \
-  "The service polling script detected $DD_QUERY_METRIC from $DD_ENV on $(hostname)"
+  "The service polling script detected $DD_QUERY_METRIC from $DD_ENV on $(hostname). 🐶 Woof!"
 ```{{execute}}
 
 You should see an event like this appear in your event stream:
@@ -71,7 +73,7 @@ This is the dashboard Dogshell created:
 
 ![Dogshell created dashboard](./assets/dogshell_created_dashboard.png)
 
-It's not as nice as the dashboard you created in the first part of this course, but it's a start! You can add further widgets to the dashboard with the `dog dashboard update` command. All of the widgets are [well documented](https://docs.datadoghq.com/dashboards/widgets/) and provide the JSON syntax for their definitions in API commands. You'll make a more sophisticated dashboard in the next section.
+It's not beautiful, but it's a start! You can add further widgets to the dashboard with the `dog dashboard update` command. All of the widgets are [well documented](https://docs.datadoghq.com/dashboards/widgets/) and provide the JSON syntax for their definitions in API commands. You'll make a more sophisticated dashboard in the next section.
 
 Dogshell is a handy utility that would work well for infrequent and one-off tasks. Its convenience and simplicity come at the price of narrower capabilities. Like curl commands, Dogshell can be automated and even run from your laptop. See the [Dogshell docs](https://docs.datadoghq.com/developers/guide/dogshell-quickly-use-datadog-s-api-from-terminal-shell/) to learn more.
 

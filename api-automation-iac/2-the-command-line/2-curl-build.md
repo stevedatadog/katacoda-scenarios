@@ -1,7 +1,11 @@
 ### Make the request
-Scroll down to the **Code Example** in the API documentation for the **Query timeseries points** endpoint. Note the tabs illustrating how to use language libraries to perform requests to this endpoint. This is a useful resource provided for every API endpoint in the documentation. 
+In the API Reference documentation for the **Query timeseries points** endpoint, scroll down to the **Code Example**  Note the tabs illustrating how to use language libraries to perform requests to this endpoint. This is a useful resource provided for every API endpoint in the documentation. 
 
-Click on the **Curl** tab if it's not already selected. Note that in addition to a URL, the requests requires three HTTP headers: `Content-Type`, `DD-API-KEY`, and `DD-APPLICATION-KEY`. This is true for most API requests, though many do not require the application key header.
+Click on the **Curl** tab if it's not already selected:
+
+![Metric query curl example](./assets/metric_query_curl_example.png)
+
+Note that in addition to a URL, the request requires three HTTP headers: `Content-Type`, `DD-API-KEY`, and `DD-APPLICATION-KEY`. In the previous section of this course, Postman handled adding the authentication headers for you using the Datadog Authorization Environment. With curl, you will have to add these headers yourself with each request.
 
 The `$DD_API_KEY` and `$DD_APP_KEY` variables are already set in your lab environment, but you will have to set the `$FROM` and `$TO` variables explicitly. Putting it all together:
 
