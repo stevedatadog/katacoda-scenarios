@@ -3,7 +3,7 @@ resource "datadog_monitor" "redis_cpu" {
   type = "metric alert"
   message = "Uh oh. Redis is burning up the CPU! @sre@example.com"
   
-  query = "avg(last_5m):max:redis.cpu.sys{env:dd201,service:redis-session-cache} by {service,env} >= .2"
+  query = "avg(last_5m):max:redis.cpu.sys{env:api-course,service:redis-session-cache} by {service,env} >= .2"
 
   monitor_thresholds {
     warning           = ".1"
@@ -11,7 +11,7 @@ resource "datadog_monitor" "redis_cpu" {
     critical          = ".2"
     critical_recovery = ".1"
   }
-  tags = ["env:dd201", "service:redis-session-cache"]
+  tags = ["env:api-course", "service:redis-session-cache"]
 }
 
 resource "datadog_dashboard" "redis_session_cache_dash" {
@@ -97,7 +97,7 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
   widget {
     trace_service_definition {
       display_format     = "three_column"
-      env                = "dd201"
+      env                = "api-course"
       service            = "stately-app"
       show_breakdown     = true
       show_distribution  = true
@@ -136,7 +136,7 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
       ]
       live_span = "30m"
       request {
-        q = "avg:docker.cpu.system{env:dd201} by {docker_image}.fill(0)"
+        q = "avg:docker.cpu.system{env:api-course} by {docker_image}.fill(0)"
         style  {
           palette = "cool"
         }

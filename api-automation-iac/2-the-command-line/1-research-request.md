@@ -6,7 +6,7 @@ This is the architecture of the small Docker web application that you're going t
 | redis    | redis-session-cache | caches users' stately sessions        |
 | agent    | agent               | Datadog agent                         |
 
-The environment for this lab is `dd201`.
+The environment for this lab is `api-course`.
 
 ### Is redis running?
 Suppose that it's important for your team to know when a new `redis-session-cache` service comes online.  There are many ways you could answer this question if a Datadog Agent knows about the service. For example, you could look at the Redis - Overview dashboard, search for its tags in recent logs, or look for its container in the Docker Overview dashboard. If you have access to the host it's running on, there are many more ways to find out. 
@@ -20,7 +20,7 @@ The documentation tells you the HTTP Method, the URL, the required query string 
 
 `https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=$QUERY`
 
-To determine the query string parameter values, determine what you want from this endpoint.  A good start is, "in the past minute, are there any core redis data points from the service redis-session-cache in the environment dd201?"
+To determine the query string parameter values, determine what you want from this endpoint.  A good start is, "in the past minute, are there any core redis data points from the service redis-session-cache in the environment api-course?"
 
 The command line utility `date` will help you figure out the UNIX timestamps for `$TO` when you run the command. `$FROM` will be 60 seconds before that.
 
@@ -38,10 +38,10 @@ If Redis is using system CPU, it's definitely running! Plug the metric name and 
 
 You can click the **export icon** in the upper right corner of the graph and select **Copy query to clipboard**, and paste it into a text editor to see it:
 
-`[{"q":"avg:redis.cpu.sys{env:dd201,service:redis-session-cache}","type":"line"}]`
+`[{"q":"avg:redis.cpu.sys{env:api-course,service:redis-session-cache}","type":"line"}]`
 
 Extracting the value for `q` from that JSON object, you can now assemble your full URL to the Datadog API. `$FROM` and `$TO` will be filled in later:
 
-`https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys{env:dd201,service:redis-session-cache}`
+`https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=avg:redis.cpu.sys{env:api-course,service:redis-session-cache}`
 
 Click the **Continue** button to make call this URL with curl.

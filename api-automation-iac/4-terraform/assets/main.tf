@@ -14,8 +14,8 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
-resource  "docker_network" "dd201net" {
-  name = "dd201net"
+resource  "docker_network" "api-coursenet" {
+  name = "api-coursenet"
 }
 
 resource "docker_image" "datadog_image" {
@@ -35,11 +35,11 @@ resource "docker_container" "datadog_container" {
     "DD_SYSTEM_PROBE_ENABLED=true",
     "DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true",
     "DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true",
-    "DD_ENV=dd201",
-    "DD_TAGS='env:dd201'"
+    "DD_ENV=api-course",
+    "DD_TAGS='env:api-course'"
   ]
   networks_advanced  {
-    name = "${docker_network.dd201net.name}"
+    name = "${docker_network.api-coursenet.name}"
   }
   ports {
       internal = 8125
@@ -80,7 +80,7 @@ resource "docker_container" "datadog_container" {
 }
 
 resource "docker_image" "stately_image" {
-  name = "dd201/stately:1.0"
+  name = "api-course/stately:1.0"
 }
 
 resource "docker_container" "stately_container" {
@@ -89,7 +89,7 @@ resource "docker_container" "stately_container" {
   env = [
     "DD_SERVICE=stately",
     "DD_VERSION=1.0",
-    "DD_ENV=dd201",
+    "DD_ENV=api-course",
     "DD_AGENT_HOST=datadog-agent",
     "DD_TRACE_ANALYTICS_ENABLED=true",
     "DD_PROFILING_ENABLED=true",
@@ -97,7 +97,7 @@ resource "docker_container" "stately_container" {
     "DD_RUNTIME_METRICS_ENABLED=true"
   ]
   networks_advanced  {
-    name = "${docker_network.dd201net.name}"
+    name = "${docker_network.api-coursenet.name}"
   }
   labels {
       label = "com.datadoghq.ad.logs"
@@ -109,7 +109,7 @@ resource "docker_container" "stately_container" {
   }
   labels {
       label = "com.datadoghq.tags.env"
-      value = "dd201"
+      value = "api-course"
   }
   ports {
       internal = 8000
@@ -126,10 +126,10 @@ resource "docker_container" "redis_container" {
   env = [
     "DD_SERVICE=redis-session-cache",
     "DD_VERSION=1.0",
-    "DD_ENV=dd201"
+    "DD_ENV=api-course"
   ]
   networks_advanced  {
-    name = "${docker_network.dd201net.name}"
+    name = "${docker_network.api-coursenet.name}"
   }
   command = ["redis-server", "--loglevel", "verbose"]
   labels {
@@ -142,7 +142,7 @@ resource "docker_container" "redis_container" {
   }
   labels {
       label = "com.datadoghq.tags.env"
-      value = "dd201"
+      value = "api-course"
   }
   labels {
       label = "com.datadoghq.ad.check_names"

@@ -49,7 +49,7 @@ It also parameterized the previously hard-coded values to use environment variab
 Return to the first terminal and set those environment variables now:
 
 ```
-export DD_ENV="dd201"
+export DD_ENV="api-course"
 export DD_SERVICE="redis-session-cache"
 export DD_QUERY_METRIC="redis.cpu.sys"
 ```{{execute}}

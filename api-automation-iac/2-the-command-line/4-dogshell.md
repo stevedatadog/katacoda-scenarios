@@ -44,7 +44,7 @@ See if you can create a new metric alert monitor using Dogshell. Start by execut
   - name should be "Redis System CPU Usage"
   - type should be "metric alert"
   - message should be "Uh oh. Redis is getting hot"
-  - query is `avg(last_5m):max:redis.cpu.sys{env:dd201,service:redis-session-cache} by {service,env} >= .5`
+  - query is `avg(last_5m):max:redis.cpu.sys{env:api-course,service:redis-session-cache} by {service,env} >= .5`
 
 If Dogshell successfully creates the monitor, you will see a JSON response printed to the terminal.
 
@@ -54,7 +54,7 @@ If Dogshell successfully creates the monitor, you will see a JSON response print
 dog monitor post --name "Average Redis System CPU Usage" \
   --message "Uh oh. Redis is getting hot" \
   'metric alert' \
-  'avg(last_5m):max:redis.cpu.sys{env:dd201,service:redis-session-cache} by {service,env} >= .5'
+  'avg(last_5m):max:redis.cpu.sys{env:api-course,service:redis-session-cache} by {service,env} >= .5'
 ```
 </details>
 
