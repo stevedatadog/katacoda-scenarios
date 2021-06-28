@@ -45,7 +45,7 @@ Back in the lab terminal, run this command to get `start` and `end` timestamps t
 
 `expr $(date +%s) - $SECONDS && date +%s`{{execute}}
 
-In Postman, enter those values for `start` and `end` respectively, and uncheck all other parameters.
+In Postman, enter those values for `start` and `end` respectively, and uncheck all other parameters. Note that the query string portion of the API URL changes as you remove parameters. All GET requests to the Datadog API send parameters on the query string.
 
 Hit the **Send** button and look for a 200 OK response below the request builder. You should see a JSON object describing an event that was created when this lab started up:
 
