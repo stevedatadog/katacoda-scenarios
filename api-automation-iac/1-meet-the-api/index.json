@@ -13,7 +13,11 @@
           "title": "Postman and the Datadog Collection"
         },
         {
-          "text": "2-postman-events.md",
+          "text": "2-postman-authentication.md",
+          "title": "Authenticating API Requests"
+        },
+        {
+          "text": "3-postman-events.md",
           "title": "Create and Query Events"
         },
         {
@@ -25,7 +29,9 @@
         "text" : "finish.md"
       },
       "assets": {
-        "host01": []
+        "host01": [
+          { "file" : "new_event.json", "target" : "/root"}
+        ]
       }
     },
     "environment": {
