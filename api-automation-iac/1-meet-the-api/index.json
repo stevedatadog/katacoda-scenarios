@@ -21,7 +21,7 @@
           "title": "Create and Query Events"
         },
         {
-          "text": "3-postman-logs.md",
+          "text": "4-postman-logs.md",
           "title": "Create and Query Logs"
         }
       ],
@@ -42,7 +42,7 @@
       "dashboards": [
         {
           "name": "Postman",
-          "href": "https://web.postman.co/",
+          "href": "https://go.postman.co/",
           "port": 80
         }
       ]
