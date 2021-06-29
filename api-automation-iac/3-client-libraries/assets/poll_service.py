@@ -35,7 +35,7 @@ print('{service} is up. Sending event.'.format(service=service))
 """ Send event
 """
 event_title='{service} is up'.format(service=service)
-event_text='The service polling script detected {metric} from {env} on {host}'.format(
+event_text='The service polling script detected {metric} from {env} on {host} 🐍'.format(
     metric=q_metric, env=environment, host=host
 )
 event_response=api.Event.create(title=event_title, text=event_text, tags=tags)

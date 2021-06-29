@@ -31,7 +31,11 @@ Now that you're familiar with how this script works, run it in the terminal:
 
 `cd /root/lab/scripts && ./poll_service.py`{{execute}}
 
-The experience and outcome should be nearly identical to that of running `poll_service.sh`. The web application is automatically running in the background, so this script should detect the redis metrics quickly.
+The experience and outcome will be similar to that of running `poll_service.sh`, with a bit more diagnostic information from the python script: 
+
+![Python polling script CLI output](./assets/pyton_polling_output.png)
+
+The web application is automatically running in the background, so this script should detect the redis metrics quickly.
 
 You can check your events stream in the Datadog app to confirm that there's a new **redis-session-cache-is-up** event.
 
