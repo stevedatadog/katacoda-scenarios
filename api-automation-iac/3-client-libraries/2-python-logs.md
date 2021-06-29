@@ -26,12 +26,16 @@ Line 33 brings everything together, calling `LogsApi.submit_log()` with the `HTT
 
 Lines 35-36 catch an `ApiException` and print its error message if the request fails.
 
+Click on the Terminal tab and run the script: `/root/lab/scripts/submit_logs.py`{{execute}}
+
 Take a look at your logs explorer to see the resulting log entries:
 
 ![Log  from Python script](./assets/log_entry_from_python.png)
 
 ## Querying log entries
 Click on the IDE tab to the right and open `lab/scripts/list_logs.py`{{open}} 
+
+**This section is in progress. Troubleshooting an issue with datetime ranges.**
 
 ## More about the Python libraries
 Look at the [Python Client documentation](https://datadogpy.readthedocs.io/en/latest/) to learn about its capabilities. It's one of the few libraries can communicate with both the Datadog API and [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd), a metrics aggregation service bundled with the Datadog Agent. 
