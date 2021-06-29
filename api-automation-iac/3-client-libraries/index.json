@@ -1,6 +1,6 @@
 {
     "time": "120 minutes",
-    "title": "Datadog 201: Automation",
+    "title": "Datadog API Client Libraries",
     "details": {
       "intro": {
         "courseData": "background.sh",
@@ -13,8 +13,8 @@
           "title": "Polling metrics with Python"
         },
         {
-          "text": "2-python-events.md",
-          "title": "Creating events with Python"
+          "text": "2-python-logs.md",
+          "title": "Creating and querying logs with Python"
         }
       ],
       "finish" : {
@@ -28,6 +28,16 @@
           },
           {
             "file": "poll_service.py",
+            "target": "/root",
+            "chmod" : "+x"
+          },
+          {
+            "file": "send_log.py",
+            "target": "/root",
+            "chmod" : "+x"
+          },
+          {
+            "file": "query_log.py",
             "target": "/root",
             "chmod" : "+x"
           },

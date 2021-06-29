@@ -1,5 +1,5 @@
-Datadog offers many open source client libraries for communicating with the Datadog API in your applications. There are also many unofficial libraries to choose from. The Python library is mature, feature-rich, and a good example of a typical Datadog API library.
+There are many programming language libraries, called "[client libraries](https://docs.datadoghq.com/developers/community/libraries/)," that simplify communicating with the Datadog API. You can use them to easily add Datadog API requests to most applications, from internal administrative tools to native mobile consumer applications. Client libraries unlock the full power of the Datadog API using the programming languages that best fit your needs or preferences.
 
-In this lab, you will examine and run Python scripts that use the official Datadog for Python library. You'll perform the same tasks you did from the command line, so you can see differences and similarities of doing so with a client library. 
+In this lab, you will examine and run Python scripts that use the two official python libraries. You'll perform the same tasks you did in previous labs, so you can see the differences and similarities of performing them with  client libraries. 
 
 Click the **Start Scenario** button to get started.
