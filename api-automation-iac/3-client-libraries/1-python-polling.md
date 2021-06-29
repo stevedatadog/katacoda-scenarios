@@ -33,7 +33,7 @@ Now that you're familiar with how this script works, run it in the terminal:
 
 The experience and outcome will be similar to that of running `poll_service.sh`, with a bit more diagnostic information from the python script: 
 
-![Python polling script CLI output](./assets/pyton_polling_output.png)
+![Python polling script CLI output](./assets/python_polling_output.png)
 
 The web application is automatically running in the background, so this script should detect the redis metrics quickly.
 
