@@ -5,6 +5,13 @@ If you didn't install the Datadog for Python in the previous step, do so now:
 
 `pip install datadog`{{execute}}
 
+And set the environment variables for this new lab environment:
+```
+export DD_ENV="api-course"
+export DD_SERVICE="redis-session-cache"
+export DD_QUERY_METRIC="redis.cpu.sys"
+```{{execute}}
+
 Click the IDE tab and wait for it to fully load. Then open `lab/scripts/poll_service.py`{{open}}.
 
 This is a python script that uses the official Datadog client library for Python. It performs the same function as `poll_service.sh` from earlier in the lab. 
@@ -24,6 +31,8 @@ Now that you're familiar with how this script works, run it in the terminal:
 
 `cd /root/lab/scripts && ./poll_service.py`{{execute}}
 
-The experience and outcome should be nearly identical to that of running `poll_service.sh`. You can check your events stream in the Datadog app to confirm that there's a new **redis-session-cache-is-up** event.
+The experience and outcome should be nearly identical to that of running `poll_service.sh`. The web application is automatically running in the background, so this script should detect the redis metrics quickly.
+
+You can check your events stream in the Datadog app to confirm that there's a new **redis-session-cache-is-up** event.
 
 Click the **Continue** button to create events using the Python client library.

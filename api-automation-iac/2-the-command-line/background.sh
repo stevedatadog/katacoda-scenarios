@@ -1,5 +1,5 @@
 # Idempotentiation
-if test -f "provisionedDD201"; then
+if test -f "provisionedapi-course"; then
   exit 0;
 fi
 
@@ -17,16 +17,10 @@ mkdir /root/lab/scripts
 mv /root/*.sh /root/lab/scripts
 mv /root/*.py /root/lab/scripts
 
-mkdir /root/lab/terraform
-mv /root/*.tf /root/lab/terraform
-
 statusupdate setup
 
 /usr/bin/python3 -m pip install --upgrade pip
 apt-get update && apt-get install -y gnupg software-properties-common curl
-curl -fsSL https://apt.releases.hashicorp.com/gpg | apt-key add -
-apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-apt-get update && apt-get install terraform
 
 docker build -t api-course/stately:1.0 /root/lab/stately/
 
