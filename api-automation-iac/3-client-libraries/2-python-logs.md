@@ -5,8 +5,14 @@ It may seem odd to state that the Datadog Python library was created by humans, 
 
 The documentation for the datadog-api-client-python [is here](https://datadog-api-client.readthedocs.io/en/latest/). The two functions you will look at in this lab are [`submit_log`](https://datadog-api-client.readthedocs.io/en/latest/v1/LogsApi/#submit_log) and [`list_logs`](https://datadog-api-client.readthedocs.io/en/latest/v1/LogsApi/#list_logs)
 
+## Install datadog-api-client-python
+
+Run this command in the terminal to install the library: `pip install git+https://github.com/DataDog/datadog-api-client-python.git`{{execute}}
+
 ## Posting log entries
 Click on the IDE tab to the right and open `lab/scripts/submit_log.py`{{open}} This script uses the Send logs endpoint you called with Postman in the first lab of this course.
+
+
 
 ## Querying log entries
 

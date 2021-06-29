@@ -32,12 +32,12 @@
             "chmod" : "+x"
           },
           {
-            "file": "send_log.py",
+            "file": "submit_logs.py",
             "target": "/root",
             "chmod" : "+x"
           },
           {
-            "file": "query_log.py",
+            "file": "list_logs.py",
             "target": "/root",
             "chmod" : "+x"
           },
