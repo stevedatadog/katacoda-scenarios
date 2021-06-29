@@ -3,13 +3,11 @@ import os
 from datadog_api_client.v1 import ApiClient, ApiException, Configuration
 from datadog_api_client.v1.api import logs_api
 from datadog_api_client.v1.models import *
-from pprint import pprint
 
 configuration = Configuration()
 
 environment=os.getenv('DD_ENV')
 host=os.uname()[1]
-service=os.getenv('DD_SERVICE')
 
 with ApiClient(configuration) as api_client:
     api_instance = logs_api.LogsApi(api_client)

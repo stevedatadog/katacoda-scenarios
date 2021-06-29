@@ -22,7 +22,7 @@ statusupdate setup
 apt-get update && apt-get install -y gnupg software-properties-common curl
 
 docker build -t api-course/stately:1.0 /root/lab/stately/
-docker-compose up -d
+cd /root/lab && docker-compose up -d
 
 apt-get install wait-for-it
 
