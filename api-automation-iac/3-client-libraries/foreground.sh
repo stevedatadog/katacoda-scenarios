@@ -4,7 +4,10 @@ cd /root/lab
 
 STATELY_URL="https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].[[KATACODA_DOMAIN]]"
 echo $STATELY_URL > /root/stately_url.txt
-statusupdate "write stately url"
+echo "DD_API_KEY=$DD_API_KEY" > /root/lab/.env
+
+statusupdate "write vars"
+
 
 clear
 prepenvironment

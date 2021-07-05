@@ -20,7 +20,7 @@ You should receive a 202 Accepted response from the Datadog API:
 
 Look at the Datadog API Reference documentation for the [Post an event](https://docs.datadoghq.com/api/latest/events/#post-an-event) endpoint and compare the response you received with the description of the response object.
 
-The response as an `event.url` key. Copy that URL into your browser to see the event in your event stream:
+The response includes an `event.url` key. Copy that URL into your browser to see the event in your event stream:
 
 ![Newest event from response event.ur](./assets/newest_event.png)
 

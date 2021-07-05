@@ -8,7 +8,7 @@ This is the architecture of the small Docker web application that you're going t
 
 The environment for this lab is `api-course`.
 
-### Is redis running?
+### Is Redis running?
 Suppose that it's important for your team to know when a new `redis-session-cache` service comes online.  There are many ways you could answer this question if a Datadog Agent knows about the service. For example, you could look at the Redis - Overview dashboard, search for its tags in recent logs, or look for its container in the Docker Overview dashboard. If you have access to the host it's running on, there are many more ways to find out. 
 
 One way to find out from the comfort of the command line is to use curl to query the Datadog API. Start by looking at the [API Reference](https://docs.datadoghq.com/api/latest/) for helpful endpoints.
@@ -26,7 +26,7 @@ The command line utility `date` will help you figure out the POSIX timestamps fo
 
 `$QUERY` is a little tricky if you're new to Datadog metric queries. The main [Metrics documentation](https://docs.datadoghq.com/metrics/#querying-metrics) has a useful section about constructing queries.
 
-The Datadog Metrics Explorer can also help you construct a query, if you know which metric you want. Looking at the **Metrics** tab of the [Redis integration](https://app.datadoghq.com/account/settings#integrations/redis), `redis.cpu.sys` stands out:
+The Datadog Metrics Explorer can also help you construct a query if you know which metric you want. Looking at the **Metrics** tab of the [Redis integration](https://app.datadoghq.com/account/settings#integrations/redis), `redis.cpu.sys` stands out:
 
 ![Redis integration metrics redis.cpu.sys](./assets/redis_integration_cpu.png)
 

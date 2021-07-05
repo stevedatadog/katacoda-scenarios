@@ -7,7 +7,7 @@ Click on the **Curl** tab if it's not already selected:
 
 Note that in addition to a URL, the request requires three HTTP headers: `Content-Type`, `DD-API-KEY`, and `DD-APPLICATION-KEY`. In the previous section of this course, Postman handled adding the authentication headers for you using the Datadog Authorization Environment. With curl, you will have to add these headers yourself with each request.
 
-The `$DD_API_KEY` and `$DD_APP_KEY` variables are already set in your lab environment, but you will have to set the `$FROM` and `$TO` variables explicitly. Putting it all together:
+The `$DD_API_KEY` and `$DD_APP_KEY` variables are already set in your lab environment, but you will have to explicitly set the `$FROM` and `$TO` variables. Putting it all together:
 
 ```
 TO=$(date +"%s")
@@ -33,7 +33,7 @@ curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=a
 
 ![Looking at JSON response with jq](./assets/curl_before_redis_with_jq.png)
 
-The response contains `"status" : "ok"`, so you know that the API received your valid query. According to the API documentation for this endpoint, the metrics should be in the `"series" : []` array, which is empty. That makes sense, because the service isn't running yet. 
+The response contains `"status" : "ok"`, so you know that the API received your valid query. According to the API documentation for this endpoint, the metrics should be in the `"series" : []` array, which is empty. That makes sense because the service isn't running yet. 
 
 ### Script it
 You could provision the service and then run this script periodically until you see data in the `"series"` array. But you've got more important things to than repeatedly hitting up arrow and ENTER. If you can reduce this output to a boolean value, you can run it in a bash loop until it returns `true`.
@@ -49,6 +49,6 @@ curl -s -X GET "https://api.datadoghq.com/api/v1/query?from=$FROM&to=$TO&query=a
 
 ![Curl response reduced to a boolean value](./assets/curl_before_redis_with_jq_expression.png)
 
-Now you have something a shell script can work with. Writing shell scripts is out of scope for this lab, and often out of scope for one's serenity. Fortunately, this one has already been written. 
+Now you have something you can use with your shell script. Writing shell scripts is out of scope for this lab and often out of scope for one's serenity. Fortunately, this one has already been written. 
 
 Click the **Continue** button to take a look at it.

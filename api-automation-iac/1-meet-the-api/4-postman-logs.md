@@ -56,7 +56,7 @@ In `data`, you should see the JSON representation of the log entries you created
 ![Response from querying for logs](./assets/query_for_logs.png)
 
 ### Pagination
-Note the value for `meta.page.after`. This value is used for pagination, and is common throughout the API for responses that contain many results. If the number of results from the API exceed the `page[limit]` value in the request, subsequent results can be retrieved by including the `page[cursor]` parameter in a new request.
+Note the value for `meta.page.after`. This value is used for pagination and is common throughout the API for responses that contain many results. If the number of results from the API exceeds the `page[limit]` value in the request, subsequent results can be retrieved by including the `page[cursor]` parameter in a new request.
 
 To get all results, you would continue making requests with the `page[cursor]` parameter set to the `meta.page.after` value of the previous response. You would know that you received all of the requested results when a response's `data` value was an empty array.
 
