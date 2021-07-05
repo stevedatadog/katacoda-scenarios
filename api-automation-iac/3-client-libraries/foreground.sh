@@ -8,6 +8,8 @@ echo "DD_API_KEY=$DD_API_KEY" > /root/lab/.env
 
 statusupdate "write vars"
 
+# Shaddap about running as root
+export PIP_QUIET=2
 
 clear
 prepenvironment

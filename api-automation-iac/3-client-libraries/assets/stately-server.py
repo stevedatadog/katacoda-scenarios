@@ -7,6 +7,8 @@ import uuid
 from ddtrace import tracer
 from ddtrace.contrib.falcon import TraceMiddleware
 
+tracer.configure(hostname=agent)
+
 cache = Cache(
     config={
         'CACHE_TYPE': 'redis',
