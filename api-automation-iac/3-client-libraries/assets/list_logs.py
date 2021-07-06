@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 from datetime import *
+from dateutil.tz import tzlocal
 from datadog_api_client.v1 import ApiClient, ApiException, Configuration
 from datadog_api_client.v1.api import logs_api
 from datadog_api_client.v1.models import *
@@ -17,8 +18,9 @@ with ApiClient(configuration) as api_client:
     body = LogsListRequest(
 	query="env:{env} AND service:lab AND host:{host}".format(env=environment, host=hostname),
         time=LogsListRequestTime(
-            _from=datetime.now()-one_hour_ago,
-            to=datetime.now()
+            _from=datetime.now(timezone.utc)-one_hour_ago,
+	    timezone='UTC',
+            to=datetime.now(tzlocal(timezone.utc))
         )
     )
 
