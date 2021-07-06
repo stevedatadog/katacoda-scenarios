@@ -30,13 +30,9 @@ Next, run `terraform apply --auto-approve`{{execute}} to get Stately! and the Da
 
 ![Terraform apply complete](./assets/terraform_apply_complete.png)
 
- If you see errors like the following:
-
-> Error: Unable to create container: ...
-
 Run the command `cd /root/lab && docker-compose down && cd -` and try again.
 
-Take a look at the Datadog app and find **Average Redis System CPU Usage** under **Monitors > Manage Monitors**. Then find **Stately! Dashboard** under **Dashboards > Dashboard List**. 
+Take a look at the Datadog app and find **Stately! Average Redis System CPU Usage** under **Monitors > Manage Monitors**. Then find **Stately! Dashboard** under **Dashboards > Dashboard List**. 
 
 Your newly created dashboard should look something like this:
 
