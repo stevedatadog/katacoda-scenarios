@@ -42,7 +42,12 @@ Your newly created dashboard should look something like this:
 
 ![Terraform created dashboard](./assets/dash_created_by_terraform.png)
 
-Note that every time you run `terraform apply`, Terraform will do whatever it takes to bring the resources to their configured states. That means that if you make any changes to the dashboard, they will disappear when the dashboard reverts to its originally configured state. This is a good way to maintain an "official," permanent dashboard for resources provisioned by Terraform.
+## Immutability
+Note that every time you run `terraform apply`, Terraform will do whatever it takes to bring the resources to their configured states. That means that if you make any changes to the dashboard, they will disappear when the dashboard reverts to its originally configured state. 
+
+Try it yourself: vandalize the Stately! Dashboard any way you like. Then run `terraform apply --auto-approve`{{execute}} in the terminal. Then refresh the dashboard.
+
+This is a benefit of managing Datadog dashboards "as code;" you can maintain an "official," permanent dashboard for resources provisioned by Terraform.
 
 ## Conclusion
 You have seen how Datadog resources can be managed like any other IaC resource using Terraform. You can learn more about the Datadog Provider for Terraform by reading the [documentation](https://registry.terraform.io/providers/DataDog/datadog/latest/docs). 
