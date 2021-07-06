@@ -11,16 +11,17 @@ configuration = Configuration()
 
 environment=os.getenv('DD_ENV')
 hostname=os.uname()[1]
+
 one_hour_ago=timedelta(seconds=3600)
+now=datetime.now(tzlocal(timezone.utc))
 
 with ApiClient(configuration) as api_client:
     api_instance = logs_api.LogsApi(api_client)
     body = LogsListRequest(
 	query="env:{env} AND service:lab AND host:{host}".format(env=environment, host=hostname),
         time=LogsListRequestTime(
-            _from=datetime.now(timezone.utc)-one_hour_ago,
-	    timezone='UTC',
-            to=datetime.now(tzlocal(timezone.utc))
+            _from=now-one_hour_ago,
+            to=now
         )
     )
 

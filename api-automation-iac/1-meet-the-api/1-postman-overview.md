@@ -22,7 +22,7 @@ You'll find the documentation endpoint URL and overview at the top of the worksp
 
 ![Post event overview and URL mapped to workspace](./assets/post_event_url_overview.png) 
 
-You'll find the documentation request body data in the center of the workspace, in the **Body** tab of the request builder. Modify the placeholder JSON to post an event:
+You'll find the documentation request body data in the center of the workspace, in the **Body** tab of the request builder. You will modify this placeholder JSON when you post an event:
 
 ![Post event body data](./assets/post_event_body_data.png) 
 

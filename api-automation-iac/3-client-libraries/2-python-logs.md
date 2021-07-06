@@ -18,7 +18,7 @@ Line 7 configures the client. Behind the scenes, `Configuration()` looks for `DD
 
 Lines 9-10 set some local variables from the environment.
 
-Lines 12 and 13 create a configured `LogsApi` instance.
+Lines 12-13 create a configured `LogsApi` instance.
 
 Lines 14-29 create an `HTTPLog` instance containing two `HTTPLogItem` instances. You should recognize the `HTTPLogItem` arguments from the first lab, where you created log entries using Postman.
 
@@ -33,15 +33,43 @@ Take a look at your logs explorer to see the resulting log entries:
 ![Log  from Python script](./assets/log_entry_from_python.png)
 
 ## Querying log entries
-Click on the IDE tab to the right and open `lab/scripts/list_logs.py`{{open}} 
+For an example for querying for log entries, click on the IDE tab to the right and open `lab/scripts/list_logs.py`{{open}} 
 
-**This section is in progress. Troubleshooting an issue with datetime ranges.**
+Lines 1-8 load the same client library modules that `submit_logs.py` did, as well as Python modules for date handling and output formatting.
+
+Lines 12-13 set local variables from the environment.
+
+Lines 15-16 create variables that will define the time range of the log entries to list. `now` is converted to Coordinated Universal Time (UTC) because Datadog uses UTC timestamps by default.
+
+Lines 18-19 create a configured `LogsApi` instance.
+
+Lines 20-26 create a `LogsListRequest`, setting `query` and `time` according to the [client library documentation](https://datadog-api-client.readthedocs.io/en/latest/v1/LogsListRequest/)]. 
+
+The `query` syntax is exactly the same as in the Datadog logs explorer. Here, the query is filtering for the tags set by `submit_logs.py`
+
+Note that the `time` parameter is a `LogsListRequestTime` object, which is instantiated in lines 22-25. This is where the `now` and `one_hour_ago` variables come into play, defining the `to` and `_from` of the time range, respectively. 
+
+Lines 28-30 call `ApiClient.list_logs()`, passing the `LogsListRequest`. If the request succeeds, line 31 prints the response object to the terminal. If not, line 33 prints the error to the terminal.
+
+Run the script by executing this command in the lab terminal: `/root/lab/scripts/list_logs.py`{{execute}}
+
+After a moment, you should see the log entries that you posted using `submit_logs.py`:
+
+![Results of list_logs.py](./assets/list_logs_results.png)
+
+If the script succeeds but returns no log entries, make sure that you have run the `submit_logs.py` script within the past hour.
+
+Feel free to experiment with these scripts, or even create new scripts for different endpoints. 
 
 ## More about the Python libraries
 Look at the [Python Client documentation](https://datadogpy.readthedocs.io/en/latest/) to learn about its capabilities. It's one of the few libraries that can communicate with both the Datadog API and [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd), a metrics aggregation service bundled with the Datadog Agent. 
 
+Documentation for the client library generated using the Open API specification, Datadog API Client for Python, is [here](https://datadog-api-client.readthedocs.io/en/latest/v1).
+
 ## Other languages
 Take a look at the [list of client libraries](https://docs.datadoghq.com/developers/libraries/) to see what's available for your language of choice. Also, note that there are many special purpose Datadog libraries, such as those for serverless, log management, Google Analytics, and even Jira, to name a small set. 
 
+### Open API generated clients
+More generated Open API client libraries are on the way. Because they're all generated from the same specification, they will work similarly in every language.  For example, take a look at the `LogsApi.ListLogs()` [usage example](https://github.com/DataDog/datadog-api-client-go/blob/master/api/v1/datadog/docs/LogsApi.md#example) for the GO client. You should be able to see the same usage pattern that you saw in `list_logs.py`.
 
 Click the **Continue** button to wrap up this section.
