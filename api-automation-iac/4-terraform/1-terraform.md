@@ -2,8 +2,6 @@ If you have only a small cloud footprint, rarely provision new services, or youâ
 
 Terraform is a popular IaC tool for managing infrastructure across many providers, on and off the cloud. The Datadog provider for Terraform allows you to provision monitors and dashboards at the same time that you provision your system.
 
-## Shut down Stately!
-Before continuing, shut down the Stately! application that is running under docker-compose: `cd /root/lab/ && docker-compose down`{{execute}}. You're going to start up a new instance of the application using Terraform.
 ## Terraform configuration
 Three Terraform files provision this application. Open the IDE and look at each of these files:
 

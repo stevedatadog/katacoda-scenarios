@@ -13,7 +13,7 @@ environment=os.getenv('DD_ENV')
 hostname=os.uname()[1]
 
 one_hour_ago=timedelta(seconds=3600)
-now=datetime.now(tzlocal(timezone.utc))
+now=datetime.now(timezone.utc)
 
 with ApiClient(configuration) as api_client:
     api_instance = logs_api.LogsApi(api_client)

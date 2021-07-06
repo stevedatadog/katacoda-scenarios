@@ -64,7 +64,7 @@ Feel free to experiment with these scripts, or even create new scripts for diffe
 ## More about the Python libraries
 Look at the [Python Client documentation](https://datadogpy.readthedocs.io/en/latest/) to learn about its capabilities. It's one of the few libraries that can communicate with both the Datadog API and [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd), a metrics aggregation service bundled with the Datadog Agent. 
 
-Documentation for the client library generated using the Open API specification, Datadog API Client for Python, is [here](https://datadog-api-client.readthedocs.io/en/latest/v1).
+Documentation for the client library generated using the Open API specification, datadog-api-client-python, is [here](https://datadog-api-client.readthedocs.io/en/latest/v1).
 
 ## Other languages
 Take a look at the [list of client libraries](https://docs.datadoghq.com/developers/libraries/) to see what's available for your language of choice. Also, note that there are many special purpose Datadog libraries, such as those for serverless, log management, Google Analytics, and even Jira, to name a small set. 

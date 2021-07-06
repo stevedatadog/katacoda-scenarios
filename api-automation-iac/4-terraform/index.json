@@ -1,6 +1,6 @@
 {
     "time": "120 minutes",
-    "title": "Datadog 201: Automation",
+    "title": "Terraform",
     "details": {
       "intro": {
         "courseData": "background.sh",
@@ -18,25 +18,6 @@
       },
       "assets": {
         "host01": [
-          {
-            "file": "docker-compose.yml",
-            "target": "/root"
-          },
-          {
-            "file": "poll_redis.sh",
-            "target": "/root",
-            "chmod" : "+x"
-          },
-          {
-            "file": "poll_service.sh",
-            "target": "/root",
-            "chmod" : "+x"
-          },
-          {
-            "file": "poll_service.py",
-            "target": "/root",
-            "chmod" : "+x"
-          },
           {
             "file": "main.tf",
             "target": "/root"

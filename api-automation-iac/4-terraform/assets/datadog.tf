@@ -1,5 +1,5 @@
 resource "datadog_monitor" "redis_cpu" {
-  name = "Average Redis System CPU Usage"
+  name = "Stately! Average Redis System CPU Usage"
   type = "metric alert"
   message = "Uh oh. Redis is burning up the CPU! @sre@example.com"
   
@@ -40,7 +40,7 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
     check_status_definition {
       check = "datadog.agent.check_status"
       grouping = "check"
-      group = "check:redisdb"
+      group = "check:redisdb,host:host01"
       title = "Redis Up"
       title_size = 16
       live_span = "30m"
@@ -54,7 +54,7 @@ resource "datadog_dashboard" "redis_session_cache_dash" {
   }
   widget {
     note_definition {
-      content          = "This dashboard was created by Terraform in a **Datadog 201** lab."
+      content          = "This dashboard was created by Terraform in **API Course** lab!"
       background_color = "purple"
       font_size        = "36"
       text_align       = "center"
