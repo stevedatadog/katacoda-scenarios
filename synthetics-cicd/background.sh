@@ -2,6 +2,7 @@
 curl -s https://datadoghq.dev/katacodalabtools/r?raw=true|bash
 
 # CI/CD Pipeline
+statuscheck "dirs created"
 cd /root/lab/cicd
 curl -L https://github.com/drone/drone-cli/releases/download/v1.2.4/drone_linux_amd64.tar.gz | tar zx
 install -t /usr/local/bin drone
