@@ -139,7 +139,7 @@ services:
       - DD_SERVICE=advertisements-service
       - DD_VERSION=1.0
       - DD_ENV=synthetics-cicd
-    image: "ddtraining/advertisements-fixed:latest"
+    image: "ddtraining/advertisements-fixed:1.0.0"
     command: [sh, -c, "pip install ddtrace -U && ddtrace-run flask run --port=5002 --host=0.0.0.0"]
     ports:
       - "5002:5002"

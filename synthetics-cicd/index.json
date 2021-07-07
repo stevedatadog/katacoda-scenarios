@@ -1,6 +1,6 @@
 {
-  "time": "45 minutes",
-  "title": "Synthetics Tests in a CI/CD Pipeline",
+  "time": "50 minutes",
+  "title": "Running Synthetics Tests in a CI/CD Pipeline",
   "details": {
     "intro": {
       "courseData": "background.sh",

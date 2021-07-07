@@ -25,3 +25,5 @@ clear
 
 statuscheck "complete"
 prepenvironment
+
+echo "GOGS_EXTERNAL_URL is https://[[HOST_SUBDOMAIN]]-8300-[[KATACODA_HOST]].[[KATACODA_DOMAIN]]"

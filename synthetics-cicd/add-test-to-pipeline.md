@@ -6,9 +6,9 @@ The file consists of three sections divided by dashed lines. You will recognize 
 
 By default, Drone halts when it encounters an error. As you saw in the previous step, `datadog-ci` will exit with an error code if the synthetic test it runs doesn't pass. With this in mind, where would be a good place in the pipeline to run the browser test to protect production from regressions?
 
-The correct place to test is between `deploy-staging` and `deploy-production`. Take a look at a configuration file that adds a `test-staging` section to the pipeline. In the IDE, open `lab/cicd/drone-staging.yml`{{open}} to see the details. 
+A good place to test is between `deploy-staging` and `deploy-production`. Take a look at a configuration file that adds a `test-staging` section to the pipeline. In the IDE, open `lab/cicd/drone-staging.yml`{{open}} to see the details. 
 
-The new `test-staging` section starts at line 36. Drone's `docker` section type works by running the configured steps in a isolated Docker container. Because the `datadog-ci` utility requires Node, one of the official light-weight Node image is suitable. After getting the environment set up and ensuring that the restarted discounts services is ready, Drone will run the familiar `datadog-ci` command on line 56. 
+The new `test-staging` section starts at line 38. Drone's `docker` section type works by running the configured steps in an isolated Docker container. Because the `datadog-ci` utility requires Node, one of the official light-weight Node images is suitable. After getting the environment set up and ensuring that the restarted discounts services is ready, Drone will run the familiar `datadog-ci` command on line 59. 
 
 Return to the terminal and copy the new configuration file into the `discounts-service` source code with the command `cp /root/lab/cicd/drone-staging.yml /root/lab/discounts-service/.drone.yml`{{execute}}. 
 

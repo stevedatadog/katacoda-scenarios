@@ -1,22 +1,22 @@
-Detailed Course Overview
-===
-In this course, you'll learn how to incorporate Datadog's synthetic browser tests into a Continuous Integration/Continuous Deployment (CI/CD) pipeline to minimize user-facing application regressions resulting from buggy releases.
+In this course, you'll learn how to incorporate Datadog's synthetic tests into a CI/CD pipeline to minimize user-facing application regressions resulting from buggy releases.
 
 Click **Course Introduction  >  Introduction** to start the course.
 
 Primary Audience
 ---
-This intermediate-level course is designed for DevOps and release engineers who want to incorporate Datadog's synthetic tests into their CI/CD pipeline. QA, UX, and product engineers would also likely benefit from this course.
+This beginner level course is designed for DevOps and release engineers who want to incorporate Datadog's synthetic tests into their CI/CD pipeline. QA, UX, and product engineers would also likely benefit from this course.
 
 Prerequisites
 ---
-Learners should be comfortable with the main DataDog products and how to navigate the DataDog app; Introduction to Datadog is recommended. Learners should also understand how web applications work, and the concept of Continuous Integration/Continuous Deployment (CI/CD).
+Learners should be comfortable with the main DataDog products and how to navigate the DataDog app; Introduction to Datadog is recommended. 
 
-We strongly recommend that you complete the Introduction to Synthetics course before starting this course, as it walks you through creating the browser test used in this course.
+We strongly recommend that you complete the Introduction to Synthetic Tests course before starting this course, as it walks you through a progressive browser test creation. 
+
+Learners should also understand how web applications work, and the concept of CI/CD pipelines. 
 
 Length (estimated)
 ---
-45 minutes
+50 minutes
 
 Language
 ---

@@ -1,5 +1,3 @@
-About the Learning Environment
-===
 This lab uses a virtual environment complete with a terminal and IDE. This is where you will configuring applications, run commands, and explore the lab application. The environment will expire after an hour, but the lab is designed to be completed before that happens. At any point you may refresh your browser to reset the lab and start from the beginning.
 
 **Note:** The URLs to Storedog and the discounts service will change if you restart this lab. This includes refreshing your browser, or returning to the lab after the session expires. Fortunately, Datadog's UX Monitoring global variables will make it easy to update your tests if this happens.
