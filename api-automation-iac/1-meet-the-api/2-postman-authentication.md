@@ -17,7 +17,7 @@ When you have added both keys, click the **Save** button: ![Save new keys added 
 
 Note that any time you change the values in a Postman tab, an orange dot appears next to the tab title, indicating that your changes are unsaved.
 
-To see how the Datadog API and application keys are added to requests in Postman, click **Collections > Datadog API Collection > Pre-request Script**. This tab contains two JavaScript commands that will run before each request in the collection. These commands create the HTTP headers required by the Datadog API using the `api_key` and `application_key` environment variables you set:
+To see how the Datadog API and application keys are added to requests in Postman, click **Collections > Datadog API Collection**. In the center of the page, click on the **Pre-request Script** tab. This tab contains two JavaScript commands that will run before each request in the collection. These commands create the HTTP headers required by the Datadog API using the `api_key` and `application_key` environment variables you set:
 
 ![Datadog collection pre-request script](./assets/prerequest_script.png)
 

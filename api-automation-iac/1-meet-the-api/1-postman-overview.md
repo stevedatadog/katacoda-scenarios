@@ -10,13 +10,13 @@ Expand **Datadog API Collection**.
 
 Expand **Events** and then click on **Post an event**:
 
-![Post an event fully expanded](./assets/post_event_expanded.png) 
+!["Post an event" fully expanded](./assets/post_event_expanded.png) 
 
 On the right-hand side of the workspace, click on the Documentation icon. This opens the documentation panel corresponding to the selected API endpoint.
 
 ![Postman docs for post event](./assets/post_event_docs.png) 
 
-In a new browser window, open the Datadog API Reference documentation for [Post an event](https://docs.datadoghq.com/api/latest/events/#post-an-event). As you read the documentation for this endpoint, see if you can find the corresponding elements in Postman.
+In a new browser window, open the Datadog API Reference documentation for ["Post an event"](https://docs.datadoghq.com/api/latest/events/#post-an-event). As you read the documentation for this endpoint, see if you can find the corresponding elements in Postman.
 
 You'll find the documentation endpoint URL and overview at the top of the workspace documentation panel:
 

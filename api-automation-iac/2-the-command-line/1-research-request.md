@@ -8,7 +8,9 @@ This is the architecture of the small Docker web application that you're going t
 
 The environment for this lab is `api-course`.
 
-**Note**: In this step, you will not be doing anything in the terminal to the right. You can drag the divider to the right for a more comfortable reading experience.
+This step illustrates a workflow for building the URL for an API request. You will not do anything in the terminal to the right, so you can drag the divider to the right for a more comfortable reading experience. 
+
+You aren't required to use the Datadog app in this step, either. But there is an optional exercise illustrating how to use the Metrics Explorer to help build the query portion of the API URL.
 
 ### Is Redis running?
 Suppose that it's important for your team to know when a new `redis-session-cache` service comes online.  There are many ways you could answer this question if a Datadog Agent knows about the service. For example, you could look at the Redis - Overview dashboard, search for its tags in recent logs, or look for its container in the Docker Overview dashboard. If you have access to the host it's running on, there are many more ways to find out. 

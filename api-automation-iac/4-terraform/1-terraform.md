@@ -17,7 +17,7 @@ Take a look at `datadog.tf` in the IDE. This file defines two resources:
   - A `datadog_monitor` that watches `redis.cpu.sys`
   - A dashboard containing 5 widgets
 
-This is a more robust version of the monitor you created with Dogshell earlier in the lab. The `datadog_monitor` resource configuration closely matches the **Monitors > New Monitor** configuration in the Datadog app.
+This is a more robust version of the monitor you created with Dogshell earlier in the course. The `datadog_monitor` resource configuration closely matches the **Monitors > New Monitor** configuration in the Datadog app.
 
 Each of the widget blocks follows the [Datadog API schema](https://docs.datadoghq.com/dashboards/widgets/) for its type. Each is accompanied by a `widget_layout` block defining its place on the dashboard.
 
@@ -29,8 +29,6 @@ In the terminal, run `cd /root/lab/terraform && terraform init`{{execute}} so Te
 Next, run `terraform apply --auto-approve`{{execute}} to get Stately! and the Datadog dashboard up and running. You should see a couple of pages of output from Terraform as it provisions Stately!, concluding with **Apply complete! ...**:
 
 ![Terraform apply complete](./assets/terraform_apply_complete.png)
-
-Run the command `cd /root/lab && docker-compose down && cd -` and try again.
 
 Take a look at the Datadog app and find **Stately! Average Redis System CPU Usage** under **Monitors > Manage Monitors**. Then find **Stately! Dashboard** under **Dashboards > Dashboard List**. 
 
