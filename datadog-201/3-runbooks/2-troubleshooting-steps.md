@@ -28,7 +28,9 @@ As you navigate around Datadog to collect graphs and links for this runbook, rem
 Now add the graph referenced in the troubleshooting step:
 
 1. Type CTRL+SHIFT+K (PC) or CMD+SHIFT+K (macOS) to display your clipboard. If you still have the **Running Containers By Image** widget, select it and then click the **Add Selected Item To...** menu. Click on **Troubleshooting Storedog Checkout**:
+
    ![Running containers in clipboard](./assets/container_widget_in_clipboard.png)
+
    The graph will appear at the bottom of the runbook, though it will be empty
 1. If the widget is not in your clipboard, navigate to the Storedog Executive Dashboard to copy it, and the perform the above step.
 
@@ -42,6 +44,7 @@ The behavior of this top list might not be intuitive for everyone. Annotate it w
 
 1. Hover over the cell until you see a **speech bubble icon** appear to its right
 1. Click the icon and add a comment, `When a container goes down, it will disappear from this list`{{copy}};
+
    ![Annotated graph](./assets/comment_in_notebook.png)
 
 ## Is the checkout flow broken? Or the synthetic test?
@@ -67,6 +70,7 @@ The behavior of this top list might not be intuitive for everyone. Annotate it w
 Notice that the table of contents on the left hand side is based on the Markdown heading levels in text cells, regardless of which cells they are in.
 
 Your runbook should look something like this:
+
 ![Runbook step 2](./assets/runbook_step_2.png)
 
 ## Link to this runbook
@@ -92,7 +96,9 @@ Many widgets support Custom Links for quick access to related Datadog resources.
    Note the variables you can use to add query parameters to Datadog URLs. The runbook doesn't use variables, but these would be useful when linking to other dashboards or metrics.
    
    Your custom link configuration should look something like this:
+
    ![Custom link configuration](./assets/custom_link_configuration.png)
+
 1. Click the **Done** button
 1. Click the **Save** button
 

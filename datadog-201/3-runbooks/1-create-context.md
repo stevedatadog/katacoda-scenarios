@@ -15,11 +15,14 @@ You can copy any of these widget types from elsewhere in Datadog into a notebook
 1. Your notebook comes with a Timeseries graph by default. Delete this by clicking the trash can in the upper right corner of the cell: 
 
    ![Delete the default graph](./assets/delete_default_graph.png)
+
 1. Rename the notebook by clicking on the automatically generated title. Enter "Troubleshooting Storedog Checkout"
 
 ## Add a description
 1. Click the **plus icon** and select **Insert text cell**:
+
   ![Insert text cell](./assets/insert_text_cell.png)
+
 1. Copy the following Markdown add paste it into the text cell:
    <pre class="file" data-target="clipboard">
    ## Description
@@ -43,6 +46,7 @@ The description links to many useful resources for drilling down into more infor
 1. Right-click **Storedog Checkout** and select **Copy Link Address** in your system's contextual menu:
 
    ![Copy synthetic test URL from quick nav](./assets/copy_url_synth_test.png)
+
 1. Select the **link-to-resource** placeholder
 1. Type CTRL+V (PC) or CMD+V (macOS) to paste the URL over the placeholder
 1. Repeat this process for the executive dashboard, typing "exec"
@@ -56,7 +60,9 @@ You cannot yet use this quick nav technique for specific SLOs. However, you can 
 1. Click on the link to SLOs
 1. Click on **\[Synthetics\] Storedog Checkout**
 1. Notice that the URL to the SLO details is your browser's address bar:
+
   ![Copy SLO URL from location window](./assets/copy_slo_url_from_address_bar.png)
+
 1. Copy this URL and replace the **link-to-resource** placholder for the **synthetic test SLO** link
 
 
@@ -64,7 +70,9 @@ You cannot yet use this quick nav technique for specific SLOs. However, you can 
 The lucky engineer who will use this runbook to troubleshoot the Storedog checkout might not be an expert on the application. It's a good idea to add some context to help them understand the application infrastructure they're working with.
 
 1. Click the **plus icon** and select **Insert text cell**:
+
    ![Insert text cell](./assets/insert_another_text_cell.png)
+
 1. Add some helpful information about the Storedog stack. Copy the Markdown below and paste it into the new text cell:
    <pre class="file" data-target="clipboard">
    ## Storedog Service Overview
@@ -90,6 +98,7 @@ It would be useful to have a log stream here that displays warnings and errors f
 1. Click the **Done** button
 
 Your runbook should look something like this:
+
 ![Runbook started](./assets/runbook_step_1.png)
 
 You have added a good amount of background information and context to the runbook. Click the **Continue** button add specific troubleshooting steps.

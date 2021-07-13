@@ -8,10 +8,13 @@ If you exported the dashboard as JSON at the end of the executive dashboard modu
 1. Click the **New Dashboard** button
 1. Click the **gear icon** in the upper right corner of the new dashboard
 1. Select **Import dashboard JSON...**
+
    ![Import dashboard JSON](./assets/import_dashboard_json.png)
+
 1. Follow the instructions in the modal to import the JSON
 1. In the confirmation modal about replacing the existing dashboard, click the **Yes, Replace** button
 1. If the dashbord looks strangely organized it could be that high density mode is enabled. If so, click the **High Density Mode** control in the upper right corner of the dashboard and select **Normal Density Mode**:
+
 ![Normal density mode activated](./assets/normal_density_mode_activated.png)
 
 The recreated RUM application must be named "Storedog". To sync this lab with the application, restart the lab environment by refreshing this page in your browser.
