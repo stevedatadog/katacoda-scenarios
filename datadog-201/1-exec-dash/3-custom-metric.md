@@ -77,6 +77,7 @@ Now that you’ve created your metrics for item price and cost you can start con
 1. Click the **View dashboard** link in the confirmation modal:
 
    ![Metric exported to dashboard confirmation](./assets/metric_exported_to_dashboard.png)
+
 1. The new widget should look something like this: 
 
    ![New item price graph widget](./assets/item_price_widget_graph.png)
@@ -93,7 +94,7 @@ The carItem.price widget needs some more configuration to display the revenue pe
 The default interpolation strategy is "last," meaning that if no data is available for a time period, the graph will repeat the last value received. For this widget, the interpolation strategy should be "Default Zero" because if there are no purchases there is no revenue.
 
 1. Click the **plus icon** at the end of the `cartItem.price` metric query
-1. Select **Interpolation > Fill zero**  
+1. Select **Interpolation > Default Zero**  
 
    ![cartItem.price interpolation set to default zero](./assets/cart_item_price_default_zero.png)
 Now you will create the same query for `cartItem.cost` and use a formula to subtract the results from the `cartItem.price` results:
