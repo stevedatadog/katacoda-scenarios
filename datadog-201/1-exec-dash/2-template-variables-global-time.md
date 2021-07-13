@@ -19,7 +19,13 @@ Next, update the **Performance overview of most popular pages** widget to use on
 
 Click the **Save** button.
 
-Finally, update the two Docker widgets. They don't use template variables by default, so in this case you will add `$env` to the **from** field under **Graph your data**: ![Adding env to the Docker widget queries](./assets/add_env_to_docker_widget_queries.png)
+Finally, update the two Docker widgets. They don't use template variables by default, so in this case you will add `$env` to the **from** field under **Graph your data**:
+
+![Adding env to the Docker widget queries](./assets/add_env_to_docker_widget_queries.png)
+
+Note that if you want to add an environment variable to many widgets at the same time, there is a handy **Add to All** option on the far right of the template variable configuration editor.
+
+![Add var to all widgets](./assets/add_var_to_all.png)
 
 Click the **Save** button.
 

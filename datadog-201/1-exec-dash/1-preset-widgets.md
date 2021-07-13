@@ -54,22 +54,6 @@ Aside from the Storedog-specific revenue graph and checkout SLO, most of these a
 
    In the lower left corner under **User demographics** you will see a geomap that displays visitor origins by country. Click on that widget and copy it to the clipboard.
 1. Next, you can find the two container widgets on the **Docker - Overview** dashboard.
-   If you cannot find this dashboard you may need to install the Docker integration: 
-   
-   1. Use the quick nav to navigate to the Integrations page. You may see that Docker is detected:
-
-   ![Docker integration detected](./assets/docker_integration_detected.png)
-
-   If you don't see the Docker integration at the top of the page, scroll down to find the integration in the **Available** section.
-
-   1. Click the **Detected** button to open the installation modal window
-   1. Click the **Configuration** tab
-
-      ![Docker integration configuration modal](./assets/install_docker_integration.png)
-
-   1. Click the **Install Integration** button at the bottom of the window
-   1. You should now be able to find the  **Docker - Overview** dashboard
-
 1. In the upper right you will find the **Running containers by image** top list. (This is different than the nearby **Running containers by image** timeseries bar graph.) If you can't see it, try widening your browser window.
 
    In the lower left you will find **Most CPU-intensive containers**. Copy both of those to your clipboard.
