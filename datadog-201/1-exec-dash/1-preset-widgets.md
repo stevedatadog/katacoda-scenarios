@@ -27,7 +27,7 @@ Aside from the Storedog-specific revenue graph and checkout SLO, most of these a
    ![New dashboard modal with traditional options](./assets/new_dashboard_modal_traditional_options.png)
 
    Note that there are also options for traditional timeboards and screenboards. These will eventually be deprecated, as described in [this blog post](https://www.datadoghq.com/blog/datadog-dashboards/).
-1. In the upper-right corner of the dashboard page, click the **High Density Mode** control, and select **Normal Density Mode**:
+1. If your browser window is wide enough, you will see **High Density Mode** control in the upper-right corner of the dashboard page. If so, click it and select **Normal Density Mode**:
    ![Normal density mode](./assets/normal_density_mode.png)
 
 1. Click the **star icon** to the left of the dashboard title. This will add the dashboard to your Favorites list for quick access. ![Starred dashboard in Favorites list](./assets/starred_dashboard_favorites.png)

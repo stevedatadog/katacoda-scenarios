@@ -1,7 +1,7 @@
 ### Template Variables
 There are a couple problems with the widgets you copied in the previous step. First, the RUM widgets seem to have lost their data. To find out why, hover over the **Number of sessions by country** widget and click the **pencil icon** to edit the widget. Under **Graph your data**, take a look at the query: ![Geomap query with template variables](./assets/geomap_template_vars.png)
 
-The search query depends on several template variables, such as `$service`, `$version`, and so on. These variables were set to defaults in their native dashboard, and allowed users to select specific tag values by which to filter the underlying metrics. You can see the variable selectors at the top of the Rum - User Sessions dashboard: ![Rum user session template varibles](./assets/rum_session_template_vars.png)
+The search query depends on several template variables, such as `$service`, `$version`, and so on. These variables were set to defaults in their native dashboard, and allowed users to select specific tag values by which to filter the underlying metrics. You can see the variable selectors at the top of the Rum - User Sessions dashboard: ![Rum user session template variables](./assets/rum_session_template_vars.png)
 
 One option would be to add all of these template variables to the Storedog Executive Dashboard. But Storedog is such as small application that this level of filtering is unnecessary. Instead, delete all of the variables in the geomap query except for `$env`. ![Just the env, please](./assets/env_dd201_geomap_var.png)
 
