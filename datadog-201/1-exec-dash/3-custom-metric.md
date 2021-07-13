@@ -90,16 +90,15 @@ The carItem.price widget needs some more configuration to display the revenue pe
    ![Cart item rollup average](./assets/cart_item_avg_rollup.png)
 1. Set the **every** time period fields to `1 minutes`
 
-The default interpolation strategy is "last," meaning that if no data is available for a time period, the graph will repeat the last value received. For this widget, the interpolation strategy should be "zero" because if there are no purchases there is no revenue.
+The default interpolation strategy is "last," meaning that if no data is available for a time period, the graph will repeat the last value received. For this widget, the interpolation strategy should be "Default Zero" because if there are no purchases there is no revenue.
 
 1. Click the **plus icon** at the end of the `cartItem.price` metric query
 1. Select **Interpolation > Fill zero**  
 
-   ![cartItem.price interpolation set to fill zero](./assets/cart_item_price_interpolation_zero.png)
+   ![cartItem.price interpolation set to default zero](./assets/cart_item_price_default_zero.png)
 Now you will create the same query for `cartItem.cost` and use a formula to subtract the results from the `cartItem.price` results:
 
-1. Click the **Advanced...** link at the far right of the metric query. This will display a **Formula** field, an **Add Query** button, and a **Add Formula** button below the `cartItem.price` query.
-1. Click the **Add Query** button. This will replace the **Formula** field with a duplicate of the `cartItem.price` query 
+1. Click the **Add Query** button below the `cartItem.price` query. This will create a duplicate of the `cartItem.price` query 
 1. Change the Metric value from `cartItem.price` to `cartItem.cost`. You will see second line appear on the graph:
 
    ![Price and cost on the same graph](./assets/price_and_cost_on_graph.png)
@@ -122,10 +121,11 @@ This widget almost meets the CEO's requirements. You need to do a little more co
 The CEO also wants an indication that Storedog is generating more than $8 per minute. A good indicator might be that everything above 8 on the graph is green:
 
 1. Expand the **Markers** section under the metric queries
+1. Click the **Add Marker** button
 1. In the **A** select menu, choose **Range** 
 1. For **from**, enter "8". Leave **to** at "infinity"
 1. In the **Show as** select menus, choose **ok/green** and **solid**
-1. Check the **label** field and enter "Lights stay on"
+1. Check the **Label** field and enter "Lights stay on"
 1. Your **Markers** section should look like this:
 
    ![Marker section complete](./assets/marker_section_complete.png)
