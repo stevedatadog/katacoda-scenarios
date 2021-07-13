@@ -1,1 +1,0 @@
-This is the introduction page for the scenario. Click the **Start Scenario** button to begin.
