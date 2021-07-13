@@ -10,6 +10,7 @@ If you exported the dashboard as JSON at the end of the executive dashboard modu
 1. Select **Import dashboard JSON...**
 
    ![Import dashboard JSON](./assets/import_dashboard_json.png)
+
 1. Follow the instructions in the modal to import the JSON
 1. In the confirmation modal about replacing the existing dashboard, click the **Yes, Replace** button
 1. If the dashboard looks strangely organized it could be that high density mode is enabled. If so, click the **High Density Mode** control in the upper right corner of the dashboard and select **Normal Density Mode**:

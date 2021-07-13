@@ -24,6 +24,7 @@ If you don't already have the Datadog Test Recorder Chrome extension installed, 
 1. Click **Add to Chrome** 
 1. You will see a Chrome dialog asking you to confirm installation. Click **Add extension**
 1. Return to the synthetic browser test Edit Recording page, where you should now see Storedog on the right-hand side:
+
    ![Storedog in the browser test recorder](./assets/storedog_in_test_recorder.png)
 
 #### Record the checkout flow
@@ -36,7 +37,9 @@ Now you will record a simple path through the Storedog checkout flow. Datadog wi
 1. Click the **Checkout** button
 1. Under **Checkout as a Guest**, enter "customer@example.com" in the **Email** field and click the **Continue** button
 1. Fill out the required **Billing Address** fields with valid values. For example:
+
    ![Checkout form complete](./assets/checkout_form_complete.png)
+
 1. Click **Save and Continue**
 1. Leave the default **Shipping Method** and click **Save and Continue**
 1. Under **Payment Information**, select **Check** and click **Save and Continue**
@@ -59,10 +62,14 @@ Finally, create a similar assertion for the order total:
 1. Click on the **$21.79** element to the right of **Order Total:**
 1. Rename **Step Name** to "Test order total"
 1. The total should have been automatically determined: 
+
    ![Total automatically determined](./assets/total_automatically_determined.png)
+
 1. Click the **Apply** button
 
-Your completed browser test should look like this: ![Completed browser test](./assets/completed_browser_test.png)
+Your completed browser test should look like this: 
+
+![Completed browser test](./assets/completed_browser_test.png)
 
 Click the **Save Launch Test** button.
 
@@ -84,7 +91,9 @@ Now that you have a working synthetic browser test, create an SLO to set a targe
 1. In the **Search for monitors** select menu, choose **\[Synthetics\] Storedog Checkout**
 1. Click the **New Target** button
 1. Keep the remaining default values. Your New SLO configuration should look like this:
+
    ![New SLO configuration](./assets/new_slo_configuration.png)
+
 1. Click the **Save & Exit** button
 
 ### Add SLO Summary widget
@@ -93,14 +102,20 @@ Finally, add the SLO Summary widget for the synthetic test to the executive dash
 1. Navigate to the Storedog Executive Dashboard
 1. Click the **Add Widgets** button at the top of the dashboard
 1. Find the **SLO Summary** widget in the carousel at the top of the dashboard. You may need to click the left or right arrows and the ends of the carousel 
+
    ![SLO Summary in carousel](./assets/slo_summary_in_carousel.png)
+
 1. Click the **SLO Summary** to open the SLO Summary Editor
 1. Under **Search and select SLO**, choose **\[Synthetics\] Storedog Checkout**
 1. Because the CEO requested to see the SLO status over the past week, leave **7 Days** checked (rather than **Global time**)
 1. Confirm that your New SLO Summary widget configuration looks like this:
+
    ![SLO Summary widget configuration](./assets/slo_summary_widget_configuration.png)
+
    The monitor will be blank and will display a warning until the synthetic browser tests results start rolling in. Then, when the tests pass, the monitor will look like this:
+
     ![100 percent checkout SLO](./assets/100_percent_slo.png)
+
 1. Click the **Done** button
 
 This executive dashboard is coming together nicely. There's plenty of space for some extra useful information. Click the **Continue** button to add some drill-downs and notes.
