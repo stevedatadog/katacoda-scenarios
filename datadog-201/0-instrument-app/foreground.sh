@@ -12,6 +12,7 @@ DD_APP_KEY=$DD_APP_KEY\n\
 POSTGRES_USER=postgres\n\
 POSTGRES_PASSWORD=postgres" > .env 
 
+# Cleanup git state
 git config --global user.email $LABUSER
 git config --global user.name labuser
 git checkout -b "dd201-lab"

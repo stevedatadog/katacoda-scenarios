@@ -1,5 +1,5 @@
 # Idempotentiation
-if test -f "provisioneddd201"; then
+if test -f "provisionedDD201"; then
   exit 0;
 fi
 

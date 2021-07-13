@@ -27,6 +27,13 @@ DD_CLIENT_TOKEN=$DD_CLIENT_TOKEN\n\
 POSTGRES_USER=postgres\n\
 POSTGRES_PASSWORD=postgres" > .env 
 
+# Cleanup git state
+git config --global user.email $LABUSER
+git config --global user.name labuser
+git checkout -b "dd201-lab"
+git add .
+git commit -m "provisioned changes"
+
 statusupdate environment-variables
 
 # Pass user context to background
