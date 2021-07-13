@@ -1,4 +1,4 @@
-Storedog is already instrumented with the Datadog JavaScript RUM library. It just needs to be configured with an application id and client token.  Take a look at how it works:
+Storedog is already instrumented with the Datadog JavaScript RUM library. It just needs to be configured with an application id and client token. Take a look at how it works:
 
 1. In the lab, click the **IDE** tab above the terminal. It can take a couple minutes to fully load.
 1. Open the file `lab/store-frontend-instrumented-fixed/frontend/app/views/spree/layouts/spree_application.html.erb`{{open}}
@@ -25,7 +25,7 @@ Shortly after you first load a Storedog page in your browser, take a look at the
 
 ![Successful RUM instrumentation](./assets/rum_success.png)
 
-It can take a while for this to happen. If it seems to be taking too long, ensure that you have set the environment variables correctly and that you have restarted the Storedog application after doing so.
+It can take a while for this to happen. If it seems to be taking too long, ensure that you have set the environment variables correctly and that you have restarted the Storedog application after doing so. If you are using an ad blocker, disable it for the Storedog site. Finally, consult the [Troubleshooting](https://docs.datadoghq.com/real_user_monitoring/browser/troubleshooting/) section of the RUM documentation.
 
 Once Storedog is successfully reporting RUM data, get familiar with it. Either click the **Explore User Sessions** button, or navigate to **UX Monitoring > RUM Applications** and click the **Sessions** tab. Click on your user session, as well as the **Views**, **Actions**, and other tabs at the top of the page. 
 

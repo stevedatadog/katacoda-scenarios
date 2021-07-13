@@ -27,7 +27,9 @@ Start by navigating to [Logs Explorer](https://app.datadoghq.com/logs) and searc
 Now that you have defined measures on cost and price, Datadog can aggregate those values like any other metric. The next step is to tell Datadog how to aggregate those values:
 
 1. Start by copying your query, `service:store-cartlogger`{{copy}}
-1. Navigate to **Logs > Generate Metrics** in the global navigation
+1. Navigate to **Logs > Generate Metrics** using the quick nav:
+   ![Quick nav to generate metrics](./assets/generate_metrics_quicknav.png)
+
 1. Click the  **New Metric** button in the upper right corner
 1. Under **Define query**, paste your query `service:store-cartlogger`{{copy}}. You will see matching log lines appear in the **PREVIEW** area
 1. For **Count**, select `item.price` from the list of measures 
@@ -35,7 +37,19 @@ Now that you have defined measures on cost and price, Datadog can aggregate thos
 1. The metric configuration should look something like this:
    ![Generate Metric modal](./assets/generate_metric_modal.png)
 1. Click the **Create Metric** button
-1. Repeat these steps to generate a metric for `cartItem.cost` as well
+
+Another way to create a metric from logs is to start by visualizing it right in the Logs Explorer:
+
+1. Navigate to **Logs > Search**
+1. Filter the logs lines by entering `service:store-cartlogger`{{copy}} into the search field, or by clicking the `store-cartlogger` **Service** facet in the side panel
+1. For **Aggregate by**, select **Fields**
+1. Set **Count** to `item.cost`:
+   ![Average item cost graph in logs explorer](./assets/logs_aggregate_by_item_cost.png)
+
+   This will change the aggregation method to **Avg** and display a timeseries graph. 
+1. Click the **Export** button and select **Generate new metric**:
+   ![Aggregate by item cost in log explorer](./assets/export_generate_metric.png)
+1. This will take you to the Generate Metric dialog you used to create `cartItem.price` earlier. Repeat the remaining steps to create `cartItem.cost`
 
 Now that you’ve created your metrics for item price and cost you can start configuring a widget to display revenue. You'll start by creating a widget that simply graphs `cartItem.price` over time, and then configure it to display the necessary revenue graph.
 

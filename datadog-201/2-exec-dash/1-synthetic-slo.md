@@ -1,4 +1,4 @@
-One way to measure the health of the Storedog checkout flow might be to track the proportion of successful checkouts to incomplete checkouts. But it would be difficult to determine if an incomplete checkout was due to a error. The best way to test frontend functionality is with clearly defined and reproducible synthetic browser tests.
+One way to measure the health of the Storedog checkout flow might be to track the proportion of successful checkouts to incomplete checkouts. But it would be difficult to determine if an incomplete checkout was due to an error. The best way to test frontend functionality is with clearly defined and reproducible synthetic browser tests.
 
 You will use a synthetic browser test to monitor the Storedog checkout flow. Once that is up and running, you will create a monitor-based SLO with a target of 99%. You will then add an SLO status widget to the executive dashboard to prominently display the status of the checkout flow SLO.
 
@@ -6,13 +6,13 @@ Note that you must use Chrome for this step, and be able to install the Datadog 
 
 ### Create a Synthetic Browser Test
 
-1. Navigate to **UX Monitoring > Synthetics Tests** in the global navigation.
+1. Navigate to **UX Monitoring > Synthetics Tests** in the global navigation
 1. If this will be the first synthetic test in your trial account, you will see a welcome screen. Click **Get Started**
 1. Choose **New Browser Test**
 1. Under **Set your test details**, enter your Storedog URL in the **Starting URL** field: `https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/`{{copy}}
    Note that if you refresh the this lab in your browser or return to it later, this URL will change. If you have problems running the browser test, make sure that the test **Starting URL** matches the URL above, and that Storedog is still running under that URL.
 1. For **Name**, enter "Storedog Checkout"
-1. Under **Browsers & Devices** leave the defaults.
+1. Under **Browsers & Devices** leave the defaults
 1. Under **Select locations** choose one or two locations from which to run the test
 1. Under **Specify test frequency**, select **5m**
 1. Leave the default values for the remaining fields and click **Save Details & Record Test**
@@ -32,6 +32,7 @@ Now you will record a simple path through the Storedog checkout flow. Datadog wi
 1. Click the **Start Recording** button in the upper-left hand corner of the Edit Browser Test screen
 1. Click on the first product on the Storedog homepage, **Datadog Tote** for $15.99
 1. Click the **Add to Cart** button
+   **Note:** if the **Add to Cart** button or other functionality doesn't work correctly, click the **Open in Popup** button in the upper-right corner and record the test in that window instead
 1. Click the **Checkout** button
 1. Under **Checkout as a Guest**, enter "customer@example.com" in the **Email** field and click the **Continue** button
 1. Fill out the required **Billing Address** fields with valid values. For example:
@@ -63,7 +64,7 @@ Finally, create a similar assertion for the order total:
 
 Your completed browser test should look like this: ![Completed browser test](./assets/completed_browser_test.png)
 
-Click the **Save and Run Tests** button.
+Click the **Save Launch Test** button.
 
 On the synthetic test details page, scroll down to the **Test Results** section. Results will automatically appear here after a test completes, but you can click the **Refresh** button if you're impatient.
 
@@ -81,6 +82,7 @@ Now that you have a working synthetic browser test, create an SLO to set a targe
 1. Click on **Monitors > New SLO** in the global navigation
 1. Under **Define the source**, click **Monitor Based**
 1. In the **Search for monitors** select menu, choose **\[Synthetics\] Storedog Checkout**
+1. Click the **New Target** button
 1. Keep the remaining default values. Your New SLO configuration should look like this:
    ![New SLO configuration](./assets/new_slo_configuration.png)
 1. Click the **Save & Exit** button

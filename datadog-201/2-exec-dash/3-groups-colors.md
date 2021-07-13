@@ -28,7 +28,7 @@ Drag and resize the widgets in the KPIs group so that the revenue widget takes u
 ![KPIs group added to dashboard](./assets/kpis_group_dashboard.png)
 
 Do the same for the rest of the widgets:
-1. Group the **Performance overview of most popular pages**, **Complete RUM Performance**, **Number of sessions by countery** widgets
+1. Group the **Performance overview of most popular pages**, **Complete RUM Performance**, and **Number of sessions by country** widgets
 1. Title this group "UX and Demographics" and place them below the **KPIs** group
 1. Resize and move the widgets in the group so they are in a row
 1. Group the **Running containers by image**, **Most CPU-intensive containers**, and **Complete Docker Performance** widgets

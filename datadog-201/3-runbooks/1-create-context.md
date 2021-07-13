@@ -64,7 +64,7 @@ You cannot yet use this quick nav technique for specific SLOs. However, you can 
 The lucky engineer who will use this runbook to troubleshoot the Storedog checkout might not be an expert on the application. It's a good idea to add some context to help them understand the application infrastructure they're working with.
 
 1. Click the **plus icon** and select **Insert text cell**:
-   ![Insert text cell](./assets/insert_text_cell.png)
+   ![Insert text cell](./assets/insert_another_text_cell.png)
 1. Add some helpful information about the Storedog stack. Copy the Markdown below and paste it into the new text cell:
    <pre class="file" data-target="clipboard">
    ## Storedog Service Overview
