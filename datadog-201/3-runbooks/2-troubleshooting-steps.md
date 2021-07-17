@@ -72,7 +72,7 @@ Your runbook should look something like this:
 You and your colleagues can use a runbook to communicate and make notes in the margin while troubleshooting a problem. Try it out:
 
 1. Hover over the Docker top list graph until you see a **speech bubble icon** appear to its right
-1. Click the icon and add a comment: `2021-07-04 Postgres is not staying up after repeated restarts. Mailing sysop.`{{copy}};
+1. Click the icon and add a comment: `2021-07-04 Postgres is not staying up after repeated restarts. Mailing sysop.`{{copy}}:
 
    ![Commenting on a graph](./assets/comment_in_notebook.png)
 
@@ -81,14 +81,20 @@ You and your colleagues can use a runbook to communicate and make notes in the m
 ## Link to this runbook
 To make it easy for colleagues to find this runbook, link to it from places where symptoms are likely to occur:
 
-### Storedog Checkout SLO
-Colleagues may notice that the checkout SLO is over budget. Drop an handy link to the runbook so they can take action:
-1. Copy the URL to the runbook
-1. Navigate to the \[Synthetics\] Storedog Checkout SLO
-1. Hover over the SLO row and click the **pencil icon** to edit it
-1. Under **Add name and tags**, enter the following to link to the runbook: `If this SLO drops below 99%, consult the [troubleshooting runbook](link-to-runbook) to investigate and correct.`{{copy}}
-    Replace  the **link-to-runbook** placeholder with the URL to the runbook
-1. Click the **Save & Exit** button
+### Synthetic test notification
+When you created the Storedog Checkout synthetic test, you configured it to be in alert status if the test fails for 15 minutes from any location. Add a link to the runbook in the alert notification:
+
+1. Use the quicknav to go to the Storedog Checkout synthetic test
+1. Click the **gear icon** in the upper-right corner and select **Edit test details**
+1. Under **Notify your team**, paste this message into the large text area: 
+
+   `Use [this runbook](https://app.datadoghq.com/notebook/1040159/troubleshooting-storedog-checkout) to troubleshoot.`{{copy}}
+
+1. Click **Save & Exit**
+
+If this test is in alert status, the **MESSAGE** will contain this useful link:
+
+![Link to runbook in alert notification](./assets/synthetic_alert_notification.png)
 
 ### Executive Dashboard
 Many widgets support Custom Links for quick access to related Datadog resources. Because trouble with the checkout flow would likely affect Storedog's revenue, a link to the runbook from the Storedog Executive Dashboard's **Average revenue per minute** would be useful:
@@ -97,8 +103,9 @@ Many widgets support Custom Links for quick access to related Datadog resources.
 1. Click **Create custom links** 
 1. Under **Graph your data**, in the **Custom Links** tab, click the **New Custom Link** button
 1. Paste the runbook URL into the **URL** field
-1. In the **Label** field, enter `Troubleshooting Runbook for {{$env.value}}`{{copy}}
-   Note the variables you can use to add query parameters to Datadog URLs. The runbook doesn't use variables, but these would be useful when linking to other dashboards or metrics.
+1. In the **Label** field, enter `Troubleshooting Runbook`{{copy}}
+
+   Note that you can use template variables in custom links. The runbook doesn't use variables, but these would be useful when linking to other dashboards or metrics. There are a couple examples of this in the [Custom links](https://docs.datadoghq.com/dashboards/widgets/#examples) documentation.
    
    Your custom link configuration should look something like this:
 
@@ -110,8 +117,6 @@ Many widgets support Custom Links for quick access to related Datadog resources.
 Now when you click in the **Average revenue per minute** graph, you will see a handy link to the troubleshooting runbook:
 
 ![Custom link to runbook](./assets/custom_link_to_runbook.png)
-
-If you don't see `dd201` in the menu label, make sure that your `$env` template variable dropdown at the top of the dashboard is set to `dd201`.
 
 This is a good start for a runbook. Because notebooks are collaborative, this runbook can evolve over time as it is used in the field by different people.
 
