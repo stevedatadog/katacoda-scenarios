@@ -21,9 +21,9 @@ The executive dashboard displays all of the top-level metrics the CEO requested.
 
 1. Click the **Done** button
 
-### Add a RUM docker overview drill-down
+### Add a Docker overview drill-down
 1. Perform the same steps as above for the  **Docker - Overview** dashboard. Use this Markdown: `[Complete Docker Performance](https://app.datadoghq.com/screen/integration/52/docker---overview)`{{copy}}
-2. Click the **Close** button to the right of the dashboard title to exit edit mode
+2. Exit dashboard edit mode by clicking the **Close** button to the right of the dashboard title
 3. Confirm that your dashboard looks something like this:
 
    ![Step 5 dashboard](./assets/step_5_dash.png)

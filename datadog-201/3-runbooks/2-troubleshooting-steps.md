@@ -22,7 +22,7 @@ As you navigate around Datadog to collect graphs and links for this runbook, rem
    ### Yes, it's up
    Proceed to Step 2 to see if the checkout flow is broken
    </pre>
-1. Replace the **your-storedog-url** with your lab's Storedog URL. 
+1. Replace the **your-storedog-url** with your lab's Storedog URL: `https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/`{{copy}} 
 1. Click the **Done** button
 
 Now add the graph referenced in the troubleshooting step:
@@ -37,15 +37,10 @@ Now add the graph referenced in the troubleshooting step:
 The graph is not displaying anything because it uses template variables, which are not yet available in notebooks. The solution is to replace the template variables with hard-coded values:
 
 1. Hover over the new graph and click the **Edit** button
-1. Depending on where you copied the widget from, your query editor will reference either `$scope` or `$env`. Replace the variable with the literal value `env:dd201`
+1. Depending on where you copied the widget from, your query editor will reference either `$scope` or `$env`. Replace the variable with the literal value `env:dd201`:
+
+   ![Replacing scope with hard coded env var](./assets/replace_graph_var_with_hardcode.png)
 1. Click the **Done** button
-
-The behavior of this top list might not be intuitive for everyone. Annotate it with a comment:
-
-1. Hover over the cell until you see a **speech bubble icon** appear to its right
-1. Click the icon and add a comment, `When a container goes down, it will disappear from this list`{{copy}};
-
-   ![Annotated graph](./assets/comment_in_notebook.png)
 
 ## Is the checkout flow broken? Or the synthetic test?
 1. Add a new text cell to the bottom of the notebook
@@ -72,6 +67,16 @@ Notice that the table of contents on the left hand side is based on the Markdown
 Your runbook should look something like this:
 
 ![Runbook step 2](./assets/runbook_step_2.png)
+
+## Leave a comment
+You and your colleagues can use a runbook to communicate and make notes in the margin while troubleshooting a problem. Try it out:
+
+1. Hover over the Docker top list graph until you see a **speech bubble icon** appear to its right
+1. Click the icon and add a comment: `2021-07-04 Postgres is not staying up after repeated restarts. Mailing sysop.`{{copy}};
+
+   ![Commenting on a graph](./assets/comment_in_notebook.png)
+
+   Comments can be replied to and resolved.
 
 ## Link to this runbook
 To make it easy for colleagues to find this runbook, link to it from places where symptoms are likely to occur:

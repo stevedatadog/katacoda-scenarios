@@ -46,10 +46,11 @@ The description links to many useful resources for drilling down into more infor
 
    ![Copy synthetic test URL from quick nav](./assets/copy_url_synth_test.png)
 
-1. Select the **link-to-resource** placeholder
+1. Select the first **link-to-resource** placeholder
 1. Type CTRL+V (PC) or CMD+V (macOS) to paste the URL over the placeholder
-1. Repeat this process for the executive dashboard, typing "exec"
-1. If at any point the text cell exits edit mode before you're done, over over the text cell and click the **Edit** button.
+1. Repeat this process for the executive dashboard, typing "exec" into the quick nav
+1. If at any point the text cell exits edit mode before you're done, hover over the text cell and click the **Edit** button
+1. Type ESC or click the **Done** button to save the text cell
 
 ## Add some context
 The lucky engineer who will use this runbook to troubleshoot the Storedog checkout might not be an expert on the application. It's a good idea to add some context to help them understand the application infrastructure they're working with.
@@ -78,6 +79,7 @@ It would be useful to have a log stream here that displays warnings and errors f
 1. Click the **</>** icon to enter query edit mode
 1. Paste this log query into the query field, which display log lines of warning-level or above for critical services: `-service:(agent OR advertisements-service) -status:info env:dd201`{{copy}}
 1. Click the **Done** button
+1. Click **Save Notebook** at the top of the page
 
 Your runbook should look something like this:
 

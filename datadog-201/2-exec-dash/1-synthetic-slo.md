@@ -34,7 +34,8 @@ Now you will record a simple path through the Storedog checkout flow. Datadog wi
 1. Click the **Start Recording** button in the upper-left hand corner of the Edit Browser Test screen
 1. Click on the first product on the Storedog homepage, **Datadog Tote** for $15.99
 1. Click the **Add to Cart** button
-   **Note:** if the **Add to Cart** button or other functionality doesn't work correctly, click the **Open in Popup** button in the upper-right corner and record the test in that window instead
+
+   **Note:** if the **Add to Cart** button or other functionality doesn't work correctly, click the **Open in Popup** button in the upper-right corner and record the test in that window instead. Return to the Storedog homepage, click the **Clear All Steps** link, and start over.
 1. Click the **Checkout** button
 1. Under **Checkout as a Guest**, enter "customer@example.com" in the **Email** field and click the **Continue** button
 1. Fill out the required **Billing Address** fields with valid values. For example:
@@ -44,6 +45,7 @@ Now you will record a simple path through the Storedog checkout flow. Datadog wi
 1. Click **Save and Continue**
 1. Leave the default **Shipping Method** and click **Save and Continue**
 1. Under **Payment Information**, select **Check** and click **Save and Continue**
+1. In the Edit Recording page, click **Stop Recording**
 
 #### Create assertions
 The criteria for a successful checkout are that the confirmation page has an **Order** number up top, and order total of **$21.79** at the bottom. 
@@ -72,7 +74,7 @@ Your completed browser test should look like this:
 
 ![Completed browser test](./assets/completed_browser_test.png)
 
-Click the **Save Launch Test** button.
+Click the **Save & Launch Test** button.
 
 On the synthetic test details page, scroll down to the **Test Results** section. Results will automatically appear here after a test completes, but you can click the **Refresh** button if you're impatient.
 
