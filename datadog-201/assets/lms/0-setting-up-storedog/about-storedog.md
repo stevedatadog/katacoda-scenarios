@@ -10,7 +10,7 @@ For most of this course you're going to work with Storedog, a fully functional e
 
 Storedog is already instrumented for most of the metrics you will be using to create dashboards and notebooks. You will need to set up RUM yourself. 
 
-In this module, you will create a RUM application, configure Storedog to use it, and then get familiar with the application while generating some metrics.
+In this module, you will create a RUM application, configure Storedog to use it, and then get familiar with the application while generating some events.
 
 Click the **Next** button below to get started.
 

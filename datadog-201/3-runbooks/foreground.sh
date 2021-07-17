@@ -39,5 +39,7 @@ statusupdate environment-variables
 # Pass user context to background
 echo $DD_API_KEY > /root/.dd_api_key && statusupdate apikey
 
+start
+
 clear
 prepenvironment

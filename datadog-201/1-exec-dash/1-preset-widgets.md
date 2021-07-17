@@ -38,7 +38,7 @@ Aside from the Storedog-specific revenue graph and checkout SLO, most of these a
    ![Starred dashboard in Favorites list](./assets/starred_dashboard_favorites.png)
 
 1. Find the RUM Performance preset dashboard by hovering over **Dashboards** in the global navigation and typing "rum perf" in the search field . Click on the dashboard **Rum - Performance Overview**.
-   If you don't see any data in the graph widgets, visit Storedog by clicking on the **Storedog** tab above the terminal to the right. Click around to generate some RUM metrics.
+   If you don't see any data in the graph widgets, visit Storedog by clicking on the **Storedog** tab above the terminal to the right. Click around to generate some RUM events.
 1. Midway down the left side of the dashboard you will find the **Most viewed pages** section containing a table labeled **Performance overview of most popular pages**. This fits the bill for the frontend performance requirement. Click this widget and type CTRL+C (PC) or CMD+C (macOS). This will copy the widget into your Datadog Clipboard. 
 
    The first time you do this you will see a dialog telling you a little bit about this handy feature. 

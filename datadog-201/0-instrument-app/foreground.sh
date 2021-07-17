@@ -19,5 +19,7 @@ git checkout -b "dd201-lab"
 git add .
 git commit -m "provisioned changes"
 
+start
+
 clear
 prepenvironment

@@ -31,6 +31,6 @@ Once Storedog is successfully reporting RUM data, get familiar with it. Either c
 
 ![Exploring RUM data](./assets/rum_explorer.png)
 
-Keep in mind that you are generating RUM metrics as you interact with Storedog, such as navigation events, click events, resource load times, and more. The more you interact with Storedog, the more RUM metrics you will generate!
+Keep in mind that you are generating RUM events as you interact with Storedog, such as navigation events, click events, resource load times, and more. The more you interact with Storedog, the more RUM events you will generate!
 
 Click the **Continue** button to automatically generate traffic to Storedog to create a good volume of non-RUM metrics.

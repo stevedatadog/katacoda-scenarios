@@ -19,7 +19,7 @@ You can copy any of these widget types from elsewhere in Datadog into a notebook
 1. Rename the notebook by clicking on the automatically generated title. Enter "Troubleshooting Storedog Checkout"
 
 ## Add a description
-1. Click the **plus icon** and select **Insert text cell**:
+1. Click the **Text button** to add a new text cell:
 
   ![Insert text cell](./assets/insert_text_cell.png)
 
@@ -29,8 +29,7 @@ You can copy any of these widget types from elsewhere in Datadog into a notebook
    Use this runbook to troubleshoot problems with the Storedog checkout flow. Symptoms indicating problems with the checkout flow include:
 
    - Many failed [synthetic test results](link-to-resource)
-   - Over-budget [synthetic test SLO](link-to-resource) alerts
-   - The CEO noticed the SLO Summary is red in the [executive dashboard](link-to-resource)
+   - The CEO is upset about something in the [executive dashboard](link-to-resource)
    - Customer complaints
 
    If you are unfamiliar with the Storedog application stack, look at Storedog Service Overview below.
@@ -52,27 +51,10 @@ The description links to many useful resources for drilling down into more infor
 1. Repeat this process for the executive dashboard, typing "exec"
 1. If at any point the text cell exits edit mode before you're done, over over the text cell and click the **Edit** button.
 
-You cannot yet use this quick nav technique for specific SLOs. However, you can use it to navigate to the SLO list:
-
-1. Click the **Save Notebook** button above the notebook title 
-1. Type CTRL+K (PC) or CMD+K (macOS) to open the quick nav
-1. Type SLO
-1. Click on the link to SLOs
-1. Click on **\[Synthetics\] Storedog Checkout**
-1. Notice that the URL to the SLO details is your browser's address bar:
-
-  ![Copy SLO URL from location window](./assets/copy_slo_url_from_address_bar.png)
-
-1. Copy this URL and replace the **link-to-resource** placholder for the **synthetic test SLO** link
-
-
 ## Add some context
 The lucky engineer who will use this runbook to troubleshoot the Storedog checkout might not be an expert on the application. It's a good idea to add some context to help them understand the application infrastructure they're working with.
 
-1. Click the **plus icon** and select **Insert text cell**:
-
-   ![Insert text cell](./assets/insert_another_text_cell.png)
-
+1. Insert a new text cell.
 1. Add some helpful information about the Storedog stack. Copy the Markdown below and paste it into the new text cell:
    <pre class="file" data-target="clipboard">
    ## Storedog Service Overview

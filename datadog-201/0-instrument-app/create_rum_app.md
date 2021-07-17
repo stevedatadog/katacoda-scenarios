@@ -1,4 +1,4 @@
-Datadog's Real User Monitoring uses a JavaScript library embedded in web pages to capture user actions and stream them to Datadog. When Datadog receives RUM metrics, it needs to associate them with the right organization and application. To do this, create a RUM Application for the Storedog frontend in the Datadog app:
+Datadog's Real User Monitoring uses a JavaScript library embedded in web pages to capture user actions and stream them to Datadog. When Datadog receives RUM events, it needs to associate them with the right organization and application. To do this, create a RUM Application for the Storedog frontend in the Datadog app:
 
 1. Navigate to [UX Monitoring > RUM Applications](https://app.datadoghq.com/rum/list) 
 1. Click the **New Application** button
