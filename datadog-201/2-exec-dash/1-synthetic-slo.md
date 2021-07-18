@@ -10,12 +10,13 @@ Note that you must use Chrome for this step, and be able to install the Datadog 
 1. If this will be the first synthetic test in your trial account, you will see a welcome screen. Click **Get Started**
 1. Choose **New Browser Test**
 1. Under **Set your test details**, enter your Storedog URL in the **Starting URL** field: `https://[[HOST_SUBDOMAIN]]-3000-[[KATACODA_HOST]].environments.katacoda.com/`{{copy}}
+
    Note that if you refresh the this lab in your browser or return to it later, this URL will change. If you have problems running the browser test, make sure that the test **Starting URL** matches the URL above, and that Storedog is still running under that URL
 1. For **Name**, enter "Storedog Checkout"
 1. Under **Browsers & Devices**, deselect one browser. You can only select 2 browsers at a time in trial accounts
 1. Under **Select locations** choose one or two locations from which to run the test
 1. Under **Specify test frequency**, select **5 minutes**
-1. Under **Define alert conditions**, set the triggering condition to 15 minutes from any 1 location
+1. Under **Define alert conditions**, set the triggering condition to **15 minutes** from any **1** location
 1. Leave the default values for the remaining fields and click **Save Details & Record Test**
 
 If you don't already have the Datadog Test Recorder Chrome extension installed, the Edit Recording page will tell you to install it. 
